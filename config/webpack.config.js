@@ -310,6 +310,8 @@ module.exports = function(webpackEnv) {
         '~': path.resolve(__dirname, '../src/'),
         '~c': path.resolve(__dirname, '../src/components'),
         '~s': path.resolve(__dirname, '../src/store'),
+        '~p': path.resolve(__dirname, '../src/pages'),
+        '~u': path.resolve(__dirname, '../src/utils'),
         // Allows for better profiling with ReactDevTools
         ...(isEnvProductionProfile && {
           'react-dom$': 'react-dom/profiling',

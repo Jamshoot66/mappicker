@@ -1,0 +1,48 @@
+@import "~u/smart-grid.scss";
+
+$buttonBorderRadius: 3px;
+
+@mixin button {
+	width: 40px;
+	height: 40px;
+	border-radius: $buttonBorderRadius;
+	overflow: hidden;
+	position: relative;
+	transition-duration: 0.5s;
+
+	&:focus {
+		outline: none;
+	}
+
+	&:after {
+		content: "";
+		display: block;
+		background-color: red;
+		opacity: 0;
+		border-radius: $buttonBorderRadius;
+		padding-top: 100%;
+		padding-left: 100%;
+		position: absolute;
+		transition: opacity 0.5s, margin 0.5s, padding 0.5s;
+	}
+	
+	&:active:after {
+		padding: 0;
+		opacity: 1;
+		transition: 0s
+	}
+
+}
+
+@mixin flat {
+	border : none;
+	background-color: transparent;
+}
+
+
+
+@mixin flex {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}

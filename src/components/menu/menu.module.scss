@@ -1,0 +1,30 @@
+@import "~u/smart-grid.scss";
+@import "~u/basic.scss";
+
+.wrapper {
+	flex-basis: 100%;
+	// height: 40px;
+	// display: flex;
+	@include flex;
+
+} 
+
+.placeholder{
+	flex-grow: 1000;
+}
+
+.tst_btn{
+	@include button;
+	@include flex;
+}
+
+.userBtn{
+	@include button;
+	@include flat;
+	@include flex;
+
+	background: url("./id-card.svg");
+	background-size: contain;
+	margin-left: 3px;
+	margin-right: 3px;
+}
