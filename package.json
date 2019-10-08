@@ -93,7 +93,9 @@
     "setupFiles": [
       "react-app-polyfill/jsdom"
     ],
-    "setupFilesAfterEnv": [],
+    "setupFilesAfterEnv": [
+      "<rootDir>config/jest/enzyme.config.js"
+    ],
     "testMatch": [
       "<rootDir>/src/**/__tests__/**/*.{js,jsx,ts,tsx}",
       "<rootDir>/src/**/*.{spec,test}.{js,jsx,ts,tsx}"
@@ -110,6 +112,10 @@
     ],
     "modulePaths": [],
     "moduleNameMapper": {
+      "^~(?![a-z])$": "<rootDir>/src/$1",
+      "^~c(.*)$": "<rootDir>/src/components$1",
+      "^~s(.*)$": "<rootDir>/src/store$1",
+      "^~u(.*)$": "<rootDir>/src/utils$1",
       "^react-native$": "react-native-web",
       "^.+\\.module\\.(css|sass|scss)$": "identity-obj-proxy"
     },
@@ -136,6 +142,8 @@
     ]
   },
   "devDependencies": {
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0",
     "node-sass": "^4.12.0",
     "smart-grid": "^2.1.2"
   }

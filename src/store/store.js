@@ -2,7 +2,7 @@ import * as actionType from "~s/actions.js"
 
 let defUser = {
 	auth : false,
-	name : "Stranger"
+	shortName : "Товарищ"
 }
 
 let defState = {

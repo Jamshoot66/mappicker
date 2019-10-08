@@ -1,0 +1,36 @@
+@import "~u/smart-grid.scss";
+@import "~u/basic.scss";
+
+
+.wrapper{
+ 	display: flex;
+ 	flex-basis: 100%;
+	color: $cWhite;
+	text-align: center;
+	background-color: $cBackground;
+
+	font-family: 'Russo One', sans-serif;
+	font-size: 24px;
+	@include xs(font-size, 16px);
+ 
+}
+
+.rbcLogo{
+	height: 100px;
+	min-height: 100px;
+	filter: sepia(10%);
+}
+
+.text {
+	align-self: center;
+	flex-grow: 1;
+}
+
+span {
+	white-space: nowrap;
+	color: lighten($cRed, 5%);
+	color: $cRed;
+	font-size: 30px;
+	letter-spacing: 3px;
+	@include xs(font-size, 20px);
+}

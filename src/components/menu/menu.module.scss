@@ -3,28 +3,72 @@
 
 .wrapper {
 	flex-basis: 100%;
-	// height: 40px;
-	// display: flex;
 	@include flex;
-
+	background: darken($cRed, 15%);
+	opacity: 0.9;
+	color: $cWhite;
+	border-bottom-left-radius: $buttonBorderRadius;
+	border-bottom-right-radius: $buttonBorderRadius;
 } 
+
+.row {
+	@include row-flex;
+}
+
+.fixed {
+	position: fixed;
+	top: 0;
+	right: 0;
+	left: 0;
+	@include wrapper;
+	@include row-flex;
+}
+
+.fakeMenu {
+	width: 100%;
+	height: $menuHeight;
+}
 
 .placeholder{
 	flex-grow: 1000;
 }
 
-.tst_btn{
-	@include button;
-	@include flex;
-}
-
-.userBtn{
+@mixin menuBtn {
 	@include button;
 	@include flat;
 	@include flex;
-
-	background: url("./id-card.svg");
-	background-size: contain;
 	margin-left: 3px;
 	margin-right: 3px;
+}
+
+.userBtn{
+	@include menuBtn;
+	background: url("./id-card.svg") no-repeat center;
+	background-size: contain;
+}
+
+.filterBtn{
+	@include menuBtn;
+	max-height: 30px;
+	background: url("./filter.svg") no-repeat center;
+	background-size: contain;
+}
+
+.randomizeBtn{
+	@include menuBtn;
+	max-height: 30px;
+	background: url("./dice.svg") no-repeat center;
+	background-size: contain;
+}
+
+.calendarBtn{
+	@include menuBtn;
+	max-height: 30px;
+	background: url("./calendar.svg") no-repeat center;
+	background-size: contain;
+}
+
+.label {
+	user-select: none;
+	@include xs(display, none);
 }

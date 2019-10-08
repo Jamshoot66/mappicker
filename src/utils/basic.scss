@@ -1,11 +1,17 @@
 @import "~u/smart-grid.scss";
 
 $buttonBorderRadius: 3px;
+$cWhite: #FEFFEF;
+$cBlack: #292926;
+$cBackground: rgba(0, 0, 0, 0.3);;
+$cRed: #D43D4B;
+
+$menuHeight: 40px;
 
 @mixin button {
 	width: 40px;
 	height: 40px;
-	border-radius: $buttonBorderRadius;
+	border-radius: $buttonBorderRadius*2;
 	overflow: hidden;
 	position: relative;
 	transition-duration: 0.5s;
@@ -17,13 +23,13 @@ $buttonBorderRadius: 3px;
 	&:after {
 		content: "";
 		display: block;
-		background-color: red;
+		background-color: $cRed;
 		opacity: 0;
 		border-radius: $buttonBorderRadius;
 		padding-top: 100%;
 		padding-left: 100%;
 		position: absolute;
-		transition: opacity 0.5s, margin 0.5s, padding 0.5s;
+		transition: opacity 0.6s, margin 0.5s, padding 0.5s;
 	}
 	
 	&:active:after {

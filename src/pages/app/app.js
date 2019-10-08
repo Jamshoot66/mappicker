@@ -1,21 +1,30 @@
 import React from 'react';
 import style from './app.module.scss';
 
-import Header from "~c/header/header";
-import Menu from "~c/menu/menu";
+import Header from "~c/header/header.jsx";
+import Menu from "~c/menu/menu.jsx";
 
-function App() {
-	return (
-		<main className={style.wrapper}>
-			<header className={style.row}>
-				<Header/>
-			</header>
-			<nav className={style.row}>
+class App extends React.Component {
+
+	render() {
+		return (
+			<main className={style.wrapper}>
+				<header className={style.row}>
+					<Header/>
+				</header>
+
 				<Menu/>
-			</nav>
-			
-		</main>
-	);
+
+				<div>qwe</div>
+				<div>qwe</div>
+				<div>qwe</div>
+				<div style={{height:'10000px'}}></div>
+
+				
+			</main>
+		);
+	}
+	
 }
 
 export default App;
