@@ -1,12 +1,49 @@
-import React from 'react';
-import style from './app.module.scss';
+import React from "react";
+import style from "./app.module.scss";
+
+import {connect} from "react-redux";
+import * as actionType from "~s/actions.js";
 
 import Header from "~c/header/header.jsx";
 import Menu from "~c/menu/menu.jsx";
+import Item from "~c/item/item.jsx";
+import ItemHeader from "~c/item/itemHeader.jsx";
 
 class App extends React.Component {
+	constructor(props){
+		super(props);	
+	}
+
+	componentDidMount(){
+		this.props.getAllMissions();
+	}
 
 	render() {
+
+		let itemsStr = false;
+		if (this.props.showMissionPool === true) {
+			// show missions as mission pool
+			itemsStr = this.props.missionPool.map( (item) => {
+				return <Item key={item.guid} showInMissonPool {...item}/>
+			});
+		} else {
+			// show missions as schedule
+			itemsStr = this.props.schedule.map( (scheduleItem) => {
+
+				let setItemsStr = [...scheduleItem.missions.entries()].map( item => {
+					let mission = this.props.missionPool.find( (itemFromPool) => {
+						return itemFromPool.guid === item[0] 
+					});
+					return <Item key={mission.guid} {...mission} />
+				})
+
+				let result = [setItemsStr];
+				
+				return result;
+			});
+		}
+		
+
 		return (
 			<main className={style.wrapper}>
 				<header className={style.row}>
@@ -14,17 +51,34 @@ class App extends React.Component {
 				</header>
 
 				<Menu/>
-
-				<div>qwe</div>
-				<div>qwe</div>
-				<div>qwe</div>
-				<div style={{height:'10000px'}}></div>
-
+				<ItemHeader/>
+				{itemsStr}
 				
+				<div style={{height:"10000px"}}></div>
+			
 			</main>
 		);
 	}
 	
 }
 
-export default App;
+const mapStateToProps = (state) => {
+	return {
+		missionPool : state.missionPool,
+		schedule : state.schedule,
+		showMissionPool: state.showMissionPool
+	}
+} 
+
+const mapDispatchToProps = (dispatch) => {
+	return {
+		getAllMissions: () => {
+			actionType.getAllMissions(dispatch)
+		},
+
+		
+		removeMissionFromSchedule: () => {}
+	}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

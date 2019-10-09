@@ -1,6 +1,8 @@
 import React from "react";
 import style from "./menu.module.scss";
+
 import {connect} from "react-redux";
+import * as actionType from "~s/actions.js";
 
 class Menu extends React.Component{
 	constructor(props) {
@@ -50,7 +52,11 @@ class Menu extends React.Component{
 				<nav className={menuClassName} ref={this.ref}>
 					{/*<label htmlFor="menuFilterBtn" className={style.label}>Фильтр</label>*/}
 
-					<button className={style.calendarBtn} id="menuRandomizeBtn"></button>
+					<button 
+						className={style.calendarBtn} 
+						id="menuRandomizeBtn"
+						onClick= {this.props.showMissionPoolToggle}>
+					</button>
 					<button className={style.randomizeBtn} id="menuRandomizeBtn"></button>
 					<button className={style.filterBtn} id="menuFilterBtn"></button>		
 					<div className={style.placeholder}></div>
@@ -68,4 +74,12 @@ const mapStateToProps = (state) => {
 	}
 }
 
-export default connect(mapStateToProps)(Menu);
+const mapDispatchToProps = (dispatch) => {
+	return {
+		showMissionPoolToggle: () => {
+			dispatch( {type: actionType.SHOW_MISSION_POOL_TOGGLE})
+		}
+	}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Menu);

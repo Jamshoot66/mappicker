@@ -3,7 +3,15 @@
 
 body {
 	font-family: 'Ubuntu', sans-serif;
-	font-size: 14px;
+	font-size: 16px;
+}
+
+a,
+input,
+button,
+textarea {
+	-webkit-appearance: none;
+	-webkit-border-radius: 0;
 }
 
 .wrapper {
@@ -19,7 +27,6 @@ body {
 		opacity: 0.9;
 		filter: sepia(100%);
 		background: url("./setwalls-big.jpg") center;
-		// background-p[]
 		z-index: -100;
 	}
 }

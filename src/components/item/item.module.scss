@@ -1,0 +1,125 @@
+@import "~u/smart-grid.scss";
+@import "~u/basic.scss";
+
+.wrapper{
+	@include row-flex;
+	padding: 5px;
+	color: $cWhite;
+	align-items: center;
+
+	background-color: lighten($cBackground, 25%);
+
+	&:nth-of-type(2n) {
+		background-color: lighten($cBackground, 15%);
+	}
+
+	&:nth-of-type(2) {
+		background-color: $cBackground;	
+	}
+
+	&:last-of-type{
+		background-color: $cBackground;
+	}
+}
+
+@mixin debug {
+	outline: 1px solid blue;
+}
+
+@mixin itemBase {
+	// @include debug;
+	flex-grow: 1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: default;
+}
+
+.name{
+	@include itemBase;
+	@include size(5);
+	justify-content: flex-start;
+	flex-grow: 2;
+}
+
+.players{
+	@include itemBase;
+	@include size(1);
+	@include xs(display, none);
+	@include md(display, none)
+}
+
+.island{
+	@include itemBase;
+	@include size(2);
+}
+
+.rateAvg{
+	@include itemBase;
+	@include size(1.5);
+	@include xs(display, none)
+}
+
+.autor{
+	@include itemBase;
+	@include size(1.5);
+	@include xs(display, none)
+	@include md(display, none)
+}
+
+.lastPlayed{
+	@include itemBase;
+	@include size(1.5);
+	@include xs(display, none)
+}
+
+.probability{
+	@include itemBase;
+	@include size(1);
+}
+
+.add {
+	@include itemBase;
+	@include size(1);
+	min-width: 21px;
+	max-width: 21px;
+	// min-height: 100%;
+	border-radius: $buttonBorderRadius;
+}
+
+.addBtn{
+	@extend .add;
+	@include button;
+	@include flat;
+	width: 21px;
+	height: 21px;
+	background-color: $cWhite;
+	display: flex;
+
+	&Line{
+		width: auto;
+		max-width: 100%;
+		align-self: center;
+	}
+}
+
+
+.maximazedItemWrapper {
+	display: flex;
+	flex-direction: column;
+	// @include size(12);
+	flex-basis: 100%;
+}
+
+.line {
+	align-self: center;
+	padding-top: 2px; 
+	padding-bottom: 2px; 
+	@include size(12);
+	font-size: 0.9em;
+}
+
+strong {
+	color: darken($cWhite, 3%);
+	letter-spacing: 1px;
+}

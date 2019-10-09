@@ -15,6 +15,7 @@ $menuHeight: 40px;
 	overflow: hidden;
 	position: relative;
 	transition-duration: 0.5s;
+	// z-index: -1;
 
 	&:focus {
 		outline: none;
