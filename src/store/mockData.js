@@ -5,7 +5,7 @@ export const missions = [
 		island: "Altis",
 		players: 200,
 		autor: "Aventador",
-		rateAvg: 3,
+		rateAvg: 1,
 		rates:[1,2,3,4],
 		lastPlayed: "01.02.2019",
 		probability: 0.2
@@ -17,7 +17,7 @@ export const missions = [
 		island: "Chernarus",
 		players: 196,
 		autor: "Aventador",
-		rateAvg: 3,
+		rateAvg: 1,
 		rates:[1,2,3,4],
 		lastPlayed: "01.02.2019",
 		probability: 0.2
@@ -25,7 +25,7 @@ export const missions = [
 	},
 	{
 		guid: 3,
-		name:"Операция «Усся жи есть»",
+		name:"Операция «Уасся жи есть»",
 		island: "Takistan",
 		players: 130,
 		autor: "Aventador",
@@ -59,14 +59,13 @@ export const missions = [
 		probability: 0.2
 		// minimal: true
 	},
-	//0---------------
 	{
 		guid: 6,
 		name:"Операция «Безысходность»",
 		island: "Altis",
 		players: 197,
 		autor: "Aventador",
-		rateAvg: 3,
+		rateAvg: 1,
 		rates:[1,2,3,4],
 		lastPlayed: "01.02.2019",
 		probability: 0.2
@@ -78,7 +77,7 @@ export const missions = [
 		island: "Altis",
 		players: 190,
 		autor: "Aventador",
-		rateAvg: 3,
+		rateAvg: 5,
 		rates:[1,2,3,4],
 		lastPlayed: "01.02.2019",
 		probability: 0.2
@@ -114,7 +113,7 @@ export const missions = [
 		island: "Altis",
 		players: 161,
 		autor: "Aventador",
-		rateAvg: 3,
+		rateAvg: 5,
 		rates:[1,2,3,4],
 		lastPlayed: "01.02.2019",
 		probability: 0.2
@@ -126,7 +125,7 @@ export const missions = [
 		island: "Stratis",
 		players: 188,
 		autor: "Aventador",
-		rateAvg: 3,
+		rateAvg: 2,
 		rates:[1,2,3,4],
 		lastPlayed: "01.02.2019",
 		probability: 0.2

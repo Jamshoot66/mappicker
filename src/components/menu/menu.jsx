@@ -34,7 +34,7 @@ class Menu extends React.Component{
 	}
 
 	componentDidUpdate() {
-		console.log("updated")
+		
 	}
 
 	render() {
@@ -55,9 +55,13 @@ class Menu extends React.Component{
 					<button 
 						className={style.calendarBtn} 
 						id="menuRandomizeBtn"
-						onClick= {this.props.showMissionPoolToggle}>
+						onClick={this.props.showMissionPoolToggle}>
 					</button>
-					<button className={style.randomizeBtn} id="menuRandomizeBtn"></button>
+					<button 
+						className={style.randomizeBtn} 
+						id="menuRandomizeBtn"
+						onClick={this.props.addRandomMissions}>
+					</button>
 					<button className={style.filterBtn} id="menuFilterBtn"></button>		
 					<div className={style.placeholder}></div>
 					<label htmlFor="menuUserBtn" className={style.label}>{greeting}</label>
@@ -78,6 +82,14 @@ const mapDispatchToProps = (dispatch) => {
 	return {
 		showMissionPoolToggle: () => {
 			dispatch( {type: actionType.SHOW_MISSION_POOL_TOGGLE})
+		},
+		addRandomMissions: () => {
+			dispatch( {
+							type: actionType.ADD_RANDOM_MISSIONS,
+							payload: {
+								date: "01.02.2019"
+							}	
+						})
 		}
 	}
 }

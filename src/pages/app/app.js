@@ -16,6 +16,7 @@ class App extends React.Component {
 
 	componentDidMount(){
 		this.props.getAllMissions();
+		this.props.updatePropabilities();
 	}
 
 	render() {
@@ -76,6 +77,9 @@ const mapDispatchToProps = (dispatch) => {
 			actionType.getAllMissions(dispatch)
 		},
 
+		updatePropabilities: () => {
+			dispatch( {type: actionType.UPDATE_PROPABILITIES} )
+		},
 		
 		removeMissionFromSchedule: () => {}
 	}

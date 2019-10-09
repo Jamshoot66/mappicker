@@ -34,25 +34,72 @@ const Store = (state = defState, action) => {
 	let newState = Object.assign({}, state);
 	switch (action.type) {
 		
-		/* ADD_MISSIONS usage:
-			action.Type : ADD_MISSIONS,
-			payload     : [ {testItem}, ... ]
-		*/
+	/* ADD_MISSIONS usage:
+		action.Type : ADD_MISSIONS,
+		payload     : [ {testItem}, ... ]
+	*/
 		case actionType.GET_MISSIONS: 
 			newState = Object.assign({}, state);
 			newState.missionPool = newState.missionPool.concat(action.payload);
 			return newState;
 
+	/* SHOW_MISSION_POOL_TOGGLE */
 		case actionType.SHOW_MISSION_POOL_TOGGLE:
 				newState.showMissionPool = !newState.showMissionPool;
 			return newState;
 
+	/* UPDATE_PROPABILITIES */
 		case actionType.UPDATE_PROPABILITIES:
+			
+			let sum = newState.missionPool.reduce( (acc, item) => acc + (item.rateAvg*5-4), 0);
+			let koef = 1 / sum;
+
+			newState.missionPool.forEach( (item) => {
+				item.probability = (item.rateAvg*5-4)*koef;
+			});
+
+			//check sum of propabilities = 1
+			// console.log(newState.missionPool.reduce( (acc, i) => acc + i.probability, 0));
 			return newState;
-		/* ADD_MISSION_TO_SCHEDULE usage:
-			action.Type : ADD_MISSION_TO_SCHEDULE,
-			payload     : [ {data, guid: item.guid}, ... ]
-		*/	
+	/* ADD_RANDOM_MISSIONS */
+		case actionType.ADD_RANDOM_MISSIONS:
+				newState.schedule = [ {date:action.payload.date, missions: new Set()} ];
+				let propLine = [];
+				let acc = 0
+				newState.missionPool.forEach( (item) => {
+					acc += item.probability;
+					propLine.push({
+											guid: item.guid,
+											maxProp : acc
+										})
+				});
+				// console.log(propLine);
+				let guids = new Set();
+				while (guids.size < 4) {
+					let rnd = Math.random();
+					let guid = propLine.find( (item) => {
+						return item.maxProp > rnd
+					}).guid;
+
+					guids.add( guid )
+				}
+
+				guids.forEach( (item) => {
+					Store(newState, 
+						{
+							type: actionType.ADD_MISSION_TO_SCHEDULE,
+							payload: {
+								date:action.payload.date, 
+								guid:item} 
+						});
+				});
+				
+			return newState;
+
+	/* ADD_MISSION_TO_SCHEDULE usage:
+		action.Type : ADD_MISSION_TO_SCHEDULE,
+		payload     : [ {data, guid: item.guid}, ... ]
+	*/	
 		case actionType.ADD_MISSION_TO_SCHEDULE:
 			newState = Object.assign({}, state);
 			
