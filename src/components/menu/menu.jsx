@@ -64,12 +64,14 @@ class Menu extends React.Component{
 						id="menuRandomizeBtn"
 						onClick={this.props.showMissionPoolToggle}>
 					</button>
-					<button 
-						className={style.randomizeBtn} 
-						id="menuRandomizeBtn"
-						onClick={this.props.addRandomMissions}>
-					</button>
-					<button className={style.filterBtn} id="menuFilterBtn"></button>		
+					{this.props.user.auth ?
+						<button 
+							className={style.randomizeBtn} 
+							id="menuRandomizeBtn"
+							onClick={this.props.addRandomMissions}>
+						</button> :
+						false}
+					{/*<button className={style.filterBtn} id="menuFilterBtn"></button>		*/}
 					<div className={style.placeholder}></div>
 					<label htmlFor="menuUserBtn" className={style.label}>{greeting}</label>
 					<button 

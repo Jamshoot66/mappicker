@@ -103,13 +103,15 @@ class Item extends React.Component {
 					<div className={style.probability}> 
 						{(this.props.probability*100).toFixed(1)}%
 					</div>
-					{ this.props.showInMissonPool ? 
-					<button className={style.addBtn} onClick={this.addBtnClick}> 
-						+
-					</button> : 
-					<button className={style.addBtn} onClick={this.removeBtnClick}> 
-						-
-					</button>}	
+					{this.props.user.auth ? 
+						this.props.showInMissonPool ? 
+							<button className={style.addBtn} onClick={this.addBtnClick}> 
+								+
+							</button> : 
+							<button className={style.addBtn} onClick={this.removeBtnClick}> 
+								-
+							</button> : 
+						false}	
 				</section>)
 		} else {
 			let tmpStyle = `${style.addBtn} ${style.addBtnLine}`;
@@ -187,13 +189,15 @@ class Item extends React.Component {
 						
 					</div>
 
-					{this.props.showInMissonPool ? 
-						<button className={tmpStyle} onClick={this.addBtnClick}> 
-							Добавить в расписание
-						</button> : 
-						<button className={tmpStyle} onClick={this.removeBtnClick}> 
-							Убрать из расписания
-						</button> 
+					{this.props.user.auth ? 
+							this.props.showInMissonPool ? 
+							<button className={tmpStyle} onClick={this.addBtnClick}> 
+								Добавить в расписание
+							</button> : 
+							<button className={tmpStyle} onClick={this.removeBtnClick}> 
+								Убрать из расписания
+							</button> : 
+						false
 					}
 				</section>)
 		}
