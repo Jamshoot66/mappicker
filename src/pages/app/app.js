@@ -52,6 +52,7 @@ class App extends React.Component {
 				</header>
 
 				<Menu/>
+				{this.props.showMissionPool ? <h2>Пул миссий</h2> : <h2>Расписание на 01.02.2019</h2>}
 				<ItemHeader/>
 				{itemsStr}
 				

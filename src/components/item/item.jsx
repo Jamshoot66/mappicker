@@ -47,7 +47,7 @@ class Item extends React.Component {
 
 		if (this.state.minimal) {
 			var itemStr = (
-				<div className={style.wrapper} onClick={this.itemSizeToggle} key="key">
+				<section className={style.wrapper} onClick={this.itemSizeToggle} key="key">
 					<div className={style.name}> 
 						{this.props.name}
 					</div>
@@ -82,18 +82,18 @@ class Item extends React.Component {
 					<button className={style.addBtn} onClick={this.removeBtnClick}> 
 						-
 					</button>}	
-				</div>)
+				</section>)
 		} else {
 			let tmpStyle = `${style.addBtn} ${style.addBtnLine}`;
 			itemStr = (
-				<div className={style.wrapper} onClick={this.itemSizeToggle} key="key">
+				<section className={style.wrapper} onClick={this.itemSizeToggle} key="key">
 					<div className={style.maximazedItemWrapper}>
 						<div>
 							{this.props.name}	
 						</div>
 
 						<div className={style.line}> 
-							Последний отыгрышь <strong>{this.props.lastPlayed}</strong>
+							Последний отыгрыш <strong>{this.props.lastPlayed}</strong>
 						</div>
 						
 						<div className={style.line}> 
@@ -124,7 +124,7 @@ class Item extends React.Component {
 							Убрать из расписания
 						</button> }
 					</div>
-				</div>)
+				</section>)
 		}
 
 		return [itemStr]

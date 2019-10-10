@@ -6,7 +6,7 @@ class ItemHeader extends React.Component {
 
 	render() {
 		return (
-			<div className={style.wrapper}>
+			<section className={style.wrapper}>
 				<div className={style.name}> 
 					Название миссии
 				</div>
@@ -39,7 +39,7 @@ class ItemHeader extends React.Component {
 					    
 				</div>
 				
-			</div>
+			</section>
 		)
 	}
 }

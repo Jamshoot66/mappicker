@@ -118,7 +118,10 @@ const Store = (state = defState, action) => {
 				newState.schedule[ newState.schedule.length - 1].missions.add(action.payload.guid)
 			}
 			return newState;
-	/* REMOVE_MISSION_FROM_SCHEDULE */
+	/* REMOVE_MISSION_FROM_SCHEDULE usage:
+		action.Type : REMOVE_MISSION_FROM_SCHEDULE,
+		payload     : [ {data, guid: item.guid}, ... ]
+	*/
 		case actionType.REMOVE_MISSION_FROM_SCHEDULE:
 			// ищем расписание по дате
 			// убираем из стейта

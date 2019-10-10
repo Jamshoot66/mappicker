@@ -22,21 +22,3 @@ test("renders without crashing", () => {
 	let root = document.createElement("div");
 	ReactDOM.render(<Menu {...props}/>, root);
 });
-
-test("initial menu test", () => {
-	let mockProps = {
-		user: {
-			auth : false,
-			name : "some"
-		}
-	};
-
-	let component = <Menu {...mockProps}/>;
-	
-	let tstExp = document.querySelector("div");
-	console.log(tstExp);
-
-	expect(true).toBe(true);
-})
-
-// console.log(Menu);

@@ -35,3 +35,12 @@ textarea {
 .row {
 	@include row-flex;
 }
+
+h2 {
+	font-size: 1em;
+	color: $cWhite;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 5px;
+}
