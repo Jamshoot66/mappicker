@@ -26,10 +26,8 @@ class Menu extends React.Component{
 
 	toggleLogin = () => {
 		if (!this.props.user.auth) {
-			console.log("[menu] login");
 			this.props.login();
 		} else {
-			console.log("[menu] logout");
 			this.props.logout();
 		}
 	}

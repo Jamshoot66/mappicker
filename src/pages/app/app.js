@@ -10,14 +10,15 @@ import Item from "~c/item/item.jsx";
 import ItemHeader from "~c/item/itemHeader.jsx";
 
 import {initFirebase} from "~u/firebase.js";
-import * as firebase from "firebase/app";
 
 class App extends React.Component {
 	constructor(props){
 		super(props);
 		initFirebase( (firebaseUser) => {
 
+			/* eslint-disable */
 			if (firebaseUser != undefined){
+			
 					let user = {
 						auth : true,
 						unit : "без отряда",
@@ -27,6 +28,7 @@ class App extends React.Component {
 
 				this.props.updateUserInfo(user);
 			}
+			/* eslint-enable */
 			
 		});
 	}

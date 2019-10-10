@@ -25,6 +25,11 @@ class Item extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {minimal: true};
+		this.rate = {
+			balance : 3,
+			task: 3,
+			gameplay: 3
+		}
 	}
 
 	itemSizeToggle = (e) =>{
@@ -41,6 +46,29 @@ class Item extends React.Component {
 	removeBtnClick = (e) => {
 		e.stopPropagation();
 		this.props.removeFromSchedule( this.props.guid );
+	}
+
+	onRateInputClick = (e) => {
+		e.stopPropagation();
+	}
+
+	onBalanceRateInputChange = (e) => {
+		this.rate.balance = parseInt(e.target.value);
+	}
+
+	onTaskRateInputChange = (e) => {
+		this.rate.task = parseInt(e.target.value);
+	}
+
+	onGameplayRateInputChange = (e) => {
+		this.rate.gameplay = parseInt(e.target.value);
+	}
+
+	onRateBtnClick = (e) => {
+		e.stopPropagation();
+		let avg = (this.rate.balance + this.rate.task + this.rate.gameplay) / 3;
+		avg = Math.round(avg*100)/100;
+		this.props.updateRate(this.props.guid, avg);
 	}
 
 	render() {
@@ -85,45 +113,88 @@ class Item extends React.Component {
 				</section>)
 		} else {
 			let tmpStyle = `${style.addBtn} ${style.addBtnLine}`;
+			let rateStr = false;
+			if (this.props.user.auth) {
+				rateStr =
+					<div>
+						<h3 className={style.rateHeader}>Оцените миссию:</h3>
+						<ul>
+							<li className={style.rateElement} >
+								<label htmlFor="">Баланс</label>
+								<input type="number" 
+									min="1" max="5" defaultValue="3" 
+									onClick={this.onRateInputClick} 
+									onChange={this.onBalanceRateInputChange}/>
+							</li>
+							<li className={style.rateElement}>
+								<label htmlFor="">Задачи</label>
+								<input type="number" 
+									min="1" max="5" defaultValue="3" 
+									onClick={this.onRateInputClick}
+									onChange={this.onTaskRateInputChange}/>
+							</li>
+							<li className={style.rateElement}>
+								<label htmlFor="">Геймплей</label>
+								<input type="number" 
+									min="1" max="5" defaultValue="3" 
+									onClick={this.onRateInputClick}
+									onChange={this.onGameplayRateInputChange}/>
+							</li>
+							<button className={tmpStyle} 
+								onClick={this.onRateBtnClick}> 
+								Оценить 
+							</button>
+						</ul> 
+
+					</div>
+			};
 			itemStr = (
 				<section className={style.wrapper} onClick={this.itemSizeToggle} key="key">
 					<div className={style.maximazedItemWrapper}>
-						<div>
-							{this.props.name}	
+						<div className={style.column}> 
+							<div>
+								{this.props.name}	
+							</div>
+
+							<div className={style.line}> 
+								Последний отыгрыш <strong>{this.props.lastPlayed}</strong>
+							</div>
+							
+							<div className={style.line}> 
+								Остров <strong>{this.props.island}</strong>
+							</div>
+
+							<div className={style.line}> 
+								Количестов игроков <strong>{this.props.players}</strong>
+							</div>
+
+							<div className={style.line}> 
+								Автор <strong>{this.props.autor}</strong>
+							</div>
+
+							<div className={style.line}> 
+								Рейтинг <strong>{this.props.rateAvg}</strong>
+							</div>
+
+							<div className={style.line}> 
+								Вероятность появления в расписании <strong>{(this.props.probability*100).toFixed(1)}%</strong>
+							</div>
 						</div>
 
-						<div className={style.line}> 
-							Последний отыгрыш <strong>{this.props.lastPlayed}</strong>
+						<div className={style.column}>
+							{rateStr}
 						</div>
 						
-						<div className={style.line}> 
-							Остров <strong>{this.props.island}</strong>
-						</div>
+					</div>
 
-						<div className={style.line}> 
-							Количестов игроков <strong>{this.props.players}</strong>
-						</div>
-
-						<div className={style.line}> 
-							Автор <strong>{this.props.autor}</strong>
-						</div>
-
-						<div className={style.line}> 
-							Рейтинг <strong>{this.props.rateAvg}</strong>
-						</div>
-
-						<div className={style.line}> 
-							Вероятность появления в расписании <strong>{(this.props.probability*100).toFixed(1)}%</strong>
-						</div>
-
-						{ this.props.showInMissonPool ? 
+					{this.props.showInMissonPool ? 
 						<button className={tmpStyle} onClick={this.addBtnClick}> 
 							Добавить в расписание
 						</button> : 
 						<button className={tmpStyle} onClick={this.removeBtnClick}> 
 							Убрать из расписания
-						</button> }
-					</div>
+						</button> 
+					}
 				</section>)
 		}
 
@@ -143,6 +214,7 @@ const mapDispatchToProps = (dispatch) => {
 				}
 			})
 		},
+
 		removeFromSchedule: (guid) => {
 			dispatch( {
 				type: actionType.REMOVE_MISSION_FROM_SCHEDULE,
@@ -151,8 +223,24 @@ const mapDispatchToProps = (dispatch) => {
 					guid
 				}
 			})
+		},
+
+		updateRate: (guid, rate) => {
+			dispatch({
+				type: actionType.UPDATE_MISSION_RATE,
+				payload: {
+					guid, rate
+				}
+			})
+			
 		}
 	}
 }
 
-export default connect(null,mapDispatchToProps)(Item);
+const mapStateToProps = (store) => {
+	return {
+		user : store.user
+	}
+}
+
+export default connect(mapStateToProps ,mapDispatchToProps)(Item);

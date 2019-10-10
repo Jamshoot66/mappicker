@@ -94,17 +94,30 @@
 
 	&Line{
 		width: auto;
-		max-width: 100%;
+		// max-width: fit-content;
+		max-width: max-content;
 		align-self: center;
+		margin: 8px auto;
 	}
 }
 
 
 .maximazedItemWrapper {
 	display: flex;
-	flex-direction: column;
-	// @include size(12);
+	flex-direction: row;
+	// @include row-flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
 	flex-basis: 100%;
+}
+
+.column{
+	// @include debug;
+	display: flex;
+	flex-direction: column;
+	
+	@include size(6);
+	@include size-sm(12);
 }
 
 .line {
@@ -118,4 +131,20 @@
 strong {
 	color: darken($cWhite, 3%);
 	letter-spacing: 1px;
+}
+
+.rateHeader{
+	font-size: 1em;
+	font-weight: 300;
+}
+
+.rateElement{
+	font-size: 0.9em;
+	display: flex;
+	justify-content: space-between;
+
+	& > input {
+		@include size(4);
+		margin-right: 10px;
+	}
 }

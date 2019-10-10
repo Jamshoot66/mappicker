@@ -143,11 +143,13 @@ const Store = (state = defState, action) => {
 
 	/*UPDATE_USER_INFO*/		
 		case actionType.UPDATE_USER_INFO:
-			if (action.payload.user != undefined) {
+			/* eslint-disable */
+			if (action.payload != undefined && action.payload.user != undefined) {
 				newState.user = action.payload.user;
 			} else {
 				newState.user = defUser;
 			}
+			/* eslint-enable */
 			
 			return newState;
 	/* LOGIN */
@@ -159,6 +161,27 @@ const Store = (state = defState, action) => {
 		case actionType.LOGOUT:
 			newState.user = defUser;
 			return newState;
+
+	/*UPDATE_MISSION_RATE usage:
+		action.Type : UPDATE_MISSION_RATE,
+		payload     : [ {guid: guid, rate: rate} ]
+	*/
+		case actionType.UPDATE_MISSION_RATE:		
+
+			let missionIndex = newState.missionPool.findIndex( (item) =>{
+				return item.guid === action.payload.guid
+			})
+			let missionPool = newState.missionPool.slice(0);
+			let mission = Object.assign( {}, newState.missionPool[missionIndex]);
+			mission.rateAvg = action.payload.rate;
+			missionPool[missionIndex] = mission;
+			newState.missionPool = missionPool;
+
+			Store( newState, {
+				type: actionType.UPDATE_PROPABILITIES
+			});
+			return newState;
+
 		default:
 			break;
 	}
