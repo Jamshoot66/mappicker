@@ -10,7 +10,7 @@ let defState = {
 	showMissionPool : true,
 	// missionPool: [ {item}, {item}, ... ]
 	missionPool : [],
-	// schedule : [ {date, new Set()}, ...]
+	// schedule : [ {date: date, missions: new Set()}, ...]
 	schedule : []
 }
 
@@ -93,7 +93,7 @@ const Store = (state = defState, action) => {
 								guid:item} 
 						});
 				});
-				
+
 			return newState;
 
 	/* ADD_MISSION_TO_SCHEDULE usage:
@@ -101,7 +101,6 @@ const Store = (state = defState, action) => {
 		payload     : [ {data, guid: item.guid}, ... ]
 	*/	
 		case actionType.ADD_MISSION_TO_SCHEDULE:
-			newState = Object.assign({}, state);
 			
 			let dateInSchedule = false;
 			for( let i in newState.schedule ) {
@@ -119,7 +118,23 @@ const Store = (state = defState, action) => {
 				newState.schedule[ newState.schedule.length - 1].missions.add(action.payload.guid)
 			}
 			return newState;
-		
+	/* REMOVE_MISSION_FROM_SCHEDULE */
+		case actionType.REMOVE_MISSION_FROM_SCHEDULE:
+			// ищем расписание по дате
+			// убираем из стейта
+			let index = newState.schedule.findIndex( (item) => item.date === action.payload.date);
+			if (index < 0) break;
+			let schedule = newState.schedule.slice(0);
+			let elem = Object.assign({}, newState.schedule[index]);
+			let missions = new Set(elem.missions);
+			let done = missions.delete( action.payload.guid);
+			if (done) {
+				elem.missions = missions;
+				schedule[index] = elem;
+				newState.schedule = schedule;
+				return newState;
+			};
+			break;
 		default:
 			break;
 	}

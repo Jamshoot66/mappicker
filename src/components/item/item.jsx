@@ -40,6 +40,7 @@ class Item extends React.Component {
 
 	removeBtnClick = (e) => {
 		e.stopPropagation();
+		this.props.removeFromSchedule( this.props.guid );
 	}
 
 	render() {
@@ -140,7 +141,16 @@ const mapDispatchToProps = (dispatch) => {
 					date: "01.02.2019",
 					guid
 				}
-			})		
+			})
+		},
+		removeFromSchedule: (guid) => {
+			dispatch( {
+				type: actionType.REMOVE_MISSION_FROM_SCHEDULE,
+				payload: {
+					date: "01.02.2019",
+					guid
+				}
+			})
 		}
 	}
 }
