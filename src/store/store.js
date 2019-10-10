@@ -2,7 +2,9 @@ import * as actionType from "~s/actions.js"
 
 let defUser = {
 	auth : false,
-	shortName : "Товарищ"
+	unit : "loner",
+	shortName : "Товарищ",
+	name : "Товарищ"
 }
 
 let defState = {
@@ -15,8 +17,8 @@ let defState = {
 }
 
 
-/*
-let testItem = {
+/* mission item template 
+let missionItem = {
 			guid: 1,
 			name:"Операция «Магистраль»",
 			island: "Altis",
@@ -36,7 +38,7 @@ const Store = (state = defState, action) => {
 		
 	/* ADD_MISSIONS usage:
 		action.Type : ADD_MISSIONS,
-		payload     : [ {testItem}, ... ]
+		payload     : [ {missionItem}, ... ]
 	*/
 		case actionType.GET_MISSIONS: 
 			newState = Object.assign({}, state);
@@ -138,6 +140,25 @@ const Store = (state = defState, action) => {
 				return newState;
 			};
 			break;
+
+	/*UPDATE_USER_INFO*/		
+		case actionType.UPDATE_USER_INFO:
+			if (action.payload.user != undefined) {
+				newState.user = action.payload.user;
+			} else {
+				newState.user = defUser;
+			}
+			
+			return newState;
+	/* LOGIN */
+		case actionType.LOGIN:
+			newState.user = action.payload.user;
+			return newState;
+
+	/* LOGOUT */
+		case actionType.LOGOUT:
+			newState.user = defUser;
+			return newState;
 		default:
 			break;
 	}

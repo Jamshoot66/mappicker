@@ -24,6 +24,16 @@ class Menu extends React.Component{
 		}
 	}
 
+	toggleLogin = () => {
+		if (!this.props.user.auth) {
+			console.log("[menu] login");
+			this.props.login();
+		} else {
+			console.log("[menu] logout");
+			this.props.logout();
+		}
+	}
+
 	componentDidMount() {
 		document.addEventListener("scroll", this.onScrollEvent);
 		this.MenuTop = this.ref.current.offsetTop;
@@ -38,7 +48,6 @@ class Menu extends React.Component{
 	}
 
 	render() {
-
 		let greeting = (this.props.user.auth ? `Приветствую, ` : `Залогинься, `) + this.props.user.shortName;
 
 		 
@@ -65,7 +74,11 @@ class Menu extends React.Component{
 					<button className={style.filterBtn} id="menuFilterBtn"></button>		
 					<div className={style.placeholder}></div>
 					<label htmlFor="menuUserBtn" className={style.label}>{greeting}</label>
-					<button className={style.userBtn} id="menuUserBtn"></button>
+					<button 
+						className={style.userBtn}
+						id="menuUserBtn"
+						onClick={this.toggleLogin}>
+					</button>
 				</nav>
 			</div>)
 			
@@ -83,14 +96,23 @@ const mapDispatchToProps = (dispatch) => {
 		showMissionPoolToggle: () => {
 			dispatch( {type: actionType.SHOW_MISSION_POOL_TOGGLE})
 		},
+
 		addRandomMissions: () => {
 			dispatch( {
-							type: actionType.ADD_RANDOM_MISSIONS,
-							payload: {
-								date: "01.02.2019"
-							}	
-						})
-		}
+				type: actionType.ADD_RANDOM_MISSIONS,
+				payload: {
+					date: "01.02.2019"
+				}	
+			})
+		},
+
+		login: () => {
+			actionType.loginViaGmail(dispatch)
+		},
+
+		logout: () => {
+			actionType.logoutFromServer(dispatch)
+		},
 	}
 }
 

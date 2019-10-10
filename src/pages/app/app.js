@@ -9,9 +9,26 @@ import Menu from "~c/menu/menu.jsx";
 import Item from "~c/item/item.jsx";
 import ItemHeader from "~c/item/itemHeader.jsx";
 
+import {initFirebase} from "~u/firebase.js";
+import * as firebase from "firebase/app";
+
 class App extends React.Component {
 	constructor(props){
-		super(props);	
+		super(props);
+		initFirebase( (firebaseUser) => {
+
+			if (firebaseUser != undefined){
+					let user = {
+						auth : true,
+						unit : "без отряда",
+						shortName : firebaseUser.displayName,
+						name : firebaseUser.displayName
+					}
+
+				this.props.updateUserInfo(user);
+			}
+			
+		});
 	}
 
 	componentDidMount(){
@@ -82,7 +99,12 @@ const mapDispatchToProps = (dispatch) => {
 			dispatch( {type: actionType.UPDATE_PROPABILITIES} )
 		},
 		
-		removeMissionFromSchedule: () => {}
+		updateUserInfo: (user) => {
+			dispatch( {
+				type: actionType.UPDATE_USER_INFO, 
+				payload: {user}
+			})
+		}
 	}
 }
 
