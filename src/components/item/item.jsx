@@ -100,7 +100,7 @@ class Item extends React.Component {
 						{this.props.rateAvg}
 					</div>	
 
-					<div className={style.probability}> 
+					<div className={style.probability} title="Вероятность пропорциональна рейтингу и расчитывается как %rate * 2 - 1. При этом вероятность миссии с рейтингом 1 (плохая) ниже миссии с рейтингом 3 (средняя) в 5 раз."> 
 						{(this.props.probability*100).toFixed(1)}%
 					</div>
 					{this.props.user.auth ? 
@@ -178,8 +178,8 @@ class Item extends React.Component {
 								Рейтинг <strong>{this.props.rateAvg}</strong>
 							</div>
 
-							<div className={style.line}> 
-								Вероятность появления в расписании <strong>{(this.props.probability*100).toFixed(1)}%</strong>
+							<div className={style.line} title="Вероятность пропорциональна рейтингу и расчитывается как %rate * 2 - 1. При этом вероятность миссии с рейтингом 1 (плохая) ниже миссии с рейтингом 3 (средняя) в 5 раз."> 
+								Вероятность появления в расписании <strong>{(this.props.probability*100).toFixed(1)}%</strong> [ ? ]
 							</div>
 						</div>
 

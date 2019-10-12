@@ -16,6 +16,9 @@ let defState = {
 	schedule : []
 }
 
+function probabilityFunc(rate) {
+	return (rate*2-1)
+}
 
 /* mission item template 
 let missionItem = {
@@ -53,11 +56,12 @@ const Store = (state = defState, action) => {
 	/* UPDATE_PROPABILITIES */
 		case actionType.UPDATE_PROPABILITIES:
 			
-			let sum = newState.missionPool.reduce( (acc, item) => acc + (item.rateAvg*5-4), 0);
+			// let sum = newState.missionPool.reduce( (acc, item) => acc + (item.rateAvg*5-4), 0);
+			let sum = newState.missionPool.reduce( (acc, item) => acc + probabilityFunc(item.rateAvg), 0);
 			let koef = 1 / sum;
 
 			newState.missionPool.forEach( (item) => {
-				item.probability = (item.rateAvg*5-4)*koef;
+				item.probability = probabilityFunc(item.rateAvg)*koef;
 			});
 
 			//check sum of propabilities = 1
