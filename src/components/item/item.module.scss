@@ -16,6 +16,10 @@
 	&:nth-of-type(1) {
 		background-color: $cBackground;	
 	}
+
+	&_selectable{
+		@include selectable;
+	}
 }
 
 @mixin debug {

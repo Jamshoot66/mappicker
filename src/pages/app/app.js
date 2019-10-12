@@ -74,8 +74,6 @@ class App extends React.Component {
 				{this.props.showMissionPool ? <h2>Пул миссий</h2> : <h2>Расписание на 01.02.2019</h2>}
 				<ItemHeader/>
 				{itemsStr}
-				
-				<div style={{height:"10000px"}}></div>
 			
 			</main>
 		);

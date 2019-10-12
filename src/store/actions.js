@@ -9,6 +9,7 @@ export const REMOVE_MISSION_FROM_SCHEDULE = "REMOVE_MISSION_FROM_SCHEDULE";
 export const SHOW_MISSION_POOL_TOGGLE = "SHOW_MISSION_POOL_TOGGLE";
 export const UPDATE_MISSION_RATE = "UPDATE_MISSION_RATE";
 export const UPDATE_PROPABILITIES = "UPDATE_PROPABILITIES";
+export const UPATE_MISSIONS_ORDER = "UPATE_MISSIONS_ORDER";
 export const ADD_RANDOM_MISSIONS = "ADD_RANDOM_MISSIONS";
 export const UPDATE_USER_INFO = "UPDATE_USER_INFO";
 export const LOGIN = "LOGIN";
@@ -27,22 +28,26 @@ export function getAllMissions(dispatch){
 export async function loginViaGmail(dispatch){
 	
 	let provider = new firebase.auth.GoogleAuthProvider();
-	await firebase.auth().signInWithPopup(provider);
-	let firebaseUser = firebase.auth().currentUser;
+	try {
+		await firebase.auth().signInWithPopup(provider);
+		let firebaseUser = firebase.auth().currentUser;
 
-	let user = {
-		auth : true,
-		unit : "без отряда",
-		shortName : firebaseUser.displayName,
-		name : firebaseUser.displayName
+		let user = {
+			auth : true,
+			unit : "без отряда",
+			shortName : firebaseUser.displayName,
+			name : firebaseUser.displayName
+		}
+
+		dispatch( {
+			type: UPDATE_USER_INFO,
+			payload: {
+				user
+			}		
+		})
+	} catch (err) {
+		alert(err)
 	}
-
-	dispatch( {
-		type: UPDATE_USER_INFO,
-		payload: {
-			user
-		}		
-	})
 }
 
 export async function logoutFromServer(dispatch){

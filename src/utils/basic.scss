@@ -5,6 +5,7 @@ $cWhite: #FEFFEF;
 $cBlack: #292926;
 $cBackground: rgba(0, 0, 0, 0.3);;
 $cRed: #D43D4B;
+$cRed-transp: rgba(212, 61, 75, 0.3);
 
 $menuHeight: 40px;
 
@@ -38,7 +39,18 @@ $menuHeight: 40px;
 		opacity: 1;
 		transition: 0s
 	}
+}
 
+@mixin selectable {
+	&:hover{
+		background-color: $cRed-transp;
+		border-radius: 5px;
+		color: $cWhite;
+	}
+}
+
+.selectable {
+	@include selectable;
 }
 
 @mixin flat {

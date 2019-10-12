@@ -63,6 +63,11 @@ const Store = (state = defState, action) => {
 			//check sum of propabilities = 1
 			// console.log(newState.missionPool.reduce( (acc, i) => acc + i.probability, 0));
 			return newState;
+
+	/* UPATE_MISSIONS_ORDER*/
+		case actionType.UPATE_MISSIONS_ORDER:
+			newState.missionPool = action.payload.missionPool;
+			return newState;
 	/* ADD_RANDOM_MISSIONS */
 		case actionType.ADD_RANDOM_MISSIONS:
 				newState.schedule = [ {date:action.payload.date, missions: new Set()} ];

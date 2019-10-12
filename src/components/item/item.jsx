@@ -75,7 +75,7 @@ class Item extends React.Component {
 
 		if (this.state.minimal) {
 			var itemStr = (
-				<section className={style.wrapper} onClick={this.itemSizeToggle} key="key">
+				<section className={`${style.wrapper} ${style.wrapper_selectable}`} onClick={this.itemSizeToggle} key="key">
 					<div className={style.name}> 
 						{this.props.name}
 					</div>
