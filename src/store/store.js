@@ -10,7 +10,7 @@ let defUser = {
 let defState = {
 	user : defUser,
 	showMissionPool : true,
-	// missionPool: [ {item}, {item}, ... ]
+	// missionPool: [ {missionItem}, {missionItem}, ... ]
 	missionPool : [],
 	// schedule : [ {date: date, missions: new Set()}, ...]
 	schedule : []
@@ -54,18 +54,13 @@ const Store = (state = defState, action) => {
 			return newState;
 
 	/* UPDATE_PROPABILITIES */
-		case actionType.UPDATE_PROPABILITIES:
-			
-			// let sum = newState.missionPool.reduce( (acc, item) => acc + (item.rateAvg*5-4), 0);
+		case actionType.UPDATE_PROPABILITIES:	
 			let sum = newState.missionPool.reduce( (acc, item) => acc + probabilityFunc(item.rateAvg), 0);
 			let koef = 1 / sum;
 
 			newState.missionPool.forEach( (item) => {
 				item.probability = probabilityFunc(item.rateAvg)*koef;
 			});
-
-			//check sum of propabilities = 1
-			// console.log(newState.missionPool.reduce( (acc, i) => acc + i.probability, 0));
 			return newState;
 
 	/* UPATE_MISSIONS_ORDER*/
@@ -84,7 +79,6 @@ const Store = (state = defState, action) => {
 											maxProp : acc
 										})
 				});
-				// console.log(propLine);
 				let guids = new Set();
 				while (guids.size < 4) {
 					let rnd = Math.random();
@@ -135,8 +129,6 @@ const Store = (state = defState, action) => {
 		payload     : [ {data, guid: item.guid}, ... ]
 	*/
 		case actionType.REMOVE_MISSION_FROM_SCHEDULE:
-			// ищем расписание по дате
-			// убираем из стейта
 			let index = newState.schedule.findIndex( (item) => item.date === action.payload.date);
 			if (index < 0) break;
 			let schedule = newState.schedule.slice(0);
