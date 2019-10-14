@@ -24,6 +24,7 @@ function probabilityFunc(rate) {
 let missionItem = {
 			guid: 1,
 			name:"Операция «Магистраль»",
+			mods: "rbs", // "vanila"
 			island: "Altis",
 			players: 200,
 			autor: "Aventador",

@@ -1,0 +1,24 @@
+.wrapper{
+	display: flex;
+	width: 100%;
+	height: 100%;
+}
+
+.item{
+	
+	flex-grow: 1;
+	filter: grayscale(1);
+	position: relative;
+	background: url("./star.svg") center no-repeat;
+	width: 100%;
+	height: 100%;
+
+	&_selected{
+		filter: grayscale(0);
+	} 
+}
+
+.itemSelected {
+	filter: grayscale(0);
+}
+

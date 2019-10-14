@@ -80,6 +80,10 @@ class Item extends React.Component {
 						{this.props.name}
 					</div>
 
+					<div className={style.mods}> 
+						{this.props.mods}
+					</div>
+
 					<div className={style.lastPlayed}> 
 						{this.props.lastPlayed}
 					</div>
@@ -156,6 +160,10 @@ class Item extends React.Component {
 						<div className={style.column}> 
 							<div>
 								{this.props.name}	
+							</div>
+
+							<div className={style.mods}> 
+								{this.props.mods}
 							</div>
 
 							<div className={style.line}> 

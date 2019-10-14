@@ -25,6 +25,10 @@ let missionItem = {
 		return (first.name >= second.name) ? 1 : -1;
 	}
 
+	sortByMods = (first, second) => {
+		return (first.mods >= second.mods) ? 1 : -1;
+	}
+
 	sortByLastPlayed = (first, second) => {
 		return (first.lastPlayed >= second.lastPlayed) ? 1 : -1;
 	}
@@ -60,6 +64,10 @@ let missionItem = {
 			<section className={style.wrapper}>
 				<div className={`${style.name}`} onClick={ () => {this.sort(this.sortByName)}}> 
 					Название миссии
+				</div>
+
+				<div className={`${style.mods}`} onClick={ () => {this.sort(this.sortByName)}}> 
+					Моды
 				</div>
 
 				<div className={style.lastPlayed} onClick={ () => {this.sort(this.sortByLastPlayed)}}> 

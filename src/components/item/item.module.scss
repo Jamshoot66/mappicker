@@ -37,7 +37,7 @@
 
 .name{
 	@include itemBase;
-	@include size(5);
+	@include size(4);
 	justify-content: flex-start;
 	flex-grow: 2;
 }
@@ -49,14 +49,20 @@
 	@include md(display, none)
 }
 
+.mods{
+	@include itemBase;
+	@include size(1.5);
+}
+
 .island{
 	@include itemBase;
 	@include size(2);
+	@include xs(display, none);
 }
 
 .rateAvg{
 	@include itemBase;
-	@include size(1.5);
+	@include size(1);
 	@include xs(display, none)
 }
 

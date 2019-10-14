@@ -17,6 +17,7 @@ textarea {
 .wrapper {
 	@include wrapper;	
 	position: relative;
+	min-width: 300px;
 
 	&:before {
 		content: "";
