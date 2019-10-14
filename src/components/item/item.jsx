@@ -4,6 +4,8 @@ import style from "./item.module.scss";
 import * as actionType from "~s/actions.js";
 import {connect} from "react-redux";
 
+import RateStars from "~c/rateStars/rateStars.jsx";
+
 /*
 let testProps = {
 			guid: 1,
@@ -48,27 +50,26 @@ class Item extends React.Component {
 		this.props.removeFromSchedule( this.props.guid );
 	}
 
-	onRateInputClick = (e) => {
-		e.stopPropagation();
-	}
-
-	onBalanceRateInputChange = (e) => {
-		this.rate.balance = parseInt(e.target.value);
-	}
-
-	onTaskRateInputChange = (e) => {
-		this.rate.task = parseInt(e.target.value);
-	}
-
-	onGameplayRateInputChange = (e) => {
-		this.rate.gameplay = parseInt(e.target.value);
-	}
-
 	onRateBtnClick = (e) => {
 		e.stopPropagation();
 		let avg = (this.rate.balance + this.rate.task + this.rate.gameplay) / 3;
 		avg = Math.round(avg*100)/100;
 		this.props.updateRate(this.props.guid, avg);
+	}
+
+	onBalanceRateClick = (rate, e) => {
+		e.stopPropagation();
+		this.rate.balance = rate;
+	}
+
+	onTaskRateClick = (rate, e) => {
+		e.stopPropagation();
+		this.rate.task = rate;
+	}
+
+	onGameplayRateClick = (rate, e) => {
+		e.stopPropagation();
+		this.rate.gameplay = rate;
 	}
 
 	render() {
@@ -127,24 +128,24 @@ class Item extends React.Component {
 						<ul>
 							<li className={style.rateElement} >
 								<label htmlFor="">Баланс</label>
-								<input type="number" 
-									min="1" max="5" defaultValue="3" 
-									onClick={this.onRateInputClick} 
-									onChange={this.onBalanceRateInputChange}/>
+								<div className={style.rateStarsWrapper}>
+									<RateStars rate={this.rate.balance} callback={this.onBalanceRateClick} />
+								</div>
+
 							</li>
 							<li className={style.rateElement}>
 								<label htmlFor="">Задачи</label>
-								<input type="number" 
-									min="1" max="5" defaultValue="3" 
-									onClick={this.onRateInputClick}
-									onChange={this.onTaskRateInputChange}/>
+								<div className={style.rateStarsWrapper}>
+									<RateStars rate={this.rate.task} callback={this.onTaskRateClick} />
+								</div>
+
 							</li>
 							<li className={style.rateElement}>
 								<label htmlFor="">Геймплей</label>
-								<input type="number" 
-									min="1" max="5" defaultValue="3" 
-									onClick={this.onRateInputClick}
-									onChange={this.onGameplayRateInputChange}/>
+								<div className={style.rateStarsWrapper}>
+									<RateStars rate={this.rate.gameplay} callback={this.onGameplayRateClick} />
+								</div>
+
 							</li>
 							<button className={tmpStyle} 
 								onClick={this.onRateBtnClick}> 
@@ -158,12 +159,12 @@ class Item extends React.Component {
 				<section className={style.wrapper} onClick={this.itemSizeToggle} key="key">
 					<div className={style.maximazedItemWrapper}>
 						<div className={style.column}> 
-							<div>
+							<div className={style.maximazedName}>
 								{this.props.name}	
 							</div>
 
-							<div className={style.mods}> 
-								{this.props.mods}
+							<div className={style.line}> 
+								Моды {this.props.mods}
 							</div>
 
 							<div className={style.line}> 

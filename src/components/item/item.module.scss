@@ -143,6 +143,10 @@ strong {
 	letter-spacing: 1px;
 }
 
+.maximazedName{
+	margin-bottom: 5px;
+}
+
 .rateHeader{
 	font-size: 1em;
 	font-weight: 300;
@@ -152,9 +156,21 @@ strong {
 	font-size: 0.9em;
 	display: flex;
 	justify-content: space-between;
+	margin: 5px 0;
 
 	& > input {
 		@include size(4);
 		margin-right: 10px;
 	}
+}
+
+.rateStarsWrapper{
+	max-width: 150px;
+	max-height: 30px;
+	min-height: 0.9em;
+	flex-grow: 1;
+}
+
+li > label {
+	align-self: center;
 }

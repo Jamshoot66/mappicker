@@ -66,7 +66,7 @@ let missionItem = {
 					Название миссии
 				</div>
 
-				<div className={`${style.mods}`} onClick={ () => {this.sort(this.sortByName)}}> 
+				<div className={`${style.mods}`} onClick={ () => {this.sort(this.sortByMods)}}> 
 					Моды
 				</div>
 

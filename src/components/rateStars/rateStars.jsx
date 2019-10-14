@@ -5,18 +5,17 @@ class RateStars extends React.Component {
 	constructor(props){
 		super(props);
 		this.state = {
-			rate: props.defRate
+			rate: props.rate
 		};
 	}
 
 	onClick = (e) => {
-
 		let rate = +e.target.getAttribute("data-id");
 		if (!isNaN(rate)) {
 			this.setState( {
 				rate: rate
 			});
-			this.props.callback(rate);
+			this.props.callback(rate, e);
 		}
 	}
 
@@ -37,7 +36,7 @@ class RateStars extends React.Component {
 }
 
 RateStars.defaultProps = {
-	defRate : 3,
+	rate : 3,
 	callback : () => {},
 	itemStyle: "",
 	wrapperStyle: ""
