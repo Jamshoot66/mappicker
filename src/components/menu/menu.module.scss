@@ -7,8 +7,6 @@
 	background: darken($cRed, 15%);
 	opacity: 0.9;
 	color: $cWhite;
-	border-bottom-left-radius: $buttonBorderRadius;
-	border-bottom-right-radius: $buttonBorderRadius;
 } 
 
 .row {
@@ -17,14 +15,9 @@
 
 .fixed {
 	position: fixed;
-	// width: 1260px;
 	@include wrapper;
 	@include row-flex;
-	// padding-right: 15px;
 	@include lg(width, auto);
-	// @include lg(right, 0);
-	// @include lg(left, 0);
-	// width: 100vw;
 	max-width: 100%;
 	top: 0;
 	right: 0;

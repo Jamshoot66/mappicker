@@ -129,6 +129,7 @@ const Store = (state = defState, action) => {
 				newState.schedule[ newState.schedule.length - 1].missions.add(action.payload.guid)
 			}
 			return newState;
+
 	/* REMOVE_MISSION_FROM_SCHEDULE usage:
 		action.Type : REMOVE_MISSION_FROM_SCHEDULE,
 		payload     : [ {data, guid: item.guid}, ... ]
@@ -191,10 +192,10 @@ const Store = (state = defState, action) => {
 			});
 			return newState;
 
-		default:
-			break;
+		default:			
+			return newState;
 	}
-	return state;
+	
 }
 
 export default Store;
