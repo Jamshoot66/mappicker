@@ -31,8 +31,7 @@ let missionItem = {
 			rateAvg: 3,
 			rates:[1,2,3,4],
 			lastPlayed: 01.02.2019,
-			probability: 0.25,
-			minimal: true
+			probability: 0.25
 		}
 */
 
@@ -44,14 +43,28 @@ const Store = (state = defState, action) => {
 		action.Type : ADD_MISSIONS,
 		payload     : [ {missionItem}, ... ]
 	*/
-		case actionType.GET_MISSIONS: 
-			newState = Object.assign({}, state);
+		case actionType.ADD_MISSIONS: 
+			if (action.payload.every(item => {
+				return (
+					item.guid === undefined ||
+					item.name === undefined ||
+					item.mods === undefined ||
+					item.island === undefined ||
+					item.players === undefined ||
+					item.autor === undefined ||
+					item.rateAvg === undefined ||
+					item.rates === undefined ||
+					item.lastPlayed === undefined ||
+					item.probability === undefined)	
+			})) {			
+				throw new Error("Payload should be an array of objects with 'missionItem' fields")
+			}
 			newState.missionPool = newState.missionPool.concat(action.payload);
 			return newState;
 
 	/* SHOW_MISSION_POOL_TOGGLE */
 		case actionType.SHOW_MISSION_POOL_TOGGLE:
-				newState.showMissionPool = !newState.showMissionPool;
+			newState.showMissionPool = !newState.showMissionPool;
 			return newState;
 
 	/* UPDATE_PROPABILITIES */
@@ -154,15 +167,6 @@ const Store = (state = defState, action) => {
 			}
 			/* eslint-enable */
 			
-			return newState;
-	/* LOGIN */
-		case actionType.LOGIN:
-			newState.user = action.payload.user;
-			return newState;
-
-	/* LOGOUT */
-		case actionType.LOGOUT:
-			newState.user = defUser;
 			return newState;
 
 	/*UPDATE_MISSION_RATE usage:

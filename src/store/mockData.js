@@ -10,7 +10,6 @@ export const missions = [
 		rates:[1,2,3,4],
 		lastPlayed: "01.02.2019",
 		probability: 0.2
-		// minimal: true
 	},
 	{
 		guid: 2,
@@ -23,7 +22,6 @@ export const missions = [
 		rates:[1,2,3,4],
 		lastPlayed: "01.02.2019",
 		probability: 0.2
-		// minimal: true
 	},
 	{
 		guid: 3,
@@ -36,7 +34,6 @@ export const missions = [
 		rates:[1,2,3,4],
 		lastPlayed: "01.02.2019",
 		probability: 0.2
-		// minimal: true
 	},
 	{
 		guid: 4,
@@ -49,7 +46,6 @@ export const missions = [
 		rates:[1,2,3,4],
 		lastPlayed: "01.02.2019",
 		probability: 0.2
-		// minimal: true
 	},
 	{
 		guid: 5,
@@ -62,7 +58,6 @@ export const missions = [
 		rates:[1,2,3,4],
 		lastPlayed: "01.02.2019",
 		probability: 0.2
-		// minimal: true
 	},
 	{
 		guid: 6,
@@ -75,7 +70,6 @@ export const missions = [
 		rates:[1,2,3,4],
 		lastPlayed: "01.02.2019",
 		probability: 0.2
-		// minimal: true
 	},
 	{
 		guid: 7,
@@ -88,7 +82,6 @@ export const missions = [
 		rates:[1,2,3,4],
 		lastPlayed: "01.02.2019",
 		probability: 0.2
-		// minimal: true
 	},
 	{
 		guid: 8,
@@ -101,7 +94,6 @@ export const missions = [
 		rates:[1,2,3,4],
 		lastPlayed: "01.02.2019",
 		probability: 0.2
-		// minimal: true
 	},
 	{
 		guid: 9,
@@ -114,7 +106,6 @@ export const missions = [
 		rates:[1,2,3,4],
 		lastPlayed: "01.02.2019",
 		probability: 0.2
-		// minimal: true
 	},
 	{
 		guid: 10,
@@ -127,7 +118,6 @@ export const missions = [
 		rates:[1,2,3,4],
 		lastPlayed: "01.02.2019",
 		probability: 0.2
-		// minimal: true
 	},
 	{
 		guid: 11,
@@ -140,6 +130,5 @@ export const missions = [
 		rates:[1,2,3,4],
 		lastPlayed: "01.02.2019",
 		probability: 0.2
-		// minimal: true
 	},
 ] 

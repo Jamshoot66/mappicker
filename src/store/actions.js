@@ -18,12 +18,10 @@ export const LOGOUT = "LOGOUT";
 
 export function getAllMissions(dispatch){
 	dispatch( {
-		type: GET_MISSIONS,
+		type: ADD_MISSIONS,
 		payload: mock.missions		
 	})
 }
-
-
 
 export async function loginViaGmail(dispatch){
 	
