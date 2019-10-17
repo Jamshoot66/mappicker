@@ -2,7 +2,7 @@ export const missions = [
 	{
 		guid: 1,
 		name:"Операция «Патифон»",
-		mods: "rbs",
+		mods: "rbc",
 		island: "Altis",
 		players: 200,
 		autor: "Aventador",
@@ -14,7 +14,7 @@ export const missions = [
 	{
 		guid: 2,
 		name:"Операция «Дрозды»",
-		mods: "rbs",
+		mods: "rbc",
 		island: "Chernarus",
 		players: 196,
 		autor: "Aventador",
@@ -26,7 +26,7 @@ export const missions = [
 	{
 		guid: 3,
 		name:"Операция «Уасся жи есть»",
-		mods: "rbs",
+		mods: "rbc",
 		island: "Takistan",
 		players: 130,
 		autor: "Aventador",
@@ -38,7 +38,7 @@ export const missions = [
 	{
 		guid: 4,
 		name:"Операция «Какая то гора»",
-		mods: "rbs",
+		mods: "rbc",
 		island: "Takistan",
 		players: 205,
 		autor: "Aventador",
@@ -50,7 +50,7 @@ export const missions = [
 	{
 		guid: 5,
 		name:"Операция «Многабукф»",
-		mods: "rbs",
+		mods: "rbc",
 		island: "Altis",
 		players: 198,
 		autor: "Aventador",
@@ -74,7 +74,7 @@ export const missions = [
 	{
 		guid: 7,
 		name:"Операция «Абракадабра»",
-		mods: "rbs",
+		mods: "rbc",
 		island: "Altis",
 		players: 190,
 		autor: "Aventador",
@@ -98,7 +98,7 @@ export const missions = [
 	{
 		guid: 9,
 		name:"Операция «Тимон и Пумба»",
-		mods: "rbs",
+		mods: "rbc",
 		island: "Stratis",
 		players: 198,
 		autor: "Aventador",
@@ -122,7 +122,7 @@ export const missions = [
 	{
 		guid: 11,
 		name:"Операция «Тусклый свет»",
-		mods: "rbs",
+		mods: "rbc",
 		island: "Stratis",
 		players: 188,
 		autor: "Aventador",
