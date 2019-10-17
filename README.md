@@ -3,13 +3,13 @@ Map picker
 Based on create-react-app.
 Available scripts:
 1. Run dev server
-npm run start
+`npm run start`
 
 2. Build prod boundle
-npm run build
+`npm run build`
 
 3. Run tests
-npm run test
+`npm run test`
 
 
 
