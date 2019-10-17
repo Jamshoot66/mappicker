@@ -21,6 +21,7 @@ let missionItem = {
 		}
 */
 
+	//TODO: check test func duble click
 	sortByName = (first, second) => {
 		return (first.name >= second.name) ? 1 : -1;
 	}

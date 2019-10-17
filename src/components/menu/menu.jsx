@@ -72,7 +72,7 @@ class Menu extends React.Component{
 						false}
 					{/*<button className={style.filterBtn} id="menuFilterBtn"></button>		*/}
 					<div className={style.placeholder}></div>
-					<label htmlFor="menuUserBtn" className={style.label}>{greeting}</label>
+					<label htmlFor="" className={style.label}>{greeting}</label>
 					<button 
 						className={style.userBtn}
 						id="menuUserBtn"

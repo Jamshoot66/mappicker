@@ -1,4 +1,6 @@
-import * as actionType from "~s/actions.js"
+import * as actionType from "~s/actions.js";
+import * as utils from "~u/utils.js";
+import * as templates from "~u/objectTemplates.js";
 
 let defUser = {
 	auth : false,
@@ -20,21 +22,6 @@ function probabilityFunc(rate) {
 	return (rate*2-1)
 }
 
-/* mission item template 
-let missionItem = {
-			guid: 1,
-			name:"Операция «Магистраль»",
-			mods: "rbs", // "vanila"
-			island: "Altis",
-			players: 200,
-			autor: "Aventador",
-			rateAvg: 3,
-			rates:[1,2,3,4],
-			lastPlayed: 01.02.2019,
-			probability: 0.25
-		}
-*/
-
 const Store = (state = defState, action) => {
 	let newState = Object.assign({}, state);
 	switch (action.type) {
@@ -44,21 +31,13 @@ const Store = (state = defState, action) => {
 		payload     : [ {missionItem}, ... ]
 	*/
 		case actionType.ADD_MISSIONS: 
-			if (action.payload.every(item => {
-				return (
-					item.guid === undefined ||
-					item.name === undefined ||
-					item.mods === undefined ||
-					item.island === undefined ||
-					item.players === undefined ||
-					item.autor === undefined ||
-					item.rateAvg === undefined ||
-					item.rates === undefined ||
-					item.lastPlayed === undefined ||
-					item.probability === undefined)	
-			})) {			
+
+			if (action.payload.some(item => { 
+				return !utils.shallowEqual(item, templates.missionItem)
+			})) {
 				throw new Error("Payload should be an array of objects with 'missionItem' fields")
-			}
+			};
+
 			newState.missionPool = newState.missionPool.concat(action.payload);
 			return newState;
 
@@ -69,12 +48,13 @@ const Store = (state = defState, action) => {
 
 	/* UPDATE_PROPABILITIES */
 		case actionType.UPDATE_PROPABILITIES:	
-			let sum = newState.missionPool.reduce( (acc, item) => acc + probabilityFunc(item.rateAvg), 0);
-			let koef = 1 / sum;
-
-			newState.missionPool.forEach( (item) => {
-				item.probability = probabilityFunc(item.rateAvg)*koef;
-			});
+			let sum = newState.missionPool.reduce((acc, item) => acc + probabilityFunc(item.rateAvg), 0);
+			if (sum > 0) {
+				let koef = 1 / sum;
+				newState.missionPool.forEach( (item) => {
+					item.probability = probabilityFunc(item.rateAvg)*koef;
+				});
+			};
 			return newState;
 
 	/* UPATE_MISSIONS_ORDER*/
@@ -89,9 +69,9 @@ const Store = (state = defState, action) => {
 				newState.missionPool.forEach( (item) => {
 					acc += item.probability;
 					propLine.push({
-											guid: item.guid,
-											maxProp : acc
-										})
+						guid: item.guid,
+						maxProp: acc
+					});
 				});
 				let guids = new Set();
 				while (guids.size < 4) {
@@ -117,9 +97,12 @@ const Store = (state = defState, action) => {
 
 	/* ADD_MISSION_TO_SCHEDULE usage:
 		action.Type : ADD_MISSION_TO_SCHEDULE,
-		payload     : [ {data, guid: item.guid}, ... ]
+		payload     : {data, guid: item.guid}
 	*/	
 		case actionType.ADD_MISSION_TO_SCHEDULE:
+			if (!utils.shallowEqual(action.payload, templates.scheduleMission)) {
+				throw new Error("Payload should be an objects with fields 'data' and 'guid'")
+			}
 			
 			let dateInSchedule = false;
 			for( let i in newState.schedule ) {
@@ -134,7 +117,7 @@ const Store = (state = defState, action) => {
 					date: action.payload.date,
 					missions: new Set()
 				});
-				newState.schedule[ newState.schedule.length - 1].missions.add(action.payload.guid)
+				newState.schedule[newState.schedule.length - 1].missions.add(action.payload.guid);
 			}
 			return newState;
 

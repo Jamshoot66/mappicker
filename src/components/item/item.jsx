@@ -218,7 +218,6 @@ class Item extends React.Component {
 const mapDispatchToProps = (dispatch) => {
 	return {
 		addToSchedule: (guid) => {
-
 			dispatch( {
 				type: actionType.ADD_MISSION_TO_SCHEDULE,
 				payload: {
