@@ -1,6 +1,5 @@
 Map picker
 
-Based on create-react-app.
 Available scripts:
 1. Run dev server
 `npm run start`
