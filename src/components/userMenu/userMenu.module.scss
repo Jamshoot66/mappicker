@@ -1,0 +1,74 @@
+@import "~u/basic.scss";
+
+.wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid $cWhite;
+    border-radius: 3px;
+    padding: 5px;
+    background: darken($cRed, 15%);
+    // background: $cBackground;
+    // opacity: 0;
+
+    justify-content: center;
+
+    &::before{
+        content: "";
+        position: fixed;
+        top:0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: $cBackground;
+        z-index: -1;
+    }
+}
+
+.hide {
+    display: none;
+}
+
+.overlay{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
+
+.wrapper hr {
+    margin: 2px;
+    padding: 0;
+    min-height: 1px;
+    width: 99%;
+    border: none;
+    background-color: white;
+}
+
+.wrapper div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: default;
+}
+
+.promoBtn{
+    @include button;
+    @include flat;
+    background-color: $cWhite;
+    height: 21px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.promoInput{
+    @include flat;
+    box-sizing: border-box;
+    padding: 2px 10px;
+    height: 21px;
+    background-color: white;
+    border-top-left-radius: $buttonBorderRadius*2;
+    border-bottom-left-radius: $buttonBorderRadius*2;
+    border-right: 1px solid black;
+    
+    margin-left: 10px;
+}

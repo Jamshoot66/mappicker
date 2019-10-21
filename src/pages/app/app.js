@@ -9,7 +9,8 @@ import Menu from "~c/menu/menu.jsx";
 import Item from "~c/item/item.jsx";
 import ItemHeader from "~c/item/itemHeader.jsx";
 
-import {initFirebase} from "~u/firebase.js";
+import { initFirebase } from "~u/firebase.js";
+// import * as utils from "~/utils.js";
 
 class App extends React.Component {
 	constructor(props){
@@ -21,7 +22,6 @@ class App extends React.Component {
 			
 					let user = {
 						auth : true,
-						unit : "без отряда",
 						shortName : firebaseUser.displayName,
 						name : firebaseUser.displayName
 					}

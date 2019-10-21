@@ -4,6 +4,8 @@ import style from "./menu.module.scss";
 import {connect} from "react-redux";
 import * as actionType from "~s/actions.js";
 
+import UserMenu from "~c/userMenu/userMenu.jsx";
+
 class Menu extends React.Component{
 	constructor(props) {
 		super(props);
@@ -24,12 +26,14 @@ class Menu extends React.Component{
 		}
 	}
 
-	toggleLogin = () => {
-		if (!this.props.user.auth) {
-			this.props.login();
-		} else {
-			this.props.logout();
-		}
+	toggleLogin = (e) => {
+		e.stopPropagation();
+		this.props.showUserMenuToggle();
+		// if (!this.props.user.auth) {
+		// 	this.props.login();
+		// } else {
+		// 	this.props.logout();
+		// }
 	}
 
 	componentDidMount() {
@@ -72,12 +76,13 @@ class Menu extends React.Component{
 						false}
 					{/*<button className={style.filterBtn} id="menuFilterBtn"></button>		*/}
 					<div className={style.placeholder}></div>
-					<label htmlFor="" className={style.label}>{greeting}</label>
+					<label htmlFor="menuUserBtn" className={style.label}>{greeting}</label>
 					<button 
 						className={style.userBtn}
 						id="menuUserBtn"
-						onClick={this.toggleLogin}>
+						onClick={this.toggleLogin}>					
 					</button>
+					<UserMenu customWrapperStyle={style.userMenuWrapper}/>
 				</nav>
 			</div>)
 			
@@ -103,6 +108,12 @@ const mapDispatchToProps = (dispatch) => {
 					date: "01.02.2019"
 				}	
 			})
+		},
+
+		showUserMenuToggle: () => {
+			dispatch({
+				type: actionType.SHOW_USER_MENU_TOGGLE
+			});
 		},
 
 		login: () => {

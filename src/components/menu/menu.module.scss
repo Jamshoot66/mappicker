@@ -7,7 +7,15 @@
 	background: darken($cRed, 15%);
 	opacity: 0.9;
 	color: $cWhite;
+	position: relative;
+	z-index: 1;
 } 
+
+section.userMenuWrapper{
+	position: absolute;
+	top: 40px;
+	right: 0;
+}
 
 .row {
 	@include row-flex;

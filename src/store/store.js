@@ -2,16 +2,12 @@ import * as actionType from "~s/actions.js";
 import * as utils from "~u/utils.js";
 import * as templates from "~u/objectTemplates.js";
 
-let defUser = {
-	auth : false,
-	unit : "loner",
-	shortName : "Товарищ",
-	name : "Товарищ"
-}
+
 
 let defState = {
-	user : defUser,
-	showMissionPool : true,
+	user : utils.defUser,
+	showMissionPool: true,
+	showUserMenu: false,
 	// missionPool: [ {missionItem}, {missionItem}, ... ]
 	missionPool : [],
 	// schedule : [ {date: date, missions: new Set()}, ...]
@@ -44,6 +40,11 @@ const Store = (state = defState, action) => {
 	/* SHOW_MISSION_POOL_TOGGLE */
 		case actionType.SHOW_MISSION_POOL_TOGGLE:
 			newState.showMissionPool = !newState.showMissionPool;
+			return newState;
+		
+	/* SHOW_MISSION_POOL_TOGGLE */
+		case actionType.SHOW_USER_MENU_TOGGLE:
+			newState.showUserMenu = !newState.showUserMenu;
 			return newState;
 
 	/* UPDATE_PROPABILITIES */
@@ -144,9 +145,9 @@ const Store = (state = defState, action) => {
 		case actionType.UPDATE_USER_INFO:
 			/* eslint-disable */
 			if (action.payload != undefined && action.payload.user != undefined) {
-				newState.user = action.payload.user;
+				newState.user = Object.assign({}, utils.defUser, action.payload.user) ;
 			} else {
-				newState.user = defUser;
+				newState.user = utils.defUser;
 			}
 			/* eslint-enable */
 			

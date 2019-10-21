@@ -16,3 +16,11 @@ export function shallowEqual(obj1, obj2) {
 	
     return true;
 }
+
+export const defUser = {
+	auth: false,
+	authedUnit: false,
+	unit : "-",
+	shortName : "Комрад",
+	name : "Комрад"
+}
