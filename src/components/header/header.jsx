@@ -10,7 +10,7 @@ class Header extends React.Component {
 					<img src={rbcLogo} alt="rb-logo" className={style.rbcLogo} />
 				</div>
 				<div className={style.text}>
-					<div>Утилита выбора карт</div>
+					<div>Утилита ротации карт в расписании игр TVT</div>
 					<div>Специально для сообщества <span>КРАСНЫЙ МЕДВЕДЬ</span></div>
 				</div>
 			</div>)
