@@ -32,6 +32,8 @@ class Item extends React.Component {
 			task: 3,
 			gameplay: 3
 		}
+
+		this.hint = "Относительный рейтинг зависит от оценки миссии и времени последнего отыгрыша. При этом относительный рейтинг миссии с оценкой 1 (плохая), отыгранной год назад, соответсвует рейтингу миссии с оценкой 3 (средней), отыграной 3 месяца назад, и хорошей, отыгранной 2 месяца назад."
 	}
 
 	itemSizeToggle = (e) =>{
@@ -86,7 +88,7 @@ class Item extends React.Component {
 					</div>
 
 					<div className={style.lastPlayed}> 
-						{this.props.lastPlayed}
+						{new Date(this.props.lastPlayed).toLocaleDateString()}
 					</div>
 
 					<div className={style.players}> 
@@ -105,7 +107,8 @@ class Item extends React.Component {
 						{this.props.rateAvg}
 					</div>	
 
-					<div className={style.probability} title="Вероятность пропорциональна рейтингу и расчитывается как %rate * 2 - 1. При этом вероятность миссии с рейтингом 1 (плохая) ниже миссии с рейтингом 3 (средняя) в 5 раз."> 
+					<div className={style.probability}
+						title={this.hint}> 
 						{(this.props.probability*100).toFixed(1)}%
 					</div>
 					{this.props.user.auth ? 
@@ -164,11 +167,11 @@ class Item extends React.Component {
 							</div>
 
 							<div className={style.line}> 
-								Моды {this.props.mods}
+								Моды <strong>{this.props.mods}</strong>
 							</div>
 
 							<div className={style.line}> 
-								Последний отыгрыш <strong>{this.props.lastPlayed}</strong>
+								Последний отыгрыш <strong>{new Date(this.props.lastPlayed).toLocaleDateString()}</strong>
 							</div>
 							
 							<div className={style.line}> 
@@ -187,8 +190,9 @@ class Item extends React.Component {
 								Рейтинг <strong>{this.props.rateAvg}</strong>
 							</div>
 
-							<div className={style.line} title="Вероятность пропорциональна рейтингу и расчитывается как %rate * 2 - 1. При этом вероятность миссии с рейтингом 1 (плохая) ниже миссии с рейтингом 3 (средняя) в 5 раз."> 
-								Вероятность появления в расписании <strong>{(this.props.probability*100).toFixed(1)}%</strong> [ ? ]
+							<div className={style.line}
+								title={this.hint}> 
+								Относительный рейтинг <strong>{(this.props.probability*100).toFixed(1)}%</strong> [ ? ]
 							</div>
 						</div>
 

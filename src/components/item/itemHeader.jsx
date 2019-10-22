@@ -21,7 +21,7 @@ let missionItem = {
 		}
 */
 
-	//TODO: check test func duble click
+
 	sortByName = (first, second) => {
 		return (first.name >= second.name) ? 1 : -1;
 	}
@@ -32,72 +32,90 @@ let missionItem = {
 			return 1;
 		} else if (first.mods < second.mods) {
 			return -1;
+		} else if (first.probability > second.probability) {
+			return -1
+		} else if (first.probability < second.probability) {
+			return 1;
 		} else {
-			return (first.name >= second.name) ? 1 : -1; 
+			return (first.name >= second.name) ? 1 : -1;;
 		}
 	}
 
 	sortByLastPlayed = (first, second) => {
-		// return (first.lastPlayed >= second.lastPlayed) ? 1 : -1;
 		if (first.lastPlayed > second.lastPlayed) {
-			return 1;
-		} else if (first.lastPlayed < second.lastPlayed) {
 			return -1;
+		} else if (first.lastPlayed < second.lastPlayed) {
+			return 1;
+		} else if (first.probability > second.probability) {
+			return -1
+		} else if (first.probability < second.probability) {
+			return 1;
 		} else {
-			return (first.name >= second.name) ? 1 : -1; 
+			return (first.name >= second.name) ? 1 : -1;;
 		}
 	}
 
 	sortByPlayers = (first, second) => {
-		// return (first.players >= second.players) ? 1 : -1;
 		if (first.players > second.players) {
-			return 1;
-		} else if (first.players < second.players) {
 			return -1;
+		} else if (first.players < second.players) {
+			return 1;
+		} else if (first.probability > second.probability) {
+			return -1
+		} else if (first.probability < second.probability) {
+			return 1;
 		} else {
-			return (first.name >= second.name) ? 1 : -1; 
+			return (first.name >= second.name) ? 1 : -1;;
 		}
 	}
 
 	sortByIsland = (first, second) => {
-		// return (first.island >= second.island) ? 1 : -1;
 		if (first.island > second.island) {
 			return 1;
 		} else if (first.island < second.island) {
 			return -1;
+		} else if (first.probability > second.probability) {
+			return -1
+		} else if (first.probability < second.probability) {
+			return 1;
 		} else {
-			return (first.name >= second.name) ? 1 : -1; 
+			return (first.name >= second.name) ? 1 : -1;;
 		}
 	}
 
 	sortByAutor = (first, second) => {
-		// return (first.autor >= second.autor) ? 1 : -1;
 		if (first.autor > second.autor) {
 			return 1;
 		} else if (first.autor < second.autor) {
 			return -1;
+		} else if (first.probability > second.probability) {
+			return -1
+		} else if (first.probability < second.probability) {
+			return 1;
 		} else {
-			return (first.name >= second.name) ? 1 : -1; 
+			return (first.name >= second.name) ? 1 : -1;;
 		}
 	}
 
 	sortByRateAvg = (first, second) => {
-		// return (first.rateAvg <= second.rateAvg) ? 1 : -1;
 		if (first.rateAvg > second.rateAvg) {
-			return 1;
-		} else if (first.rateAvg < second.rateAvg) {
 			return -1;
+		} else if (first.rateAvg < second.rateAvg) {
+			return 1;
+		} else if (first.probability > second.probability) {
+			return -1
+		} else if (first.probability < second.probability) {
+			return 1;
 		} else {
-			return (first.name >= second.name) ? 1 : -1; 
+			return (first.name >= second.name) ? 1 : -1;;
 		}
 	}
 
 	sortByProbability = (first, second) => {
-		// return (first.probability <= second.probability) ? 1 : -1;
 		if (first.probability > second.probability) {
-			return 1;
-		} else if (first.probability < second.probability) {
 			return -1;
+		} else if (first.probability < second.probability) {
+			return 1;
 		} else {
 			return (first.name >= second.name) ? 1 : -1; 
 		}

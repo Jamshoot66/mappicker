@@ -14,8 +14,12 @@ let defState = {
 	schedule : []
 }
 
-function probabilityFunc(rate) {
-	return (rate*2-1)
+function probabilityFunc(rate, lastPlayed) {
+	const halfYearMs = 0.5 * 30 * 24 * 60 * 60 * 1000;
+	let today = Date.now();
+	let coef = Math.log10((rate * 10 - 3) * (today - lastPlayed) / halfYearMs);
+	// console.log("coef = ", coef);
+	return coef ;
 }
 
 const Store = (state = defState, action) => {
@@ -49,11 +53,12 @@ const Store = (state = defState, action) => {
 
 	/* UPDATE_PROPABILITIES */
 		case actionType.UPDATE_PROPABILITIES:	
-			let sum = newState.missionPool.reduce((acc, item) => acc + probabilityFunc(item.rateAvg), 0);
+			let sum = newState.missionPool.reduce((acc, item) => acc +
+				probabilityFunc(item.rateAvg, item.lastPlayed), 0);
 			if (sum > 0) {
 				let koef = 1 / sum;
 				newState.missionPool.forEach( (item) => {
-					item.probability = probabilityFunc(item.rateAvg)*koef;
+					item.probability = probabilityFunc(item.rateAvg, item.lastPlayed)*koef;
 				});
 			};
 			return newState;

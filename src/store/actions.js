@@ -40,7 +40,6 @@ export async function loginViaGmail(dispatch){
 			name : firebaseUser.displayName
 		}
 
-		console.log(user);
 		dispatch( {
 			type: UPDATE_USER_INFO,
 			payload: {
