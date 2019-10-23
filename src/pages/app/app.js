@@ -41,11 +41,27 @@ class App extends React.Component {
 	render() {
 
 		let itemsStr = false;
+		let itemsPoolStr = false;
 		if (this.props.showMissionPool === true) {
 			// show missions as mission pool
 			itemsStr = this.props.missionPool.map( (item) => {
 				return <Item key={item.guid} showInMissonPool {...item}/>
 			});
+
+			itemsPoolStr = this.props.schedule.map( (scheduleItem) => {
+
+				let setItemsStr = [...scheduleItem.missions.entries()].map( item => {
+					let mission = this.props.missionPool.find( (itemFromPool) => {
+						return itemFromPool.guid === item[0] 
+					});
+					return <Item key={mission.guid} {...mission} />
+				})
+
+				let result = [setItemsStr];
+				
+				return result;
+			});
+
 		} else {
 			// show missions as schedule
 			itemsStr = this.props.schedule.map( (scheduleItem) => {
@@ -63,6 +79,7 @@ class App extends React.Component {
 			});
 		}
 		
+		console.log("rerender");
 
 		return (
 			<main className={style.wrapper}>
@@ -70,7 +87,8 @@ class App extends React.Component {
 					<Header/>
 				</header>
 
-				<Menu/>
+				<Menu />
+				{itemsPoolStr}
 				{this.props.showMissionPool ? <h2>Пул миссий</h2> : <h2>Расписание на 01.02.2019</h2>}
 				<ItemHeader/>
 				{itemsStr}
