@@ -129,7 +129,7 @@ let missionItem = {
 
 	render() {
 		return (
-			<section className={style.wrapper}>
+			<section className={`${style.wrapper} ${style.header}`}>
 				<div className={`${style.name}`} onClick={ () => {this.sort(this.sortByName)}}> 
 					Название миссии
 				</div>

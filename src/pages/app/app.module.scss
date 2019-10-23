@@ -48,3 +48,16 @@ h2 {
 	color: $cWhite;
 	background-color: $cBackground;	
 }
+
+.viewHeight{
+	height: 100vh;
+}
+
+.dummyPlaceholder{
+	height: 40px;
+	width: 40px;
+	visibility: hidden;
+	z-index: -1000;
+	position: absolute;
+	transform: translateY(-40px);
+}

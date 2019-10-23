@@ -75,10 +75,10 @@ class Item extends React.Component {
 	}
 
 	render() {
-
+		let evenClass = this.props.even ? style.wrapper_even : "";
 		if (this.state.minimal) {
 			var itemStr = (
-				<section className={`${style.wrapper} ${style.wrapper_selectable}`} onClick={this.itemSizeToggle} key="key">
+				<section className={`${style.wrapper} ${evenClass} ${style.wrapper_selectable}`} onClick={this.itemSizeToggle} key="key">
 					<div className={style.name}> 
 						{this.props.name}
 					</div>
@@ -159,7 +159,7 @@ class Item extends React.Component {
 					</div>
 			};
 			itemStr = (
-				<section className={style.wrapper} onClick={this.itemSizeToggle} key="key">
+				<section className={`${style.wrapper}  ${evenClass}`} onClick={this.itemSizeToggle} key="key">
 					<div className={style.maximazedItemWrapper}>
 						<div className={style.column}> 
 							<div className={style.maximazedName}>

@@ -61,12 +61,14 @@ class Menu extends React.Component{
 				{fakeMenu}
 				<nav className={menuClassName} ref={this.ref}>
 					{/*<label htmlFor="menuFilterBtn" className={style.label}>Фильтр</label>*/}
-
+					<a href="#schedule">
 					<button 
 						className={style.calendarBtn} 
 						id="menuRandomizeBtn"
-						onClick={this.props.showMissionPoolToggle}>
-					</button>
+					// onClick={this.props.showMissionPoolToggle}
+					>
+						
+					</button> </a>
 					{this.props.user.auth ?
 						<button 
 							className={style.randomizeBtn} 

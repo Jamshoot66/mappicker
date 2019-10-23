@@ -29,6 +29,12 @@ class UserMenu extends React.Component {
             unitStr = null;
         }
         
+        // <div>
+        //     <label>Промо</label>
+        //     <input type="text" className={style.promoInput} onClick={this.promoClick}/>
+        //     <button className={style.promoBtn}>Ок</button>
+        // </div> ,
+            
         if (!this.props.user.auth) {
             menuItemsStr = <div onClick={this.props.login}>Логин через GooglePlus</div>
         } else {
@@ -37,14 +43,11 @@ class UserMenu extends React.Component {
                 <hr/>,
                 unitStr,
                 <div>
-                    <label>Промо</label>
-                    <input type="text" className={style.promoInput} onClick={this.promoClick}/>
-                    <button className={style.promoBtn}>Ок</button>
+                    Представитель отряда [UNIT]
                 </div>,
                 <hr />,
                 <div onClick={this.props.logout} key="userMenu2">Выйти</div>
             ];
-            
         }
 
         return (<section className={wrapperClass} onClick={this.overlayClick}>
