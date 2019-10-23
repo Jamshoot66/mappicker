@@ -14,13 +14,7 @@ let defState = {
 	schedule : []
 }
 
-function probabilityFunc(rate, lastPlayed) {
-	const halfYearMs = 0.5 * 30 * 24 * 60 * 60 * 1000;
-	let today = Date.now();
-	let coef = Math.log10((rate * 10 - 3) * (today - lastPlayed) / halfYearMs);
-	// console.log("coef = ", coef);
-	return coef ;
-}
+
 
 const Store = (state = defState, action) => {
 	let newState = Object.assign({}, state);
@@ -31,16 +25,8 @@ const Store = (state = defState, action) => {
 		payload     : [ {missionItem}, ... ]
 	*/
 		case actionType.ADD_MISSIONS: 
-
-			if (action.payload.some(item => { 
-				return !utils.shallowEqual(item, templates.missionItem)
-			})) {
-				throw new Error("Payload should be an array of objects with 'missionItem' fields")
-			};
-
-			newState.missionPool = newState.missionPool.concat(action.payload);
-			return newState;
-
+			return addMissions(state, action);
+			
 	/* SHOW_MISSION_POOL_TOGGLE */
 		case actionType.SHOW_MISSION_POOL_TOGGLE:
 			newState.showMissionPool = !newState.showMissionPool;
@@ -53,135 +39,191 @@ const Store = (state = defState, action) => {
 
 	/* UPDATE_PROPABILITIES */
 		case actionType.UPDATE_PROPABILITIES:	
-			let sum = newState.missionPool.reduce((acc, item) => acc +
-				probabilityFunc(item.rateAvg, item.lastPlayed), 0);
-			if (sum > 0) {
-				let koef = 1 / sum;
-				newState.missionPool.forEach( (item) => {
-					item.probability = probabilityFunc(item.rateAvg, item.lastPlayed)*koef;
-				});
-			};
-			return newState;
+			return updateProbabilities(state, action);
 
 	/* UPATE_MISSIONS_ORDER*/
 		case actionType.UPATE_MISSIONS_ORDER:
 			newState.missionPool = action.payload.missionPool;
 			return newState;
+		
 	/* ADD_RANDOM_MISSIONS */
 		case actionType.ADD_RANDOM_MISSIONS:
-				newState.schedule = [ {date:action.payload.date, missions: new Set()} ];
-				let propLine = [];
-				let acc = 0
-				newState.missionPool.forEach( (item) => {
-					acc += item.probability;
-					propLine.push({
-						guid: item.guid,
-						maxProp: acc
-					});
-				});
-				let guids = new Set();
-				while (guids.size < 4) {
-					let rnd = Math.random();
-					let guid = propLine.find( (item) => {
-						return item.maxProp > rnd
-					}).guid;
-
-					guids.add( guid )
-				}
-
-				guids.forEach( (item) => {
-					Store(newState, 
-						{
-							type: actionType.ADD_MISSION_TO_SCHEDULE,
-							payload: {
-								date:action.payload.date, 
-								guid:item} 
-						});
-				});
-
-			return newState;
+			return addRandomMissions(state, action);
 
 	/* ADD_MISSION_TO_SCHEDULE usage:
 		action.Type : ADD_MISSION_TO_SCHEDULE,
 		payload     : {data, guid: item.guid}
 	*/	
-		case actionType.ADD_MISSION_TO_SCHEDULE:
-			if (!utils.shallowEqual(action.payload, templates.scheduleMission)) {
-				throw new Error("Payload should be an objects with fields 'data' and 'guid'")
-			}
-			
-			let dateInSchedule = false;
-			for( let i in newState.schedule ) {
-				if (newState.schedule[i].date === action.payload.date) {
-					newState.schedule[i].missions.add(action.payload.guid)
-					dateInSchedule = true;
-				} 
-			}
-
-			if (!dateInSchedule) {
-				newState.schedule.push( {
-					date: action.payload.date,
-					missions: new Set()
-				});
-				newState.schedule[newState.schedule.length - 1].missions.add(action.payload.guid);
-			}
-			return newState;
+		case actionType.ADD_MISSION_TO_SCHEDULE:		
+			return addMissionToSchedule(state, action);
 
 	/* REMOVE_MISSION_FROM_SCHEDULE usage:
 		action.Type : REMOVE_MISSION_FROM_SCHEDULE,
 		payload     : [ {data, guid: item.guid}, ... ]
 	*/
 		case actionType.REMOVE_MISSION_FROM_SCHEDULE:
-			let index = newState.schedule.findIndex( (item) => item.date === action.payload.date);
-			if (index < 0) break;
-			let schedule = newState.schedule.slice(0);
-			let elem = Object.assign({}, newState.schedule[index]);
-			let missions = new Set(elem.missions);
-			let done = missions.delete( action.payload.guid);
-			if (done) {
-				elem.missions = missions;
-				schedule[index] = elem;
-				newState.schedule = schedule;
-				return newState;
-			};
-			break;
+			return removeMissionFromSchedule(state, action);
 
 	/*UPDATE_USER_INFO*/		
 		case actionType.UPDATE_USER_INFO:
-			/* eslint-disable */
-			if (action.payload != undefined && action.payload.user != undefined) {
-				newState.user = Object.assign({}, utils.defUser, action.payload.user) ;
-			} else {
-				newState.user = utils.defUser;
-			}
-			/* eslint-enable */
-			
-			return newState;
+			return updateUserInfo(state, action);
 
 	/*UPDATE_MISSION_RATE usage:
 		action.Type : UPDATE_MISSION_RATE,
 		payload     : [ {guid: guid, rate: rate} ]
 	*/
-		case actionType.UPDATE_MISSION_RATE:		
-
-			let missionIndex = newState.missionPool.findIndex( (item) =>{
-				return item.guid === action.payload.guid
-			})
-			let missionPool = newState.missionPool.slice(0);
-			let mission = Object.assign( {}, newState.missionPool[missionIndex]);
-			mission.rateAvg = action.payload.rate;
-			missionPool[missionIndex] = mission;
-			newState.missionPool = missionPool;
-
-			Store( newState, {
-				type: actionType.UPDATE_PROPABILITIES
-			});
-			return newState;
+		case actionType.UPDATE_MISSION_RATE:
+			return updateMissionRate(state, action);
 
 		default:			
 			return newState;
 	}
-	
 }
 
 export default Store;
+
+function probabilityFunc(rate, lastPlayed) {
+	const halfYearMs = 0.5 * 30 * 24 * 60 * 60 * 1000;
+	let today = Date.now();
+	let coef = Math.log10((rate * 10 - 3) * (today - lastPlayed) / halfYearMs);
+	return coef;
+}
+
+function addMissions(state, action) {
+	let newState = Object.assign({}, state);
+	if (action.payload.some(item => { 
+		return !utils.shallowEqual(item, templates.missionItem)
+	})) {
+		throw new Error("Payload should be an array of objects with 'missionItem' fields")
+	};
+
+	newState.missionPool = newState.missionPool.concat(action.payload);
+	return newState;
+}
+
+function updateProbabilities(state, action) {
+	let newState = Object.assign({}, state);
+	let sum = newState.missionPool.reduce((acc, item) => acc +
+		probabilityFunc(item.rateAvg, item.lastPlayed), 0);
+	if (sum > 0) {
+		let koef = 1 / sum;
+		newState.missionPool.forEach( (item) => {
+			item.probability = probabilityFunc(item.rateAvg, item.lastPlayed)*koef;
+		});
+	};
+	return newState;
+}
+
+function addRandomMissions(state, action) {
+	let newState = Object.assign({}, state);
+	newState.schedule = [ {date:action.payload.date, missions: new Set()} ];
+	let propLine = [];
+	let acc = 0
+	newState.missionPool.forEach( (item) => {
+		acc += item.probability;
+		propLine.push({
+			guid: item.guid,
+			maxProp: acc
+		});
+	});
+	let guids = new Set();
+	while (guids.size < 4) {
+		let rnd = Math.random();
+		let guid = propLine.find( (item) => {
+			return item.maxProp > rnd
+		}).guid;
+
+		guids.add( guid )
+	}
+
+	guids.forEach( (item) => {
+		Store(newState, 
+			{
+				type: actionType.ADD_MISSION_TO_SCHEDULE,
+				payload: {
+					date:action.payload.date, 
+					guid:item} 
+			});
+	});
+	return newState;
+}
+
+function removeMissionFromSchedule(state, action) {
+	let newState = Object.assign({}, state);
+	let index = newState.schedule.findIndex((item) => item.date === action.payload.date);
+	if (index < 0) return newState;
+	let schedule = newState.schedule.slice(0);
+	let elem = Object.assign({}, newState.schedule[index]);
+	let missions = new Set(elem.missions);
+	let done = missions.delete( action.payload.guid);
+	if (done) {
+		elem.missions = missions;
+		schedule[index] = elem;
+		newState.schedule = schedule;
+		return newState;
+	};
+}
+
+function updateUserInfo(state, action) {
+	let newState = Object.assign({}, state);
+	/* eslint-disable */
+	if (action.payload != undefined && action.payload.user != undefined) {
+		newState.user = Object.assign({}, utils.defUser, action.payload.user) ;
+	} else {
+		newState.user = utils.defUser;
+	}
+	/* eslint-enable */
+	return newState;
+}
+
+function updateMissionRate(state, action) {
+	
+	let newState = Object.assign({}, state);
+
+	let missionIndex = newState.missionPool.findIndex((item) => {
+		return item.guid === action.payload.guid
+	})
+	let missionPool = newState.missionPool.slice(0);
+	let mission = Object.assign( {}, newState.missionPool[missionIndex]);
+	mission.rateAvg = action.payload.rate;
+	missionPool[missionIndex] = mission;
+	newState.missionPool = missionPool;
+
+	Store( newState, {
+		type: actionType.UPDATE_PROPABILITIES
+	});
+	return newState;
+}
+
+function addMissionToSchedule(state, action) {
+	let newState = Object.assign({}, state);
+
+	if (!utils.shallowEqual(action.payload, templates.scheduleMission)) {
+		throw new Error("Payload should be an objects with fields 'data' and 'guid'")
+	}
+	
+	let dateInSchedule = false;
+	let newSchedule = newState.schedule.slice(0);
+	let newMissions;
+	for (let i in newSchedule) {
+		if (newSchedule[i].date === action.payload.date) {		
+			newMissions = new Set(state.schedule[i].missions);	
+			newMissions.add(action.payload.guid);
+			newSchedule[i].missions = newMissions;
+			newState.schedule = newSchedule;
+			dateInSchedule = true;
+			break;
+		} 
+	}
+
+	if (!dateInSchedule) {
+		newSchedule.push( {
+			date: action.payload.date,
+			missions: new Set()
+		});
+		newSchedule[newSchedule.length - 1].missions.add(action.payload.guid);
+		newState.schedule = newSchedule;
+	}
+
+	return newState;
+}
