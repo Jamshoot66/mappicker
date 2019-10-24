@@ -68,7 +68,7 @@ class Menu extends React.Component{
 					>
 						
 					</button> </a>
-					{this.props.user.auth ?
+					{false ? //this.props.user.auth ?
 						<button 
 							className={style.randomizeBtn} 
 							id="menuRandomizeBtn"
