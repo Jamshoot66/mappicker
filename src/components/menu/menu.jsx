@@ -51,11 +51,10 @@ class Menu extends React.Component{
 
 	render() {
 		let greeting = (this.props.user.auth ? `Приветствую, ` : `Залогинься, `) + this.props.user.shortName;
-		 
+		
 		let menuClassName = this.state.menuIsFixed ? `${style.wrapper} ${style.fixed}` : `${style.wrapper}`;
 
 		let fakeMenu = this.state.menuIsFixed ? <div className={style.fakeMenu}></div> : false;
-		
 		return (
 			<div className={style.row}>
 				{fakeMenu}

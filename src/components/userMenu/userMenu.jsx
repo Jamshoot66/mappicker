@@ -16,12 +16,13 @@ class UserMenu extends React.Component {
     }
 
     render() {
-
+        
         let wrapperClass = this.props.visible ? `${style.wrapper} ${this.props.customWrapperStyle}` : `${style.hide}`
     
         let menuItemsStr = null;
 
         let unitStr = null;
+        //FIXME: add user [UNIT]
         if (this.props.user.authedUnit) {
             unitStr = <div key="userMenu2-1">Представитель {this.props.user.unit}</div>
         } else {
@@ -36,17 +37,18 @@ class UserMenu extends React.Component {
         // </div> ,
             
         if (!this.props.user.auth) {
-            menuItemsStr = <div onClick={this.props.login}>Логин через GooglePlus</div>
+            menuItemsStr = <div onClick={this.props.login} key="userMenu3">Логин через GooglePlus</div>
         } else {
             menuItemsStr = [
                 <div key="userMenu1">{this.props.user.name}</div>,
-                <hr/>,
+                <hr key="userMenu2"/>,
                 unitStr,
-                <div>
+                <div key="userMenu4">
+                    //FIXME: add user [UNIT]
                     Представитель отряда [UNIT]
                 </div>,
-                <hr />,
-                <div onClick={this.props.logout} key="userMenu2">Выйти</div>
+                <hr key="userMenu5"/>,
+                <div onClick={this.props.logout} key="userMenu6">Выйти</div>
             ];
         }
 
