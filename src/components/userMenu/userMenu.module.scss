@@ -36,12 +36,12 @@
 }
 
 .wrapper hr {
-    margin: 2px;
+    margin: 5px 2px;
     padding: 0;
     min-height: 1px;
     width: 99%;
     border: none;
-    background-color: white;
+    background-color: rgba( 255, 255, 255, 0.3);
 }
 
 .wrapper div {
@@ -71,4 +71,13 @@
     border-right: 1px solid black;
     
     margin-left: 10px;
+}
+
+.logoutBtn {
+    @include button;
+    @include flat;
+    height: auto;
+    width: 100%;
+    font-size: 1em;
+    color: $cWhite;
 }

@@ -35,7 +35,7 @@ class UserMenu extends React.Component {
         //     <input type="text" className={style.promoInput} onClick={this.promoClick}/>
         //     <button className={style.promoBtn}>Ок</button>
         // </div> ,
-            
+        //FIXME: add user [UNIT]    
         if (!this.props.user.auth) {
             menuItemsStr = <div onClick={this.props.login} key="userMenu3">Логин через GooglePlus</div>
         } else {
@@ -43,12 +43,15 @@ class UserMenu extends React.Component {
                 <div key="userMenu1">{this.props.user.name}</div>,
                 <hr key="userMenu2"/>,
                 unitStr,
-                <div key="userMenu4">
-                    //FIXME: add user [UNIT]
+                <div key="userMenu4">    
                     Представитель отряда [UNIT]
                 </div>,
                 <hr key="userMenu5"/>,
-                <div onClick={this.props.logout} key="userMenu6">Выйти</div>
+                <button onClick={this.props.logout}
+                    className={style.logoutBtn}
+                    key="userMenu6">
+                    Выйти
+                </button>
             ];
         }
 
