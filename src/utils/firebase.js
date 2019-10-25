@@ -15,5 +15,5 @@ export const initFirebase = ( userStateChangeCallback = () => {}) => {
 	firebase.initializeApp(firebaseConfig);
 
 	firebase.auth().onAuthStateChanged( userStateChangeCallback);
-	
+
 }

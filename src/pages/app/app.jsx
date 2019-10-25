@@ -38,6 +38,10 @@ class App extends React.Component {
 		this.props.updatePropabilities();
 	}
 
+	addItemBtn() {
+		console.log("adding...");
+	}
+
 	render() {
 
 		let itemsStr = false;
@@ -80,6 +84,7 @@ class App extends React.Component {
 
 		return (
 			<main className={style.wrapper}>
+				<button onClick={this.addItemBtn}>Add item</button>
 				<header className={style.row}>
 					<Header/>
 				</header>

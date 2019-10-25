@@ -1,0 +1,1101 @@
+[debug] [2019-10-25T12:47:38.328Z] ----------------------------------------------------------------------
+[debug] [2019-10-25T12:47:38.329Z] Command:       /usr/bin/node /usr/local/bin/firebase serve --only functions
+[debug] [2019-10-25T12:47:38.330Z] CLI Version:   7.4.0
+[debug] [2019-10-25T12:47:38.330Z] Platform:      linux
+[debug] [2019-10-25T12:47:38.330Z] Node Version:  v12.11.1
+[debug] [2019-10-25T12:47:38.330Z] Time:          Fri Oct 25 2019 16:47:38 GMT+0400 (GMT+04:00)
+[debug] [2019-10-25T12:47:38.330Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-10-25T12:47:38.352Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-10-25T12:47:38.352Z] > authorizing via signed-in user
+[debug] [2019-10-25T12:47:38.352Z] [iam] checking project mapick-rb for permissions ["firebase.projects.get"]
+[debug] [2019-10-25T12:47:38.353Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2019-10-25T12:47:38.353Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2019-10-25T12:47:38.500Z] <<< HTTP RESPONSE 200
+[debug] [2019-10-25T12:47:38.542Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/mapick-rb:testIamPermissions  
+
+[debug] [2019-10-25T12:47:39.634Z] <<< HTTP RESPONSE 200
+[debug] [2019-10-25T12:47:39.636Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/mapick-rb  
+ 
+[debug] [2019-10-25T12:47:39.972Z] <<< HTTP RESPONSE 200
+[warn] ⚠  Your requested "node" version "8" doesn't match your global version "12"
+[info] ✔  functions: Emulator started at http://localhost:5000
+[info] i  functions: Watching "/work/web/front-end/mappicker/functions" for Cloud Functions...
+[debug] [2019-10-25T12:47:40.409Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[debug] [2019-10-25T12:47:40.409Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-25T12:47:40.410Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-25T12:47:40.410Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T12:47:40.411Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[info] >  {}
+[warn] ⚠  TypeError: _admin.firestore is not a function
+    at Object.<anonymous> (/work/web/front-end/mappicker/functions/index.js:15:17)
+    at Module._compile (internal/modules/cjs/loader.js:945:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:962:10)
+    at Module.load (internal/modules/cjs/loader.js:798:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:711:12)
+    at Module.require (internal/modules/cjs/loader.js:838:19)
+    at require (internal/modules/cjs/helpers.js:74:18)
+    at /usr/local/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:677:33
+    at Generator.next (<anonymous>)
+    at fulfilled (/usr/local/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:4:58)
+[warn] ⚠  We were unable to load your functions code. (see above)
+[debug] [2019-10-25T14:05:05.123Z] File /work/web/front-end/mappicker/functions/firebase.local.js changed, reloading triggers
+[debug] [2019-10-25T14:05:06.282Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[debug] [2019-10-25T14:05:06.282Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-25T14:05:06.284Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-25T14:05:06.284Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T14:05:06.285Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[info] >  FirebaseApp {
+[info] >    firebaseInternals_: FirebaseNamespaceInternals {
+[info] >      firebase_: FirebaseNamespace {
+[info] >        __esModule: true,
+[info] >        credential: [Object],
+[info] >        SDK_VERSION: '8.6.0',
+[info] >        Promise: [Function: Promise],
+[info] >        INTERNAL: [Circular],
+[info] >        default: [Circular]
+[info] >      },
+[info] >      serviceFactories: {},
+[info] >      apps_: { '[DEFAULT]': [Circular] },
+[info] >      appHooks_: {}
+[info] >    },
+[info] >    services_: {},
+[info] >    isDeleted_: false,
+[info] >    name_: '[DEFAULT]',
+[info] >    options_: {
+[info] >      credential: CertCredential {
+[info] >        certificate: [Certificate],
+[info] >        httpClient: [HttpClient],
+[info] >        httpAgent: undefined
+[info] >      },
+[info] >      databaseURL: 'https://mapick-rb.firebaseio.com'
+[info] >    },
+[info] >    INTERNAL: FirebaseAppInternals {
+[info] >      credential_: CertCredential {
+[info] >        certificate: [Certificate],
+[info] >        httpClient: [HttpClient],
+[info] >        httpAgent: undefined
+[info] >      },
+[info] >      isDeleted_: false,
+[info] >      tokenListeners_: []
+[info] >    }
+[info] >  }
+[info] ✔  functions[helloWorld]: http function initialized (http://localhost:5000/mapick-rb/us-central1/helloWorld).
+[info] ✔  functions[testDB]: http function initialized (http://localhost:5000/mapick-rb/us-central1/testDB).
+[debug] [2019-10-25T14:05:31.535Z] File /work/web/front-end/mappicker/functions/index.js changed, reloading triggers
+[debug] [2019-10-25T14:05:32.702Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[debug] [2019-10-25T14:05:32.702Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-25T14:05:32.703Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-25T14:05:32.704Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T14:05:32.704Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T14:18:00.608Z] File /work/web/front-end/mappicker/functions/index.js changed, reloading triggers
+[debug] [2019-10-25T14:18:01.764Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[debug] [2019-10-25T14:18:01.765Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-25T14:18:01.766Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-25T14:18:01.766Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T14:18:01.767Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T14:18:10.605Z] File /work/web/front-end/mappicker/functions/index.js changed, reloading triggers
+[debug] [2019-10-25T14:18:11.765Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[debug] [2019-10-25T14:18:11.765Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-25T14:18:11.766Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-25T14:18:11.767Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T14:18:11.767Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T14:18:15.459Z] File /work/web/front-end/mappicker/functions/index.js changed, reloading triggers
+[debug] [2019-10-25T14:18:16.623Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[debug] [2019-10-25T14:18:16.623Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-25T14:18:16.624Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-25T14:18:16.625Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T14:18:16.625Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[warn] ⚠  /work/web/front-end/mappicker/functions/index.js:15
+let db = admin.firestore()1;
+                          ^
+
+SyntaxError: Unexpected number
+    at Module._compile (internal/modules/cjs/loader.js:881:18)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:962:10)
+    at Module.load (internal/modules/cjs/loader.js:798:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:711:12)
+    at Module.require (internal/modules/cjs/loader.js:838:19)
+    at require (internal/modules/cjs/helpers.js:74:18)
+    at /usr/local/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:677:33
+    at Generator.next (<anonymous>)
+    at fulfilled (/usr/local/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:4:58)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+[warn] ⚠  We were unable to load your functions code. (see above)
+[debug] [2019-10-25T14:18:18.181Z] File /work/web/front-end/mappicker/functions/index.js changed, reloading triggers
+[debug] [2019-10-25T14:18:19.341Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[debug] [2019-10-25T14:18:19.341Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-25T14:18:19.343Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-25T14:18:19.343Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T14:18:19.344Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T14:18:37.857Z] File /work/web/front-end/mappicker/functions/index.js changed, reloading triggers
+[debug] [2019-10-25T14:18:39.033Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[debug] [2019-10-25T14:18:39.034Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-25T14:18:39.035Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-25T14:18:39.036Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T14:18:39.036Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T14:22:12.781Z] Accepted request GET /mapick-rb/us-central1/testDB --> testDB
+[debug] [2019-10-25T14:22:12.917Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[info] i  functions: Beginning execution of "testDB"
+[debug] [2019-10-25T14:22:12.918Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-25T14:22:12.919Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-25T14:22:12.919Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T14:22:12.920Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T14:22:12.984Z] [runtime-status] Trigger "testDB" has been found, beginning invocation! {}
+[debug] [2019-10-25T14:22:12.984Z] [runtime-status]  {"httpsTrigger":{},"name":"testDB","entryPoint":"testDB"}
+[debug] [2019-10-25T14:22:12.984Z] [runtime-status] Running testDB in mode HTTPS {}
+[debug] [2019-10-25T14:22:12.988Z] {"socketPath":"/tmp/firebase_emulator_invocation_20626.sock"}
+[debug] [2019-10-25T14:22:12.989Z] [functions] Runtime ready! Sending request! {"socketPath":"/tmp/firebase_emulator_invocation_20626.sock"}
+[debug] [2019-10-25T14:22:12.994Z] [runtime-status] Ephemeral server used! {}
+[debug] [2019-10-25T14:22:13.899Z] [runtime-status] Ephemeral server survived. {}
+[info] >  DocumentSnapshot {
+[info] >    _ref: DocumentReference {
+[info] >      _firestore: Firestore {
+[info] >        _settings: [Object],
+[info] >        _settingsFrozen: true,
+[info] >        _serializer: [Serializer],
+[info] >        _projectId: 'mapick-rb',
+[info] >        _lastSuccessfulRequest: 1572013334519,
+[info] >        _preferTransactions: false,
+[info] >        _clientPool: [ClientPool]
+[info] >      },
+[info] >      _path: QualifiedResourcePath {
+[info] >        segments: [Array],
+[info] >        projectId: 'mapick-rb',
+[info] >        databaseId: '(default)'
+[info] >      }
+[info] >    },
+[info] >    _fieldsProto: undefined,
+[info] >    _serializer: Serializer {
+[info] >      createReference: [Function],
+[info] >      timestampsInSnapshots: true
+[info] >    },
+[info] >    _readTime: Timestamp { _seconds: 1572013334, _nanoseconds: 463512000 },
+[info] >    _createTime: undefined,
+[info] >    _updateTime: undefined
+[info] >  }
+[info] i  functions: Finished "testDB" in ~1s
+[debug] [2019-10-25T14:22:26.553Z] File /work/web/front-end/mappicker/functions/index.js changed, reloading triggers
+[debug] [2019-10-25T14:22:27.734Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[debug] [2019-10-25T14:22:27.734Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-25T14:22:27.736Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-25T14:22:27.736Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T14:22:27.737Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T14:22:29.365Z] Accepted request GET /mapick-rb/us-central1/testDB --> testDB
+[debug] [2019-10-25T14:22:29.502Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[info] i  functions: Beginning execution of "testDB"
+[debug] [2019-10-25T14:22:29.502Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-25T14:22:29.504Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-25T14:22:29.504Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T14:22:29.505Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T14:22:29.567Z] [runtime-status] Trigger "testDB" has been found, beginning invocation! {}
+[debug] [2019-10-25T14:22:29.568Z] [runtime-status]  {"httpsTrigger":{},"name":"testDB","entryPoint":"testDB"}
+[debug] [2019-10-25T14:22:29.568Z] [runtime-status] Running testDB in mode HTTPS {}
+[debug] [2019-10-25T14:22:29.571Z] {"socketPath":"/tmp/firebase_emulator_invocation_20780.sock"}
+[debug] [2019-10-25T14:22:29.572Z] [functions] Runtime ready! Sending request! {"socketPath":"/tmp/firebase_emulator_invocation_20780.sock"}
+[debug] [2019-10-25T14:22:29.577Z] [runtime-status] Ephemeral server used! {}
+[debug] [2019-10-25T14:22:29.733Z] [runtime-status] Ephemeral server survived. {}
+[info] >  QueryDocumentSnapshot {
+[info] >    _ref: DocumentReference {
+[info] >      _firestore: Firestore {
+[info] >        _settings: [Object],
+[info] >        _settingsFrozen: true,
+[info] >        _serializer: [Serializer],
+[info] >        _projectId: 'mapick-rb',
+[info] >        _lastSuccessfulRequest: 1572013350260,
+[info] >        _preferTransactions: false,
+[info] >        _clientPool: [ClientPool]
+[info] >      },
+[info] >      _path: QualifiedResourcePath {
+[info] >        segments: [Array],
+[info] >        projectId: 'mapick-rb',
+[info] >        databaseId: '(default)'
+[info] >      }
+[info] >    },
+[info] >    _fieldsProto: {
+[info] >      ref: {
+[info] >        referenceValue: 'projects/mapick-rb/databases/(default)/documents/users/jG2NFdRMtMTaHqJLCp0mcU9DYID2',
+[info] >        valueType: 'referenceValue'
+[info] >      },
+[info] >      str: { stringValue: 'something1', valueType: 'stringValue' }
+[info] >    },
+[info] >    _serializer: Serializer {
+[info] >      createReference: [Function],
+[info] >      timestampsInSnapshots: true
+[info] >    },
+[info] >    _readTime: Timestamp { _seconds: 1572013350, _nanoseconds: 210987000 },
+[info] >    _createTime: Timestamp { _seconds: 1571597839, _nanoseconds: 991024000 },
+[info] >    _updateTime: Timestamp { _seconds: 1571935557, _nanoseconds: 171338000 }
+[info] >  }
+[info] i  functions: Finished "testDB" in ~1s
+[debug] [2019-10-25T14:28:50.441Z] File /work/web/front-end/mappicker/functions/index.js changed, reloading triggers
+[debug] [2019-10-25T14:28:51.628Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[debug] [2019-10-25T14:28:51.628Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-25T14:28:51.630Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-25T14:28:51.630Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T14:28:51.630Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[info] ✔  functions[getUserRights]: http function initialized (http://localhost:5000/mapick-rb/us-central1/getUserRights).
+[debug] [2019-10-25T14:30:54.996Z] File /work/web/front-end/mappicker/functions/index.js changed, reloading triggers
+[debug] [2019-10-25T14:30:56.168Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[debug] [2019-10-25T14:30:56.168Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-25T14:30:56.170Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-25T14:30:56.170Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T14:30:56.171Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[warn] ⚠  /work/web/front-end/mappicker/functions/index.js:42
+    })
+    ^
+
+SyntaxError: Unexpected token '}'
+    at Module._compile (internal/modules/cjs/loader.js:881:18)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:962:10)
+    at Module.load (internal/modules/cjs/loader.js:798:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:711:12)
+    at Module.require (internal/modules/cjs/loader.js:838:19)
+    at require (internal/modules/cjs/helpers.js:74:18)
+    at /usr/local/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:677:33
+    at Generator.next (<anonymous>)
+    at fulfilled (/usr/local/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:4:58)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+[warn] ⚠  We were unable to load your functions code. (see above)
+[debug] [2019-10-25T14:33:30.623Z] File /work/web/front-end/mappicker/functions/index.js changed, reloading triggers
+[debug] [2019-10-25T14:33:31.777Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[debug] [2019-10-25T14:33:31.777Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-25T14:33:31.778Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-25T14:33:31.779Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T14:33:31.779Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[warn] ⚠  /work/web/front-end/mappicker/functions/index.js:45
+    }).catch(err) {
+                  ^
+
+SyntaxError: Unexpected token '{'
+    at Module._compile (internal/modules/cjs/loader.js:881:18)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:962:10)
+    at Module.load (internal/modules/cjs/loader.js:798:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:711:12)
+    at Module.require (internal/modules/cjs/loader.js:838:19)
+    at require (internal/modules/cjs/helpers.js:74:18)
+    at /usr/local/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:677:33
+    at Generator.next (<anonymous>)
+    at fulfilled (/usr/local/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:4:58)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+[warn] ⚠  We were unable to load your functions code. (see above)
+[debug] [2019-10-25T14:40:30.656Z] File /work/web/front-end/mappicker/functions/index.js changed, reloading triggers
+[debug] [2019-10-25T14:40:31.836Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[debug] [2019-10-25T14:40:31.836Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-25T14:40:31.837Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-25T14:40:31.838Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T14:40:31.838Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[warn] ⚠  /work/web/front-end/mappicker/functions/index.js:46
+    }).catch(err) {
+                  ^
+
+SyntaxError: Unexpected token '{'
+    at Module._compile (internal/modules/cjs/loader.js:881:18)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:962:10)
+    at Module.load (internal/modules/cjs/loader.js:798:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:711:12)
+    at Module.require (internal/modules/cjs/loader.js:838:19)
+    at require (internal/modules/cjs/helpers.js:74:18)
+    at /usr/local/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:677:33
+    at Generator.next (<anonymous>)
+    at fulfilled (/usr/local/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:4:58)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+[warn] ⚠  We were unable to load your functions code. (see above)
+[debug] [2019-10-25T14:41:02.221Z] File /work/web/front-end/mappicker/functions/index.js changed, reloading triggers
+[debug] [2019-10-25T14:41:03.388Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[debug] [2019-10-25T14:41:03.388Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-25T14:41:03.390Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-25T14:41:03.390Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T14:41:03.391Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[warn] ⚠  /work/web/front-end/mappicker/functions/index.js:47
+    }).catch(err) {
+                  ^
+
+SyntaxError: Unexpected token '{'
+    at Module._compile (internal/modules/cjs/loader.js:881:18)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:962:10)
+    at Module.load (internal/modules/cjs/loader.js:798:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:711:12)
+    at Module.require (internal/modules/cjs/loader.js:838:19)
+    at require (internal/modules/cjs/helpers.js:74:18)
+    at /usr/local/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:677:33
+    at Generator.next (<anonymous>)
+    at fulfilled (/usr/local/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:4:58)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+[warn] ⚠  We were unable to load your functions code. (see above)
+[debug] [2019-10-25T15:12:32.305Z] File /work/web/front-end/mappicker/functions/index.js changed, reloading triggers
+[debug] [2019-10-25T15:12:33.496Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[debug] [2019-10-25T15:12:33.497Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-25T15:12:33.498Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-25T15:12:33.498Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T15:12:33.499Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[warn] ⚠  /work/web/front-end/mappicker/functions/index.js:47
+    }).catch(err) {
+                  ^
+
+SyntaxError: Unexpected token '{'
+    at Module._compile (internal/modules/cjs/loader.js:881:18)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:962:10)
+    at Module.load (internal/modules/cjs/loader.js:798:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:711:12)
+    at Module.require (internal/modules/cjs/loader.js:838:19)
+    at require (internal/modules/cjs/helpers.js:74:18)
+    at /usr/local/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:677:33
+    at Generator.next (<anonymous>)
+    at fulfilled (/usr/local/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:4:58)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+[warn] ⚠  We were unable to load your functions code. (see above)
+[debug] [2019-10-25T15:20:49.013Z] File /work/web/front-end/mappicker/functions/index.js changed, reloading triggers
+[debug] [2019-10-25T15:20:50.200Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[debug] [2019-10-25T15:20:50.200Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-25T15:20:50.202Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-25T15:20:50.202Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T15:20:50.203Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[info] ✔  functions[getUserInfo]: http function initialized (http://localhost:5000/mapick-rb/us-central1/getUserInfo).
+[debug] [2019-10-25T15:21:03.276Z] ----------------------------------------------------------------------
+[debug] [2019-10-25T15:21:03.277Z] Command:       /usr/bin/node /usr/local/bin/firebase serve --only functions
+[debug] [2019-10-25T15:21:03.277Z] CLI Version:   7.4.0
+[debug] [2019-10-25T15:21:03.277Z] Platform:      linux
+[debug] [2019-10-25T15:21:03.277Z] Node Version:  v12.11.1
+[debug] [2019-10-25T15:21:03.277Z] Time:          Fri Oct 25 2019 19:21:03 GMT+0400 (GMT+04:00)
+[debug] [2019-10-25T15:21:03.277Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-10-25T15:21:03.283Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-10-25T15:21:03.283Z] > authorizing via signed-in user
+[debug] [2019-10-25T15:21:03.283Z] [iam] checking project mapick-rb for permissions ["firebase.projects.get"]
+[debug] [2019-10-25T15:21:03.284Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2019-10-25T15:21:03.284Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2019-10-25T15:21:03.438Z] <<< HTTP RESPONSE 200
+[debug] [2019-10-25T15:21:03.467Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/mapick-rb:testIamPermissions  
+
+[debug] [2019-10-25T15:21:04.497Z] <<< HTTP RESPONSE 200
+[debug] [2019-10-25T15:21:04.499Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/mapick-rb  
+ 
+[debug] [2019-10-25T15:21:04.816Z] <<< HTTP RESPONSE 200
+[warn] ⚠  Your requested "node" version "8" doesn't match your global version "12"
+[info] ✔  functions: Emulator started at http://localhost:5000
+[info] i  functions: Watching "/work/web/front-end/mappicker/functions" for Cloud Functions...
+[debug] [2019-10-25T15:21:05.254Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[debug] [2019-10-25T15:21:05.254Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-25T15:21:05.255Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-25T15:21:05.255Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T15:21:05.255Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[info] ✔  functions[testDB]: http function initialized (http://localhost:5000/mapick-rb/us-central1/testDB).
+[info] ✔  functions[getUserInfo]: http function initialized (http://localhost:5000/mapick-rb/us-central1/getUserInfo).
+[debug] [2019-10-25T15:21:40.139Z] Accepted request GET /mapick-rb/us-central1/getUserInfo?user_id=jG2NFdRMtMTaHqJLCp0mcU9DYID2 --> getUserInfo
+[debug] [2019-10-25T15:21:40.280Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[info] i  functions: Beginning execution of "getUserInfo"
+[debug] [2019-10-25T15:21:40.281Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-25T15:21:40.282Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-25T15:21:40.282Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T15:21:40.283Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T15:21:40.346Z] [runtime-status] Trigger "getUserInfo" has been found, beginning invocation! {}
+[debug] [2019-10-25T15:21:40.346Z] [runtime-status]  {"httpsTrigger":{},"name":"getUserInfo","entryPoint":"getUserInfo"}
+[debug] [2019-10-25T15:21:40.346Z] [runtime-status] Running getUserInfo in mode HTTPS {}
+[debug] [2019-10-25T15:21:40.350Z] {"socketPath":"/tmp/firebase_emulator_invocation_16161.sock"}
+[debug] [2019-10-25T15:21:40.352Z] [functions] Runtime ready! Sending request! {"socketPath":"/tmp/firebase_emulator_invocation_16161.sock"}
+[debug] [2019-10-25T15:21:40.356Z] [runtime-status] Ephemeral server used! {}
+[debug] [2019-10-25T15:21:40.357Z] [runtime-status] Ephemeral server survived. {}
+[warn] ⚠  functions: Error: Value for argument "documentPath" is not a valid resource path. Path must be a non-empty string.
+    at Object.validateResourcePath (/work/web/front-end/mappicker/functions/node_modules/@google-cloud/firestore/build/src/path.js:407:15)
+    at CollectionReference.doc (/work/web/front-end/mappicker/functions/node_modules/@google-cloud/firestore/build/src/reference.js:1740:20)
+    at /work/web/front-end/mappicker/functions/index.js:40:28
+    at /usr/local/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:608:20
+    at /usr/local/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:582:19
+    at Generator.next (<anonymous>)
+    at /usr/local/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:7:71
+    at new Promise (<anonymous>)
+    at __awaiter (/usr/local/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:3:12)
+    at Run (/usr/local/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:575:12)
+[warn] ⚠  Your function was killed because it raised an unhandled error.
+[debug] [2019-10-25T15:24:44.294Z] File /work/web/front-end/mappicker/functions/index.js changed, reloading triggers
+[debug] [2019-10-25T15:24:45.497Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[debug] [2019-10-25T15:24:45.497Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-25T15:24:45.499Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-25T15:24:45.500Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T15:24:45.500Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T15:25:16.782Z] File /work/web/front-end/mappicker/functions/index.js changed, reloading triggers
+[debug] [2019-10-25T15:25:17.962Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[debug] [2019-10-25T15:25:17.963Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-25T15:25:17.963Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-25T15:25:17.964Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T15:25:17.964Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T15:44:03.070Z] Accepted request GET /mapick-rb/us-central1/getUserInfo?user_id=jG2NFdRMtMTaHqJLCp0mcU9DYID2 --> getUserInfo
+[debug] [2019-10-25T15:44:03.202Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[info] i  functions: Beginning execution of "getUserInfo"
+[debug] [2019-10-25T15:44:03.203Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-25T15:44:03.204Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-25T15:44:03.204Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T15:44:03.205Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T15:44:03.268Z] [runtime-status] Trigger "getUserInfo" has been found, beginning invocation! {}
+[debug] [2019-10-25T15:44:03.268Z] [runtime-status]  {"httpsTrigger":{},"name":"getUserInfo","entryPoint":"getUserInfo"}
+[debug] [2019-10-25T15:44:03.268Z] [runtime-status] Running getUserInfo in mode HTTPS {}
+[debug] [2019-10-25T15:44:03.271Z] {"socketPath":"/tmp/firebase_emulator_invocation_26427.sock"}
+[debug] [2019-10-25T15:44:03.272Z] [functions] Runtime ready! Sending request! {"socketPath":"/tmp/firebase_emulator_invocation_26427.sock"}
+[debug] [2019-10-25T15:44:03.277Z] [runtime-status] Ephemeral server used! {}
+[info] >  [object Object]
+[debug] [2019-10-25T15:44:03.278Z] [runtime-status] Ephemeral server survived. {}
+[debug] [2019-10-25T15:44:30.503Z] File /work/web/front-end/mappicker/functions/index.js changed, reloading triggers
+[debug] [2019-10-25T15:44:31.662Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[debug] [2019-10-25T15:44:31.662Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-25T15:44:31.664Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-25T15:44:31.664Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T15:44:31.665Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T15:45:13.052Z] Accepted request GET /mapick-rb/us-central1/getUserInfo?user_id=jG2NFdRMtMTaHqJLCp0mcU9DYID2 --> getUserInfo
+[debug] [2019-10-25T15:45:13.194Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[info] i  functions: Beginning execution of "getUserInfo"
+[debug] [2019-10-25T15:45:13.194Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-25T15:45:13.195Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-25T15:45:13.196Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T15:45:13.196Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T15:45:13.260Z] [runtime-status] Trigger "getUserInfo" has been found, beginning invocation! {}
+[debug] [2019-10-25T15:45:13.260Z] [runtime-status]  {"httpsTrigger":{},"name":"getUserInfo","entryPoint":"getUserInfo"}
+[debug] [2019-10-25T15:45:13.260Z] [runtime-status] Running getUserInfo in mode HTTPS {}
+[debug] [2019-10-25T15:45:13.264Z] {"socketPath":"/tmp/firebase_emulator_invocation_26987.sock"}
+[debug] [2019-10-25T15:45:13.265Z] [functions] Runtime ready! Sending request! {"socketPath":"/tmp/firebase_emulator_invocation_26987.sock"}
+[debug] [2019-10-25T15:45:13.270Z] [runtime-status] Ephemeral server used! {}
+[info] >  jG2NFdRMtMTaHqJLCp0mcU9DYID2
+[debug] [2019-10-25T15:45:13.428Z] [runtime-status] Ephemeral server survived. {}
+[info] >  undefined
+[info] i  functions: Finished "getUserInfo" in ~1s
+[debug] [2019-10-25T15:49:58.899Z] File /work/web/front-end/mappicker/functions/index.js changed, reloading triggers
+[debug] [2019-10-25T15:50:00.067Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[debug] [2019-10-25T15:50:00.067Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-25T15:50:00.068Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-25T15:50:00.069Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T15:50:00.069Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T15:50:01.740Z] Accepted request GET /mapick-rb/us-central1/getUserInfo?user_id=jG2NFdRMtMTaHqJLCp0mcU9DYID2 --> getUserInfo
+[debug] [2019-10-25T15:50:01.876Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[info] i  functions: Beginning execution of "getUserInfo"
+[debug] [2019-10-25T15:50:01.876Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-25T15:50:01.877Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-25T15:50:01.877Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T15:50:01.878Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T15:50:01.942Z] [runtime-status] Trigger "getUserInfo" has been found, beginning invocation! {}
+[debug] [2019-10-25T15:50:01.942Z] [runtime-status]  {"httpsTrigger":{},"name":"getUserInfo","entryPoint":"getUserInfo"}
+[debug] [2019-10-25T15:50:01.942Z] [runtime-status] Running getUserInfo in mode HTTPS {}
+[debug] [2019-10-25T15:50:01.945Z] {"socketPath":"/tmp/firebase_emulator_invocation_29173.sock"}
+[debug] [2019-10-25T15:50:01.946Z] [functions] Runtime ready! Sending request! {"socketPath":"/tmp/firebase_emulator_invocation_29173.sock"}
+[debug] [2019-10-25T15:50:01.950Z] [runtime-status] Ephemeral server used! {}
+[info] >  jG2NFdRMtMTaHqJLCp0mcU9DYID2
+[debug] [2019-10-25T15:50:02.108Z] [runtime-status] Ephemeral server survived. {}
+[info] >  undefined
+[info] i  functions: Finished "getUserInfo" in ~1s
+[debug] [2019-10-25T15:51:07.770Z] File /work/web/front-end/mappicker/functions/index.js changed, reloading triggers
+[debug] [2019-10-25T15:51:08.934Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[debug] [2019-10-25T15:51:08.935Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-25T15:51:08.936Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-25T15:51:08.937Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T15:51:08.937Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T16:51:15.997Z] File /work/web/front-end/mappicker/functions/index.js changed, reloading triggers
+[debug] [2019-10-25T16:51:17.192Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[debug] [2019-10-25T16:51:17.193Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-25T16:51:17.194Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-25T16:51:17.195Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T16:51:17.195Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T16:51:38.175Z] File /work/web/front-end/mappicker/functions/index.js changed, reloading triggers
+[debug] [2019-10-25T16:51:39.354Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[debug] [2019-10-25T16:51:39.355Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-25T16:51:39.356Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-25T16:51:39.356Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T16:51:39.357Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T16:52:15.690Z] File /work/web/front-end/mappicker/functions/index.js changed, reloading triggers
+[debug] [2019-10-25T16:52:16.860Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[debug] [2019-10-25T16:52:16.860Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-25T16:52:16.862Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-25T16:52:16.862Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T16:52:16.862Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T17:12:00.725Z] File /work/web/front-end/mappicker/functions/dbTypes.js changed, reloading triggers
+[debug] [2019-10-25T17:12:01.921Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[debug] [2019-10-25T17:12:01.921Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-25T17:12:01.923Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-25T17:12:01.923Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T17:12:01.924Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T17:12:38.869Z] File /work/web/front-end/mappicker/functions/index.js changed, reloading triggers
+[debug] [2019-10-25T17:12:40.062Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[debug] [2019-10-25T17:12:40.062Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-25T17:12:40.063Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-25T17:12:40.064Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T17:12:40.064Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T17:12:47.014Z] Accepted request GET /mapick-rb/us-central1/getUserInfo?user_id=jG2NFdRMtMTaHqJLCp0mcU9DYID2 --> getUserInfo
+[debug] [2019-10-25T17:12:47.153Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[info] i  functions: Beginning execution of "getUserInfo"
+[debug] [2019-10-25T17:12:47.153Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-25T17:12:47.154Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-25T17:12:47.155Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T17:12:47.156Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T17:12:47.218Z] [runtime-status] Trigger "getUserInfo" has been found, beginning invocation! {}
+[debug] [2019-10-25T17:12:47.218Z] [runtime-status]  {"httpsTrigger":{},"name":"getUserInfo","entryPoint":"getUserInfo"}
+[debug] [2019-10-25T17:12:47.218Z] [runtime-status] Running getUserInfo in mode HTTPS {}
+[debug] [2019-10-25T17:12:47.222Z] {"socketPath":"/tmp/firebase_emulator_invocation_3855.sock"}
+[debug] [2019-10-25T17:12:47.222Z] [functions] Runtime ready! Sending request! {"socketPath":"/tmp/firebase_emulator_invocation_3855.sock"}
+[debug] [2019-10-25T17:12:47.227Z] [runtime-status] Ephemeral server used! {}
+[info] >  jG2NFdRMtMTaHqJLCp0mcU9DYID2
+[debug] [2019-10-25T17:12:47.227Z] [runtime-status] Ephemeral server survived. {}
+[warn] ⚠  functions: Error: Value for argument "collectionPath" is not a valid resource path. Path must be a non-empty string.
+    at Object.validateResourcePath (/work/web/front-end/mappicker/functions/node_modules/@google-cloud/firestore/build/src/path.js:407:15)
+    at Firestore.collection (/work/web/front-end/mappicker/functions/node_modules/@google-cloud/firestore/build/src/index.js:437:16)
+    at /work/web/front-end/mappicker/functions/index.js:39:8
+    at /usr/local/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:608:20
+    at /usr/local/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:582:19
+    at Generator.next (<anonymous>)
+    at /usr/local/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:7:71
+    at new Promise (<anonymous>)
+    at __awaiter (/usr/local/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:3:12)
+    at Run (/usr/local/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:575:12)
+[warn] ⚠  Your function was killed because it raised an unhandled error.
+[debug] [2019-10-25T17:13:26.453Z] File /work/web/front-end/mappicker/functions/index.js changed, reloading triggers
+[debug] [2019-10-25T17:13:27.609Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[debug] [2019-10-25T17:13:27.610Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-25T17:13:27.611Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-25T17:13:27.611Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T17:13:27.612Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[info] >  { dbTypes: { users: 'users' } }
+[debug] [2019-10-25T17:13:48.416Z] File /work/web/front-end/mappicker/functions/index.js changed, reloading triggers
+[debug] [2019-10-25T17:13:49.579Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[debug] [2019-10-25T17:13:49.579Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-25T17:13:49.581Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-25T17:13:49.581Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T17:13:49.582Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[info] >  undefined
+[debug] [2019-10-25T17:14:07.564Z] File /work/web/front-end/mappicker/functions/dbTypes.js changed, reloading triggers
+[debug] [2019-10-25T17:14:08.707Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[debug] [2019-10-25T17:14:08.707Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-25T17:14:08.708Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-25T17:14:08.709Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T17:14:08.709Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[warn] ⚠  /work/web/front-end/mappicker/functions/dbTypes.js:1
+module.exports {
+               ^
+
+SyntaxError: Unexpected token '{'
+    at Module._compile (internal/modules/cjs/loader.js:881:18)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:962:10)
+    at Module.load (internal/modules/cjs/loader.js:798:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:711:12)
+    at Module.require (internal/modules/cjs/loader.js:838:19)
+    at require (internal/modules/cjs/helpers.js:74:18)
+    at Object.<anonymous> (/work/web/front-end/mappicker/functions/index.js:4:17)
+    at Module._compile (internal/modules/cjs/loader.js:945:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:962:10)
+    at Module.load (internal/modules/cjs/loader.js:798:32)
+[warn] ⚠  We were unable to load your functions code. (see above)
+[debug] [2019-10-25T17:14:19.321Z] File /work/web/front-end/mappicker/functions/dbTypes.js changed, reloading triggers
+[debug] [2019-10-25T17:14:20.490Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[debug] [2019-10-25T17:14:20.491Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-25T17:14:20.492Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-25T17:14:20.492Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T17:14:20.493Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[warn] ⚠  /work/web/front-end/mappicker/functions/dbTypes.js:1
+module.exports.{
+               ^
+
+SyntaxError: Unexpected token '{'
+    at Module._compile (internal/modules/cjs/loader.js:881:18)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:962:10)
+    at Module.load (internal/modules/cjs/loader.js:798:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:711:12)
+    at Module.require (internal/modules/cjs/loader.js:838:19)
+    at require (internal/modules/cjs/helpers.js:74:18)
+    at Object.<anonymous> (/work/web/front-end/mappicker/functions/index.js:4:17)
+    at Module._compile (internal/modules/cjs/loader.js:945:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:962:10)
+    at Module.load (internal/modules/cjs/loader.js:798:32)
+[warn] ⚠  We were unable to load your functions code. (see above)
+[debug] [2019-10-25T17:14:26.062Z] File /work/web/front-end/mappicker/functions/index.js changed, reloading triggers
+[debug] [2019-10-25T17:14:27.224Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[debug] [2019-10-25T17:14:27.224Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-25T17:14:27.225Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-25T17:14:27.225Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T17:14:27.226Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[warn] ⚠  /work/web/front-end/mappicker/functions/dbTypes.js:1
+module.exports.{
+               ^
+
+SyntaxError: Unexpected token '{'
+    at Module._compile (internal/modules/cjs/loader.js:881:18)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:962:10)
+    at Module.load (internal/modules/cjs/loader.js:798:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:711:12)
+    at Module.require (internal/modules/cjs/loader.js:838:19)
+    at require (internal/modules/cjs/helpers.js:74:18)
+    at Object.<anonymous> (/work/web/front-end/mappicker/functions/index.js:4:17)
+    at Module._compile (internal/modules/cjs/loader.js:945:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:962:10)
+    at Module.load (internal/modules/cjs/loader.js:798:32)
+[warn] ⚠  We were unable to load your functions code. (see above)
+[debug] [2019-10-25T17:14:28.045Z] File /work/web/front-end/mappicker/functions/index.js changed, reloading triggers
+[debug] [2019-10-25T17:14:29.216Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[debug] [2019-10-25T17:14:29.216Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-25T17:14:29.217Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-25T17:14:29.218Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T17:14:29.218Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[warn] ⚠  /work/web/front-end/mappicker/functions/dbTypes.js:1
+module.exports.{
+               ^
+
+SyntaxError: Unexpected token '{'
+    at Module._compile (internal/modules/cjs/loader.js:881:18)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:962:10)
+    at Module.load (internal/modules/cjs/loader.js:798:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:711:12)
+    at Module.require (internal/modules/cjs/loader.js:838:19)
+    at require (internal/modules/cjs/helpers.js:74:18)
+    at Object.<anonymous> (/work/web/front-end/mappicker/functions/index.js:4:17)
+    at Module._compile (internal/modules/cjs/loader.js:945:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:962:10)
+    at Module.load (internal/modules/cjs/loader.js:798:32)
+[warn] ⚠  We were unable to load your functions code. (see above)
+[debug] [2019-10-25T17:14:35.943Z] File /work/web/front-end/mappicker/functions/dbTypes.js changed, reloading triggers
+[debug] [2019-10-25T17:14:37.144Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[debug] [2019-10-25T17:14:37.145Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-25T17:14:37.145Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-25T17:14:37.146Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T17:14:37.146Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[info] >  undefined
+[debug] [2019-10-25T17:14:44.894Z] File /work/web/front-end/mappicker/functions/index.js changed, reloading triggers
+[debug] [2019-10-25T17:14:46.047Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[debug] [2019-10-25T17:14:46.047Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-25T17:14:46.048Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-25T17:14:46.049Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T17:14:46.050Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[warn] ⚠  ReferenceError: dbTypes is not defined
+    at Object.<anonymous> (/work/web/front-end/mappicker/functions/index.js:8:13)
+    at Module._compile (internal/modules/cjs/loader.js:945:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:962:10)
+    at Module.load (internal/modules/cjs/loader.js:798:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:711:12)
+    at Module.require (internal/modules/cjs/loader.js:838:19)
+    at require (internal/modules/cjs/helpers.js:74:18)
+    at /usr/local/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:677:33
+    at Generator.next (<anonymous>)
+    at fulfilled (/usr/local/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:4:58)
+[warn] ⚠  We were unable to load your functions code. (see above)
+[debug] [2019-10-25T17:14:57.069Z] File /work/web/front-end/mappicker/functions/index.js changed, reloading triggers
+[debug] [2019-10-25T17:14:58.262Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[debug] [2019-10-25T17:14:58.262Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-25T17:14:58.263Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-25T17:14:58.263Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T17:14:58.264Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[info] >  undefined
+[debug] [2019-10-25T17:24:27.608Z] File /work/web/front-end/mappicker/functions/dbTypes.js changed, reloading triggers
+[debug] [2019-10-25T17:24:28.774Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[debug] [2019-10-25T17:24:28.774Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-25T17:24:28.776Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-25T17:24:28.776Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T17:24:28.777Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[info] >  undefined
+[debug] [2019-10-25T17:24:41.655Z] File /work/web/front-end/mappicker/functions/index.js changed, reloading triggers
+[debug] [2019-10-25T17:24:42.832Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[debug] [2019-10-25T17:24:42.832Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-25T17:24:42.833Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-25T17:24:42.834Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T17:24:42.834Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[info] >  users
+[debug] [2019-10-25T17:25:07.637Z] File /work/web/front-end/mappicker/functions/index.js changed, reloading triggers
+[debug] [2019-10-25T17:25:08.796Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[debug] [2019-10-25T17:25:08.797Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-25T17:25:08.798Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-25T17:25:08.798Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T17:25:08.799Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[info] >  users
+[debug] [2019-10-25T17:25:20.927Z] File /work/web/front-end/mappicker/functions/index.js changed, reloading triggers
+[debug] [2019-10-25T17:25:22.073Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[debug] [2019-10-25T17:25:22.074Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-25T17:25:22.075Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-25T17:25:22.075Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T17:25:22.076Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T17:25:24.099Z] Accepted request GET /mapick-rb/us-central1/getUserInfo?user_id=jG2NFdRMtMTaHqJLCp0mcU9DYID2 --> getUserInfo
+[debug] [2019-10-25T17:25:24.242Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[info] i  functions: Beginning execution of "getUserInfo"
+[debug] [2019-10-25T17:25:24.242Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-25T17:25:24.243Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-25T17:25:24.244Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T17:25:24.245Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T17:25:24.309Z] [runtime-status] Trigger "getUserInfo" has been found, beginning invocation! {}
+[debug] [2019-10-25T17:25:24.309Z] [runtime-status]  {"httpsTrigger":{},"name":"getUserInfo","entryPoint":"getUserInfo"}
+[debug] [2019-10-25T17:25:24.309Z] [runtime-status] Running getUserInfo in mode HTTPS {}
+[debug] [2019-10-25T17:25:24.313Z] {"socketPath":"/tmp/firebase_emulator_invocation_9943.sock"}
+[debug] [2019-10-25T17:25:24.314Z] [functions] Runtime ready! Sending request! {"socketPath":"/tmp/firebase_emulator_invocation_9943.sock"}
+[debug] [2019-10-25T17:25:24.319Z] [runtime-status] Ephemeral server used! {}
+[info] >  jG2NFdRMtMTaHqJLCp0mcU9DYID2
+[debug] [2019-10-25T17:25:24.474Z] [runtime-status] Ephemeral server survived. {}
+[info] >  undefined
+[info] i  functions: Finished "getUserInfo" in ~1s
+[debug] [2019-10-25T17:27:17.667Z] Accepted request GET /mapick-rb/us-central1/getUserInfo?user_id=defaultUserTemplate --> getUserInfo
+[debug] [2019-10-25T17:27:17.819Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[info] i  functions: Beginning execution of "getUserInfo"
+[debug] [2019-10-25T17:27:17.819Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-25T17:27:17.820Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-25T17:27:17.821Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T17:27:17.821Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T17:27:17.886Z] [runtime-status] Trigger "getUserInfo" has been found, beginning invocation! {}
+[debug] [2019-10-25T17:27:17.886Z] [runtime-status]  {"httpsTrigger":{},"name":"getUserInfo","entryPoint":"getUserInfo"}
+[debug] [2019-10-25T17:27:17.886Z] [runtime-status] Running getUserInfo in mode HTTPS {}
+[debug] [2019-10-25T17:27:17.890Z] {"socketPath":"/tmp/firebase_emulator_invocation_10829.sock"}
+[debug] [2019-10-25T17:27:17.890Z] [functions] Runtime ready! Sending request! {"socketPath":"/tmp/firebase_emulator_invocation_10829.sock"}
+[debug] [2019-10-25T17:27:17.896Z] [runtime-status] Ephemeral server used! {}
+[info] >  defaultUserTemplate
+[debug] [2019-10-25T17:27:18.051Z] [runtime-status] Ephemeral server survived. {}
+[info] >  undefined
+[info] i  functions: Finished "getUserInfo" in ~1s
+[debug] [2019-10-25T17:31:18.373Z] Accepted request GET /mapick-rb/us-central1/getUserInfo?user_id=defaultUserTemplate --> getUserInfo
+[debug] [2019-10-25T17:31:18.508Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[info] i  functions: Beginning execution of "getUserInfo"
+[debug] [2019-10-25T17:31:18.508Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-25T17:31:18.509Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-25T17:31:18.515Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T17:31:18.515Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T17:31:18.573Z] [runtime-status] Trigger "getUserInfo" has been found, beginning invocation! {}
+[debug] [2019-10-25T17:31:18.573Z] [runtime-status]  {"httpsTrigger":{},"name":"getUserInfo","entryPoint":"getUserInfo"}
+[debug] [2019-10-25T17:31:18.574Z] [runtime-status] Running getUserInfo in mode HTTPS {}
+[debug] [2019-10-25T17:31:18.578Z] {"socketPath":"/tmp/firebase_emulator_invocation_13056.sock"}
+[debug] [2019-10-25T17:31:18.578Z] [functions] Runtime ready! Sending request! {"socketPath":"/tmp/firebase_emulator_invocation_13056.sock"}
+[debug] [2019-10-25T17:31:18.583Z] [runtime-status] Ephemeral server used! {}
+[info] >  defaultUserTemplate
+[debug] [2019-10-25T17:31:18.739Z] [runtime-status] Ephemeral server survived. {}
+[info] >  undefined
+[info] i  functions: Finished "getUserInfo" in ~1s
+[debug] [2019-10-25T17:31:47.081Z] Accepted request GET /mapick-rb/us-central1/getUserInfo?user_id=123 --> getUserInfo
+[debug] [2019-10-25T17:31:47.209Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[info] i  functions: Beginning execution of "getUserInfo"
+[debug] [2019-10-25T17:31:47.210Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-25T17:31:47.211Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-25T17:31:47.211Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T17:31:47.212Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T17:31:47.275Z] [runtime-status] Trigger "getUserInfo" has been found, beginning invocation! {}
+[debug] [2019-10-25T17:31:47.275Z] [runtime-status]  {"httpsTrigger":{},"name":"getUserInfo","entryPoint":"getUserInfo"}
+[debug] [2019-10-25T17:31:47.275Z] [runtime-status] Running getUserInfo in mode HTTPS {}
+[debug] [2019-10-25T17:31:47.279Z] {"socketPath":"/tmp/firebase_emulator_invocation_13318.sock"}
+[debug] [2019-10-25T17:31:47.280Z] [functions] Runtime ready! Sending request! {"socketPath":"/tmp/firebase_emulator_invocation_13318.sock"}
+[debug] [2019-10-25T17:31:47.284Z] [runtime-status] Ephemeral server used! {}
+[info] >  123
+[debug] [2019-10-25T17:31:47.441Z] [runtime-status] Ephemeral server survived. {}
+[info] >  undefined
+[info] i  functions: Finished "getUserInfo" in ~1s
+[debug] [2019-10-25T17:32:37.883Z] File /work/web/front-end/mappicker/functions/index.js changed, reloading triggers
+[debug] [2019-10-25T17:32:39.073Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[debug] [2019-10-25T17:32:39.074Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-25T17:32:39.075Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-25T17:32:39.075Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T17:32:39.076Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T17:32:40.854Z] Accepted request GET /mapick-rb/us-central1/getUserInfo?user_id=123 --> getUserInfo
+[debug] [2019-10-25T17:32:40.992Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[info] i  functions: Beginning execution of "getUserInfo"
+[debug] [2019-10-25T17:32:40.992Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-25T17:32:40.993Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-25T17:32:40.994Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T17:32:40.994Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T17:32:41.056Z] [runtime-status] Trigger "getUserInfo" has been found, beginning invocation! {}
+[debug] [2019-10-25T17:32:41.056Z] [runtime-status]  {"httpsTrigger":{},"name":"getUserInfo","entryPoint":"getUserInfo"}
+[debug] [2019-10-25T17:32:41.056Z] [runtime-status] Running getUserInfo in mode HTTPS {}
+[debug] [2019-10-25T17:32:41.060Z] {"socketPath":"/tmp/firebase_emulator_invocation_13772.sock"}
+[debug] [2019-10-25T17:32:41.061Z] [functions] Runtime ready! Sending request! {"socketPath":"/tmp/firebase_emulator_invocation_13772.sock"}
+[debug] [2019-10-25T17:32:41.065Z] [runtime-status] Ephemeral server used! {}
+[info] >  123
+[debug] [2019-10-25T17:32:41.220Z] [runtime-status] Ephemeral server survived. {}
+[info] >  undefined
+[info] >  undefined
+[info] i  functions: Finished "getUserInfo" in ~1s
+[debug] [2019-10-25T17:33:09.302Z] File /work/web/front-end/mappicker/functions/index.js changed, reloading triggers
+[debug] [2019-10-25T17:33:10.482Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[debug] [2019-10-25T17:33:10.482Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-25T17:33:10.483Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-25T17:33:10.484Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T17:33:10.484Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[warn] ⚠  /work/web/front-end/mappicker/functions/index.js:42
+            console.log("resp "respObj);
+                        ^^^^^^^
+
+SyntaxError: missing ) after argument list
+    at Module._compile (internal/modules/cjs/loader.js:881:18)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:962:10)
+    at Module.load (internal/modules/cjs/loader.js:798:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:711:12)
+    at Module.require (internal/modules/cjs/loader.js:838:19)
+    at require (internal/modules/cjs/helpers.js:74:18)
+    at /usr/local/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:677:33
+    at Generator.next (<anonymous>)
+    at fulfilled (/usr/local/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:4:58)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+[warn] ⚠  We were unable to load your functions code. (see above)
+[debug] [2019-10-25T17:33:11.884Z] Accepted request GET /mapick-rb/us-central1/getUserInfo?user_id=123 --> getUserInfo
+[debug] [2019-10-25T17:33:12.024Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[info] i  functions: Beginning execution of "getUserInfo"
+[debug] [2019-10-25T17:33:12.024Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-25T17:33:12.026Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-25T17:33:12.026Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T17:33:12.027Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[warn] ⚠  /work/web/front-end/mappicker/functions/index.js:42
+            console.log("resp "respObj);
+                        ^^^^^^^
+
+SyntaxError: missing ) after argument list
+    at Module._compile (internal/modules/cjs/loader.js:881:18)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:962:10)
+    at Module.load (internal/modules/cjs/loader.js:798:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:711:12)
+    at Module.require (internal/modules/cjs/loader.js:838:19)
+    at require (internal/modules/cjs/helpers.js:74:18)
+    at /usr/local/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:677:33
+    at Generator.next (<anonymous>)
+    at fulfilled (/usr/local/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:4:58)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+[warn] ⚠  We were unable to load your functions code. (see above)
+[debug] [2019-10-25T17:33:17.165Z] File /work/web/front-end/mappicker/functions/index.js changed, reloading triggers
+[debug] [2019-10-25T17:33:18.358Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[debug] [2019-10-25T17:33:18.358Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-25T17:33:18.359Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-25T17:33:18.360Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T17:33:18.360Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T17:33:21.459Z] Accepted request GET /mapick-rb/us-central1/getUserInfo?user_id=123 --> getUserInfo
+[debug] [2019-10-25T17:33:21.611Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[info] i  functions: Beginning execution of "getUserInfo"
+[debug] [2019-10-25T17:33:21.611Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-25T17:33:21.613Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-25T17:33:21.613Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T17:33:21.614Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T17:33:21.677Z] [runtime-status] Trigger "getUserInfo" has been found, beginning invocation! {}
+[debug] [2019-10-25T17:33:21.677Z] [runtime-status]  {"httpsTrigger":{},"name":"getUserInfo","entryPoint":"getUserInfo"}
+[debug] [2019-10-25T17:33:21.677Z] [runtime-status] Running getUserInfo in mode HTTPS {}
+[debug] [2019-10-25T17:33:21.681Z] {"socketPath":"/tmp/firebase_emulator_invocation_14149.sock"}
+[debug] [2019-10-25T17:33:21.681Z] [functions] Runtime ready! Sending request! {"socketPath":"/tmp/firebase_emulator_invocation_14149.sock"}
+[debug] [2019-10-25T17:33:21.686Z] [runtime-status] Ephemeral server used! {}
+[info] >  123
+[debug] [2019-10-25T17:33:21.839Z] [runtime-status] Ephemeral server survived. {}
+[info] >  resp  undefined
+[info] i  functions: Finished "getUserInfo" in ~1s
+[debug] [2019-10-25T17:34:21.416Z] File /work/web/front-end/mappicker/functions/index.js changed, reloading triggers
+[debug] [2019-10-25T17:34:22.587Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[debug] [2019-10-25T17:34:22.587Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-25T17:34:22.588Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-25T17:34:22.589Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T17:34:22.589Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T17:34:35.186Z] File /work/web/front-end/mappicker/functions/index.js changed, reloading triggers
+[debug] [2019-10-25T17:34:36.390Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[debug] [2019-10-25T17:34:36.390Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-25T17:34:36.391Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-25T17:34:36.392Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T17:34:36.392Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T17:34:39.176Z] Accepted request GET /mapick-rb/us-central1/getUserInfo?user_id=123 --> getUserInfo
+[debug] [2019-10-25T17:34:39.319Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[info] i  functions: Beginning execution of "getUserInfo"
+[debug] [2019-10-25T17:34:39.319Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-25T17:34:39.321Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-25T17:34:39.321Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T17:34:39.322Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T17:34:39.384Z] [runtime-status] Trigger "getUserInfo" has been found, beginning invocation! {}
+[debug] [2019-10-25T17:34:39.384Z] [runtime-status]  {"httpsTrigger":{},"name":"getUserInfo","entryPoint":"getUserInfo"}
+[debug] [2019-10-25T17:34:39.384Z] [runtime-status] Running getUserInfo in mode HTTPS {}
+[debug] [2019-10-25T17:34:39.388Z] {"socketPath":"/tmp/firebase_emulator_invocation_14797.sock"}
+[debug] [2019-10-25T17:34:39.389Z] [functions] Runtime ready! Sending request! {"socketPath":"/tmp/firebase_emulator_invocation_14797.sock"}
+[debug] [2019-10-25T17:34:39.394Z] [runtime-status] Ephemeral server used! {}
+[info] >  123
+[debug] [2019-10-25T17:34:39.552Z] [runtime-status] Ephemeral server survived. {}
+[info] i  functions: Finished "getUserInfo" in ~1s
+[debug] [2019-10-25T17:35:13.337Z] File /work/web/front-end/mappicker/functions/index.js changed, reloading triggers
+[debug] [2019-10-25T17:35:14.506Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[debug] [2019-10-25T17:35:14.506Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-25T17:35:14.507Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-25T17:35:14.508Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T17:35:14.508Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T17:35:15.961Z] Accepted request GET /mapick-rb/us-central1/getUserInfo?user_id=123 --> getUserInfo
+[debug] [2019-10-25T17:35:16.100Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[info] i  functions: Beginning execution of "getUserInfo"
+[debug] [2019-10-25T17:35:16.100Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-25T17:35:16.101Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-25T17:35:16.102Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T17:35:16.103Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T17:35:16.166Z] [runtime-status] Trigger "getUserInfo" has been found, beginning invocation! {}
+[debug] [2019-10-25T17:35:16.166Z] [runtime-status]  {"httpsTrigger":{},"name":"getUserInfo","entryPoint":"getUserInfo"}
+[debug] [2019-10-25T17:35:16.167Z] [runtime-status] Running getUserInfo in mode HTTPS {}
+[debug] [2019-10-25T17:35:16.170Z] {"socketPath":"/tmp/firebase_emulator_invocation_15107.sock"}
+[debug] [2019-10-25T17:35:16.170Z] [functions] Runtime ready! Sending request! {"socketPath":"/tmp/firebase_emulator_invocation_15107.sock"}
+[debug] [2019-10-25T17:35:16.176Z] [runtime-status] Ephemeral server used! {}
+[info] >  123
+[debug] [2019-10-25T17:35:16.331Z] [runtime-status] Ephemeral server survived. {}
+[info] >  Error: wrong user
+[info] >      at /work/web/front-end/mappicker/functions/index.js:45:23
+[info] >      at processTicksAndRejections (internal/process/task_queues.js:93:5)
+[info] i  functions: Finished "getUserInfo" in ~1s
+[debug] [2019-10-25T17:36:14.579Z] File /work/web/front-end/mappicker/functions/index.js changed, reloading triggers
+[debug] [2019-10-25T17:36:15.779Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[debug] [2019-10-25T17:36:15.779Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-25T17:36:15.780Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-25T17:36:15.781Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T17:36:15.781Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T17:36:22.044Z] File /work/web/front-end/mappicker/functions/index.js changed, reloading triggers
+[debug] [2019-10-25T17:36:23.230Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[debug] [2019-10-25T17:36:23.231Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-25T17:36:23.232Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-25T17:36:23.232Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T17:36:23.233Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T17:36:27.685Z] File /work/web/front-end/mappicker/functions/index.js changed, reloading triggers
+[debug] [2019-10-25T17:36:28.872Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[debug] [2019-10-25T17:36:28.872Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-25T17:36:28.874Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-25T17:36:28.874Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T17:36:28.875Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T17:36:32.000Z] Accepted request GET /mapick-rb/us-central1/getUserInfo?user_id=123 --> getUserInfo
+[debug] [2019-10-25T17:36:32.139Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[info] i  functions: Beginning execution of "getUserInfo"
+[debug] [2019-10-25T17:36:32.139Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-25T17:36:32.141Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-25T17:36:32.141Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T17:36:32.142Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T17:36:32.207Z] [runtime-status] Trigger "getUserInfo" has been found, beginning invocation! {}
+[debug] [2019-10-25T17:36:32.208Z] [runtime-status]  {"httpsTrigger":{},"name":"getUserInfo","entryPoint":"getUserInfo"}
+[debug] [2019-10-25T17:36:32.208Z] [runtime-status] Running getUserInfo in mode HTTPS {}
+[debug] [2019-10-25T17:36:32.212Z] {"socketPath":"/tmp/firebase_emulator_invocation_15779.sock"}
+[debug] [2019-10-25T17:36:32.212Z] [functions] Runtime ready! Sending request! {"socketPath":"/tmp/firebase_emulator_invocation_15779.sock"}
+[debug] [2019-10-25T17:36:32.216Z] [runtime-status] Ephemeral server used! {}
+[info] >  123
+[debug] [2019-10-25T17:36:32.376Z] [runtime-status] Ephemeral server survived. {}
+[info] >  (node:15779) UnhandledPromiseRejectionWarning: TypeError: err.toJSON is not a function
+[info] >      at /work/web/front-end/mappicker/functions/index.js:52:29
+[info] >      at processTicksAndRejections (internal/process/task_queues.js:93:5)
+[info] >  (node:15779) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+[info] >  (node:15779) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+[debug] [2019-10-25T17:36:46.289Z] File /work/web/front-end/mappicker/functions/index.js changed, reloading triggers
+[debug] [2019-10-25T17:36:47.475Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[debug] [2019-10-25T17:36:47.476Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-25T17:36:47.477Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-25T17:36:47.477Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T17:36:47.478Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[warn] ⚠  /work/web/front-end/mappicker/functions/index.js:52
+            console.log(err.toJSON;
+                            ^^^^^^
+
+SyntaxError: missing ) after argument list
+    at Module._compile (internal/modules/cjs/loader.js:881:18)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:962:10)
+    at Module.load (internal/modules/cjs/loader.js:798:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:711:12)
+    at Module.require (internal/modules/cjs/loader.js:838:19)
+    at require (internal/modules/cjs/helpers.js:74:18)
+    at /usr/local/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:677:33
+    at Generator.next (<anonymous>)
+    at fulfilled (/usr/local/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:4:58)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+[warn] ⚠  We were unable to load your functions code. (see above)
+[debug] [2019-10-25T17:36:50.516Z] File /work/web/front-end/mappicker/functions/index.js changed, reloading triggers
+[debug] [2019-10-25T17:36:51.695Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[debug] [2019-10-25T17:36:51.695Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-25T17:36:51.697Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-25T17:36:51.697Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T17:36:51.698Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T17:36:54.272Z] Accepted request GET /mapick-rb/us-central1/getUserInfo?user_id=123 --> getUserInfo
+[debug] [2019-10-25T17:36:54.413Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[info] i  functions: Beginning execution of "getUserInfo"
+[debug] [2019-10-25T17:36:54.413Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-25T17:36:54.413Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-25T17:36:54.413Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T17:36:54.414Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T17:36:54.476Z] [runtime-status] Trigger "getUserInfo" has been found, beginning invocation! {}
+[debug] [2019-10-25T17:36:54.476Z] [runtime-status]  {"httpsTrigger":{},"name":"getUserInfo","entryPoint":"getUserInfo"}
+[debug] [2019-10-25T17:36:54.476Z] [runtime-status] Running getUserInfo in mode HTTPS {}
+[debug] [2019-10-25T17:36:54.480Z] {"socketPath":"/tmp/firebase_emulator_invocation_16004.sock"}
+[debug] [2019-10-25T17:36:54.480Z] [functions] Runtime ready! Sending request! {"socketPath":"/tmp/firebase_emulator_invocation_16004.sock"}
+[debug] [2019-10-25T17:36:54.485Z] [runtime-status] Ephemeral server used! {}
+[info] >  123
+[debug] [2019-10-25T17:36:54.644Z] [runtime-status] Ephemeral server survived. {}
+[info] >  undefined
+[info] i  functions: Finished "getUserInfo" in ~1s
+[debug] [2019-10-25T17:38:22.562Z] File /work/web/front-end/mappicker/functions/index.js changed, reloading triggers
+[debug] [2019-10-25T17:38:23.724Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[debug] [2019-10-25T17:38:23.724Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-25T17:38:23.726Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-25T17:38:23.726Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T17:38:23.726Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T17:38:28.002Z] File /work/web/front-end/mappicker/functions/index.js changed, reloading triggers
+[debug] [2019-10-25T17:38:29.166Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[debug] [2019-10-25T17:38:29.167Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-25T17:38:29.168Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-25T17:38:29.168Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T17:38:29.169Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T17:38:32.861Z] Accepted request GET /mapick-rb/us-central1/getUserInfo?user_id=123 --> getUserInfo
+[debug] [2019-10-25T17:38:33.003Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[info] i  functions: Beginning execution of "getUserInfo"
+[debug] [2019-10-25T17:38:33.003Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-25T17:38:33.005Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-25T17:38:33.005Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T17:38:33.006Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T17:38:33.068Z] [runtime-status] Trigger "getUserInfo" has been found, beginning invocation! {}
+[debug] [2019-10-25T17:38:33.068Z] [runtime-status]  {"httpsTrigger":{},"name":"getUserInfo","entryPoint":"getUserInfo"}
+[debug] [2019-10-25T17:38:33.068Z] [runtime-status] Running getUserInfo in mode HTTPS {}
+[debug] [2019-10-25T17:38:33.072Z] {"socketPath":"/tmp/firebase_emulator_invocation_16765.sock"}
+[debug] [2019-10-25T17:38:33.072Z] [functions] Runtime ready! Sending request! {"socketPath":"/tmp/firebase_emulator_invocation_16765.sock"}
+[debug] [2019-10-25T17:38:33.077Z] [runtime-status] Ephemeral server used! {}
+[info] >  123
+[debug] [2019-10-25T17:38:33.231Z] [runtime-status] Ephemeral server survived. {}
+[info] >  {"stack":"Error: wrong user\n    at /work/web/front-end/mappicker/functions/index.js:45:23\n    at processTicksAndRejections (internal/process/task_queues.js:93:5)","message":"wrong user"}
+[info] i  functions: Finished "getUserInfo" in ~1s
+[debug] [2019-10-25T17:38:47.700Z] File /work/web/front-end/mappicker/functions/index.js changed, reloading triggers
+[debug] [2019-10-25T17:38:48.856Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[debug] [2019-10-25T17:38:48.856Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-25T17:38:48.857Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-25T17:38:48.858Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T17:38:48.858Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T17:38:49.997Z] Accepted request GET /mapick-rb/us-central1/getUserInfo?user_id=123 --> getUserInfo
+[debug] [2019-10-25T17:38:50.140Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[info] i  functions: Beginning execution of "getUserInfo"
+[debug] [2019-10-25T17:38:50.140Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-25T17:38:50.142Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-25T17:38:50.142Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T17:38:50.143Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T17:38:50.207Z] [runtime-status] Trigger "getUserInfo" has been found, beginning invocation! {}
+[debug] [2019-10-25T17:38:50.207Z] [runtime-status]  {"httpsTrigger":{},"name":"getUserInfo","entryPoint":"getUserInfo"}
+[debug] [2019-10-25T17:38:50.207Z] [runtime-status] Running getUserInfo in mode HTTPS {}
+[debug] [2019-10-25T17:38:50.211Z] {"socketPath":"/tmp/firebase_emulator_invocation_16917.sock"}
+[debug] [2019-10-25T17:38:50.211Z] [functions] Runtime ready! Sending request! {"socketPath":"/tmp/firebase_emulator_invocation_16917.sock"}
+[debug] [2019-10-25T17:38:50.215Z] [runtime-status] Ephemeral server used! {}
+[info] >  123
+[debug] [2019-10-25T17:38:50.377Z] [runtime-status] Ephemeral server survived. {}
+[info] >  {"stack":"Error: wrong user\n    at /work/web/front-end/mappicker/functions/index.js:45:23\n    at processTicksAndRejections (internal/process/task_queues.js:93:5)","message":"wrong user"}
+[info] i  functions: Finished "getUserInfo" in ~1s
+[debug] [2019-10-25T17:39:51.391Z] File /work/web/front-end/mappicker/functions/index.js changed, reloading triggers
+[debug] [2019-10-25T17:39:52.541Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[debug] [2019-10-25T17:39:52.541Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-25T17:39:52.543Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-25T17:39:52.543Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T17:39:52.543Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T17:39:55.730Z] Accepted request GET /mapick-rb/us-central1/getUserInfo?user_id=123 --> getUserInfo
+[debug] [2019-10-25T17:39:55.866Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[info] i  functions: Beginning execution of "getUserInfo"
+[debug] [2019-10-25T17:39:55.866Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-25T17:39:55.868Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-25T17:39:55.868Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T17:39:55.869Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T17:39:55.931Z] [runtime-status] Trigger "getUserInfo" has been found, beginning invocation! {}
+[debug] [2019-10-25T17:39:55.931Z] [runtime-status]  {"httpsTrigger":{},"name":"getUserInfo","entryPoint":"getUserInfo"}
+[debug] [2019-10-25T17:39:55.931Z] [runtime-status] Running getUserInfo in mode HTTPS {}
+[debug] [2019-10-25T17:39:55.935Z] {"socketPath":"/tmp/firebase_emulator_invocation_17502.sock"}
+[debug] [2019-10-25T17:39:55.935Z] [functions] Runtime ready! Sending request! {"socketPath":"/tmp/firebase_emulator_invocation_17502.sock"}
+[debug] [2019-10-25T17:39:55.940Z] [runtime-status] Ephemeral server used! {}
+[info] >  123
+[debug] [2019-10-25T17:39:56.095Z] [runtime-status] Ephemeral server survived. {}
+[info] i  functions: Finished "getUserInfo" in ~1s
+[debug] [2019-10-25T17:40:01.073Z] Accepted request GET /mapick-rb/us-central1/getUserInfo?user_id=jG2NFdRMtMTaHqJLCp0mcU9DYID2 --> getUserInfo
+[debug] [2019-10-25T17:40:01.210Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[info] i  functions: Beginning execution of "getUserInfo"
+[debug] [2019-10-25T17:40:01.210Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-25T17:40:01.211Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-25T17:40:01.212Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T17:40:01.212Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T17:40:01.278Z] [runtime-status] Trigger "getUserInfo" has been found, beginning invocation! {}
+[debug] [2019-10-25T17:40:01.278Z] [runtime-status]  {"httpsTrigger":{},"name":"getUserInfo","entryPoint":"getUserInfo"}
+[debug] [2019-10-25T17:40:01.278Z] [runtime-status] Running getUserInfo in mode HTTPS {}
+[debug] [2019-10-25T17:40:01.283Z] {"socketPath":"/tmp/firebase_emulator_invocation_17560.sock"}
+[debug] [2019-10-25T17:40:01.283Z] [functions] Runtime ready! Sending request! {"socketPath":"/tmp/firebase_emulator_invocation_17560.sock"}
+[debug] [2019-10-25T17:40:01.288Z] [runtime-status] Ephemeral server used! {}
+[info] >  jG2NFdRMtMTaHqJLCp0mcU9DYID2
+[debug] [2019-10-25T17:40:01.446Z] [runtime-status] Ephemeral server survived. {}
+[info] i  functions: Finished "getUserInfo" in ~1s
+[debug] [2019-10-25T17:43:14.403Z] File /work/web/front-end/mappicker/functions/index.js changed, reloading triggers
+[debug] [2019-10-25T17:43:15.621Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[debug] [2019-10-25T17:43:15.621Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-25T17:43:15.622Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-25T17:43:15.623Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-25T17:43:15.623Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
