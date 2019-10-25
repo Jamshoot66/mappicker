@@ -26,6 +26,7 @@ class App extends React.Component {
 						name : firebaseUser.displayName
 					}
 
+				console.log(firebaseUser);
 				this.props.updateUserInfo(user);
 			}
 			/* eslint-enable */
