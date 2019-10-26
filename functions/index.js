@@ -53,7 +53,7 @@ exports.rateMission = functions.https.onRequest((req, res) => {
     let user = {};
     let rateAvg = 0;
     // check input
-    if (req.body.token === undefined ||
+    if (req.headers.authorization === undefined ||
         req.body.mission_id === undefined ||
         isNaN(req.body.rate) ||
         rateValue < 1 ||
@@ -63,7 +63,7 @@ exports.rateMission = functions.https.onRequest((req, res) => {
     }
     
     // check authToken
-    admin.auth().verifyIdToken(req.body.token).then((decodedToken) => {
+    admin.auth().verifyIdToken(req.headers.authorization).then((decodedToken) => {
         let uid = decodedToken.uid;
         // check user can rate
         return db.collection(dbTypes.collections.users).doc(uid).get()
@@ -94,18 +94,89 @@ exports.rateMission = functions.https.onRequest((req, res) => {
         } else {
             rateAvg = summ / ratesArr.length;
         }
-        console.log(rateAvg);       
+        console.log(rateAvg);
         // add or update mission in db
         return db.collection(dbTypes.collections.missions).doc(req.body.mission_id).update({
             "rates": rates,
             "rateAvg": rateAvg
         })
     }).then(() => {
-        return res.send({rateAvg: rateAvg});
+        return res.send({ rateAvg: rateAvg });
     }).catch(err => {
         res.status(400).send(err.message);
         return false;
-    })
-
+    });
     return true;
+});
+
+/** getMission
+ * GET
+ * requset = url/rateMission
+ *      no query props used
+ * 
+ * headers:
+ *      - authorization with token
+ * 
+ * only users with user.canAdmin === true can watch other rates
+ */
+exports.getMissions = functions.https.onRequest((req, res) => {
+    let user = {};
+    admin.auth().verifyIdToken(req.headers.authorization).then((decodedToken) => {
+        return db.collection(dbTypes.collections.users).doc(decodedToken.uid).get();
+    }).then((_user) => {
+        user = _user.data();
+        return db.collection(dbTypes.collections.missions).get()
+    }).then((_missions) => {
+        let missions = []
+        _missions.forEach(_item => {
+            let item = _item.data();
+            if (user.canAdmin !== true) {
+                delete item.rates;
+            }
+            missions.push(item);
+        });
+        return res.send(missions);
+    }).catch(err => {
+        return res.status(400).send(err.message);
+    });
+})
+
+/** addMission
+ *  POST
+ *  requset = url/addMission
+ *      headers:
+ *          - authorization with token
+ *      body:
+ *          - "mission" - mission json
+ *  response = 
+ *      - status 200 + mission id if ok
+ *      - status 400 + payload on error
+ */
+exports.addMission = functions.https.onRequest((req, res) => {
+    let user = {};
+    //check input
+    if (req.headers.authorization === undefined ||
+        req.body.mission === undefined) {
+        return res.status(400).send("wrong request");
+    }
+    //check token
+    admin.auth().verifyIdToken(req.headers.authorization).then((decodedToken) => {
+        return db.collection(dbTypes.collections.users).doc(decodedToken.uid).get();
+    }).then((_user) => {
+        user = _user.data();
+        //check user
+        if (user.canAdd) {    
+            //sanitize mission
+            //TODO: add sanitizer for missions
+            let sanitizedMission = req.body.mission;
+            //add mission
+            return db.collection(dbTypes.collections.missions).add(sanitizedMission)
+        } else {
+            throw new Error("you cant add missions");
+        }
+    }).then((ref) => {
+        return res.send(ref.id);
+    }).catch(err => {
+        return res.status(400).send(err.message);
+    });   
 })
