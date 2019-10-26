@@ -8,6 +8,7 @@ module.exports.default = {
         canRead: true,
         canRate: false,
         canAdmin: false,
+        cadAdd: false,
         unit: "null"
     },
 
