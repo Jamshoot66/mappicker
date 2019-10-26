@@ -125,11 +125,15 @@ exports.getMissions = functions.https.onRequest((req, res) => {
         return db.collection(dbTypes.collections.users).doc(decodedToken.uid).get();
     }).then((_user) => {
         user = _user.data();
+        if (!user.canRead) {
+            return res.status(403).send("you cant read missions");
+        }
         return db.collection(dbTypes.collections.missions).get()
     }).then((_missions) => {
         let missions = []
         _missions.forEach(_item => {
             let item = _item.data();
+            item.guid = _item.id;
             if (user.canAdmin !== true) {
                 delete item.rates;
             }
@@ -168,7 +172,7 @@ exports.addMission = functions.https.onRequest((req, res) => {
         if (user.canAdd) {    
             //sanitize mission
             //TODO: add sanitizer for missions
-            let sanitizedMission = req.body.mission;
+            let sanitizedMission = Object.assign({},dbTypes.default.defMission, req.body.mission);
             //add mission
             return db.collection(dbTypes.collections.missions).add(sanitizedMission)
         } else {
@@ -178,5 +182,53 @@ exports.addMission = functions.https.onRequest((req, res) => {
         return res.send(ref.id);
     }).catch(err => {
         return res.status(400).send(err.message);
-    });   
+    });  
+    
+    return false;
+})
+
+/** updateLastPlayed
+ *  POST
+ *  requset = url/addMission
+ *      headers:
+ *          - authorization with token
+ *      body:
+ *          - "mission_id" 
+ *          - "lastPlayed" in ms
+ *  response = 
+ *      - status 200 if ok
+ *      - status 400 + payload on error
+ */
+exports.updateLastPlayed = functions.https.onRequest((req, res) => {
+    let user = {};
+    let lastPlayed = parseInt(req.body.lastPlayed)
+    console.log(req.body.lastPlayed);
+    //check input
+    if (req.headers.authorization === undefined ||
+        req.body.mission_id === undefined ||
+        isNaN(lastPlayed)) {
+        return res.status(400).send("wrong request");
+    }
+    //check token
+    admin.auth().verifyIdToken(req.headers.authorization).then((decodedToken) => {
+        return db.collection(dbTypes.collections.users).doc(decodedToken.uid).get();
+    }).then((_user) => {
+        user = _user.data();
+        //check user
+        if (user.canAdd) {    
+            //sanitize mission
+            //TODO: add sanitizer for missions
+            // lastPlayed
+            //add mission
+            return db.collection(dbTypes.collections.missions).doc(req.body.mission_id).update({ "lastPlayed": lastPlayed });
+        } else {
+            throw new Error("you cant add missions");
+        }
+    }).then(() => {
+        return res.send("done");
+    }).catch(err => {
+        return res.status(400).send(err.message);
+    });  
+    
+    return false;
 })

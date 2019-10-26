@@ -1234,3 +1234,384 @@ SyntaxError: Unexpected token '!'
 [debug] [2019-10-26T08:14:09.353Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
 [debug] [2019-10-26T08:14:09.353Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
 [debug] [2019-10-26T08:14:09.354Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-26T08:15:39.908Z] Accepted request POST /mapick-rb/us-central1/rateMission --> rateMission
+[debug] [2019-10-26T08:15:40.057Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[info] i  functions: Beginning execution of "rateMission"
+[debug] [2019-10-26T08:15:40.057Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-26T08:15:40.058Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-26T08:15:40.059Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-26T08:15:40.060Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-26T08:15:40.125Z] [runtime-status] Trigger "rateMission" has been found, beginning invocation! {}
+[debug] [2019-10-26T08:15:40.125Z] [runtime-status]  {"httpsTrigger":{},"name":"rateMission","entryPoint":"rateMission"}
+[debug] [2019-10-26T08:15:40.125Z] [runtime-status] Running rateMission in mode HTTPS {}
+[debug] [2019-10-26T08:15:40.129Z] {"socketPath":"/tmp/firebase_emulator_invocation_32646.sock"}
+[debug] [2019-10-26T08:15:40.129Z] [functions] Runtime ready! Sending request! {"socketPath":"/tmp/firebase_emulator_invocation_32646.sock"}
+[debug] [2019-10-26T08:15:40.141Z] [runtime-status] Ephemeral server used! {}
+[debug] [2019-10-26T08:15:40.161Z] [runtime-status] Ephemeral server survived. {}
+[info] i  functions: Finished "rateMission" in ~1s
+[debug] [2019-10-26T08:16:24.694Z] Accepted request POST /mapick-rb/us-central1/rateMission --> rateMission
+[debug] [2019-10-26T08:16:24.834Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[info] i  functions: Beginning execution of "rateMission"
+[debug] [2019-10-26T08:16:24.835Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-26T08:16:24.836Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-26T08:16:24.836Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-26T08:16:24.837Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-26T08:16:24.905Z] [runtime-status] Trigger "rateMission" has been found, beginning invocation! {}
+[debug] [2019-10-26T08:16:24.905Z] [runtime-status]  {"httpsTrigger":{},"name":"rateMission","entryPoint":"rateMission"}
+[debug] [2019-10-26T08:16:24.905Z] [runtime-status] Running rateMission in mode HTTPS {}
+[debug] [2019-10-26T08:16:24.908Z] {"socketPath":"/tmp/firebase_emulator_invocation_554.sock"}
+[debug] [2019-10-26T08:16:24.909Z] [functions] Runtime ready! Sending request! {"socketPath":"/tmp/firebase_emulator_invocation_554.sock"}
+[debug] [2019-10-26T08:16:24.920Z] [runtime-status] Ephemeral server used! {}
+[debug] [2019-10-26T08:16:24.941Z] [runtime-status] Ephemeral server survived. {}
+[info] i  functions: Finished "rateMission" in ~1s
+[debug] [2019-10-26T08:18:23.737Z] File /work/web/front-end/mappicker/functions/dbTypes.js changed, reloading triggers
+[debug] [2019-10-26T08:18:24.931Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[debug] [2019-10-26T08:18:24.931Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-26T08:18:24.933Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-26T08:18:24.933Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-26T08:18:24.934Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-26T08:20:54.431Z] File /work/web/front-end/mappicker/functions/dbTypes.js changed, reloading triggers
+[debug] [2019-10-26T08:20:55.613Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[debug] [2019-10-26T08:20:55.614Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-26T08:20:55.615Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-26T08:20:55.616Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-26T08:20:55.616Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-26T08:21:25.023Z] File /work/web/front-end/mappicker/functions/index.js changed, reloading triggers
+[debug] [2019-10-26T08:21:26.206Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[debug] [2019-10-26T08:21:26.206Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-26T08:21:26.208Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-26T08:21:26.208Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-26T08:21:26.208Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-26T08:21:40.122Z] Accepted request POST /mapick-rb/us-central1/addMission --> addMission
+[debug] [2019-10-26T08:21:40.265Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[info] i  functions: Beginning execution of "addMission"
+[debug] [2019-10-26T08:21:40.265Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-26T08:21:40.267Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-26T08:21:40.267Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-26T08:21:40.268Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-26T08:21:40.333Z] [runtime-status] Trigger "addMission" has been found, beginning invocation! {}
+[debug] [2019-10-26T08:21:40.333Z] [runtime-status]  {"httpsTrigger":{},"name":"addMission","entryPoint":"addMission"}
+[debug] [2019-10-26T08:21:40.333Z] [runtime-status] Running addMission in mode HTTPS {}
+[debug] [2019-10-26T08:21:40.337Z] {"socketPath":"/tmp/firebase_emulator_invocation_3304.sock"}
+[debug] [2019-10-26T08:21:40.337Z] [functions] Runtime ready! Sending request! {"socketPath":"/tmp/firebase_emulator_invocation_3304.sock"}
+[debug] [2019-10-26T08:21:40.354Z] [runtime-status] Ephemeral server used! {}
+[debug] [2019-10-26T08:21:40.374Z] [runtime-status] Ephemeral server survived. {}
+[info] i  functions: Finished "addMission" in ~1s
+[debug] [2019-10-26T08:21:54.979Z] Accepted request POST /mapick-rb/us-central1/addMission --> addMission
+[debug] [2019-10-26T08:21:55.111Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[info] i  functions: Beginning execution of "addMission"
+[debug] [2019-10-26T08:21:55.111Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-26T08:21:55.112Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-26T08:21:55.113Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-26T08:21:55.113Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-26T08:21:55.178Z] [runtime-status] Trigger "addMission" has been found, beginning invocation! {}
+[debug] [2019-10-26T08:21:55.178Z] [runtime-status]  {"httpsTrigger":{},"name":"addMission","entryPoint":"addMission"}
+[debug] [2019-10-26T08:21:55.178Z] [runtime-status] Running addMission in mode HTTPS {}
+[debug] [2019-10-26T08:21:55.182Z] {"socketPath":"/tmp/firebase_emulator_invocation_3448.sock"}
+[debug] [2019-10-26T08:21:55.183Z] [functions] Runtime ready! Sending request! {"socketPath":"/tmp/firebase_emulator_invocation_3448.sock"}
+[debug] [2019-10-26T08:21:55.193Z] [runtime-status] Ephemeral server used! {}
+[debug] [2019-10-26T08:21:55.214Z] [runtime-status] Ephemeral server survived. {}
+[info] i  functions: Finished "addMission" in ~1s
+[debug] [2019-10-26T08:23:11.996Z] Accepted request POST /mapick-rb/us-central1/addMission --> addMission
+[debug] [2019-10-26T08:23:12.137Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[info] i  functions: Beginning execution of "addMission"
+[debug] [2019-10-26T08:23:12.138Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-26T08:23:12.139Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-26T08:23:12.139Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-26T08:23:12.140Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-26T08:23:12.204Z] [runtime-status] Trigger "addMission" has been found, beginning invocation! {}
+[debug] [2019-10-26T08:23:12.204Z] [runtime-status]  {"httpsTrigger":{},"name":"addMission","entryPoint":"addMission"}
+[debug] [2019-10-26T08:23:12.204Z] [runtime-status] Running addMission in mode HTTPS {}
+[debug] [2019-10-26T08:23:12.208Z] {"socketPath":"/tmp/firebase_emulator_invocation_4116.sock"}
+[debug] [2019-10-26T08:23:12.208Z] [functions] Runtime ready! Sending request! {"socketPath":"/tmp/firebase_emulator_invocation_4116.sock"}
+[info] >  SyntaxError: Unexpected token n in JSON at position 19
+[info] >      at JSON.parse (<anonymous>)
+[info] >      at parse (/usr/local/lib/node_modules/firebase-tools/node_modules/body-parser/lib/types/json.js:89:19)
+[info] >      at /usr/local/lib/node_modules/firebase-tools/node_modules/body-parser/lib/read.js:121:18
+[info] >      at invokeCallback (/usr/local/lib/node_modules/firebase-tools/node_modules/raw-body/index.js:224:16)
+[info] >      at done (/usr/local/lib/node_modules/firebase-tools/node_modules/raw-body/index.js:213:7)
+[info] >      at IncomingMessage.onEnd (/usr/local/lib/node_modules/firebase-tools/node_modules/raw-body/index.js:273:7)
+[info] >      at IncomingMessage.emit (events.js:215:7)
+[info] >      at endReadableNT (_stream_readable.js:1183:12)
+[info] >      at processTicksAndRejections (internal/process/task_queues.js:80:21)
+[debug] [2019-10-26T08:23:43.564Z] Accepted request POST /mapick-rb/us-central1/addMission --> addMission
+[debug] [2019-10-26T08:23:43.705Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[info] i  functions: Beginning execution of "addMission"
+[debug] [2019-10-26T08:23:43.705Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-26T08:23:43.706Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-26T08:23:43.706Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-26T08:23:43.707Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-26T08:23:43.772Z] [runtime-status] Trigger "addMission" has been found, beginning invocation! {}
+[debug] [2019-10-26T08:23:43.772Z] [runtime-status]  {"httpsTrigger":{},"name":"addMission","entryPoint":"addMission"}
+[debug] [2019-10-26T08:23:43.772Z] [runtime-status] Running addMission in mode HTTPS {}
+[debug] [2019-10-26T08:23:43.776Z] {"socketPath":"/tmp/firebase_emulator_invocation_4393.sock"}
+[debug] [2019-10-26T08:23:43.776Z] [functions] Runtime ready! Sending request! {"socketPath":"/tmp/firebase_emulator_invocation_4393.sock"}
+[debug] [2019-10-26T08:23:43.786Z] [runtime-status] Ephemeral server used! {}
+[debug] [2019-10-26T08:23:43.809Z] [runtime-status] Ephemeral server survived. {}
+[info] i  functions: Finished "addMission" in ~1s
+[debug] [2019-10-26T08:24:50.993Z] Accepted request GET /mapick-rb/us-central1/getMissions --> getMissions
+[debug] [2019-10-26T08:24:51.133Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[info] i  functions: Beginning execution of "getMissions"
+[debug] [2019-10-26T08:24:51.134Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-26T08:24:51.135Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-26T08:24:51.138Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-26T08:24:51.138Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-26T08:24:51.202Z] [runtime-status] Trigger "getMissions" has been found, beginning invocation! {}
+[debug] [2019-10-26T08:24:51.202Z] [runtime-status]  {"httpsTrigger":{},"name":"getMissions","entryPoint":"getMissions"}
+[debug] [2019-10-26T08:24:51.202Z] [runtime-status] Running getMissions in mode HTTPS {}
+[debug] [2019-10-26T08:24:51.205Z] {"socketPath":"/tmp/firebase_emulator_invocation_5947.sock"}
+[debug] [2019-10-26T08:24:51.206Z] [functions] Runtime ready! Sending request! {"socketPath":"/tmp/firebase_emulator_invocation_5947.sock"}
+[debug] [2019-10-26T08:24:51.210Z] [runtime-status] Ephemeral server used! {}
+[debug] [2019-10-26T08:24:51.233Z] [runtime-status] Ephemeral server survived. {}
+[info] i  functions: Finished "getMissions" in ~1s
+[debug] [2019-10-26T08:24:59.644Z] Accepted request POST /mapick-rb/us-central1/addMission --> addMission
+[debug] [2019-10-26T08:24:59.787Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[info] i  functions: Beginning execution of "addMission"
+[debug] [2019-10-26T08:24:59.787Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-26T08:24:59.789Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-26T08:24:59.789Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-26T08:24:59.790Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-26T08:24:59.855Z] [runtime-status] Trigger "addMission" has been found, beginning invocation! {}
+[debug] [2019-10-26T08:24:59.855Z] [runtime-status]  {"httpsTrigger":{},"name":"addMission","entryPoint":"addMission"}
+[debug] [2019-10-26T08:24:59.855Z] [runtime-status] Running addMission in mode HTTPS {}
+[debug] [2019-10-26T08:24:59.859Z] {"socketPath":"/tmp/firebase_emulator_invocation_6018.sock"}
+[debug] [2019-10-26T08:24:59.860Z] [functions] Runtime ready! Sending request! {"socketPath":"/tmp/firebase_emulator_invocation_6018.sock"}
+[debug] [2019-10-26T08:24:59.871Z] [runtime-status] Ephemeral server used! {}
+[debug] [2019-10-26T08:24:59.892Z] [runtime-status] Ephemeral server survived. {}
+[info] i  functions: Finished "addMission" in ~1s
+[debug] [2019-10-26T08:25:03.320Z] Accepted request GET /mapick-rb/us-central1/getMissions --> getMissions
+[debug] [2019-10-26T08:25:03.455Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[info] i  functions: Beginning execution of "getMissions"
+[debug] [2019-10-26T08:25:03.455Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-26T08:25:03.456Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-26T08:25:03.457Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-26T08:25:03.458Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-26T08:25:03.524Z] [runtime-status] Trigger "getMissions" has been found, beginning invocation! {}
+[debug] [2019-10-26T08:25:03.524Z] [runtime-status]  {"httpsTrigger":{},"name":"getMissions","entryPoint":"getMissions"}
+[debug] [2019-10-26T08:25:03.524Z] [runtime-status] Running getMissions in mode HTTPS {}
+[debug] [2019-10-26T08:25:03.527Z] {"socketPath":"/tmp/firebase_emulator_invocation_6059.sock"}
+[debug] [2019-10-26T08:25:03.527Z] [functions] Runtime ready! Sending request! {"socketPath":"/tmp/firebase_emulator_invocation_6059.sock"}
+[debug] [2019-10-26T08:25:03.531Z] [runtime-status] Ephemeral server used! {}
+[debug] [2019-10-26T08:25:03.555Z] [runtime-status] Ephemeral server survived. {}
+[info] i  functions: Finished "getMissions" in ~1s
+[debug] [2019-10-26T08:27:18.719Z] File /work/web/front-end/mappicker/functions/index.js changed, reloading triggers
+[debug] [2019-10-26T08:27:19.888Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[debug] [2019-10-26T08:27:19.888Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-26T08:27:19.889Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-26T08:27:19.890Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-26T08:27:19.890Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-26T08:27:28.861Z] Accepted request GET /mapick-rb/us-central1/getMissions --> getMissions
+[debug] [2019-10-26T08:27:28.998Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[info] i  functions: Beginning execution of "getMissions"
+[debug] [2019-10-26T08:27:28.998Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-26T08:27:28.999Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-26T08:27:29.000Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-26T08:27:29.000Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-26T08:27:29.065Z] [runtime-status] Trigger "getMissions" has been found, beginning invocation! {}
+[debug] [2019-10-26T08:27:29.065Z] [runtime-status]  {"httpsTrigger":{},"name":"getMissions","entryPoint":"getMissions"}
+[debug] [2019-10-26T08:27:29.065Z] [runtime-status] Running getMissions in mode HTTPS {}
+[debug] [2019-10-26T08:27:29.069Z] {"socketPath":"/tmp/firebase_emulator_invocation_7288.sock"}
+[debug] [2019-10-26T08:27:29.069Z] [functions] Runtime ready! Sending request! {"socketPath":"/tmp/firebase_emulator_invocation_7288.sock"}
+[debug] [2019-10-26T08:27:29.073Z] [runtime-status] Ephemeral server used! {}
+[debug] [2019-10-26T08:27:29.095Z] [runtime-status] Ephemeral server survived. {}
+[info] i  functions: Finished "getMissions" in ~1s
+[debug] [2019-10-26T08:31:40.939Z] File /work/web/front-end/mappicker/functions/index.js changed, reloading triggers
+[debug] [2019-10-26T08:31:42.124Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[debug] [2019-10-26T08:31:42.124Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-26T08:31:42.126Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-26T08:31:42.126Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-26T08:31:42.127Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-26T08:33:23.808Z] File /work/web/front-end/mappicker/functions/index.js changed, reloading triggers
+[debug] [2019-10-26T08:33:25.115Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[debug] [2019-10-26T08:33:25.115Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-26T08:33:25.117Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-26T08:33:25.117Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-26T08:33:25.118Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-26T08:34:58.887Z] Accepted request GET /mapick-rb/us-central1/getMissions --> getMissions
+[debug] [2019-10-26T08:34:59.031Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[info] i  functions: Beginning execution of "getMissions"
+[debug] [2019-10-26T08:34:59.033Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-26T08:34:59.033Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-26T08:34:59.033Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-26T08:34:59.034Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-26T08:34:59.098Z] [runtime-status] Trigger "getMissions" has been found, beginning invocation! {}
+[debug] [2019-10-26T08:34:59.098Z] [runtime-status]  {"httpsTrigger":{},"name":"getMissions","entryPoint":"getMissions"}
+[debug] [2019-10-26T08:34:59.098Z] [runtime-status] Running getMissions in mode HTTPS {}
+[debug] [2019-10-26T08:34:59.102Z] {"socketPath":"/tmp/firebase_emulator_invocation_10867.sock"}
+[debug] [2019-10-26T08:34:59.102Z] [functions] Runtime ready! Sending request! {"socketPath":"/tmp/firebase_emulator_invocation_10867.sock"}
+[debug] [2019-10-26T08:34:59.106Z] [runtime-status] Ephemeral server used! {}
+[debug] [2019-10-26T08:34:59.128Z] [runtime-status] Ephemeral server survived. {}
+[info] >  (node:10867) UnhandledPromiseRejectionWarning: Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
+[info] >      at ServerResponse.setHeader (_http_outgoing.js:485:11)
+[info] >      at ServerResponse.header (/usr/local/lib/node_modules/firebase-tools/node_modules/express/lib/response.js:771:10)
+[info] >      at ServerResponse.send (/usr/local/lib/node_modules/firebase-tools/node_modules/express/lib/response.js:170:12)
+[info] >      at /work/web/front-end/mappicker/functions/index.js:144:32
+[info] >      at processTicksAndRejections (internal/process/task_queues.js:93:5)
+[info] >  (node:10867) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+[info] >  (node:10867) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+[info] i  functions: Finished "getMissions" in ~1s
+[debug] [2019-10-26T08:41:13.349Z] File /work/web/front-end/mappicker/functions/index.js changed, reloading triggers
+[debug] [2019-10-26T08:41:14.546Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[debug] [2019-10-26T08:41:14.546Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-26T08:41:14.547Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-26T08:41:14.548Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-26T08:41:14.548Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[info] ✔  functions[updateLastPlayed]: http function initialized (http://localhost:5000/mapick-rb/us-central1/updateLastPlayed).
+[debug] [2019-10-26T08:41:28.366Z] Accepted request POST /mapick-rb/us-central1/rateMission --> rateMission
+[debug] [2019-10-26T08:41:28.517Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[info] i  functions: Beginning execution of "rateMission"
+[debug] [2019-10-26T08:41:28.517Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-26T08:41:28.518Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-26T08:41:28.519Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-26T08:41:28.519Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-26T08:41:28.583Z] [runtime-status] Trigger "rateMission" has been found, beginning invocation! {}
+[debug] [2019-10-26T08:41:28.583Z] [runtime-status]  {"httpsTrigger":{},"name":"rateMission","entryPoint":"rateMission"}
+[debug] [2019-10-26T08:41:28.583Z] [runtime-status] Running rateMission in mode HTTPS {}
+[debug] [2019-10-26T08:41:28.587Z] {"socketPath":"/tmp/firebase_emulator_invocation_13847.sock"}
+[debug] [2019-10-26T08:41:28.588Z] [functions] Runtime ready! Sending request! {"socketPath":"/tmp/firebase_emulator_invocation_13847.sock"}
+[debug] [2019-10-26T08:41:28.598Z] [runtime-status] Ephemeral server used! {}
+[debug] [2019-10-26T08:41:28.619Z] [runtime-status] Ephemeral server survived. {}
+[info] i  functions: Finished "rateMission" in ~1s
+[debug] [2019-10-26T08:42:10.917Z] Accepted request POST /mapick-rb/us-central1/rateMission --> rateMission
+[debug] [2019-10-26T08:42:11.055Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[info] i  functions: Beginning execution of "rateMission"
+[debug] [2019-10-26T08:42:11.055Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-26T08:42:11.056Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-26T08:42:11.057Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-26T08:42:11.057Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-26T08:42:11.123Z] [runtime-status] Trigger "rateMission" has been found, beginning invocation! {}
+[debug] [2019-10-26T08:42:11.123Z] [runtime-status]  {"httpsTrigger":{},"name":"rateMission","entryPoint":"rateMission"}
+[debug] [2019-10-26T08:42:11.123Z] [runtime-status] Running rateMission in mode HTTPS {}
+[debug] [2019-10-26T08:42:11.127Z] {"socketPath":"/tmp/firebase_emulator_invocation_14196.sock"}
+[debug] [2019-10-26T08:42:11.128Z] [functions] Runtime ready! Sending request! {"socketPath":"/tmp/firebase_emulator_invocation_14196.sock"}
+[debug] [2019-10-26T08:42:11.139Z] [runtime-status] Ephemeral server used! {}
+[debug] [2019-10-26T08:42:11.160Z] [runtime-status] Ephemeral server survived. {}
+[info] >  3
+[info] i  functions: Finished "rateMission" in ~1s
+[debug] [2019-10-26T08:42:18.101Z] Accepted request POST /mapick-rb/us-central1/rateMission --> rateMission
+[debug] [2019-10-26T08:42:18.242Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[info] i  functions: Beginning execution of "rateMission"
+[debug] [2019-10-26T08:42:18.242Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-26T08:42:18.244Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-26T08:42:18.244Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-26T08:42:18.245Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-26T08:42:18.311Z] [runtime-status] Trigger "rateMission" has been found, beginning invocation! {}
+[debug] [2019-10-26T08:42:18.311Z] [runtime-status]  {"httpsTrigger":{},"name":"rateMission","entryPoint":"rateMission"}
+[debug] [2019-10-26T08:42:18.311Z] [runtime-status] Running rateMission in mode HTTPS {}
+[debug] [2019-10-26T08:42:18.315Z] {"socketPath":"/tmp/firebase_emulator_invocation_14253.sock"}
+[debug] [2019-10-26T08:42:18.315Z] [functions] Runtime ready! Sending request! {"socketPath":"/tmp/firebase_emulator_invocation_14253.sock"}
+[debug] [2019-10-26T08:42:18.325Z] [runtime-status] Ephemeral server used! {}
+[debug] [2019-10-26T08:42:18.347Z] [runtime-status] Ephemeral server survived. {}
+[info] >  2.75
+[info] i  functions: Finished "rateMission" in ~1s
+[debug] [2019-10-26T08:43:45.057Z] File /work/web/front-end/mappicker/functions/dbTypes.js changed, reloading triggers
+[debug] [2019-10-26T08:43:46.243Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[debug] [2019-10-26T08:43:46.243Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-26T08:43:46.245Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-26T08:43:46.245Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-26T08:43:46.246Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-26T08:43:59.742Z] Accepted request POST /mapick-rb/us-central1/addMission --> addMission
+[debug] [2019-10-26T08:43:59.902Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[info] i  functions: Beginning execution of "addMission"
+[debug] [2019-10-26T08:43:59.903Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-26T08:43:59.904Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-26T08:43:59.904Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-26T08:43:59.905Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-26T08:43:59.973Z] [runtime-status] Trigger "addMission" has been found, beginning invocation! {}
+[debug] [2019-10-26T08:43:59.973Z] [runtime-status]  {"httpsTrigger":{},"name":"addMission","entryPoint":"addMission"}
+[debug] [2019-10-26T08:43:59.974Z] [runtime-status] Running addMission in mode HTTPS {}
+[debug] [2019-10-26T08:43:59.977Z] {"socketPath":"/tmp/firebase_emulator_invocation_15206.sock"}
+[debug] [2019-10-26T08:43:59.978Z] [functions] Runtime ready! Sending request! {"socketPath":"/tmp/firebase_emulator_invocation_15206.sock"}
+[debug] [2019-10-26T08:43:59.989Z] [runtime-status] Ephemeral server used! {}
+[debug] [2019-10-26T08:44:00.011Z] [runtime-status] Ephemeral server survived. {}
+[info] i  functions: Finished "addMission" in ~1s
+[debug] [2019-10-26T08:44:07.599Z] Accepted request POST /mapick-rb/us-central1/rateMission --> rateMission
+[debug] [2019-10-26T08:44:07.732Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[info] i  functions: Beginning execution of "rateMission"
+[debug] [2019-10-26T08:44:07.732Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-26T08:44:07.734Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-26T08:44:07.734Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-26T08:44:07.735Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-26T08:44:07.799Z] [runtime-status] Trigger "rateMission" has been found, beginning invocation! {}
+[debug] [2019-10-26T08:44:07.799Z] [runtime-status]  {"httpsTrigger":{},"name":"rateMission","entryPoint":"rateMission"}
+[debug] [2019-10-26T08:44:07.799Z] [runtime-status] Running rateMission in mode HTTPS {}
+[debug] [2019-10-26T08:44:07.803Z] {"socketPath":"/tmp/firebase_emulator_invocation_15344.sock"}
+[debug] [2019-10-26T08:44:07.803Z] [functions] Runtime ready! Sending request! {"socketPath":"/tmp/firebase_emulator_invocation_15344.sock"}
+[debug] [2019-10-26T08:44:07.814Z] [runtime-status] Ephemeral server used! {}
+[debug] [2019-10-26T08:44:07.834Z] [runtime-status] Ephemeral server survived. {}
+[info] >  2.75
+[info] i  functions: Finished "rateMission" in ~1s
+[debug] [2019-10-26T08:45:51.473Z] Accepted request POST /mapick-rb/us-central1/rateMission --> rateMission
+[debug] [2019-10-26T08:45:51.614Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[info] i  functions: Beginning execution of "rateMission"
+[debug] [2019-10-26T08:45:51.614Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-26T08:45:51.615Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-26T08:45:51.616Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-26T08:45:51.616Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-26T08:45:51.684Z] [runtime-status] Trigger "rateMission" has been found, beginning invocation! {}
+[debug] [2019-10-26T08:45:51.684Z] [runtime-status]  {"httpsTrigger":{},"name":"rateMission","entryPoint":"rateMission"}
+[debug] [2019-10-26T08:45:51.684Z] [runtime-status] Running rateMission in mode HTTPS {}
+[debug] [2019-10-26T08:45:51.688Z] {"socketPath":"/tmp/firebase_emulator_invocation_16245.sock"}
+[debug] [2019-10-26T08:45:51.688Z] [functions] Runtime ready! Sending request! {"socketPath":"/tmp/firebase_emulator_invocation_16245.sock"}
+[debug] [2019-10-26T08:45:51.700Z] [runtime-status] Ephemeral server used! {}
+[debug] [2019-10-26T08:45:51.703Z] [runtime-status] Ephemeral server survived. {}
+[info] i  functions: Finished "rateMission" in ~1s
+[debug] [2019-10-26T08:47:20.709Z] File /work/web/front-end/mappicker/functions/index.js changed, reloading triggers
+[debug] [2019-10-26T08:47:21.892Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[debug] [2019-10-26T08:47:21.892Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-26T08:47:21.894Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-26T08:47:21.894Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-26T08:47:21.895Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-26T08:47:22.927Z] Accepted request POST /mapick-rb/us-central1/rateMission --> rateMission
+[debug] [2019-10-26T08:47:23.064Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[info] i  functions: Beginning execution of "rateMission"
+[debug] [2019-10-26T08:47:23.065Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-26T08:47:23.066Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-26T08:47:23.066Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-26T08:47:23.067Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-26T08:47:23.130Z] [runtime-status] Trigger "rateMission" has been found, beginning invocation! {}
+[debug] [2019-10-26T08:47:23.130Z] [runtime-status]  {"httpsTrigger":{},"name":"rateMission","entryPoint":"rateMission"}
+[debug] [2019-10-26T08:47:23.131Z] [runtime-status] Running rateMission in mode HTTPS {}
+[debug] [2019-10-26T08:47:23.134Z] {"socketPath":"/tmp/firebase_emulator_invocation_16956.sock"}
+[debug] [2019-10-26T08:47:23.135Z] [functions] Runtime ready! Sending request! {"socketPath":"/tmp/firebase_emulator_invocation_16956.sock"}
+[debug] [2019-10-26T08:47:23.146Z] [runtime-status] Ephemeral server used! {}
+[debug] [2019-10-26T08:47:23.149Z] [runtime-status] Ephemeral server survived. {}
+[info] i  functions: Finished "rateMission" in ~1s
+[debug] [2019-10-26T08:47:43.686Z] Accepted request POST /mapick-rb/us-central1/updateLastPlayed --> updateLastPlayed
+[debug] [2019-10-26T08:47:43.821Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[info] i  functions: Beginning execution of "updateLastPlayed"
+[debug] [2019-10-26T08:47:43.822Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-26T08:47:43.823Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-26T08:47:43.823Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-26T08:47:43.824Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-26T08:47:43.888Z] [runtime-status] Trigger "updateLastPlayed" has been found, beginning invocation! {}
+[debug] [2019-10-26T08:47:43.888Z] [runtime-status]  {"httpsTrigger":{},"name":"updateLastPlayed","entryPoint":"updateLastPlayed"}
+[debug] [2019-10-26T08:47:43.888Z] [runtime-status] Running updateLastPlayed in mode HTTPS {}
+[debug] [2019-10-26T08:47:43.892Z] {"socketPath":"/tmp/firebase_emulator_invocation_17141.sock"}
+[debug] [2019-10-26T08:47:43.892Z] [functions] Runtime ready! Sending request! {"socketPath":"/tmp/firebase_emulator_invocation_17141.sock"}
+[debug] [2019-10-26T08:47:43.904Z] [runtime-status] Ephemeral server used! {}
+[info] >  123456
+[debug] [2019-10-26T08:47:43.925Z] [runtime-status] Ephemeral server survived. {}
+[info] i  functions: Finished "updateLastPlayed" in ~1s
+[debug] [2019-10-26T08:48:14.827Z] Accepted request POST /mapick-rb/us-central1/updateLastPlayed --> updateLastPlayed
+[debug] [2019-10-26T08:48:14.967Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[info] i  functions: Beginning execution of "updateLastPlayed"
+[debug] [2019-10-26T08:48:14.967Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-26T08:48:14.968Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-26T08:48:14.969Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-26T08:48:14.970Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-26T08:48:15.033Z] [runtime-status] Trigger "updateLastPlayed" has been found, beginning invocation! {}
+[debug] [2019-10-26T08:48:15.033Z] [runtime-status]  {"httpsTrigger":{},"name":"updateLastPlayed","entryPoint":"updateLastPlayed"}
+[debug] [2019-10-26T08:48:15.033Z] [runtime-status] Running updateLastPlayed in mode HTTPS {}
+[debug] [2019-10-26T08:48:15.037Z] {"socketPath":"/tmp/firebase_emulator_invocation_17399.sock"}
+[debug] [2019-10-26T08:48:15.038Z] [functions] Runtime ready! Sending request! {"socketPath":"/tmp/firebase_emulator_invocation_17399.sock"}
+[debug] [2019-10-26T08:48:15.048Z] [runtime-status] Ephemeral server used! {}
+[info] >  123456
+[debug] [2019-10-26T08:48:15.069Z] [runtime-status] Ephemeral server survived. {}
+[info] i  functions: Finished "updateLastPlayed" in ~1s
+[debug] [2019-10-26T08:48:35.610Z] File /work/web/front-end/mappicker/functions/index.js changed, reloading triggers
+[debug] [2019-10-26T08:48:36.822Z] [runtime-status] Functions runtime initialized. {"cwd":"/work/web/front-end/mappicker/functions","node_version":"12.11.1"}
+[debug] [2019-10-26T08:48:36.823Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-10-26T08:48:36.824Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-10-26T08:48:36.825Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-10-26T08:48:36.825Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/work/web/front-end/mappicker/functions/node_modules/firebase-functions/lib/index.js"}

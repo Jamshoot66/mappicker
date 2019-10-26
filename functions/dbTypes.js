@@ -9,5 +9,17 @@ module.exports.default = {
         canRate: false,
         canAdmin: false,
         unit: "null"
+    },
+
+    defMission: {
+        guid: "check doc name",
+		name:"unknown name",
+		mods: "mods",
+		island: "island",
+		players: 1,
+		autor: "unknown",
+		rateAvg: 3,
+		rates:{},
+		lastPlayed: 0
     }
 }
