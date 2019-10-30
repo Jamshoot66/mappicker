@@ -12,16 +12,24 @@ const ERROR = "ERROR";
  *  - props
  *      required
  *          - spinnerState - string PENDING / DONE / ERROR
- *          - maxWidth     - css style max-width 
- *          - maxHeight    - css style max-height
+ *          - width     - css style max-width 
+ *          - height    - css style max-height
  * 
  * 
  * @usage
- *      <Spinner spinnerState="ERROR" maxWidth="30px" maxHeight="30px"/>
+ *      <Spinner spinnerState="ERROR" width="30px" height="30px"/>
  * 
  */
 class Spinner extends React.Component {
-    
+    constructor(props) {
+        super(props);
+        this.state = { preloadContent: true };
+    }
+
+    componentDidMount() {
+        this.setState({ preloadContent: false });
+    }
+
     render() { 
         let spinnerStr;
         switch (this.props.spinnerState) {
@@ -40,16 +48,22 @@ class Spinner extends React.Component {
         }
 
         return <div style={{
-            "max-width": this.props.maxWidth,
-            "max-height": this.props.maxHeight,
-        }}>{spinnerStr}</div>
+            "width": this.props.width,
+            "height": this.props.height,
+        }}>{spinnerStr}
+            {this.state.preloadContent ? <div className={style.preload}>
+                <img src={pending} alt="" />
+                <img src={error} alt="" />
+            </div> : false}
+            
+        </div>
     }
 };
 
 Spinner.propTypes = {
     spinnerState: PropTypes.string.isRequired,
-    maxWidth: PropTypes.string.isRequired,
-    maxHeight: PropTypes.string.isRequired,
+    width: PropTypes.string.isRequired,
+    height: PropTypes.string.isRequired,
 }
 
 export default Spinner;

@@ -2,3 +2,9 @@
     height: 100%;
     width: 100%;
 }
+
+.preload{
+    position: absolute;
+    top: -99999px;
+    visibility: hidden;
+}
