@@ -60,10 +60,4 @@ class Spinner extends React.Component {
     }
 };
 
-Spinner.propTypes = {
-    spinnerState: PropTypes.string.isRequired,
-    width: PropTypes.string.isRequired,
-    height: PropTypes.string.isRequired,
-}
-
 export default Spinner;
