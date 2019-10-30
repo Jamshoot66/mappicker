@@ -5,6 +5,7 @@ const dbTypes = require("./dbTypes.js");
 const cors = require('cors')({
     origin: true,
     credentials: true,
+    methods: "GET,PUT,POST,DELETE",
     allowedHeaders: "Content-Type, Authorization"
 });
 
@@ -56,28 +57,31 @@ exports.createUserInfo = functions.auth.user().onCreate((user) => {
  *      body:
  *          - "mission_id" of mission should be rated
  *          - "rate" rate number in 1..5
- *          - "token" auth token of user
+ *      headers:
+ *          - "authorization" auth token of user
  *  response = 
  *      - status 200 if ok
  *      - status 400 + payload on error
  */
 exports.rateMission = functions.https.onRequest((req, res) => {
+
     
-    let rateValue = parseFloat(req.body.rate);
-    let user = {};
-    let rateAvg = 0;
-    // check input
-    if (req.headers.authorization === undefined ||
-        req.body.mission_id === undefined ||
-        isNaN(req.body.rate) ||
-        rateValue < 1 ||
-        rateValue > 5) {
-        res.status(400).send(JSON.stringify({ err: "wrong request" }));
-        return false;
-    }
-    
-    // check authToken
     cors(req, res, () => {
+        let rateValue = parseFloat(req.body.rate);
+        let user = {};
+        let rateAvg = 0;
+        // check input
+        console.log(JSON.stringify(req.headers));
+        console.log(JSON.stringify(req.body));
+        if (req.headers.authorization === undefined ||
+            req.body.mission_id === undefined ||
+            isNaN(req.body.rate) ||
+            rateValue < 1 ||
+            rateValue > 5) {
+            res.status(400).send(JSON.stringify({ err: "wrong request" }));
+            return false;
+        }
+        // check authToken
         admin.auth().verifyIdToken(req.headers.authorization).then((decodedToken) => {
             let uid = decodedToken.uid;
             // check user can rate
@@ -121,8 +125,9 @@ exports.rateMission = functions.https.onRequest((req, res) => {
             res.status(400).send(JSON.stringify({ err: err.message }));
             return false;
         });
+        return true;
     });
-    return true;
+    
 });
 
 /** getMission
