@@ -49,7 +49,7 @@ class Spinner extends React.Component {
 
         return <div style={{
             "width": this.props.width,
-            "height": this.props.height,
+            "height": this.props.height
         }}>{spinnerStr}
             {this.state.preloadContent ? <div className={style.preload}>
                 <img src={pending} alt="" />

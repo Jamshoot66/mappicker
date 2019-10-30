@@ -106,13 +106,14 @@
 	height: 21px;
 	background-color: $cWhite;
 	display: flex;
-
+	position: relative;
+	
 	&Line{
 		width: auto;
 		// max-width: fit-content;
 		max-width: max-content;
 		align-self: center;
-		margin: 8px auto;
+		margin: 8px;
 	}
 }
 
@@ -176,6 +177,14 @@ strong {
 	flex-grow: 1;
 }
 
-li > label {
+li label {
 	align-self: center;
 }
+
+.buttonWrapper{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+}
+

@@ -63,11 +63,12 @@ class Menu extends React.Component{
 					<a href="#schedule">
 					<button 
 						className={style.calendarBtn} 
-						id="menuRandomizeBtn"
+						id="menuCalendarBtn"
 					// onClick={this.props.showMissionPoolToggle}
 					>
-						
-					</button> </a>
+					</button></a>
+					{/* TODO: add mission 
+					<button className={style.addMissionBtn}></button> */}
 					{false ? //this.props.user.auth ? //
 						<button 
 							className={style.randomizeBtn} 

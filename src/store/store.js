@@ -5,7 +5,8 @@ import * as templates from "~u/objectTemplates.js";
 
 
 let defState = {
-	user : utils.defUser,
+	user: utils.defUser,
+	firebase: {},
 	showMissionPool: true,
 	showUserMenu: false,
 	// missionPool: [ {missionItem}, {missionItem}, ... ]
@@ -30,6 +31,11 @@ const Store = (state = defState, action) => {
 	/* SHOW_MISSION_POOL_TOGGLE */
 		case actionType.SHOW_MISSION_POOL_TOGGLE:
 			newState.showMissionPool = !newState.showMissionPool;
+			return newState;
+		
+	/* SHOW_MISSION_POOL_TOGGLE */
+		case actionType.SET_FIREBASE:
+			newState.firebase = action.payload.firebase;
 			return newState;
 		
 	/* SHOW_MISSION_POOL_TOGGLE */
@@ -75,6 +81,13 @@ const Store = (state = defState, action) => {
 		case actionType.UPDATE_MISSION_RATE:
 			return updateMissionRate(state, action);
 
+	/*UPDATE_SYNC_RATE_STATE usage:
+		action.Type : UPDATE_SYNC_RATE_STATE,
+		payload     : [ {guid: guid, syncRateState: "PENDING || ERROR || DONE"} ] 
+	*/
+	case actionType.UPDATE_SYNC_RATE_STATE:
+		return updateSyncRateState(state, action);
+		
 		default:			
 			return newState;
 	}
@@ -82,12 +95,7 @@ const Store = (state = defState, action) => {
 
 export default Store;
 
-function probabilityFunc(rate, lastPlayed) {
-	const halfYearMs = 0.5 * 30 * 24 * 60 * 60 * 1000;
-	let today = Date.now();
-	let coef = Math.log10((rate * 10 - 3) * (today - lastPlayed) / halfYearMs);
-	return coef;
-}
+
 
 function addMissions(state, action) {
 	let newState = Object.assign({}, state);
@@ -98,21 +106,11 @@ function addMissions(state, action) {
 	};
 
 	newState.missionPool = newState.missionPool.concat(action.payload);
+	updateProbabilities(newState, action)
 	return newState;
 }
 
-function updateProbabilities(state, action) {
-	let newState = Object.assign({}, state);
-	let sum = newState.missionPool.reduce((acc, item) => acc +
-		probabilityFunc(item.rateAvg, item.lastPlayed), 0);
-	if (sum > 0) {
-		let koef = 1 / sum;
-		newState.missionPool.forEach( (item) => {
-			item.probability = probabilityFunc(item.rateAvg, item.lastPlayed)*koef;
-		});
-	};
-	return newState;
-}
+
 
 function addRandomMissions(state, action) {
 	let newState = Object.assign({}, state);
@@ -176,24 +174,7 @@ function updateUserInfo(state, action) {
 	return newState;
 }
 
-function updateMissionRate(state, action) {
-	
-	let newState = Object.assign({}, state);
 
-	let missionIndex = newState.missionPool.findIndex((item) => {
-		return item.guid === action.payload.guid
-	})
-	let missionPool = newState.missionPool.slice(0);
-	let mission = Object.assign( {}, newState.missionPool[missionIndex]);
-	mission.rateAvg = action.payload.rate;
-	missionPool[missionIndex] = mission;
-	newState.missionPool = missionPool;
-
-	Store( newState, {
-		type: actionType.UPDATE_PROPABILITIES
-	});
-	return newState;
-}
 
 function addMissionToSchedule(state, action) {
 	let newState = Object.assign({}, state);
@@ -226,4 +207,60 @@ function addMissionToSchedule(state, action) {
 	}
 
 	return newState;
+}
+
+
+
+function updateMissionRate(state, action) {
+
+	let newState = Object.assign({}, state);
+
+	let missionIndex = newState.missionPool.findIndex((item) => {
+		return item.guid === action.payload.guid
+	})
+	let missionPool = newState.missionPool.slice(0);
+	let mission = Object.assign( {}, newState.missionPool[missionIndex]);
+	mission.rateAvg = action.payload.rate;
+	missionPool[missionIndex] = mission;
+	newState.missionPool = missionPool;
+	newState = updateProbabilities(newState, action);
+
+	return newState;
+}
+
+function updateSyncRateState(state, action) {
+
+	let newState = Object.assign({}, state);
+
+	let missionIndex = newState.missionPool.findIndex((item) => {
+		return item.guid === action.payload.guid
+	})
+	let missionPool = newState.missionPool.slice(0);
+	let mission = Object.assign( {}, newState.missionPool[missionIndex]);
+	mission.syncRateState = action.payload.syncRateState;
+	missionPool[missionIndex] = mission;
+	newState.missionPool = missionPool;
+	newState = updateProbabilities(newState, action);
+
+	return newState;
+}
+
+function updateProbabilities(state, action) {
+	let newState = Object.assign({}, state);
+	let sum = newState.missionPool.reduce((acc, item) => acc +
+		probabilityFunc(item.rateAvg, item.lastPlayed), 0);
+	if (sum > 0) {
+		let koef = 1 / sum;
+		newState.missionPool.forEach( (item) => {
+			item.probability = probabilityFunc(item.rateAvg, item.lastPlayed)*koef;
+		});
+	};
+	return newState;
+}
+
+function probabilityFunc(rate, lastPlayed) {
+	const halfYearMs = 0.5 * 30 * 24 * 60 * 60 * 1000;
+	let today = Date.now();
+	let coef = Math.log10((rate * 10 - 3) * (today - lastPlayed) / halfYearMs);
+	return coef;
 }

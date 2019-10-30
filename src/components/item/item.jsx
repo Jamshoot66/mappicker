@@ -5,6 +5,8 @@ import * as actionType from "~s/actions.js";
 import {connect} from "react-redux";
 
 import RateStars from "~c/rateStars/rateStars.jsx";
+import Spinner from "~c/spinner/spinner.jsx";
+
 
 /*
 let testProps = {
@@ -56,7 +58,7 @@ class Item extends React.Component {
 		e.stopPropagation();
 		let avg = (this.rate.balance + this.rate.task + this.rate.gameplay) / 3;
 		avg = Math.round(avg*100)/100;
-		this.props.updateRate(this.props.guid, avg);
+		this.props.syncMissionRate(this.props.guid, avg);
 	}
 
 	onBalanceRateClick = (rate, e) => {
@@ -150,10 +152,14 @@ class Item extends React.Component {
 								</div>
 
 							</li>
-							<button className={tmpStyle} 
-								onClick={this.onRateBtnClick}> 
-								Оценить 
-							</button>
+							<div className={style.buttonWrapper}>
+								<button className={tmpStyle} 
+										onClick={this.onRateBtnClick}> 
+										Оценить 
+								</button>
+								<Spinner spinnerState={this.props.syncRateState} width="25px" height="25px"/>
+							</div>
+							
 						</ul> 
 
 					</div>
@@ -202,16 +208,19 @@ class Item extends React.Component {
 						
 					</div>
 
+					<div className={style.buttonWrapper}>
 					{this.props.user.auth ? 
-							this.props.showInMissonPool ? 
+						this.props.showInMissonPool ? 
+						
 							<button className={tmpStyle} onClick={this.addBtnClick}> 
 								Добавить в расписание
 							</button> : 
 							<button className={tmpStyle} onClick={this.removeBtnClick}> 
 								Убрать из расписания
 							</button> : 
-						false
-					}
+							false
+						}
+					</div>
 				</section>)
 		}
 
@@ -249,6 +258,10 @@ const mapDispatchToProps = (dispatch) => {
 				}
 			})
 			
+		},
+		// syncMissionRate: actionType.syncMissionRate
+		syncMissionRate: (guid, rate) => {
+			actionType.syncMissionRate(dispatch, {guid, rate})
 		}
 	}
 }

@@ -77,6 +77,13 @@ section.userMenuWrapper{
 	background-size: contain;
 }
 
+.addMissionBtn{
+	@include menuBtn;
+	max-height: 30px;
+	background: url("./add.svg") no-repeat center;
+	background-size: contain;
+}
+
 .label {
 	user-select: none;
 	@include xs(display, none);

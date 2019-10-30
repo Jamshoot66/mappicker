@@ -146,5 +146,8 @@
     "enzyme-adapter-react-16": "^1.14.0",
     "node-sass": "^4.12.0",
     "smart-grid": "^2.1.2"
-  }
+  },
+
+  "proxy": "https://us-central1-mapick-rb.cloudfunctions.net" 
+
 }

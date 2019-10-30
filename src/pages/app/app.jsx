@@ -9,33 +9,50 @@ import Menu from "~c/menu/menu.jsx";
 import Item from "~c/item/item.jsx";
 import ItemHeader from "~c/item/itemHeader.jsx";
 
-import { initFirebase } from "~u/firebase.js";
-// import * as utils from "~/utils.js";
+// import { initFirebase } from "~u/firebase.js";
+import * as utils from "~u/utils.js";
+
+import * as firebase from "firebase/app";
+import 'firebase/firestore';
 
 class App extends React.Component {
 	constructor(props){
 		super(props);
-		initFirebase( (firebaseUser) => {
 
+		let callback = async (firebaseUser) => {
 			/* eslint-disable */
-			if (firebaseUser != undefined){
-			
-					let user = {
-						auth : true,
-						shortName : firebaseUser.displayName,
-						name : firebaseUser.displayName
-					}
+			if (firebaseUser != undefined) {
+				/* eslint-enable */
+				
+				let db = firebase.firestore();
+				let info = (await db.collection("users").doc(firebaseUser.uid).get()).data();
+				let user = Object.assign({},
+					utils.defUser,
+					{
+						auth: true,
+						uid: firebaseUser.uid,
+						shortName: firebaseUser.displayName,
+						name: firebaseUser.displayName,
+						unit: `[${info.unit.toUpperCase()}]`,
+						rights: {
+							canAdd: info.canAdd,
+							canAdmin: info.canAdmin,
+							canRate: info.canRate,
+							canRead: info.canRead
+						}
+					});
 
-				console.log(firebaseUser);
 				this.props.updateUserInfo(user);
+				this.props.getAllMissions();
+				// this.props.setFirebase({ db });
 			}
-			/* eslint-enable */
-			
-		});
+		}
+
+		firebase.auth().onAuthStateChanged(callback);
 	}
 
 	componentDidMount(){
-		this.props.getAllMissions();
+		// this.props.getAllMissions();
 		this.props.updatePropabilities();
 	}
 
@@ -63,7 +80,6 @@ class App extends React.Component {
 				})
 
 				let result = [setItemsStr];
-				
 				return result;
 			});
 
@@ -85,7 +101,7 @@ class App extends React.Component {
 
 		return (
 			<main className={style.wrapper}>
-				<button onClick={this.addItemBtn}>Add item</button>
+				
 				<header className={style.row}>
 					<Header/>
 				</header>
@@ -109,9 +125,11 @@ class App extends React.Component {
 
 const mapStateToProps = (state) => {
 	return {
+		user : state.user,
 		missionPool : state.missionPool,
 		schedule : state.schedule,
-		showMissionPool: state.showMissionPool
+		showMissionPool: state.showMissionPool,
+		db: state.firebase.db
 	}
 } 
 
@@ -119,6 +137,15 @@ const mapDispatchToProps = (dispatch) => {
 	return {
 		getAllMissions: () => {
 			actionType.getAllMissions(dispatch)
+		},
+
+		setFirebase: (firebase) => {
+			dispatch({
+				type: actionType.SET_FIREBASE,
+				payload: {
+					firebase
+				}
+			})
 		},
 
 		updatePropabilities: () => {
