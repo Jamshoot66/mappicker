@@ -9,10 +9,6 @@
 
 	background-color: lighten($cBackground, 25%);
 
-	&:nth-of-type(2n) {
-		// background-color: lighten($cBackground, 15%);
-	}
-
 	&_even{
 		background-color: lighten($cBackground, 15%);
 	}
@@ -74,8 +70,8 @@
 .autor{
 	@include itemBase;
 	@include size(1.5);
-	@include xs(display, none)
-	@include md(display, none)
+	@include xs(display, none);
+	@include md(display, none);
 }
 
 .lastPlayed{

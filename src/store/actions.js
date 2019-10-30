@@ -116,7 +116,7 @@ export function syncMissionRate(dispatch, props) {
 			}).then((r) => {
 				return r.json()
 			}).then((resp) => { 
-				console.log("resp");
+
 				dispatch({
 					type: UPDATE_MISSION_RATE,
 					payload: {
