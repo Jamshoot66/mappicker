@@ -5,7 +5,7 @@ module.exports.collections = {
 
 module.exports.default = {
     defUser: {
-        canRead: true,
+        canRead: false,
         canRate: false,
         canAdmin: false,
         cadAdd: false,
