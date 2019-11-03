@@ -8,6 +8,8 @@ import Header from "~c/header/header.jsx";
 import Menu from "~c/menu/menu.jsx";
 import Item from "~c/item/item.jsx";
 import ItemHeader from "~c/item/itemHeader.jsx";
+import AddMission from "~c/addMission/addMission.jsx";
+
 
 // import { initFirebase } from "~u/firebase.js";
 import * as utils from "~u/utils.js";
@@ -116,6 +118,8 @@ class App extends React.Component {
 				<div><h2 >Расписание</h2></div>
 				{itemsPoolStr}
 				<div className={style.viewHeight}></div>
+
+				{this.props.showAddMissionComponent !== true ? <div className={style.fullscreenWrapper}><AddMission /></div> : null}
 			
 			</main>
 		);
@@ -129,6 +133,7 @@ const mapStateToProps = (state) => {
 		missionPool : state.missionPool,
 		schedule : state.schedule,
 		showMissionPool: state.showMissionPool,
+		showAddMissionComponent: state.showAddMissionComponent,
 		db: state.firebase.db
 	}
 } 

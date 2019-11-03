@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from 'prop-types';
 import style from "./spinner.module.scss";
 import pending from "./pending.gif";
 import error from "./error.svg";

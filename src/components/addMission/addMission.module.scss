@@ -1,0 +1,117 @@
+@import "~u/basic.scss";
+@import "~u/smart-grid.scss";
+
+.screen {
+    @include wrapper;
+    max-width: 600px;
+}
+
+.wrapper {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: $buttonBorderRadius*2;
+    padding: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    background-color: $cBackground;
+}
+
+.itemHeader{
+    color: $cWhite;
+}
+
+.itemWrapper {
+    display: flex;
+    width: 100%;
+    margin: 3px 0;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.itemLabel{
+    background-color: $cWhite;
+    border-top-left-radius: $buttonBorderRadius;
+    border-bottom-left-radius: $buttonBorderRadius;
+    padding: 3px;
+    min-width: 140px; 
+    border: 1px solid black;
+    font-size: 1em;
+}
+
+.itemInput{
+    border-top-right-radius: $buttonBorderRadius;
+    border-bottom-right-radius: $buttonBorderRadius;
+    padding: 0 3px;
+    flex-grow: 1;
+    border: 1px solid black;
+    font-size: 1em;
+    min-width: 50px;
+    height: 26px;
+    box-sizing: border-box;
+
+    font-family: 'Ubuntu', sans-serif;
+
+    &::placeholder{
+        color: grey;
+    }
+
+    &[type="date"]{
+        padding-left: 1px;
+    }
+
+}
+
+.itemSelect{
+    @extend .itemInput;
+    background-color: white;
+    padding-left: 0;
+    color: black;
+    text-transform: capitalize;
+
+    & option {
+        color: black;
+    }
+
+    &:invalid,
+    & option[value=""] {
+       color: grey;
+       text-transform: initial;
+    }
+}
+
+.horisontalLine{
+    width: 98%;
+    margin: 5px 2px;
+    padding: 0;
+    min-height: 1px;
+    width: 99%;
+    border: none;
+    background-color: rgba( 255, 255, 255, 0.3);
+}
+
+.itemButton{
+    @include button;
+    @include flat;
+    display: flex;
+    background-color: $cWhite;
+    width: 85px;
+    height: 21px;
+    justify-content: center;
+    align-items: center;
+    border-radius: $buttonBorderRadius;
+}
+
+.buttonBlock{
+    display: flex;
+    align-items: center;
+}
+
+@supports (-moz-appearance:none) {
+    select {
+        -moz-appearance:none !important;
+        background: white url('data:image/gif;base64,R0lGODlhBgAGAKEDAFVVVX9/f9TU1CgmNyH5BAEKAAMALAAAAAAGAAYAAAIODA4hCDKWxlhNvmCnGwUAOw==') right center no-repeat !important;
+        background-position: calc(100% - 5px) center !important;
+    }  
+}

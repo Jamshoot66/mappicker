@@ -15,8 +15,8 @@ a,
 input,
 button,
 textarea {
-	-webkit-appearance: none;
-	-webkit-border-radius: 0;
+	// -webkit-appearance: none;
+	// -webkit-border-radius: 0;
 }
 
 .wrapper {
@@ -38,6 +38,13 @@ textarea {
 	}
 }
 
+.fullscreenWrapper{
+    position: fixed;
+    top: 0;
+    width: 100vw;
+	height: 100vh;
+	z-index: 100;
+}
 
 .row {
 	@include row-flex;

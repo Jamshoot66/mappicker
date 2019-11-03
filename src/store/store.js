@@ -9,13 +9,12 @@ let defState = {
 	firebase: {},
 	showMissionPool: true,
 	showUserMenu: false,
+	showAddMissionComponent: false,
 	// missionPool: [ {missionItem}, {missionItem}, ... ]
 	missionPool : [],
 	// schedule : [ {date: date, missions: new Set()}, ...]
 	schedule : []
 }
-
-
 
 const Store = (state = defState, action) => {
 	let newState = Object.assign({}, state);
@@ -42,6 +41,11 @@ const Store = (state = defState, action) => {
 		case actionType.SHOW_USER_MENU_TOGGLE:
 			newState.showUserMenu = !newState.showUserMenu;
 			return newState;
+		
+	/* SHOW_MISSION_POOL_TOGGLE */
+	case actionType.SHOW_ADD_MISSION_COMPONENT_TOGGLE:
+		newState.showAddMissionComponent = !newState.showAddMissionComponent;
+		return newState;
 
 	/* UPDATE_PROPABILITIES */
 		case actionType.UPDATE_PROPABILITIES:	
@@ -99,8 +103,10 @@ export default Store;
 
 function addMissions(state, action) {
 	let newState = Object.assign({}, state);
+	console.log(action.payload);
+	console.log(templates.missionItem);
 	if (action.payload.some(item => { 
-		return !utils.shallowEqual(item, templates.missionItem)
+		return !utils.validMission(templates.missionItem, item)
 	})) {
 		throw new Error("Payload should be an array of objects with 'missionItem' fields")
 	};

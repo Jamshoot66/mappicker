@@ -21,6 +21,7 @@ export const UPATE_MISSIONS_ORDER = "UPATE_MISSIONS_ORDER";
 export const ADD_RANDOM_MISSIONS = "ADD_RANDOM_MISSIONS";
 export const UPDATE_USER_INFO = "UPDATE_USER_INFO";
 export const SHOW_USER_MENU_TOGGLE = "SHOW_USER_MENU_TOGGLE";
+export const SHOW_ADD_MISSION_COMPONENT_TOGGLE = "SHOW_ADD_MISSION_COMPONENT_TOGGLE";
 export const LOGIN = "LOGIN";
 export const LOGOUT = "LOGOUT";
 
@@ -53,6 +54,21 @@ export function getAllMissions(dispatch) {
 		
 		});
 	}
+}
+
+export async function addMissionToServer(dispatch, payload) {
+	
+	let mockAsync = new Promise((res, rej) => {
+		setTimeout(() => {
+			res();
+		}, 1000);
+	})
+
+	await mockAsync;
+	dispatch({
+		type: ADD_MISSIONS,
+		payload: payload
+	})
 }
 
 export async function loginViaGmail(dispatch){

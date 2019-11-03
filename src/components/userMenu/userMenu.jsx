@@ -3,7 +3,6 @@ import style from "./userMenu.module.scss";
 import { connect } from "react-redux";
 import * as actionType from "~s/actions.js";
 
-
 class UserMenu extends React.Component {
 
     overlayClick = (e) => {
@@ -21,30 +20,15 @@ class UserMenu extends React.Component {
     
         let menuItemsStr = null;
 
-        let unitStr = null;
-        //FIXME: add user [UNIT]
-        if (this.props.user.authedUnit) {
-            unitStr = <div key="userMenu2-1">Представитель {this.props.user.unit}</div>
-        } else {
-            // unitStr = <div key="userMenu2">{this.props.user.unit}</div>
-            unitStr = null;
-        }
-        
-        // <div>
-        //     <label>Промо</label>
-        //     <input type="text" className={style.promoInput} onClick={this.promoClick}/>
-        //     <button className={style.promoBtn}>Ок</button>
-        // </div> ,
-        //FIXME: add user [UNIT]    
         if (!this.props.user.auth) {
             menuItemsStr = <div onClick={this.props.login} key="userMenu3">Логин через GooglePlus</div>
         } else {
             menuItemsStr = [
                 <div key="userMenu1">{this.props.user.name}</div>,
                 <hr key="userMenu2"/>,
-                unitStr,
-                <div key="userMenu4">    
-                    Представитель отряда [UNIT]
+                <div key="userMenu4">
+                    {this.props.user.unit !== "[NULL]" ? `Представитель отряда ${this.props.user.unit}` : `Без отряда`}
+                    
                 </div>,
                 <hr key="userMenu5"/>,
                 <button onClick={this.props.logout}
