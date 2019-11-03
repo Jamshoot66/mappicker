@@ -287,7 +287,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         addMissionToStore: async (mission) => {
-            await actionType.addMissionToServer(dispatch, [mission]);  
+            await actionType.addMissionToServer(dispatch, mission);  
         },
 
         hide: () => {

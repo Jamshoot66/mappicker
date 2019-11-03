@@ -119,7 +119,7 @@ class App extends React.Component {
 				{itemsPoolStr}
 				<div className={style.viewHeight}></div>
 
-				{this.props.showAddMissionComponent !== true ?
+				{this.props.showAddMissionComponent ?
 					<div className={style.fullscreenWrapper} onClick={this.props.showAddMissionComponentToggle}><AddMission /></div>
 					: null}
 			

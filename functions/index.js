@@ -180,14 +180,16 @@ exports.getMissions = functions.https.onRequest((req, res) => {
  *      - status 400 + payload on error
  */
 exports.addMission = functions.https.onRequest((req, res) => {
-    let user = {};
-    //check input
-    if (req.headers.authorization === undefined ||
-        req.body.mission === undefined) {
-        return res.status(400).send("wrong request");
-    }
-    //check token
+    
     cors(req, res, () => {
+        let user = {};
+        //check input
+        if (req.headers.authorization === undefined ||
+            req.body.mission === undefined) {
+            return res.status(400).send("wrong request");
+        }
+        //check token
+        
         admin.auth().verifyIdToken(req.headers.authorization).then((decodedToken) => {
             return db.collection(dbTypes.collections.users).doc(decodedToken.uid).get();
         }).then((_user) => {
@@ -203,7 +205,7 @@ exports.addMission = functions.https.onRequest((req, res) => {
                 throw new Error(JSON.stringify({ err: "you cant add missions" }));
             }
         }).then((ref) => {
-            return res.send(ref.id);
+            return res.send(JSON.stringify({ guid: ref.id }) );
         }).catch(err => {
             return res.status(400).send(JSON.stringify({ err: err.message }));
         });
@@ -225,17 +227,18 @@ exports.addMission = functions.https.onRequest((req, res) => {
  *      - status 400 + payload on error
  */
 exports.updateLastPlayed = functions.https.onRequest((req, res) => {
-    let user = {};
-    let lastPlayed = parseInt(req.body.lastPlayed)
-    console.log(req.body.lastPlayed);
-    //check input
-    if (req.headers.authorization === undefined ||
-        req.body.mission_id === undefined ||
-        isNaN(lastPlayed)) {
-        return res.status(400).send(JSON.stringify({err: "wrong request" }));
-    }
-    //check token
+    
     cors(req, res, () => {
+        let user = {};
+        let lastPlayed = parseInt(req.body.lastPlayed)
+        console.log(req.body.lastPlayed);
+        //check input
+        if (req.headers.authorization === undefined ||
+            req.body.mission_id === undefined ||
+            isNaN(lastPlayed)) {
+            return res.status(400).send(JSON.stringify({err: "wrong request" }));
+        }
+        //check token
         admin.auth().verifyIdToken(req.headers.authorization).then((decodedToken) => {
             return db.collection(dbTypes.collections.users).doc(decodedToken.uid).get();
         }).then((_user) => {

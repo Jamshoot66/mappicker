@@ -58,17 +58,31 @@ export function getAllMissions(dispatch) {
 
 export async function addMissionToServer(dispatch, payload) {
 	
-	let mockAsync = new Promise((res, rej) => {
-		setTimeout(() => {
-			res();
-		}, 1000);
-	})
-
-	await mockAsync;
-	dispatch({
-		type: ADD_MISSIONS,
-		payload: payload
-	})
+	firebase.auth().currentUser.getIdToken().then(token => {
+		return fetch(firebaseConst.FUNCTIONS_URL_BASE + firebaseConst.ADD_MISSION, {
+			credentials: "include",
+			method: "POST",
+			headers: {
+				"content-type": "application/json",
+				"authorization": token
+			},
+			body: JSON.stringify({
+				mission: payload
+			})
+		}).then((response) => {
+			return response.json();
+		}).then((json) => {
+			console.log(json.guid);
+			let mission = payload;
+			mission.guid = json.guid;
+			dispatch({
+				type: ADD_MISSIONS,
+				payload: [mission]
+			})
+		})
+	}).catch(e => {
+		console.log(e);	
+	})	
 }
 
 export async function loginViaGmail(dispatch){

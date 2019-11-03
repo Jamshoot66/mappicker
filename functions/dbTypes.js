@@ -18,7 +18,7 @@ module.exports.default = {
 		mods: "mods",
 		island: "island",
 		players: 1,
-		autor: "unknown",
+		author: "unknown",
 		rateAvg: 3,
 		rates:{},
 		lastPlayed: 0
