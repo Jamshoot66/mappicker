@@ -119,7 +119,9 @@ class App extends React.Component {
 				{itemsPoolStr}
 				<div className={style.viewHeight}></div>
 
-				{this.props.showAddMissionComponent !== true ? <div className={style.fullscreenWrapper}><AddMission /></div> : null}
+				{this.props.showAddMissionComponent !== true ?
+					<div className={style.fullscreenWrapper} onClick={this.props.showAddMissionComponentToggle}><AddMission /></div>
+					: null}
 			
 			</main>
 		);
@@ -161,6 +163,12 @@ const mapDispatchToProps = (dispatch) => {
 			dispatch( {
 				type: actionType.UPDATE_USER_INFO, 
 				payload: {user}
+			})
+		},
+
+		showAddMissionComponentToggle: () => {
+			dispatch({
+				type: actionType.SHOW_ADD_MISSION_COMPONENT_TOGGLE
 			})
 		}
 	}

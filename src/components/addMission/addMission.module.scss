@@ -15,7 +15,9 @@
     padding: 5px;
     padding-left: 15px;
     padding-right: 15px;
-    background-color: $cBackground;
+    background: darken($cRed, 15%);
+    opacity: 0.9;
+    border: 1px solid $cWhite;
 }
 
 .itemHeader{

@@ -195,10 +195,14 @@ class AddMission extends React.Component {
     onHideClick = () => {
     
     }
+
+    onBackgroundClick = (e) => {
+        e.stopPropagation();
+    }
     
     render() { 
         return (
-            <div className={style.screen}>
+            <div className={style.screen} onClick={this.onBackgroundClick}>
                 <div className={style.wrapper}>
                     <header className={style.itemHeader}>Добавить миссию</header>
                     

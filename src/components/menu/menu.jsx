@@ -59,7 +59,6 @@ class Menu extends React.Component{
 			<div className={style.row}>
 				{fakeMenu}
 				<nav className={menuClassName} ref={this.ref}>
-					{/*<label htmlFor="menuFilterBtn" className={style.label}>Фильтр</label>*/}
 					<a href="#schedule">
 					<button 
 						className={style.calendarBtn} 
@@ -67,16 +66,18 @@ class Menu extends React.Component{
 					// onClick={this.props.showMissionPoolToggle}
 					>
 					</button></a>
-					{/* TODO: add mission 
-					<button className={style.addMissionBtn}></button> */}
-					{false ? //this.props.user.auth ? //
+					{ this.props.user.rights.canAdd ? 
+						<button className={style.addMissionBtn} onClick={this.props.showAddMissionComponentToggle}></button> : null }
+					{/* TODO: implement add random missions
+					 this.props.user.auth ? 
 						<button 
 							className={style.randomizeBtn} 
 							id="menuRandomizeBtn"
 							onClick={this.props.addRandomMissions}>
 						</button> :
-						false}
-					{/*<button className={style.filterBtn} id="menuFilterBtn"></button>		*/}
+						null */}
+					{/* TODO: implement filter feature
+					<button className={style.filterBtn} id="menuFilterBtn"></button>		*/}
 					<div className={style.placeholder}></div>
 					<label htmlFor="menuUserBtn" className={style.label}>{greeting}</label>
 					<button 
@@ -115,6 +116,12 @@ const mapDispatchToProps = (dispatch) => {
 		showUserMenuToggle: () => {
 			dispatch({
 				type: actionType.SHOW_USER_MENU_TOGGLE
+			});
+		},
+
+		showAddMissionComponentToggle: () => {
+			dispatch({
+				type: actionType.SHOW_ADD_MISSION_COMPONENT_TOGGLE
 			});
 		},
 
