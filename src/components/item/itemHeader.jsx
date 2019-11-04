@@ -83,10 +83,10 @@ let missionItem = {
 		}
 	}
 
-	sortByAutor = (first, second) => {
-		if (first.autor > second.autor) {
+	sortByAuthor = (first, second) => {
+		if (first.author > second.author) {
 			return 1;
-		} else if (first.autor < second.autor) {
+		} else if (first.author < second.author) {
 			return -1;
 		} else if (first.probability > second.probability) {
 			return -1
@@ -150,7 +150,7 @@ let missionItem = {
 					Карта
 				</div>
 
-				<div className={style.autor} onClick={ () => {this.sort(this.sortByAutor)}}> 
+				<div className={style.author} onClick={ () => {this.sort(this.sortByAuthor)}}> 
 					Автор
 				</div>
 

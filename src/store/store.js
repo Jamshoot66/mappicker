@@ -103,8 +103,6 @@ export default Store;
 
 function addMissions(state, action) {
 	let newState = Object.assign({}, state);
-	console.log(action.payload);
-	console.log(templates.missionItem);
 	if (action.payload.some(item => { 
 		return !utils.validMission(templates.missionItem, item)
 	})) {
@@ -267,6 +265,8 @@ function updateProbabilities(state, action) {
 function probabilityFunc(rate, lastPlayed) {
 	const halfYearMs = 0.5 * 30 * 24 * 60 * 60 * 1000;
 	let today = Date.now();
-	let coef = Math.log10((rate * 10 - 3) * (today - lastPlayed) / halfYearMs);
+	let func = (rate * 10 - 3) * (today - lastPlayed) / halfYearMs;
+	if (func < 1) { func = 1 } 
+	let coef = Math.log10(func);
 	return coef;
 }

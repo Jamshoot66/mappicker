@@ -90,7 +90,7 @@ class Item extends React.Component {
 					</div>
 
 					<div className={style.lastPlayed}> 
-						{new Date(this.props.lastPlayed).toLocaleDateString()}
+						{new Date(+this.props.lastPlayed).toLocaleDateString()}
 					</div>
 
 					<div className={style.players}> 
@@ -101,8 +101,8 @@ class Item extends React.Component {
 						{this.props.island}
 					</div>
 
-					<div className={style.autor}> 
-						{this.props.autor}
+					<div className={style.author}> 
+						{this.props.author}
 					</div>
 
 					<div className={style.rateAvg}> 
@@ -171,13 +171,21 @@ class Item extends React.Component {
 							<div className={style.maximazedName}>
 								{this.props.name}	
 							</div>
+							
+							<div className={style.line}> 
+								Имя файла <strong>{this.props.fileName}</strong>
+							</div>
+
+							<div className={style.line}> 
+								<strong><a href={this.props.link} className={style.link}>Ссылка</a></strong>
+							</div>
 
 							<div className={style.line}> 
 								Моды <strong>{this.props.mods}</strong>
 							</div>
 
 							<div className={style.line}> 
-								Последний отыгрыш <strong>{new Date(this.props.lastPlayed).toLocaleDateString()}</strong>
+								Последний отыгрыш <strong>{new Date(+this.props.lastPlayed).toLocaleDateString()}</strong>
 							</div>
 							
 							<div className={style.line}> 
@@ -189,12 +197,13 @@ class Item extends React.Component {
 							</div>
 
 							<div className={style.line}> 
-								Автор <strong>{this.props.autor}</strong>
+								Автор <strong>{this.props.author}</strong>
 							</div>
 
+							{ this.props.rateAvg > 0 ?
 							<div className={style.line}> 
 								Рейтинг <strong>{this.props.rateAvg}</strong>
-							</div>
+							</div> : null}
 
 							<div className={style.line}
 								title={this.hint}> 

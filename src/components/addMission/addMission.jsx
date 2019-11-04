@@ -152,21 +152,6 @@ class AddMission extends React.Component {
     }
 
     onAddMissionClick = async () => {
-        /*
-        let mission = {
-            fileName: this.state.fileName || undefined,
-            name: this.state.name,
-            author: this.state.author,
-            island: this.state.island,
-            lastPlayed: this.state.lastPlayedMs !== "" ? this.state.lastPlayedMs : 0,
-            mods: this.state.mods,
-            link: this.state.link,
-            players: this.state.players,
-            rateAvg: 3,
-            guid: 1
-        };
-        */
-        // let mission = {};
         if (this.state.requestState === "PENDING") return;
 
         let mission = Object.assign({},
@@ -177,7 +162,7 @@ class AddMission extends React.Component {
             (this.state.lastPlayedMs !== "")? { lastPlayed: this.state.lastPlayedMs } : {lastPlayed:0},
             (this.state.mods !== "")        ? { mods: this.state.mods } : null,
             (this.state.link !== "")        ? { link: this.state.link } : null,
-            (this.state.players !== "")     ? { players: this.state.fileName } : null,
+            (this.state.players !== "")     ? { players: this.state.players } : null,
             {rateAvg: 3},
             (this.state.guid !== "")        ? { guid: this.state.guid } : null,
         )
@@ -210,54 +195,55 @@ class AddMission extends React.Component {
 
                     <section className={style.itemWrapper}>
                         <label htmlFor="fileName" className={style.itemLabel}>Имя файла</label>
-                        <input id="fileName" className={style.itemInput} value={this.state.fileName} onChange={this.onFileNameChange}  onBlur={this.onFileNameBlur} type="text" placeholder="обязательное поле"/>
+                        <input id="fileName" size="10" className={style.itemInput} value={this.state.fileName} onChange={this.onFileNameChange}  onBlur={this.onFileNameBlur} type="text" placeholder="обязательное поле"/>
                     </section>
+                    
                     
                     <section className={style.itemWrapper}>
                         <label htmlFor="name" className={style.itemLabel}>Название миссии</label>
-                        <input id="name" value={this.state.name} onChange={this.onNameChange} className={style.itemInput} type="text" placeholder="обязательное поле"/>
+                        <input id="name" size="10" value={this.state.name} onChange={this.onNameChange} className={style.itemInput} type="text" placeholder="обязательное поле"/>
                     </section>
 
+                    
                     <section className={style.itemWrapper}>
                         <label htmlFor="mods" className={style.itemLabel}>Моды</label>
-                        {/* <input id="mods" value={this.state.mods} onChange={this.onModsChange} className={style.itemInput} type="text" placeholder="обязательное поле (vanila rhs...)"/> */}
                         <select id="mods" value={this.state.mods} onChange={this.onModsChange} className={style.itemSelect} type="text" required placeholder="обязательное поле (vanila rhs...)">
                             <option value="" hidden disabled>обязательное поле</option>
                             <option value="rhs">rhs</option>
                             <option value="vanila">vanila</option>
                         </select>
                     </section>
-
+                    
                     <section className={style.itemWrapper}>
                         <label htmlFor="island" className={style.itemLabel}>Остров</label>
-                        {/* <input id="island" value={this.state.island} onChange={this.onIslandChange} className={style.itemInput} type="text" placeholder="обязательное поле (altis chernorus...)"/> */}
-                        <select  value={this.state.island} onChange={this.onIslandChange} id="island" className={style.itemSelect} required>
+                        <select id="island" size="1" value={this.state.island} onChange={this.onIslandChange} className={style.itemSelect} required>
                             <option value="" hidden disabled>обязательное поле</option>
                             [{this.islandOptionsStr}]
                         </select>
                     </section>
-
+                    
                     <section className={style.itemWrapper}>
                         <label htmlFor="players" className={style.itemLabel}>Кол-во игроков</label>
-                        <input id="players" value={this.state.players} onChange={this.onPlayersChange} className={style.itemInput} type="number" placeholder="обязательное поле (185)"/>
+                        <input id="players" min="0" max="999"  value={this.state.players} onChange={this.onPlayersChange} className={style.itemInput} type="number" placeholder="обязательное поле (185)"/>
                     </section>
 
                     <section className={style.itemWrapper}>
                         <label htmlFor="author" className={style.itemLabel}>Автор</label>
-                        <input id="author" value={this.state.author} onChange={this.onAuthorChange} className={style.itemInput} type="text" placeholder="обязательное поле (Vasya Pupkin)"/>
+                        <input id="author" size="10"  value={this.state.author} onChange={this.onAuthorChange} className={style.itemInput} type="text" placeholder="обязательное поле (Vasya Pupkin)"/>
                     </section>
 
                     <section className={style.itemWrapper}>
                         <label htmlFor="lastPlayed" className={style.itemLabel}>Отыгрыш</label>
-                        <input id="lastPlayed" value={this.state.lastPlayed} onFocus={this.onLastPlayedFocus} onChange={this.onLastPlayedChange} onBlur={this.onLastPlayedBlur} className={style.itemInput} type="text" placeholder={this.state.lastPlayedPlaceholder}/>
-                        {/* <input id="lastPlayed" value={this.state.lastPlayed} onChange={this.onLastPlayedChange} onBlur={this.onLastPlayedBlur} className={style.itemInput} type="date" placeholder={this.state.lastPlayedPlaceholder}/> */}
+                        <input id="lastPlayed" size="10"  value={this.state.lastPlayed} onFocus={this.onLastPlayedFocus} onChange={this.onLastPlayedChange} onBlur={this.onLastPlayedBlur} className={style.itemInput} type="text" placeholder={this.state.lastPlayedPlaceholder}/>
+        
                     </section>
 
                     <section className={style.itemWrapper}>
                         <label htmlFor="link" className={style.itemLabel}>Ссылка</label>
-                        <input id="link" value={this.state.link} onChange={this.onLinkChange} className={style.itemInput} type="text" placeholder="опциональное поле"/>
+                        <input id="link" size="10"  value={this.state.link} onChange={this.onLinkChange} className={style.itemInput} type="text" placeholder="опциональное поле"/>
                     </section>
-
+                
+                   
                     <hr className={style.horisontalLine} />
                     
                     <section className={style.itemWrapper}>

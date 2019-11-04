@@ -1,4 +1,3 @@
-
 let admin = require("./firebase.local.js");
 const functions = require('firebase-functions');
 const dbTypes = require("./dbTypes.js");
@@ -33,7 +32,6 @@ exports.getUserInfo = functions.https.onRequest((req, res) => {
                     throw new Error(JSON.stringify({err: "wrong user"}));
                 }
                 status = 200;
-                // res.status(status).send(snapshot.data());
                 res.status(status).send(JSON.stringify(snapshot.data()));
                 return snapshot.data();
             }).catch(err => {
@@ -185,8 +183,10 @@ exports.addMission = functions.https.onRequest((req, res) => {
         let user = {};
         //check input
         if (req.headers.authorization === undefined ||
-            req.body.mission === undefined) {
-            return res.status(400).send("wrong request");
+            req.body.mission === undefined ||
+            !dbTypes.validMission(dbTypes.default.requiredMissionFields, req.body.mission)
+        ) {
+            return res.status(400).send(JSON.stringify({ err: "Wrong request. Check input" }));
         }
         //check token
         
@@ -196,8 +196,6 @@ exports.addMission = functions.https.onRequest((req, res) => {
             user = _user.data();
             //check user
             if (user.canAdd) {
-                //sanitize mission
-                //TODO: add sanitizer for missions
                 let sanitizedMission = Object.assign({}, dbTypes.default.defMission, req.body.mission);
                 //add mission
                 return db.collection(dbTypes.collections.missions).add(sanitizedMission)
@@ -209,9 +207,8 @@ exports.addMission = functions.https.onRequest((req, res) => {
         }).catch(err => {
             return res.status(400).send(JSON.stringify({ err: err.message }));
         });
+        
     });
-    
-    return false;
 })
 
 /** updateLastPlayed
@@ -231,7 +228,7 @@ exports.updateLastPlayed = functions.https.onRequest((req, res) => {
     cors(req, res, () => {
         let user = {};
         let lastPlayed = parseInt(req.body.lastPlayed)
-        console.log(req.body.lastPlayed);
+
         //check input
         if (req.headers.authorization === undefined ||
             req.body.mission_id === undefined ||
@@ -245,9 +242,6 @@ exports.updateLastPlayed = functions.https.onRequest((req, res) => {
             user = _user.data();
             //check user
             if (user.canAdd) {
-                //sanitize mission
-                //TODO: add sanitizer for missions
-                // lastPlayed
                 //add mission
                 return db.collection(dbTypes.collections.missions).doc(req.body.mission_id).update({ "lastPlayed": lastPlayed });
             } else {
@@ -258,6 +252,7 @@ exports.updateLastPlayed = functions.https.onRequest((req, res) => {
         }).catch(err => {
             return res.status(400).send(JSON.stringify({ err: err.message }));
         });
+        return true;
     });
     
     return false;

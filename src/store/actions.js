@@ -42,7 +42,12 @@ export function getAllMissions(dispatch) {
 				}		
 			}).then((r) => {
 				return r.json()
-			}).then((json) => { 
+			}).then((json) => {
+				json.forEach((item) => {
+					if (item.link === undefined) {
+						item.link = `https://www.google.com/search?q=${item.name}&as_sitesearch=red-bear.ru`
+					}
+				});
 				dispatch( {
 					type: ADD_MISSIONS,
 					payload: json		
@@ -57,8 +62,7 @@ export function getAllMissions(dispatch) {
 }
 
 export async function addMissionToServer(dispatch, payload) {
-	
-	firebase.auth().currentUser.getIdToken().then(token => {
+	return firebase.auth().currentUser.getIdToken().then(token => {
 		return fetch(firebaseConst.FUNCTIONS_URL_BASE + firebaseConst.ADD_MISSION, {
 			credentials: "include",
 			method: "POST",
@@ -82,6 +86,7 @@ export async function addMissionToServer(dispatch, payload) {
 		})
 	}).catch(e => {
 		console.log(e);	
+		throw new Error(e.message);
 	})	
 }
 

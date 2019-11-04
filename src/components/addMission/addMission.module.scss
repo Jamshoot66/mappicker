@@ -3,21 +3,24 @@
 
 .screen {
     @include wrapper;
-    max-width: 600px;
+    // max-width: 600px;
 }
 
 .wrapper {
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
+    @include row-flex;
+    max-width: $break_sm;
     align-items: center;
+    justify-content: center;
     border-radius: $buttonBorderRadius*2;
-    padding: 5px;
-    padding-left: 15px;
-    padding-right: 15px;
+    
     background: darken($cRed, 15%);
     opacity: 0.9;
     border: 1px solid $cWhite;
+
+    padding: 5px 15px;
+
+    @include sm( border-radius, 0);
+    @include sm( border, none);
 }
 
 .itemHeader{
@@ -25,11 +28,12 @@
 }
 
 .itemWrapper {
-    display: flex;
+    // @include size(12);
     width: 100%;
-    margin: 3px 0;
+    display: flex;
     justify-content: space-around;
     align-items: center;
+    
 }
 
 .itemLabel{
