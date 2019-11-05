@@ -10,6 +10,7 @@ let defState = {
 	showMissionPool: true,
 	showUserMenu: false,
 	showAddMissionComponent: false,
+	currentScheduleDate: 0,
 	// missionPool: [ {missionItem}, {missionItem}, ... ]
 	missionPool : [],
 	// schedule : [ {date: date, missions: new Set()}, ...]
@@ -66,6 +67,14 @@ const Store = (state = defState, action) => {
 	*/	
 		case actionType.ADD_MISSION_TO_SCHEDULE:		
 			return addMissionToSchedule(state, action);
+		
+	/* SET_CURRENT_SCHEDULE_DATE usage:
+		action.Type : SET_CURRENT_SCHEDULE_DATE,
+		payload     : {date}
+	*/	
+		case actionType.SET_CURRENT_SCHEDULE_DATE:
+			newState.currentScheduleDate = action.payload.date;
+			return newState;
 
 	/* REMOVE_MISSION_FROM_SCHEDULE usage:
 		action.Type : REMOVE_MISSION_FROM_SCHEDULE,
@@ -186,6 +195,8 @@ function addMissionToSchedule(state, action) {
 	if (!utils.shallowEqual(action.payload, templates.scheduleMission)) {
 		throw new Error("Payload should be an objects with fields 'data' and 'guid'")
 	}
+
+	if (action.payload.date <= 0) {return state}
 	
 	let dateInSchedule = false;
 	let newSchedule = newState.schedule.slice(0);

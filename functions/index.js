@@ -154,8 +154,12 @@ exports.getMissions = functions.https.onRequest((req, res) => {
             _missions.forEach(_item => {
                 let item = _item.data();
                 item.guid = _item.id;
-                if (user.canAdmin !== true) {
+                if (!user.canSuperuser) {
                     delete item.rates;
+                }
+
+                if (!user.canRate) {
+                    item.rateAvg = -1;
                 }
                 missions.push(item);
             });
@@ -211,9 +215,56 @@ exports.addMission = functions.https.onRequest((req, res) => {
     });
 })
 
+/** addSchedule
+ *  POST
+ *  requset = url/addSchedule
+ *      headers:
+ *          - authorization with token
+ *      body:
+ *          - dateMs - date in millisecs
+ *          - missions: [ "mission_guid" ] - array of mission guids
+ *  response = 
+ *      - status 200 + mission id if ok
+ *      - status 400 + payload on error
+ */
+exports.addSchedule = functions.https.onRequest((req, res) => {
+    
+    cors(req, res, () => {
+        let user = {};
+        //check input
+        if (req.headers.authorization === undefined ||
+            req.body.dateMs === undefined ||
+            req.body.missions  === undefined
+        ) {
+            return res.status(400).send(JSON.stringify({ err: "Wrong request. Check input" }));
+        }
+        //check token
+        
+        admin.auth().verifyIdToken(req.headers.authorization).then((decodedToken) => {
+            return db.collection(dbTypes.collections.users).doc(decodedToken.uid).get();
+        }).then((_user) => {
+            user = _user.data();
+            //check user
+            if (user.canAdmin) { 
+                //add schedule
+                return db.collection(dbTypes.collections.missions).doc(req.body.dateMs).add({
+                    missions: req.body.missions
+                })
+            } else {
+                throw new Error(JSON.stringify({ err: "you cant add missions" }));
+            }
+        }).then((ref) => {
+            return res.send(JSON.stringify({ result: "done" }) );
+        }).catch(err => {
+            return res.status(400).send(JSON.stringify({ err: err.message }));
+        });
+        
+    });
+})
+
 /** updateLastPlayed
  *  POST
- *  requset = url/addMission
+ *  requset = url/updateLastPlayed
  *      headers:
  *          - authorization with token
  *      body:
@@ -241,14 +292,14 @@ exports.updateLastPlayed = functions.https.onRequest((req, res) => {
         }).then((_user) => {
             user = _user.data();
             //check user
-            if (user.canAdd) {
-                //add mission
+            if (user.canAdmin) {
+                //update mission
                 return db.collection(dbTypes.collections.missions).doc(req.body.mission_id).update({ "lastPlayed": lastPlayed });
             } else {
                 throw new Error(JSON.stringify({err: "you cant add missions"}));
             }
         }).then(() => {
-            return res.send(JSON.stringify({ err: "done" }));
+            return res.send(JSON.stringify({ result: "done" }));
         }).catch(err => {
             return res.status(400).send(JSON.stringify({ err: err.message }));
         });

@@ -29,11 +29,11 @@ class Menu extends React.Component{
 	toggleLogin = (e) => {
 		e.stopPropagation();
 		this.props.showUserMenuToggle();
-		// if (!this.props.user.auth) {
-		// 	this.props.login();
-		// } else {
-		// 	this.props.logout();
-		// }
+	}
+	
+	onScheduleDateChange = (e) => {
+		e.stopPropagation();
+		this.props.setCurrentScheduleDate(new Date(e.target.value).getTime())
 	}
 
 	componentDidMount() {
@@ -59,13 +59,7 @@ class Menu extends React.Component{
 			<div className={style.row}>
 				{fakeMenu}
 				<nav className={menuClassName} ref={this.ref}>
-					<a href="#schedule">
-					<button 
-						className={style.calendarBtn} 
-						id="menuCalendarBtn"
-					// onClick={this.props.showMissionPoolToggle}
-					>
-					</button></a>
+					
 					{ this.props.user.rights.canAdd ? 
 						<button className={style.addMissionBtn} onClick={this.props.showAddMissionComponentToggle}></button> : null }
 					{/* TODO: implement add random missions
@@ -78,6 +72,21 @@ class Menu extends React.Component{
 						null */}
 					{/* TODO: implement filter feature
 					<button className={style.filterBtn} id="menuFilterBtn"></button>		*/}
+					
+					{this.props.user.rights.canAdd ?
+							<button className={style.approveBtn} id="menuApproveBtn"></button>
+						: null}
+					
+					{this.props.user.rights.canAdd ?
+						<a href="#schedule">
+							<button className={style.calendarBtn} id="menuCalendarBtn"></button>
+						</a> : null}
+
+					{this.props.user.rights.canAdd ?
+						<input type="date" size="10" className={style.scheduleDate}
+							onChange={this.onScheduleDateChange}
+						/> : null}
+					
 					<div className={style.placeholder}></div>
 					<label htmlFor="menuUserBtn" className={style.label}>{greeting}</label>
 					<button 
@@ -123,6 +132,15 @@ const mapDispatchToProps = (dispatch) => {
 			dispatch({
 				type: actionType.SHOW_ADD_MISSION_COMPONENT_TOGGLE
 			});
+		},
+
+		setCurrentScheduleDate: (date) => {
+			dispatch({
+				type: actionType.SET_CURRENT_SCHEDULE_DATE,
+				payload: {
+					date
+				}
+			})
 		},
 
 		login: () => {

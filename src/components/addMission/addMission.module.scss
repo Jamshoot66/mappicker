@@ -3,7 +3,6 @@
 
 .screen {
     @include wrapper;
-    // max-width: 600px;
 }
 
 .wrapper {
@@ -28,7 +27,6 @@
 }
 
 .itemWrapper {
-    // @include size(12);
     width: 100%;
     display: flex;
     justify-content: space-around;

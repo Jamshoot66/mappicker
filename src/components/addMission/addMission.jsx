@@ -5,30 +5,12 @@ import * as actionType from "~s/actions.js";
 
 import Spinner from "~c/spinner/spinner.jsx";
 
-/*
-    autor: "Коля"
-guid: "BCjf1DOuLT6e8h07zT9Q"
-    island: "Takistan"
-    lastPlayed: 123456
-    mods: "rhs"
-    name: "Операция «Ночная атака»" 
-    players: 130
-rateAvg: 2.75
-*/
-//file name RBC_196_Nuclear_Mountain_Dew_03.takistan
-
-//TODO: implement me!
-
-// header
-// file name
-// elements
-// buttons
 class AddMission extends React.Component {
 
     constructor(props) {
         super(props);
-        /*
-        this.state = {
+        
+        this.defState = {
             fileName: "",
             name: "",
             author: "",
@@ -40,23 +22,12 @@ class AddMission extends React.Component {
             link: "",
             players: "",
             requestState: "DONE"
-        };*/
-        this.state = {
-            fileName: "fileName",
-            name: "name",
-            author: "author",
-            island: "island",
-            lastPlayed: "2019-06-12",
-            lastPlayedPlaceholder: "опциональное поле",
-            lastPlayedMs: "123",
-            mods: "rhs",
-            link: "link",
-            players: "200",
-            requestState: "DONE"
-        };
+        }
+
+        this.state = Object.assign({}, this.defState);
 
         this.islandList = ["altis", "beketov", "borzcaada", "bukovina", "bystrica", "chernarus",
-            "chernarus(summer)", "chernarus(winter)", "deniland", "desert", "dingor", "emita", "enoch", "fallujah",
+            "chernarus_summer", "chernarus_winter", "deniland", "desert", "dingor", "emita", "enoch", "fallujah",
             "fata", "hellanmaa", "Isla_abramia", "lingor", "lythium", "malden", "porto", "prei_khmaoch_luong",
             "proving_grounds", "rahmadi", "reshmaan_province", "ruha", "sahrani", "shapur", "southrn_sahrani",
             "stratis", "takistan", "takistan_mountains", "tanoa", "tem_anizay", "united_sahrani", "utes", "virtual_reality",
@@ -126,8 +97,10 @@ class AddMission extends React.Component {
         
         //get island
         let island = fileName.match(/[^.]+/g);
-        if (island !== null && this.islandList.includes(island[1])) {
-            mission.island = island[1];
+        if (island !== null) {
+            if (this.islandList.includes(island[1])) {
+                mission.island = island[1];
+            }
 
             //parse whole file name 
             let parsedFileName = island[0].match(/[^_]+/g);
@@ -136,17 +109,14 @@ class AddMission extends React.Component {
                 mission.players = parsedFileName[1];
                 //get name
                 mission.name = parsedFileName.reduce((acc, item, index) => {
-                    if ((index > 2) && (index < parsedFileName.length - 1)) {
-                        console.log("item", item);
-                        return acc + "_" + item;
+                    if ((index > 2) && (index < parsedFileName.length - 1)) {  
+                        return acc + " " + item;
                     } else {
                         return acc;
                     };
                 }, parsedFileName[2]);
             }
         };
-
-        
 
         this.setState(mission);
     }
@@ -170,7 +140,7 @@ class AddMission extends React.Component {
         this.setState({ requestState: "PENDING" });
         try {
             await this.props.addMissionToStore(mission);
-            this.setState({ requestState: "DONE" });
+            this.setState(Object.assign({}, this.defState));
         } catch (e) {
             console.log(e);
             this.setState({ requestState: "ERROR" });

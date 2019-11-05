@@ -1,11 +1,9 @@
 import * as firebase from "firebase/app";
 import * as firebaseConst from "~u/firebase.js";
-import * as mock from "./mockData.js";
+// import * as mock from "./mockData.js";
 import * as utils from "~u/utils.js";
 
-// import undefined from "firebase/empty-import";
 // import * as templates from "~u/objectTemplates.js";
-
 
 // export const TEST_ACTION = "TEST_ACTION";
 export const ADD_MISSIONS = "ADD_MISSIONS";
@@ -13,6 +11,7 @@ export const GET_MISSIONS = "GET_MISSIONS";
 export const SET_FIREBASE = "SET_FIREBASE";
 export const ADD_MISSION_TO_SCHEDULE = "ADD_MISSION_TO_SCHEDULE";
 export const REMOVE_MISSION_FROM_SCHEDULE = "REMOVE_MISSION_FROM_SCHEDULE";
+export const SET_CURRENT_SCHEDULE_DATE = "SET_CURRENT_SCHEDULE_DATE";
 export const SHOW_MISSION_POOL_TOGGLE = "SHOW_MISSION_POOL_TOGGLE";
 export const UPDATE_MISSION_RATE = "UPDATE_MISSION_RATE";
 export const UPDATE_SYNC_RATE_STATE = "UPDATE_SYNC_RATE_STATE";
@@ -44,7 +43,7 @@ export function getAllMissions(dispatch) {
 				return r.json()
 			}).then((json) => {
 				json.forEach((item) => {
-					if (item.link === undefined) {
+					if (utils.isEmpty(item.link)) {
 						item.link = `https://www.google.com/search?q=${item.name}&as_sitesearch=red-bear.ru`
 					}
 				});

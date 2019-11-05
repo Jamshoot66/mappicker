@@ -32,6 +32,21 @@ export function validMission(obj1, obj2) {
     return true;
 }
 
+/**
+ * @description compares item to empty string "", zero number "", NaN, null, undefined
+ * 
+ * @param {any} item - any item
+ * 
+ */
+export function isEmpty(item) {
+	return (	item === "" 		||
+				Number(item) === 0 	||
+				(typeof item === "number" && isNaN(item))  		||
+				item === null 		||
+				item === undefined 
+	)
+}
+
 export const defUser = {
 	auth: false,
 	authedUnit: false,
@@ -43,6 +58,7 @@ export const defUser = {
 		canRead: false,
 		canRate: false,
 		canAdd: false,
-		canAdmin: false
+		canAdmin: false,
+		canSuperuser: false
 	}
 }

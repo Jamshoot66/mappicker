@@ -40,13 +40,13 @@ class App extends React.Component {
 							canAdd: info.canAdd,
 							canAdmin: info.canAdmin,
 							canRate: info.canRate,
-							canRead: info.canRead
+							canRead: info.canRead,
+							canSuperuser: info.canSuperuser
 						}
 					});
 
 				this.props.updateUserInfo(user);
 				this.props.getAllMissions();
-				// this.props.setFirebase({ db });
 			}
 		}
 
@@ -54,7 +54,6 @@ class App extends React.Component {
 	}
 
 	componentDidMount(){
-		// this.props.getAllMissions();
 		this.props.updatePropabilities();
 	}
 
@@ -74,15 +73,21 @@ class App extends React.Component {
 
 			itemsPoolStr = this.props.schedule.map( (scheduleItem) => {
 
-				let setItemsStr = [...scheduleItem.missions.entries()].map( (item, index) => {
-					let mission = this.props.missionPool.find((itemFromPool) => {
-						return itemFromPool.guid === item[0]
-					});
-					return <Item key={mission.guid} {...mission} even={index%2}/>
-				})
-
-				let result = [setItemsStr];
-				return result;
+				if (this.props.currentScheduleDate === scheduleItem.date) {
+					let setItemsStr = [...scheduleItem.missions.entries()].map((item, index) => {
+					
+						if (true) {
+							let mission = this.props.missionPool.find((itemFromPool) => {
+								return itemFromPool.guid === item[0]
+							});
+							return <Item key={mission.guid} {...mission} even={index%2}/>
+						}
+					})
+	
+					let result = [setItemsStr];
+					return result;
+				}
+				return null;
 			});
 
 		} else {
@@ -110,13 +115,15 @@ class App extends React.Component {
 
 				<Menu />
 				
-				{/* {this.props.showMissionPool ? <h2>Пул миссий</h2> : <h2>Расписание на 01.02.2019</h2>} */}
 				<div><h2>Пул миссий</h2></div>
 				<ItemHeader />
 				{itemsStr}
-				<div id="schedule" className={style.dummyPlaceholder}></div>
-				<div><h2 >Расписание</h2></div>
-				{itemsPoolStr}
+
+				{ this.props.user.rights.canAdd && this.props.currentScheduleDate ? <div id="schedule" className={style.dummyPlaceholder}></div> : null}
+					
+				{ this.props.user.rights.canAdd && this.props.currentScheduleDate ? <div><h2 >Расписание на {(new Date(this.props.currentScheduleDate)).toLocaleDateString()}</h2></div> : null}
+				{ this.props.user.rights.canAdd && this.props.currentScheduleDate > 0 ? itemsPoolStr : null}
+				 
 				<div className={style.viewHeight}></div>
 
 				{this.props.showAddMissionComponent ?
@@ -136,7 +143,8 @@ const mapStateToProps = (state) => {
 		schedule : state.schedule,
 		showMissionPool: state.showMissionPool,
 		showAddMissionComponent: state.showAddMissionComponent,
-		db: state.firebase.db
+		db: state.firebase.db,
+		currentScheduleDate: state.currentScheduleDate
 	}
 } 
 

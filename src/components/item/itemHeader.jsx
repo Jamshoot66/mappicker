@@ -43,9 +43,9 @@ let missionItem = {
 
 	sortByLastPlayed = (first, second) => {
 		if (first.lastPlayed > second.lastPlayed) {
-			return -1;
-		} else if (first.lastPlayed < second.lastPlayed) {
 			return 1;
+		} else if (first.lastPlayed < second.lastPlayed) {
+			return -1;
 		} else if (first.probability > second.probability) {
 			return -1
 		} else if (first.probability < second.probability) {
@@ -154,17 +154,20 @@ let missionItem = {
 					Автор
 				</div>
 
-				<div className={style.rateAvg} onClick={ () => {this.sort(this.sortByRateAvg)}}>  
-					Рейтинг
-				</div>
+				{this.props.user.rights.canRate ?
+					<div className={style.rateAvg} onClick={() => { this.sort(this.sortByRateAvg) }}>
+						Рейтинг
+					</div>
+					: null}
 
-				<div className={style.probability} onClick={ () => {this.sort(this.sortByProbability)}}>   
-					%
-				</div>
+				{this.props.user.rights.canRate ?
+					<div className={style.probability} onClick={() => { this.sort(this.sortByProbability) }}>
+						%
+					</div>
+					: null}
 
-				{this.props.user.auth ? <div className={style.add}></div> : false}
-				
-				
+				{this.props.user.rights.canAdd ? <div className={style.add}></div> : null}
+
 			</section>
 		)
 	}
