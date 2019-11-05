@@ -1,6 +1,7 @@
 module.exports.collections = {
     users: "users",
-    missions: "maps"
+    missions: "maps",
+    schedules: "schedules"
 }
 
 module.exports.default = {

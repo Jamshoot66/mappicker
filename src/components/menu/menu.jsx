@@ -36,6 +36,25 @@ class Menu extends React.Component{
 		this.props.setCurrentScheduleDate(new Date(e.target.value).getTime())
 	}
 
+	onScheduleApproveClick = async (e) => {
+		e.stopPropagation();
+		let missions = [];
+		for (let i in this.props.schedule) {
+			if (this.props.schedule[i].date === this.props.currentScheduleDate) {
+				missions = Array.from(this.props.schedule[i].missions);
+			}
+		}
+
+		// console.log(missions);
+		try {
+			await this.props.addScheduleToServer(this.props.currentScheduleDate, missions);
+		} catch (e) {
+			console.log(e);
+		}
+		
+		// this.props.setCurrentScheduleDate(new Date(e.target.value).getTime())
+	}
+
 	componentDidMount() {
 		document.addEventListener("scroll", this.onScrollEvent);
 		this.MenuTop = this.ref.current.offsetTop;
@@ -74,7 +93,9 @@ class Menu extends React.Component{
 					<button className={style.filterBtn} id="menuFilterBtn"></button>		*/}
 					
 					{this.props.user.rights.canAdd ?
-							<button className={style.approveBtn} id="menuApproveBtn"></button>
+						<button className={style.approveBtn}
+							onClick={this.onScheduleApproveClick}
+							id="menuApproveBtn"></button>
 						: null}
 					
 					{this.props.user.rights.canAdd ?
@@ -103,7 +124,9 @@ class Menu extends React.Component{
 
 const mapStateToProps = (state) => {
 	return {
-		user : state.user
+		user: state.user,
+		currentScheduleDate: state.currentScheduleDate,
+		schedule: state.schedule
 	}
 }
 
@@ -142,6 +165,10 @@ const mapDispatchToProps = (dispatch) => {
 				}
 			})
 		},
+
+		addScheduleToServer: async (date, missions) => {
+			await actionType.addScheduleToServer(dispatch, { date, missions });  
+        },
 
 		login: () => {
 			actionType.loginViaGmail(dispatch)

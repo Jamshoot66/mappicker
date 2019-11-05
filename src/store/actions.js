@@ -89,6 +89,39 @@ export async function addMissionToServer(dispatch, payload) {
 	})	
 }
 
+//body:
+//          - dateMs - date in millisecs
+//          - missions: [ "mission_guid" ] - array of mission guids
+export async function addScheduleToServer(dispatch, payload) {
+	return firebase.auth().currentUser.getIdToken().then(token => {
+		return fetch(firebaseConst.FUNCTIONS_URL_BASE + firebaseConst.ADD_SCHEDULE, {
+			credentials: "include",
+			method: "POST",
+			headers: {
+				"content-type": "application/json",
+				"authorization": token
+			},
+			body: JSON.stringify({
+				dateMs: payload.date,
+				missions: payload.missions
+			})
+		}).then((response) => {
+			return response.json();
+		}).then((json) => {
+			console.log(json);
+			// let mission = payload;
+			// mission.guid = json.guid;
+			// dispatch({
+			// 	type: ADD_MISSIONS,
+			// 	payload: [mission]
+			// })
+		})
+	}).catch(e => {
+		console.log(e);	
+		throw new Error(e.message);
+	})	
+}
+
 export async function loginViaGmail(dispatch){
 	
 	let provider = new firebase.auth.GoogleAuthProvider();

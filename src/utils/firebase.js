@@ -16,6 +16,7 @@ export const DB_URL_BASE = _DB_URL_BASE;
 
 //backend functions
 export const ADD_MISSION = "/addMission";
+export const ADD_SCHEDULE = "/addSchedule";
 export const GET_MISSIONS = "/getMissions";
 export const GET_USER_INFO = "/getUserInfo";
 export const RATE_MISSION = "/rateMission";

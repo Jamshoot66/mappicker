@@ -211,7 +211,9 @@ exports.addMission = functions.https.onRequest((req, res) => {
         }).catch(err => {
             return res.status(400).send(JSON.stringify({ err: err.message }));
         });
-        
+
+        // orly?
+        return true;
     });
 })
 
@@ -245,20 +247,32 @@ exports.addSchedule = functions.https.onRequest((req, res) => {
         }).then((_user) => {
             user = _user.data();
             //check user
-            if (user.canAdmin) { 
+            if (user.canAdd) { 
                 //add schedule
-                return db.collection(dbTypes.collections.missions).doc(req.body.dateMs).add({
+                let date = Number(req.body.dateMs).toString();
+                return db.collection(dbTypes.collections.schedules).doc(date).set({
                     missions: req.body.missions
                 })
             } else {
-                throw new Error(JSON.stringify({ err: "you cant add missions" }));
+                throw new Error(JSON.stringify({ err: "you cant add missions to schedule" }));
             }
+        }).then(() => {
+            // TODO: update only if new lastPlayed > mission.lastPlayed;
+            let requests = []
+            for (let guid of req.body.missions) {
+                requests.push(db.collection(dbTypes.collections.missions)
+                    .doc(guid)
+                    .update({ lastPlayed: req.body.dateMs }))
+            }
+            return Promise.all(requests);
         }).then((ref) => {
             return res.send(JSON.stringify({ result: "done" }) );
         }).catch(err => {
             return res.status(400).send(JSON.stringify({ err: err.message }));
         });
         
+        //orly
+        return true;
     });
 })
 
@@ -292,7 +306,7 @@ exports.updateLastPlayed = functions.https.onRequest((req, res) => {
         }).then((_user) => {
             user = _user.data();
             //check user
-            if (user.canAdmin) {
+            if (user.canAdd) {
                 //update mission
                 return db.collection(dbTypes.collections.missions).doc(req.body.mission_id).update({ "lastPlayed": lastPlayed });
             } else {
