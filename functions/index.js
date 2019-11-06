@@ -47,6 +47,7 @@ exports.getUserInfo = functions.https.onRequest((req, res) => {
  */
 exports.createUserInfo = functions.auth.user().onCreate((user) => {
     db.collection(dbTypes.collections.users).doc(user.uid).set(dbTypes.default.defUser);
+    return true;
 });
 
 /** rateMission
@@ -148,6 +149,9 @@ exports.getMissions = functions.https.onRequest((req, res) => {
             return db.collection(dbTypes.collections.users).doc(decodedToken.uid).get();
         }).then((_user) => {
             user = _user.data();
+            if (user === undefined) {
+                user = dbTypes.default.defUser;
+            }
             if (!user.canRead) {
                 return res.status(403).send(JSON.stringify({ err: "you cant read missions" }));
             }

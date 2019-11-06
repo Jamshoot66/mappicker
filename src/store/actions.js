@@ -77,12 +77,19 @@ export async function getAllSchedule(dispatch) {
 					"authorization": token
 				}		
 			}).then((r) => {
-				return r.json()
+				if (r.status === 200) {
+					return r.json()
+				} else {
+					return null
+				}
+				
 			}).then((json) => {
-				dispatch( {
-					type: SET_SCHEDULE,
-					payload: json			
-				})
+				if (json !== null) {
+					dispatch( {
+						type: SET_SCHEDULE,
+						payload: json			
+					})
+				}		
 			}).catch(err => {
 				console.log(err);
 				throw new Error(err.message);

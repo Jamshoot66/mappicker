@@ -50,12 +50,12 @@ export function isEmpty(item) {
 export const defUser = {
 	auth: false,
 	authedUnit: false,
-	unit: "-",
+	unit: "null",
 	uid: "0",
 	shortName : "Комрад",
 	name: "Комрад",
 	rights: {
-		canRead: false,
+		canRead: true,
 		canRate: false,
 		canAdd: false,
 		canAdmin: false,

@@ -29,27 +29,39 @@ class App extends React.Component {
 				
 				let db = firebase.firestore();
 				let info = (await db.collection("users").doc(firebaseUser.uid).get()).data();
-				let user = Object.assign({},
-					utils.defUser,
-					{
+				console.log(info);
+				let user;
+				
+				if (info !== undefined) {
+					user = Object.assign({},
+						utils.defUser,
+						{
+							auth: true,
+							uid: firebaseUser.uid,
+							shortName: firebaseUser.displayName,
+							name: firebaseUser.displayName,
+							unit: `[${info.unit.toUpperCase()}]`,
+							rights: {
+								canAdd: info.canAdd,
+								canAdmin: info.canAdmin,
+								canRate: info.canRate,
+								canRead: info.canRead,
+								canSuperuser: info.canSuperuser
+							}
+						});
+				} else {
+					user = Object.assign({}, utils.defUser, {
 						auth: true,
 						uid: firebaseUser.uid,
 						shortName: firebaseUser.displayName,
 						name: firebaseUser.displayName,
-						unit: `[${info.unit.toUpperCase()}]`,
-						rights: {
-							canAdd: info.canAdd,
-							canAdmin: info.canAdmin,
-							canRate: info.canRate,
-							canRead: info.canRead,
-							canSuperuser: info.canSuperuser
-						}
-					});
+					});  
+				}
 
 				try {
 					await this.props.updateUserInfo(user);
-					await this.props.getAllMissions();
-					await this.props.getAllSchedule();
+					if (user.rights.canRead) { await this.props.getAllMissions() }
+					if (user.rights.canAdd) { await this.props.getAllSchedule() }
 				} catch (e) {
 					console.log(e);
 				}
