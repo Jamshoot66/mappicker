@@ -97,7 +97,7 @@ class Item extends React.Component {
 
 	render() {
 		let evenClass = this.props.even ? style.wrapper_even : "";
-		let addButtonClass = this.isInSchedule() ? `${style.addBtn} ${style.addBtn_inSchedule}` : `${style.addBtn}`;
+		let addBtnClass = this.isInSchedule() ? `${style.addBtn} ${style.addBtn_inSchedule}` : `${style.addBtn}`;
 		if (this.state.minimal) {
 			var itemStr = (
 				<section className={`${style.wrapper} ${evenClass} ${style.wrapper_selectable}`} onClick={this.itemSizeToggle} key="key">
@@ -139,7 +139,7 @@ class Item extends React.Component {
 						: null}
 					{this.props.user.rights.canAdd ? 
 						this.props.showInMissonPool ? 
-							<button className={addButtonClass} onClick={this.addBtnClick}> 
+							<button className={addBtnClass} onClick={this.addBtnClick}> 
 								+
 							</button> : 
 							<button className={style.addBtn} onClick={this.removeBtnClick}> 
@@ -148,14 +148,14 @@ class Item extends React.Component {
 						null }	
 				</section>)
 		} else {
-			let rateStyle = `${style.addBtn} ${style.addBtnLine}`;
-			let addButtonLineStyle = `${addButtonClass} ${style.addBtnLine}`;
+			let rateStyle = `${style.addBtn} ${style.addBtnLine} ${style.rateBtn}`;
+			let addButtonLineStyle = `${addBtnClass} ${style.addBtnLine}`;
 			let rateStr = false;
 			if (this.props.user.rights.canRate) {
 				rateStr =
 					<div>
 						<h3 className={style.rateHeader}>Оцените миссию:</h3>
-						<ul className={style.reteList}>
+						<ul className={style.rateList}>
 							<li className={style.rateElement} >
 								<label htmlFor="">Баланс</label>
 								<div className={style.rateStarsWrapper}>

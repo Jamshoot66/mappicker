@@ -4,6 +4,7 @@ import style from "./addMission.module.scss";
 import * as actionType from "~s/actions.js";
 
 import Spinner from "~c/spinner/spinner.jsx";
+import {DONE, PENDING, ERROR} from "~c/spinner/spinner.jsx";
 
 class AddMission extends React.Component {
 
@@ -16,12 +17,12 @@ class AddMission extends React.Component {
             author: "",
             island: "",
             lastPlayed: "",
-            lastPlayedPlaceholder: "опциональное поле (14.02.2019)",
+            lastPlayedPlaceholder: "опциональное поле",
             lastPlayedMs: "",
             mods: "",
             link: "",
             players: "",
-            requestState: "DONE"
+            requestState: DONE
         }
 
         this.state = Object.assign({}, this.defState);
@@ -122,7 +123,7 @@ class AddMission extends React.Component {
     }
 
     onAddMissionClick = async () => {
-        if (this.state.requestState === "PENDING") return;
+        if (this.state.requestState === PENDING) return;
 
         let mission = Object.assign({},
             (this.state.fileName !== "")    ? { fileName: this.state.fileName } : null,
@@ -137,13 +138,13 @@ class AddMission extends React.Component {
             (this.state.guid !== "")        ? { guid: this.state.guid } : null,
         )
 
-        this.setState({ requestState: "PENDING" });
+        this.setState({ requestState: PENDING });
         try {
             await this.props.addMissionToStore(mission);
             this.setState(Object.assign({}, this.defState));
         } catch (e) {
             console.log(e);
-            this.setState({ requestState: "ERROR" });
+            this.setState({ requestState: ERROR });
         }   
     }
 
@@ -165,19 +166,22 @@ class AddMission extends React.Component {
 
                     <section className={style.itemWrapper}>
                         <label htmlFor="fileName" className={style.itemLabel}>Имя файла</label>
-                        <input id="fileName" size="10" className={style.itemInput} value={this.state.fileName} onChange={this.onFileNameChange}  onBlur={this.onFileNameBlur} type="text" placeholder="обязательное поле"/>
+                        <input id="fileName" size="10" className={style.itemInput} value={this.state.fileName}
+                            onChange={this.onFileNameChange} onBlur={this.onFileNameBlur} type="text" placeholder="обязательное поле" />
                     </section>
                     
                     
                     <section className={style.itemWrapper}>
                         <label htmlFor="name" className={style.itemLabel}>Название миссии</label>
-                        <input id="name" size="10" value={this.state.name} onChange={this.onNameChange} className={style.itemInput} type="text" placeholder="обязательное поле"/>
+                        <input id="name" size="10" value={this.state.name} onChange={this.onNameChange}
+                            className={style.itemInput} type="text" placeholder="обязательное поле" />
                     </section>
 
                     
                     <section className={style.itemWrapper}>
                         <label htmlFor="mods" className={style.itemLabel}>Моды</label>
-                        <select id="mods" value={this.state.mods} onChange={this.onModsChange} className={style.itemSelect} type="text" required placeholder="обязательное поле (vanila rhs...)">
+                        <select id="mods" value={this.state.mods} onChange={this.onModsChange}
+                            className={style.itemSelect} type="text" required placeholder="обязательное поле">
                             <option value="" hidden disabled>обязательное поле</option>
                             <option value="rhs">rhs</option>
                             <option value="vanila">vanila</option>
@@ -186,7 +190,8 @@ class AddMission extends React.Component {
                     
                     <section className={style.itemWrapper}>
                         <label htmlFor="island" className={style.itemLabel}>Остров</label>
-                        <select id="island" size="1" value={this.state.island} onChange={this.onIslandChange} className={style.itemSelect} required>
+                        <select id="island" size="1" value={this.state.island} onChange={this.onIslandChange}
+                            className={style.itemSelect} required>
                             <option value="" hidden disabled>обязательное поле</option>
                             [{this.islandOptionsStr}]
                         </select>
@@ -194,23 +199,27 @@ class AddMission extends React.Component {
                     
                     <section className={style.itemWrapper}>
                         <label htmlFor="players" className={style.itemLabel}>Кол-во игроков</label>
-                        <input id="players" min="0" max="999"  value={this.state.players} onChange={this.onPlayersChange} className={style.itemInput} type="number" placeholder="обязательное поле (185)"/>
+                        <input id="players" min="0" max="999" value={this.state.players} onChange={this.onPlayersChange}
+                            className={style.itemInput} type="number" placeholder="обязательное поле" />
                     </section>
 
                     <section className={style.itemWrapper}>
                         <label htmlFor="author" className={style.itemLabel}>Автор</label>
-                        <input id="author" size="10"  value={this.state.author} onChange={this.onAuthorChange} className={style.itemInput} type="text" placeholder="обязательное поле (Vasya Pupkin)"/>
+                        <input id="author" size="10" value={this.state.author} onChange={this.onAuthorChange}
+                            className={style.itemInput} type="text" placeholder="обязательное поле" />
                     </section>
 
                     <section className={style.itemWrapper}>
                         <label htmlFor="lastPlayed" className={style.itemLabel}>Отыгрыш</label>
-                        <input id="lastPlayed" size="10"  value={this.state.lastPlayed} onFocus={this.onLastPlayedFocus} onChange={this.onLastPlayedChange} onBlur={this.onLastPlayedBlur} className={style.itemInput} type="text" placeholder={this.state.lastPlayedPlaceholder}/>
-        
+                        <input id="lastPlayed" size="10" value={this.state.lastPlayed} onFocus={this.onLastPlayedFocus}
+                            onChange={this.onLastPlayedChange} onBlur={this.onLastPlayedBlur} className={style.itemInput} type="text"
+                            placeholder={this.state.lastPlayedPlaceholder} />
                     </section>
 
                     <section className={style.itemWrapper}>
                         <label htmlFor="link" className={style.itemLabel}>Ссылка</label>
-                        <input id="link" size="10"  value={this.state.link} onChange={this.onLinkChange} className={style.itemInput} type="text" placeholder="опциональное поле"/>
+                        <input id="link" size="10" value={this.state.link} onChange={this.onLinkChange}
+                            className={style.itemInput} type="text" placeholder="опциональное поле" />
                     </section>
                 
                    

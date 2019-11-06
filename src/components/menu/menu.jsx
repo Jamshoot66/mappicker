@@ -52,7 +52,7 @@ class Menu extends React.Component{
 		try {
 			this.props.setSyncScheduleState(PENDING);
 			await this.props.addScheduleToServer(date, missions);
-			this.props.updateMissionLastPlayed(date, missions );
+			this.props.updateMissionLastPlayed(date, missions);
 			this.props.setSyncScheduleState(DONE);
 		} catch (e) {
 			console.log(e);

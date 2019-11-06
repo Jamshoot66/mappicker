@@ -329,7 +329,6 @@ function updateMissionLastPlayed(state, action) {
 			return item.guid === newMissionGuid;
 		}).lastPlayed = action.payload.date;
 	}
-
 	newState.missions = missions;
-	return newState;
+	return updateProbabilities(newState, action);
 }
