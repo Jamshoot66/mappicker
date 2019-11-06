@@ -46,7 +46,7 @@ exports.getUserInfo = functions.https.onRequest((req, res) => {
  *  triggers when new user connect to site
  */
 exports.createUserInfo = functions.auth.user().onCreate((user) => {
-    db.collection(dbTypes.collections.users).doc(user.uid).set(JSON.stringify(dbTypes.default.defUser));
+    db.collection(dbTypes.collections.users).doc(user.uid).set(dbTypes.default.defUser);
 });
 
 /** rateMission
