@@ -136,6 +136,7 @@ export default Store;
 
 function addMissions(state, action) {
 	let newState = Object.assign({}, state);
+
 	if (action.payload.some(item => { 
 		return !utils.validMission(templates.missionItem, item)
 	})) {
@@ -151,7 +152,8 @@ function addMissions(state, action) {
 
 function addRandomMissions(state, action) {
 	let newState = Object.assign({}, state);
-	newState.schedule = [ {date:action.payload.date, missions: new Set()} ];
+
+	newState.schedule = [{ date: action.payload.date, missions: new Set() }];
 	let propLine = [];
 	let acc = 0
 	newState.missionPool.forEach( (item) => {
@@ -239,6 +241,7 @@ function addMissionToSchedule(state, action) {
 	let dateInSchedule = false;
 	let newSchedule = newState.schedule.slice(0);
 	let newMissions;
+
 	for (let i in newSchedule) {
 		if (newSchedule[i].date === action.payload.date) {		
 			newMissions = new Set(state.schedule[i].missions);	
@@ -265,7 +268,6 @@ function addMissionToSchedule(state, action) {
 
 
 function updateMissionRate(state, action) {
-
 	let newState = Object.assign({}, state);
 
 	let missionIndex = newState.missionPool.findIndex((item) => {
@@ -282,7 +284,6 @@ function updateMissionRate(state, action) {
 }
 
 function updateSyncRateState(state, action) {
-
 	let newState = Object.assign({}, state);
 
 	let missionIndex = newState.missionPool.findIndex((item) => {
@@ -300,6 +301,7 @@ function updateSyncRateState(state, action) {
 
 function updateProbabilities(state, action) {
 	let newState = Object.assign({}, state);
+
 	let sum = newState.missionPool.reduce((acc, item) => acc +
 		probabilityFunc(item.rateAvg, item.lastPlayed), 0);
 	if (sum > 0) {

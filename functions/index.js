@@ -257,7 +257,6 @@ exports.addMission = functions.https.onRequest((req, res) => {
             return res.status(400).send(JSON.stringify({ err: err.message }));
         });
 
-        // orly?
         return true;
     });
 })
@@ -316,7 +315,6 @@ exports.addSchedule = functions.https.onRequest((req, res) => {
             return res.status(400).send(JSON.stringify({ err: err.message }));
         });
         
-        //orly
         return true;
     });
 })

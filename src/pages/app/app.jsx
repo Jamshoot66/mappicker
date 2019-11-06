@@ -23,15 +23,13 @@ class App extends React.Component {
 		super(props);
 
 		let callback = async (firebaseUser) => {
-			/* eslint-disable */
+				/* eslint-disable */
 			if (firebaseUser != undefined) {
 				/* eslint-enable */
 				
 				let db = firebase.firestore();
 				let info = (await db.collection("users").doc(firebaseUser.uid).get()).data();
-				console.log(info);
-				let user;
-				
+				let user;			
 				if (info !== undefined) {
 					user = Object.assign({},
 						utils.defUser,

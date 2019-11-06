@@ -6,22 +6,6 @@ import * as actionType from "~s/actions.js";
 
 class ItemHeader extends React.Component {
 
-	/* mission item template 
-let missionItem = {
-			guid: 1,
-			name:"Операция «Магистраль»",
-			island: "Altis",
-			players: 200,
-			autor: "Aventador",
-			rateAvg: 3,
-			rates:[1,2,3,4],
-			lastPlayed: 01.02.2019,
-			probability: 0.25,
-			minimal: true
-		}
-*/
-
-
 	sortByName = (first, second) => {
 		return (first.name >= second.name) ? 1 : -1;
 	}

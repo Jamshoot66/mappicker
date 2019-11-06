@@ -2,6 +2,7 @@ import * as firebase from "firebase/app";
 import * as firebaseConst from "~u/firebase.js";
 // import * as mock from "./mockData.js";
 import * as utils from "~u/utils.js";
+import { DONE, PENDING, ERROR } from "~c/spinner/spinner.jsx";
 
 // import * as templates from "~u/objectTemplates.js";
 
@@ -29,7 +30,6 @@ export const LOGOUT = "LOGOUT";
 
 
 export async function getAllMissions(dispatch) {
-	// let db = firebase.firestore();
 	/* eslint-disable */
 	if (firebase.auth().currentUser != undefined) {
 	/* eslint-enable */
@@ -52,8 +52,7 @@ export async function getAllMissions(dispatch) {
 				});
 				dispatch( {
 					type: ADD_MISSIONS,
-					payload: json		
-					// payload: mock.missions		
+					payload: json			
 				})
 			}).catch(err => {
 				console.log(err);
@@ -126,9 +125,13 @@ export async function addMissionToServer(dispatch, payload) {
 	})	
 }
 
-//body:
-//          - dateMs - date in millisecs
-//          - missions: [ "mission_guid" ] - array of mission guids
+/**
+ * 
+ * @param {*} dispatch - redux dispatcher provided due to connect(...) 
+ * @param {object} payload - object, with fields:
+ * 	{number} date - date in ms
+ *  {array} missions - array of mission guids
+ */
 export async function addScheduleToServer(dispatch, payload) {
 	return firebase.auth().currentUser.getIdToken().then(token => {
 		return fetch(firebaseConst.FUNCTIONS_URL_BASE + firebaseConst.ADD_SCHEDULE, {
@@ -195,7 +198,7 @@ export function syncMissionRate(dispatch, props) {
 				type: UPDATE_SYNC_RATE_STATE,
 				payload: {
 					guid: props.guid,
-					syncRateState: "PENDING"
+					syncRateState: PENDING
 				}
 			})
 			fetch(firebaseConst.FUNCTIONS_URL_BASE + firebaseConst.RATE_MISSION, {
@@ -225,7 +228,7 @@ export function syncMissionRate(dispatch, props) {
 					type: UPDATE_SYNC_RATE_STATE,
 					payload: {
 						guid: props.guid,
-						syncRateState: "DONE"
+						syncRateState: DONE
 					}
 				})
 
@@ -234,7 +237,7 @@ export function syncMissionRate(dispatch, props) {
 					type: UPDATE_SYNC_RATE_STATE,
 					payload: {
 						guid: props.guid,
-						syncRateState: "ERROR"
+						syncRateState: ERROR
 					}
 				})
 				console.log(err);
