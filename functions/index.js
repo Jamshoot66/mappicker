@@ -130,11 +130,14 @@ exports.rateMission = functions.https.onRequest((req, res) => {
 
 /** getMission
  * GET
- * requset = url/rateMission
+ * requset = url/getMission
  *      no query props used
  * 
  * headers:
  *      - authorization with token
+ * 
+ * response
+ *      - [ missions ] - JSON of array of missions
  * 
  * only users with user.canAdmin === true can watch other rates
  */
@@ -164,6 +167,44 @@ exports.getMissions = functions.https.onRequest((req, res) => {
                 missions.push(item);
             });
             return res.send(JSON.stringify(missions));
+        }).catch(err => {
+            return res.status(400).send(JSON.stringify({ err: err.message }));
+        });
+    });
+})
+
+/** getSchedule
+ * GET
+ * requset = url/getSchedule
+ *      no query props used
+ * 
+ * headers:
+ *      - authorization with token
+ * 
+ * response:
+ *      - [ {date, [ schedule ] } ] - JSON of array of objects 
+ * 
+ * only users with user.canAdd === true can get schedule
+ */
+exports.getSchedule = functions.https.onRequest((req, res) => {
+    let user = {};
+    cors(req, res, () => {
+        admin.auth().verifyIdToken(req.headers.authorization).then((decodedToken) => {
+            return db.collection(dbTypes.collections.users).doc(decodedToken.uid).get();
+        }).then((_user) => {
+            user = _user.data();
+            if (!user.canAdd) {
+                return res.status(403).send(JSON.stringify({ err: "you cant read schedule" }));
+            }
+            return db.collection(dbTypes.collections.schedules).get()
+        }).then((_schedules) => {
+            let schedules = []
+            _schedules.forEach(_item => {
+                let item = _item.data();
+                item.date = _item.id;
+                schedules.push(item);
+            });
+            return res.send(JSON.stringify(schedules));
         }).catch(err => {
             return res.status(400).send(JSON.stringify({ err: err.message }));
         });

@@ -5,6 +5,7 @@ import {connect} from "react-redux";
 import * as actionType from "~s/actions.js";
 
 import UserMenu from "~c/userMenu/userMenu.jsx";
+import { DONE, ERROR, PENDING } from "~c/spinner/spinner.jsx";
 
 class Menu extends React.Component{
 	constructor(props) {
@@ -38,21 +39,25 @@ class Menu extends React.Component{
 
 	onScheduleApproveClick = async (e) => {
 		e.stopPropagation();
+		if (this.props.syncScheduleState === PENDING) return false;
 		let missions = [];
+		let date = this.props.currentScheduleDate;
 		for (let i in this.props.schedule) {
-			if (this.props.schedule[i].date === this.props.currentScheduleDate) {
+			if (this.props.schedule[i].date === date) {
 				missions = Array.from(this.props.schedule[i].missions);
 			}
 		}
 
 		// console.log(missions);
 		try {
-			await this.props.addScheduleToServer(this.props.currentScheduleDate, missions);
+			this.props.setSyncScheduleState(PENDING);
+			await this.props.addScheduleToServer(date, missions);
+			this.props.updateMissionLastPlayed(date, missions );
+			this.props.setSyncScheduleState(DONE);
 		} catch (e) {
 			console.log(e);
+			this.props.setSyncScheduleState(ERROR);
 		}
-		
-		// this.props.setCurrentScheduleDate(new Date(e.target.value).getTime())
 	}
 
 	componentDidMount() {
@@ -126,6 +131,7 @@ const mapStateToProps = (state) => {
 	return {
 		user: state.user,
 		currentScheduleDate: state.currentScheduleDate,
+		syncScheduleState: state.syncScheduleState,
 		schedule: state.schedule
 	}
 }
@@ -163,6 +169,22 @@ const mapDispatchToProps = (dispatch) => {
 				payload: {
 					date
 				}
+			})
+		},
+
+		setSyncScheduleState: (state) => {
+			dispatch({
+				type: actionType.SET_SYNC_SCHEDULE_STATE,
+				payload: {
+					state
+				}
+			})
+		},
+
+		updateMissionLastPlayed: (date, missions) => {
+			dispatch({
+				type: actionType.UPDATE_MISSION_LASTPLAYED,
+				payload: { date, missions }
 			})
 		},
 

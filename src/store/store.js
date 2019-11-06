@@ -1,8 +1,9 @@
 import * as actionType from "~s/actions.js";
 import * as utils from "~u/utils.js";
 import * as templates from "~u/objectTemplates.js";
-
-
+/* eslint-disable */
+import {PENDING, DONE, ERROR} from "~c/spinner/spinner.jsx";
+/* eslint-enable */
 
 let defState = {
 	user: utils.defUser,
@@ -11,6 +12,7 @@ let defState = {
 	showUserMenu: false,
 	showAddMissionComponent: false,
 	currentScheduleDate: 0,
+	syncScheduleState: DONE,
 	// missionPool: [ {missionItem}, {missionItem}, ... ]
 	missionPool : [],
 	// schedule : [ {date: date, missions: new Set()}, ...]
@@ -52,8 +54,8 @@ const Store = (state = defState, action) => {
 		case actionType.UPDATE_PROPABILITIES:	
 			return updateProbabilities(state, action);
 
-	/* UPATE_MISSIONS_ORDER*/
-		case actionType.UPATE_MISSIONS_ORDER:
+	/* UPDATE_MISSIONS_ORDER*/
+		case actionType.UPDATE_MISSIONS_ORDER:
 			newState.missionPool = action.payload.missionPool;
 			return newState;
 		
@@ -67,6 +69,28 @@ const Store = (state = defState, action) => {
 	*/	
 		case actionType.ADD_MISSION_TO_SCHEDULE:		
 			return addMissionToSchedule(state, action);
+		
+	/* SET_SYNC_SCHEDULE_STATE usage:
+		action.Type : SET_SYNC_SCHEDULE_STATE,
+		payload     : {state}
+	*/	
+		case actionType.SET_SYNC_SCHEDULE_STATE:		
+			newState.syncScheduleState = action.payload.state;
+			return newState;
+		
+	/* UPDATE_MISSION_LASTPLAYED usage:
+		action.Type : UPDATE_MISSION_LASTPLAYED,
+		payload     : {date, missions:[guid, guid...]}
+	*/	
+		case actionType.UPDATE_MISSION_LASTPLAYED:	
+			return updateMissionLastPlayed(state, action);
+		
+	/* SET_SCHEDULE usage:
+		action.Type : SET_SCHEDULE,
+		payload     : [{data, [guids]}]
+	*/	
+	case actionType.SET_SCHEDULE:		
+	return setSchedule(state, action);
 		
 	/* SET_CURRENT_SCHEDULE_DATE usage:
 		action.Type : SET_CURRENT_SCHEDULE_DATE,
@@ -188,6 +212,20 @@ function updateUserInfo(state, action) {
 }
 
 
+function setSchedule(state, action) {
+	let newState = Object.assign({}, state);
+
+	for (let item of action.payload) {
+		let scheduleItem = {
+			date: +item.date,
+			missions: new Set(item.missions)
+		}
+		
+		newState.schedule.push(scheduleItem)
+	}
+	
+	return newState;
+}
 
 function addMissionToSchedule(state, action) {
 	let newState = Object.assign({}, state);
@@ -277,7 +315,21 @@ function probabilityFunc(rate, lastPlayed) {
 	const halfYearMs = 0.5 * 30 * 24 * 60 * 60 * 1000;
 	let today = Date.now();
 	let func = (rate * 10 - 3) * (today - lastPlayed) / halfYearMs;
-	if (func < 1) { func = 1 } 
+	if (func < 1.1) { func = 1.1 } 
 	let coef = Math.log10(func);
 	return coef;
+}
+
+
+function updateMissionLastPlayed(state, action) {
+	let newState = Object.assign({}, state);
+	let missions = newState.missionPool.slice(0);
+	for (let newMissionGuid of action.payload.missions) {
+		missions.find(item => {
+			return item.guid === newMissionGuid;
+		}).lastPlayed = action.payload.date;
+	}
+
+	newState.missions = missions;
+	return newState;
 }

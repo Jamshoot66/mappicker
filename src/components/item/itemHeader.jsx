@@ -184,7 +184,7 @@ const mapDispatchToProps = (dispatch) => {
 	return {
 		updateMissionPool: (missionPool) => {
 			dispatch({
-				type: actionType.UPATE_MISSIONS_ORDER,
+				type: actionType.UPDATE_MISSIONS_ORDER,
 				payload: {missionPool}
 			})
 		}

@@ -3,9 +3,9 @@ import style from "./spinner.module.scss";
 import pending from "./pending.gif";
 import error from "./error.svg";
 
-const PENDING = "PENDING";
-const DONE = "DONE";
-const ERROR = "ERROR";
+export const PENDING = "PENDING";
+export const DONE = "DONE";
+export const ERROR = "ERROR";
 
 /** spinner component
  *  - props

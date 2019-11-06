@@ -10,13 +10,16 @@ export const ADD_MISSIONS = "ADD_MISSIONS";
 export const GET_MISSIONS = "GET_MISSIONS";
 export const SET_FIREBASE = "SET_FIREBASE";
 export const ADD_MISSION_TO_SCHEDULE = "ADD_MISSION_TO_SCHEDULE";
+export const SET_SCHEDULE = "SET_SCHEDULE";
 export const REMOVE_MISSION_FROM_SCHEDULE = "REMOVE_MISSION_FROM_SCHEDULE";
 export const SET_CURRENT_SCHEDULE_DATE = "SET_CURRENT_SCHEDULE_DATE";
+export const UPDATE_MISSION_LASTPLAYED = "UPDATE_MISSION_LASTPLAYED";
+export const SET_SYNC_SCHEDULE_STATE = "SET_SYNC_SCHEDULE_STATE";
 export const SHOW_MISSION_POOL_TOGGLE = "SHOW_MISSION_POOL_TOGGLE";
 export const UPDATE_MISSION_RATE = "UPDATE_MISSION_RATE";
 export const UPDATE_SYNC_RATE_STATE = "UPDATE_SYNC_RATE_STATE";
 export const UPDATE_PROPABILITIES = "UPDATE_PROPABILITIES";
-export const UPATE_MISSIONS_ORDER = "UPATE_MISSIONS_ORDER";
+export const UPDATE_MISSIONS_ORDER = "UPDATE_MISSIONS_ORDER";
 export const ADD_RANDOM_MISSIONS = "ADD_RANDOM_MISSIONS";
 export const UPDATE_USER_INFO = "UPDATE_USER_INFO";
 export const SHOW_USER_MENU_TOGGLE = "SHOW_USER_MENU_TOGGLE";
@@ -25,14 +28,14 @@ export const LOGIN = "LOGIN";
 export const LOGOUT = "LOGOUT";
 
 
-export function getAllMissions(dispatch) {
+export async function getAllMissions(dispatch) {
 	// let db = firebase.firestore();
 	/* eslint-disable */
 	if (firebase.auth().currentUser != undefined) {
 	/* eslint-enable */
 		
-		firebase.auth().currentUser.getIdToken().then(token => {
-			fetch(firebaseConst.FUNCTIONS_URL_BASE+firebaseConst.GET_MISSIONS, {
+		await firebase.auth().currentUser.getIdToken().then(async token => {
+			await fetch(firebaseConst.FUNCTIONS_URL_BASE+firebaseConst.GET_MISSIONS, {
 				credentials: "include",
 				method: "GET",
 				headers: {
@@ -54,8 +57,36 @@ export function getAllMissions(dispatch) {
 				})
 			}).catch(err => {
 				console.log(err);
+				throw new Error(err.message);
 			})
 		
+		});
+	}
+}
+
+export async function getAllSchedule(dispatch) {
+	/* eslint-disable */
+	if (firebase.auth().currentUser != undefined) {
+	/* eslint-enable */
+		await firebase.auth().currentUser.getIdToken().then(async token => {
+			await fetch(firebaseConst.FUNCTIONS_URL_BASE+firebaseConst.GET_SCHEDULE, {
+				credentials: "include",
+				method: "GET",
+				headers: {
+					"content-type": "application/json",
+					"authorization": token
+				}		
+			}).then((r) => {
+				return r.json()
+			}).then((json) => {
+				dispatch( {
+					type: SET_SCHEDULE,
+					payload: json			
+				})
+			}).catch(err => {
+				console.log(err);
+				throw new Error(err.message);
+			})
 		});
 	}
 }
@@ -75,7 +106,6 @@ export async function addMissionToServer(dispatch, payload) {
 		}).then((response) => {
 			return response.json();
 		}).then((json) => {
-			console.log(json.guid);
 			let mission = payload;
 			mission.guid = json.guid;
 			dispatch({
@@ -107,14 +137,6 @@ export async function addScheduleToServer(dispatch, payload) {
 			})
 		}).then((response) => {
 			return response.json();
-		}).then((json) => {
-			console.log(json);
-			// let mission = payload;
-			// mission.guid = json.guid;
-			// dispatch({
-			// 	type: ADD_MISSIONS,
-			// 	payload: [mission]
-			// })
 		})
 	}).catch(e => {
 		console.log(e);	

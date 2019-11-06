@@ -9,6 +9,7 @@ import Menu from "~c/menu/menu.jsx";
 import Item from "~c/item/item.jsx";
 import ItemHeader from "~c/item/itemHeader.jsx";
 import AddMission from "~c/addMission/addMission.jsx";
+import Spinner from "~c/spinner/spinner.jsx";
 
 
 // import { initFirebase } from "~u/firebase.js";
@@ -45,8 +46,14 @@ class App extends React.Component {
 						}
 					});
 
-				this.props.updateUserInfo(user);
-				this.props.getAllMissions();
+				try {
+					await this.props.updateUserInfo(user);
+					await this.props.getAllMissions();
+					await this.props.getAllSchedule();
+				} catch (e) {
+					console.log(e);
+				}
+				
 			}
 		}
 
@@ -75,13 +82,10 @@ class App extends React.Component {
 
 				if (this.props.currentScheduleDate === scheduleItem.date) {
 					let setItemsStr = [...scheduleItem.missions.entries()].map((item, index) => {
-					
-						if (true) {
-							let mission = this.props.missionPool.find((itemFromPool) => {
-								return itemFromPool.guid === item[0]
-							});
-							return <Item key={mission.guid} {...mission} even={index%2}/>
-						}
+						let mission = this.props.missionPool.find((itemFromPool) => {
+							return itemFromPool.guid === item[0]
+						});
+						return <Item key={mission.guid} {...mission} even={index%2}/>
 					})
 	
 					let result = [setItemsStr];
@@ -121,7 +125,14 @@ class App extends React.Component {
 
 				{ this.props.user.rights.canAdd && this.props.currentScheduleDate ? <div id="schedule" className={style.dummyPlaceholder}></div> : null}
 					
-				{ this.props.user.rights.canAdd && this.props.currentScheduleDate ? <div><h2 >Расписание на {(new Date(this.props.currentScheduleDate)).toLocaleDateString()}</h2></div> : null}
+				{this.props.user.rights.canAdd && this.props.currentScheduleDate ?
+					<div>
+						<h2>
+							Расписание на {(new Date(this.props.currentScheduleDate)).toLocaleDateString()}
+							<Spinner spinnerState={this.props.syncScheduleState} width="25px" height="25px"/>
+						</h2>
+						
+					</div> : null}
 				{ this.props.user.rights.canAdd && this.props.currentScheduleDate > 0 ? itemsPoolStr : null}
 				 
 				<div className={style.viewHeight}></div>
@@ -139,7 +150,8 @@ class App extends React.Component {
 const mapStateToProps = (state) => {
 	return {
 		user : state.user,
-		missionPool : state.missionPool,
+		missionPool: state.missionPool,
+		syncScheduleState: state.syncScheduleState,
 		schedule : state.schedule,
 		showMissionPool: state.showMissionPool,
 		showAddMissionComponent: state.showAddMissionComponent,
@@ -150,8 +162,12 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		getAllMissions: () => {
-			actionType.getAllMissions(dispatch)
+		getAllMissions: async () => {
+			await actionType.getAllMissions(dispatch)
+		},
+
+		getAllSchedule: async () => {
+			await actionType.getAllSchedule(dispatch)
 		},
 
 		setFirebase: (firebase) => {
