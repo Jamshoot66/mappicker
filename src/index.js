@@ -8,8 +8,6 @@ import {createStore} from "redux";
 import {Provider} from "react-redux";
 import Store from "~s/store.js"
 
-import "react-datepicker/dist/react-datepicker.css";
-
 let store = createStore(Store,
 	window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 

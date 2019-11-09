@@ -18,19 +18,19 @@ import * as utils from "~u/utils.js";
 import * as firebase from "firebase/app";
 import 'firebase/firestore';
 
+import MainPage from "~p/mainPage/mainPage.jsx";
+
 class App extends React.Component {
 	constructor(props){
 		super(props);
 
 		let callback = async (firebaseUser) => {
-				/* eslint-disable */
-			if (firebaseUser != undefined) {
-				/* eslint-enable */
+			if (firebaseUser != null) {
 				
 				let db = firebase.firestore();
 				let info = (await db.collection("users").doc(firebaseUser.uid).get()).data();
 				let user;			
-				if (info !== undefined) {
+				if (info != null) {
 					user = Object.assign({},
 						utils.defUser,
 						{
@@ -74,86 +74,19 @@ class App extends React.Component {
 		this.props.updatePropabilities();
 	}
 
-	addItemBtn() {
-		console.log("adding...");
+	async componentDidUpdate(prevProps) {
+		if (this.props.user.rights.canRead !== prevProps.user.rights.canRead) {
+			await this.props.getAllMissions()
+		}
+
+		if (this.props.user.rights.canAdd !== prevProps.user.rights.canAdd) {
+			await this.props.getAllSchedule()
+		}
 	}
 
 	render() {
-
-		let itemsStr = false;
-		let itemsPoolStr = false;
-		if (this.props.showMissionPool === true) {
-			// show missions as mission pool
-			itemsStr = this.props.missionPool.map( (item, index) => {
-				return <Item key={item.guid} showInMissonPool {...item} even={index%2}/>
-			});
-
-			itemsPoolStr = this.props.schedule.map( (scheduleItem) => {
-
-				if (this.props.currentScheduleDate === scheduleItem.date) {
-					let setItemsStr = [...scheduleItem.missions.entries()].map((item, index) => {
-						let mission = this.props.missionPool.find((itemFromPool) => {
-							return itemFromPool.guid === item[0]
-						});
-						return <Item key={mission.guid} {...mission} even={index%2}/>
-					})
-	
-					let result = [setItemsStr];
-					return result;
-				}
-				return null;
-			});
-
-		} else {
-			// show missions as schedule
-			itemsStr = this.props.schedule.map( (scheduleItem) => {
-
-				let setItemsStr = [...scheduleItem.missions.entries()].map( item => {
-					let mission = this.props.missionPool.find( (itemFromPool) => {
-						return itemFromPool.guid === item[0] 
-					});
-					return <Item key={mission.guid} {...mission} />
-				})
-
-				let result = [setItemsStr];
-				return result;
-			});
-		}
-
-		return (
-			<main className={style.wrapper}>
-				
-				<header className={style.row}>
-					<Header/>
-				</header>
-
-				<Menu />
-				
-				<div><h2>Пул миссий</h2></div>
-				<ItemHeader />
-				{itemsStr}
-
-				{ this.props.user.rights.canAdd && this.props.currentScheduleDate ? <div id="schedule" className={style.dummyPlaceholder}></div> : null}
-					
-				{this.props.user.rights.canAdd && this.props.currentScheduleDate ?
-					<div>
-						<h2>
-							Расписание на {(new Date(this.props.currentScheduleDate)).toLocaleDateString()}
-							<Spinner spinnerState={this.props.syncScheduleState} width="25px" height="25px"/>
-						</h2>
-						
-					</div> : null}
-				{ this.props.user.rights.canAdd && this.props.currentScheduleDate > 0 ? itemsPoolStr : null}
-				 
-				<div className={style.viewHeight}></div>
-
-				{this.props.showAddMissionComponent ?
-					<div className={style.fullscreenWrapper} onClick={this.props.showAddMissionComponentToggle}><AddMission /></div>
-					: null}
-			
-			</main>
-		);
-	}
+		return( <MainPage/>)
+	} 
 	
 }
 

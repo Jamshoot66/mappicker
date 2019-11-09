@@ -1,0 +1,62 @@
+@import "~u/smart-grid.scss";
+@import "~u/basic.scss";
+
+.wrapper {
+	@include wrapper;	
+	position: relative;
+	min-width: 300px;
+	
+
+	&:before {
+		content: "";
+		position: fixed;
+		left: 0; 
+		width: 100%;
+		height: 100%;
+		opacity: 0.9;
+		filter: sepia(75%) brightness(150%);
+		background: url("./setwalls-big.jpg") center;
+		z-index: -100;
+	}
+}
+
+.fullscreenWrapper{
+    position: fixed;
+	top: 0;
+	left: 0;
+    width: 100%;
+	height: 100vh;
+	z-index: 100;
+	display: flex;
+	align-items: center;
+	background-color: $cBackground;
+}
+
+.row {
+	@include row-flex;
+}
+
+h2 {
+	@include row-flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 0;
+	margin-bottom: 0;
+	padding: 5px;
+	font-size: 1em;
+	color: $cWhite;
+	background-color: $cBackground;	
+}
+
+.viewHeight{
+	height: 100vh;
+}
+
+.dummyPlaceholder{
+	height: 40px;
+	width: 40px;
+	visibility: hidden;
+	z-index: -1000;
+	position: absolute;
+	transform: translateY(-40px);
+}
