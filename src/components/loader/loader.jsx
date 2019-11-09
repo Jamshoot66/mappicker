@@ -7,15 +7,17 @@ export default function loader(files, onLoadedCallback = () => { }, delay = 0) {
 	}
 
 	let promises = [];
-	let resolves = new Map();
-	files.forEach(item => {
+    let resolves = new Map();
+    if (files != null) {
+       files.forEach(item => {
 		if (resolves.get(item) === undefined) {
-			promises.push(new Promise((resolve) => {
-				resolves.set(item, resolve)
-			}));
-		};
-	});
-
+                promises.push(new Promise((resolve) => {
+                    resolves.set(item, resolve)
+                }));
+            };
+        }); 
+    }
+	
 	if (delay > 0) {
 		promises.push(new Promise((resolve) => {
 			setTimeout(() => {
@@ -24,11 +26,14 @@ export default function loader(files, onLoadedCallback = () => { }, delay = 0) {
 		}));
 	}
 
-	Promise.all(promises).then(() => {
+    Promise.all(promises).then(() => {
+        console.log("all done");
 		onLoadedCallback();
 	})
 
-	return files.map((item, index) => {
-		return <img className={style.wrapper} src={item} key={index} alt="" onLoad={onLoaded.bind(this, item)} />
-	});
+    if (files != null) {
+        return files.map((item, index) => {
+            return <img className={style.wrapper} src={item} key={index} alt="" onLoad={onLoaded.bind(this, item)} />
+        });
+    }
 }
