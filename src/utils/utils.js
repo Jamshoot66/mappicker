@@ -51,7 +51,7 @@ export const defUser = {
 	auth: false,
 	authedUnit: false,
 	unit: "null",
-	uid: "0",
+	uid: null,
 	shortName : "Комрад",
 	name: "Комрад",
 	rights: {

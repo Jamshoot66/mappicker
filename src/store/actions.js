@@ -8,6 +8,7 @@ import { DONE, PENDING, ERROR } from "~c/spinner/spinner.jsx";
 
 // export const TEST_ACTION = "TEST_ACTION";
 export const ADD_MISSIONS = "ADD_MISSIONS";
+export const CLEAR_MISSIONS = "CLEAR_MISSIONS";
 export const GET_MISSIONS = "GET_MISSIONS";
 export const SET_FIREBASE = "SET_FIREBASE";
 export const ADD_MISSION_TO_SCHEDULE = "ADD_MISSION_TO_SCHEDULE";
@@ -30,10 +31,7 @@ export const LOGOUT = "LOGOUT";
 
 
 export async function getAllMissions(dispatch) {
-	/* eslint-disable */
-	if (firebase.auth().currentUser != undefined) {
-	/* eslint-enable */
-		
+	if (firebase.auth().currentUser != null) {
 		await firebase.auth().currentUser.getIdToken().then(async token => {
 			await fetch(firebaseConst.FUNCTIONS_URL_BASE+firebaseConst.GET_MISSIONS, {
 				credentials: "include",
@@ -50,10 +48,14 @@ export async function getAllMissions(dispatch) {
 						item.link = `https://www.google.com/search?q=${item.name}&as_sitesearch=red-bear.ru`
 					}
 				});
-				dispatch( {
+				dispatch({
+					type: CLEAR_MISSIONS
+				});
+
+				dispatch({
 					type: ADD_MISSIONS,
-					payload: json			
-				})
+					payload: json
+				});
 			}).catch(err => {
 				console.log(err);
 				throw new Error(err.message);
@@ -64,9 +66,7 @@ export async function getAllMissions(dispatch) {
 }
 
 export async function getAllSchedule(dispatch) {
-	/* eslint-disable */
-	if (firebase.auth().currentUser != undefined) {
-	/* eslint-enable */
+	if (firebase.auth().currentUser != null) {
 		await firebase.auth().currentUser.getIdToken().then(async token => {
 			await fetch(firebaseConst.FUNCTIONS_URL_BASE+firebaseConst.GET_SCHEDULE, {
 				credentials: "include",
@@ -81,9 +81,8 @@ export async function getAllSchedule(dispatch) {
 				} else {
 					return null
 				}
-				
 			}).then((json) => {
-				if (json !== null) {
+				if (json != null) {
 					dispatch( {
 						type: SET_SCHEDULE,
 						payload: json			
@@ -188,12 +187,9 @@ export async function logoutFromServer(dispatch){
 
 export function syncMissionRate(dispatch, props) {
 
-	/* eslint-disable */
-	if (firebase.auth().currentUser != undefined) {
-	/* eslint-enable */
+	if (firebase.auth().currentUser != null) {
 
 		firebase.auth().currentUser.getIdToken().then(token => {
-			
 			dispatch({
 				type: UPDATE_SYNC_RATE_STATE,
 				payload: {
@@ -242,7 +238,6 @@ export function syncMissionRate(dispatch, props) {
 				})
 				console.log(err);
 			})
-		
 		});
 	}
 

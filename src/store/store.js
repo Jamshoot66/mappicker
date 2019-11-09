@@ -21,6 +21,7 @@ let defState = {
 
 const Store = (state = defState, action) => {
 	let newState = Object.assign({}, state);
+
 	switch (action.type) {
 		
 	/* ADD_MISSIONS usage:
@@ -29,6 +30,13 @@ const Store = (state = defState, action) => {
 	*/
 		case actionType.ADD_MISSIONS: 
 			return addMissions(state, action);
+		
+	/* CLEAR_MISSIONS usage:
+		action.Type : CLEAR_MISSIONS
+	*/
+		case actionType.CLEAR_MISSIONS: 
+			newState.missionPool = [];
+			return newState;
 			
 	/* SHOW_MISSION_POOL_TOGGLE */
 		case actionType.SHOW_MISSION_POOL_TOGGLE:
@@ -216,7 +224,7 @@ function updateUserInfo(state, action) {
 
 function setSchedule(state, action) {
 	let newState = Object.assign({}, state);
-
+	newState.schedule = [];
 	for (let item of action.payload) {
 		let scheduleItem = {
 			date: +item.date,

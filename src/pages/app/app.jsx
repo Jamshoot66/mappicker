@@ -4,13 +4,12 @@ import style from "./app.module.scss";
 import {connect} from "react-redux";
 import * as actionType from "~s/actions.js";
 
-import Header from "~c/header/header.jsx";
-import Menu from "~c/menu/menu.jsx";
-import Item from "~c/item/item.jsx";
-import ItemHeader from "~c/item/itemHeader.jsx";
-import AddMission from "~c/addMission/addMission.jsx";
-import Spinner from "~c/spinner/spinner.jsx";
-
+// import Header from "~c/header/header.jsx";
+// import Menu from "~c/menu/menu.jsx";
+// import Item from "~c/item/item.jsx";
+// import ItemHeader from "~c/item/itemHeader.jsx";
+// import AddMission from "~c/addMission/addMission.jsx";
+// import Spinner from "~c/spinner/spinner.jsx";
 
 // import { initFirebase } from "~u/firebase.js";
 import * as utils from "~u/utils.js";
@@ -62,8 +61,7 @@ class App extends React.Component {
 					if (user.rights.canAdd) { await this.props.getAllSchedule() }
 				} catch (e) {
 					console.log(e);
-				}
-				
+				}	
 			}
 		}
 
@@ -75,12 +73,34 @@ class App extends React.Component {
 	}
 
 	async componentDidUpdate(prevProps) {
-		if (this.props.user.rights.canRead !== prevProps.user.rights.canRead) {
+		if (this.props.user.rights.canRead !== prevProps.user.rights.canRead || 
+			this.props.user.rights.canRate !== prevProps.user.rights.canRate ||
+			this.props.user.rights.canAdmin !== prevProps.user.rights.canAdmin ||
+			this.props.user.rights.canSuperuser !== prevProps.user.rights.canSuperuser) {
 			await this.props.getAllMissions()
 		}
 
 		if (this.props.user.rights.canAdd !== prevProps.user.rights.canAdd) {
 			await this.props.getAllSchedule()
+		}
+
+		if (this.props.user.uid !== prevProps.user.uid && this.props.user.uid != null) {
+			firebase.firestore().collection("users").doc(this.props.user.uid).onSnapshot((snap) => {	
+				if (snap.data() != null) {
+					let info = snap.data();
+					let newUser = Object.assign({}, this.props.user);
+					let rights = {
+						canAdd: info.canAdd,
+						canAdmin: info.canAdmin,
+						canRate: info.canRate,
+						canRead: info.canRead,
+						canSuperuser: info.canSuperuser
+					}
+					newUser.unit = `[${info.unit.toUpperCase()}]`;
+					newUser.rights = rights;
+					this.props.updateUserInfo(newUser);
+				}
+			});	
 		}
 	}
 
