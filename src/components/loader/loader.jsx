@@ -1,4 +1,3 @@
-import React from "react";
 
 /** 
  * @description content loader. Only files used for <img .../> tag source can be loaded
@@ -23,37 +22,35 @@ import React from "react";
  */
 
 export default function loader(files, onLoadedCallback = () => { }, delay = 0) {
-	let onLoaded = (files) => {
-		resolves.get(files)();
-	}
+   
+    let singleton = Symbol.for(files.join());
+    if (singleton in window) return;
 
-	let promises = [];
-    let resolves = new Map();
-    if (files != null) {
-       files.forEach(item => {
-		if (resolves.get(item) === undefined) {
-                promises.push(new Promise((resolve) => {
-                    resolves.set(item, resolve)
-                }));
+    let promises = [];
+
+    window[singleton] = true;
+    files.map(item => {
+        console.log("starting fetch item ", item)
+        promises.push(new Promise(resolve => {
+            let img = new Image();
+            img.onload = () => {
+                resolve()
             };
-        }); 
+            img.src = item;
+        }))
+        return true;
+    })
+
+    if (delay > 0) {
+        promises.push(new Promise((resolve) => {
+            setTimeout(() => {
+                resolve();
+            }, delay);
+        }));
     }
-	
-	if (delay > 0) {
-		promises.push(new Promise((resolve) => {
-			setTimeout(() => {
-				resolve();
-			}, delay);
-		}));
-	}
 
     Promise.all(promises).then(() => {
-		onLoadedCallback();
-	})
-
-    if (files != null) {
-        return files.map((item, index) => {
-            return <img style={{position:"absolute", display:"none"}} src={item} key={index} alt="" onLoad={onLoaded.bind(this, item)} />
-        });
-    }
+        delete window[singleton];
+        onLoadedCallback();
+    });     
 }
