@@ -1,4 +1,6 @@
 Map picker
+---
+preview builded app -> https://mapick-preview.web.app/
 
 Available scripts:
 1. Run dev server
