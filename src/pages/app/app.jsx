@@ -1,22 +1,18 @@
 import React from "react";
+/* eslint-disable*/
 import style from "./app.module.scss";
-
+/* eslint-enable*/
 import {connect} from "react-redux";
 import * as actionType from "~s/actions.js";
 
-// import Header from "~c/header/header.jsx";
-// import Menu from "~c/menu/menu.jsx";
-// import Item from "~c/item/item.jsx";
-// import ItemHeader from "~c/item/itemHeader.jsx";
-// import AddMission from "~c/addMission/addMission.jsx";
-// import Spinner from "~c/spinner/spinner.jsx";
-
-// import { initFirebase } from "~u/firebase.js";
 import * as utils from "~u/utils.js";
 
 import * as firebase from "firebase/app";
 import 'firebase/firestore';
 
+
+import loader from "~c/loader/loader.jsx";
+import LoaderFiller from "~c/loader/loaderFiller.jsx";
 import MainPage from "~p/mainPage/mainPage.jsx";
 
 class App extends React.Component {
@@ -25,7 +21,6 @@ class App extends React.Component {
 
 		let callback = async (firebaseUser) => {
 			if (firebaseUser != null) {
-				
 				let db = firebase.firestore();
 				let info = (await db.collection("users").doc(firebaseUser.uid).get()).data();
 				let user;			
@@ -105,7 +100,14 @@ class App extends React.Component {
 	}
 
 	render() {
-		return( <MainPage/>)
+		return (
+			<div>
+				{this.props.page === actionType.pages.INIT ? loader(utils.initFileList, () => {this.props.setPage(actionType.pages.PRELOAD)}, 0) : null}
+				{this.props.page === actionType.pages.PRELOAD ? <LoaderFiller /> : null}
+				{this.props.page === actionType.pages.PRELOAD ? loader(utils.preloadFileList, () => {this.props.setPage(actionType.pages.MAIN)}, 3000) : null}
+				{this.props.page === actionType.pages.MAIN ? <MainPage /> : null}
+			</div>
+		)
 	} 
 	
 }
@@ -114,6 +116,8 @@ const mapStateToProps = (state) => {
 	return {
 		user : state.user,
 		missionPool: state.missionPool,
+		page: state.page,
+		
 		syncScheduleState: state.syncScheduleState,
 		schedule : state.schedule,
 		showMissionPool: state.showMissionPool,
@@ -131,6 +135,13 @@ const mapDispatchToProps = (dispatch) => {
 
 		getAllSchedule: async () => {
 			await actionType.getAllSchedule(dispatch)
+		},
+
+		setPage: (page) => {
+			dispatch({
+				type: actionType.SET_PAGE,
+				payload: {page}
+			})
 		},
 
 		setFirebase: (firebase) => {

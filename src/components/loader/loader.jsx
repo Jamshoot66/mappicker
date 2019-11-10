@@ -1,5 +1,26 @@
 import React from "react";
-import style from "./loader.module.scss";
+
+/** 
+ * @description content loader. Only files used for <img .../> tag source can be loaded
+ * 
+ * @returns react element
+ * 
+ * @property files - array of file names. 
+ * @property onLoadedCallback - callback, what will be called, thed done 
+ * @property delay - minimal delay in ms, untill onLoadedCallback invoked
+ * 
+ * 
+ *  
+ * @usage 
+ *  // inside component
+ *  render() { 
+ *      return (
+ *          ...
+ *          { isNeedToLoadSomething ? loader( [ "./file1.jpg", ...], myCallBack, 1000) : null }
+ *          ...
+ *      );
+ *  }
+ */
 
 export default function loader(files, onLoadedCallback = () => { }, delay = 0) {
 	let onLoaded = (files) => {
@@ -27,13 +48,12 @@ export default function loader(files, onLoadedCallback = () => { }, delay = 0) {
 	}
 
     Promise.all(promises).then(() => {
-        console.log("all done");
 		onLoadedCallback();
 	})
 
     if (files != null) {
         return files.map((item, index) => {
-            return <img className={style.wrapper} src={item} key={index} alt="" onLoad={onLoaded.bind(this, item)} />
+            return <img style={{position:"absolute", display:"none"}} src={item} key={index} alt="" onLoad={onLoaded.bind(this, item)} />
         });
     }
 }

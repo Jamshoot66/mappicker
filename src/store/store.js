@@ -8,6 +8,7 @@ import {PENDING, DONE, ERROR} from "~c/spinner/spinner.jsx";
 let defState = {
 	user: utils.defUser,
 	firebase: {},
+	page: actionType.pages.INIT,
 	showMissionPool: true,
 	showUserMenu: false,
 	showAddMissionComponent: false,
@@ -36,6 +37,14 @@ const Store = (state = defState, action) => {
 	*/
 		case actionType.CLEAR_MISSIONS: 
 			newState.missionPool = [];
+			return newState;
+		
+	/* SET_PAGE usage:
+		action.Type : SET_PAGE,
+		payload     : {page: "page_state"}
+	*/
+		case actionType.SET_PAGE: 
+			newState.page = action.payload.page;
 			return newState;
 			
 	/* SHOW_MISSION_POOL_TOGGLE */

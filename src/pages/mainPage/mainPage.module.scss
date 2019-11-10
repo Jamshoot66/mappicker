@@ -5,7 +5,12 @@
 	@include wrapper;	
 	position: relative;
 	min-width: 300px;
-	
+
+	opacity: 0;
+	animation-name: fadein;
+	animation-duration: 0.5s;
+	animation-fill-mode: forwards;
+
 
 	&:before {
 		content: "";
@@ -18,6 +23,16 @@
 		background: url("./setwalls-big.jpg") center;
 		z-index: -100;
 	}
+}
+
+@keyframes fadein {
+    from {
+        opacity: 0;
+    }
+  
+    to {
+        opacity: 1;
+    }
 }
 
 .fullscreenWrapper{

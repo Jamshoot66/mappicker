@@ -1,3 +1,17 @@
+import mainWall from "~p/mainPage/setwalls-big.jpg";
+import rbcLogo from "~c/header/rbclogo_m.png";
+import add from "~c/menu/add.svg";
+import approve from "~c/menu/approve.svg";
+import calendar from "~c/menu/calendar.svg";
+import dice from "~c/menu/dice.svg";
+import filter from "~c/menu/filter.svg";
+import idCard from "~c/menu/id-card.svg";
+import star from "~c/rateStars/star.svg";
+import error from "~c/spinner/error.svg";
+import pending from "~c/spinner/pending.gif";
+
+import loaderSpriteList from "~c/loader/preloading-spritelist.png";
+
 /**
  * @description do a shallow equality of obj1 and obj2. Tests only enumerable object keys
  * 
@@ -62,3 +76,7 @@ export const defUser = {
 		canSuperuser: false
 	}
 }
+
+export const preloadFileList = [mainWall, rbcLogo, add, approve, calendar, dice, filter, idCard, star, error, pending]
+export const initFileList = [loaderSpriteList]
+

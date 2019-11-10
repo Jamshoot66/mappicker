@@ -10,6 +10,7 @@ import { DONE, PENDING, ERROR } from "~c/spinner/spinner.jsx";
 export const ADD_MISSIONS = "ADD_MISSIONS";
 export const CLEAR_MISSIONS = "CLEAR_MISSIONS";
 export const GET_MISSIONS = "GET_MISSIONS";
+export const SET_PAGE = "SET_PAGE";
 export const SET_FIREBASE = "SET_FIREBASE";
 export const ADD_MISSION_TO_SCHEDULE = "ADD_MISSION_TO_SCHEDULE";
 export const SET_SCHEDULE = "SET_SCHEDULE";
@@ -28,6 +29,12 @@ export const SHOW_USER_MENU_TOGGLE = "SHOW_USER_MENU_TOGGLE";
 export const SHOW_ADD_MISSION_COMPONENT_TOGGLE = "SHOW_ADD_MISSION_COMPONENT_TOGGLE";
 export const LOGIN = "LOGIN";
 export const LOGOUT = "LOGOUT";
+
+export const pages = {
+	INIT: "INIT",
+	PRELOAD: "PRELOAD",
+	MAIN: "MAIN"
+}
 
 
 export async function getAllMissions(dispatch) {
