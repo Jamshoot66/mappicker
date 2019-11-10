@@ -302,7 +302,7 @@ const mapDispatchToProps = (dispatch) => {
 			})
 			
 		},
-		// syncMissionRate: actionType.syncMissionRate
+		
 		syncMissionRate: (guid, rate) => {
 			actionType.syncMissionRate(dispatch, {guid, rate})
 		},

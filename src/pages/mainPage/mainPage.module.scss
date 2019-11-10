@@ -75,3 +75,21 @@ h2 {
 	position: absolute;
 	transform: translateY(-40px);
 }
+
+.loginMessage{
+	@include row-flex;
+	color: $cWhite;
+	background-color: $cBackground;
+	padding: 15px 5px;
+	justify-content: center;
+	text-align: center;
+}
+
+.spinnerPlaceholderWrapper{
+	@include row-flex;
+	color: $cWhite;
+	background-color: $cBackground;
+	padding: 15px 5px;
+	display: flex;
+	justify-content: center;
+}

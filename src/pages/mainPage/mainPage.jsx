@@ -10,6 +10,7 @@ import Item from "~c/item/item.jsx";
 import ItemHeader from "~c/item/itemHeader.jsx";
 import AddMission from "~c/addMission/addMission.jsx";
 import Spinner from "~c/spinner/spinner.jsx";
+import {PENDING} from "~c/spinner/spinner.jsx";
 
 class MainPage extends React.Component {
     
@@ -54,36 +55,52 @@ class MainPage extends React.Component {
 			});
 		}
 
+		let contentStr;
+		if (this.props.user.auth) {
+			if (this.props.missionPool.length > 0) {
+				contentStr = <div>
+					<div><h2>Пул миссий</h2></div>
+					<ItemHeader />
+					{itemsStr}
+
+					{this.props.user.rights.canAdd && this.props.currentScheduleDate ? <div id="schedule" className={style.dummyPlaceholder}></div> : null}
+						
+					{this.props.user.rights.canAdd && this.props.currentScheduleDate ?
+						<div>
+							<h2>
+								Расписание на {(new Date(this.props.currentScheduleDate)).toLocaleDateString()}
+								<Spinner spinnerState={this.props.syncScheduleState} width="25px" height="25px" />
+							</h2>
+							
+						</div> : null}
+					{this.props.user.rights.canAdd && this.props.currentScheduleDate > 0 ? itemsPoolStr : null}
+					
+					<div className={style.viewHeight}></div>
+
+					{this.props.showAddMissionComponent ?
+						<div className={style.fullscreenWrapper} onClick={this.props.showAddMissionComponentToggle}><AddMission /></div>
+						: null}
+				</div>
+			} else {
+				contentStr = <div className={style.spinnerPlaceholderWrapper}>
+					<Spinner spinnerState={PENDING} width="40px" height="40px" />
+				</div> 
+			}
+			
+		} else {
+			contentStr = <div className={style.loginMessage}>
+				Залогинтесь через Google+, чтобы получить доступ к контенту
+			</div>
+		}
+
 		return (
 			<main className={style.wrapper}>
 				
 				<header className={style.row}>
 					<Header/>
 				</header>
-
-				<Menu />
-				
-				<div><h2>Пул миссий</h2></div>
-				<ItemHeader />
-				{itemsStr}
-
-				{ this.props.user.rights.canAdd && this.props.currentScheduleDate ? <div id="schedule" className={style.dummyPlaceholder}></div> : null}
-					
-				{this.props.user.rights.canAdd && this.props.currentScheduleDate ?
-					<div>
-						<h2>
-							Расписание на {(new Date(this.props.currentScheduleDate)).toLocaleDateString()}
-							<Spinner spinnerState={this.props.syncScheduleState} width="25px" height="25px"/>
-						</h2>
-						
-					</div> : null}
-				{ this.props.user.rights.canAdd && this.props.currentScheduleDate > 0 ? itemsPoolStr : null}
-				 
-				<div className={style.viewHeight}></div>
-
-				{this.props.showAddMissionComponent ?
-					<div className={style.fullscreenWrapper} onClick={this.props.showAddMissionComponentToggle}><AddMission /></div>
-					: null}
+				<Menu />	
+				{contentStr}
 			
 			</main>
 		);
