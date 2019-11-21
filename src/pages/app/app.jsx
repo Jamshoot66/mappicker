@@ -100,7 +100,6 @@ class App extends React.Component {
 	}
 
 	render() {
-		console.log(this.props.page);
 		return (
 			<div>
 				{this.props.page === actionType.pages.INIT ? loader(utils.initFileList, () => {this.props.setPage(actionType.pages.PRELOAD)}, 0) : null}
