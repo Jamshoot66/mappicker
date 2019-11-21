@@ -117,13 +117,6 @@ const mapStateToProps = (state) => {
 		user : state.user,
 		missionPool: state.missionPool,
 		page: state.page,
-		
-		syncScheduleState: state.syncScheduleState,
-		schedule : state.schedule,
-		showMissionPool: state.showMissionPool,
-		showAddMissionComponent: state.showAddMissionComponent,
-		db: state.firebase.db,
-		currentScheduleDate: state.currentScheduleDate
 	}
 } 
 
