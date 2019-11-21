@@ -112,11 +112,13 @@
       "^.+\\.module\\.(css|sass|scss)$"
     ],
     "modulePaths": [],
+    
     "moduleNameMapper": {
       "^~(?![a-z])$": "<rootDir>/src/$1",
       "^~c(.*)$": "<rootDir>/src/components$1",
       "^~s(.*)$": "<rootDir>/src/store$1",
       "^~u(.*)$": "<rootDir>/src/utils$1",
+      "^~p(.*)$": "<rootDir>/src/pages$1",
       "^react-native$": "react-native-web",
       "^.+\\.module\\.(css|sass|scss)$": "identity-obj-proxy"
     },

@@ -8,17 +8,14 @@ import { createStore } from "redux";
 describe("Testing Item component", () => {
     it("Should render without crash", () => {
         let store = createStore(Store);
-        let component = mount(<Item store = {store}/>);
+        let component = mount(<Item store={store} />);
         
         expect(component.exists(".name")).toBe(true);
         expect(component.exists(".mods")).toBe(true);
         expect(component.exists(".lastPlayed")).toBe(true);
         expect(component.exists(".players")).toBe(true);
         expect(component.exists(".island")).toBe(true);
-        expect(component.exists(".autor")).toBe(true);
-        expect(component.exists(".rateAvg")).toBe(true);
-        expect(component.exists(".probability")).toBe(true);
-        
+        expect(component.exists(".author")).toBe(true);
         component.unmount();
     });
 })
