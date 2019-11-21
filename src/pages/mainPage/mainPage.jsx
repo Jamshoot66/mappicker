@@ -10,83 +10,58 @@ import Item from "~c/item/item.jsx";
 import ItemHeader from "~c/item/itemHeader.jsx";
 import AddMission from "~c/addMission/addMission.jsx";
 import Spinner from "~c/spinner/spinner.jsx";
-import {PENDING} from "~c/spinner/spinner.jsx";
 
 class MainPage extends React.Component {
     
     render() {
 		let itemsStr = false;
 		let itemsPoolStr = false;
-		if (this.props.showMissionPool === true) {
-			// show missions as mission pool
-			itemsStr = this.props.missionPool.map( (item, index) => {
-				return <Item key={item.guid} showInMissonPool {...item} even={index%2}/>
-			});
+		itemsStr = this.props.missionPool.map( (item, index) => {
+			return <Item key={item.guid} showInMissonPool {...item} even={index%2}/>
+		});
 
-			itemsPoolStr = this.props.schedule.map( (scheduleItem) => {
-
-				if (this.props.currentScheduleDate === scheduleItem.date) {
-					let setItemsStr = [...scheduleItem.missions.entries()].map((item, index) => {
-						let mission = this.props.missionPool.find((itemFromPool) => {
-							return itemFromPool.guid === item[0]
-						});
-						return <Item key={mission.guid} {...mission} even={index%2}/>
-					})
-	
-					let result = [setItemsStr];
-					return result;
-				}
-				return null;
-			});
-
-		} else {
-			// show missions as schedule
-			itemsStr = this.props.schedule.map( (scheduleItem) => {
-
-				let setItemsStr = [...scheduleItem.missions.entries()].map( item => {
-					let mission = this.props.missionPool.find( (itemFromPool) => {
-						return itemFromPool.guid === item[0] 
+		itemsPoolStr = this.props.currentSchedule.missions.map( (scheduleItem, index) => {
+			return <Item key={scheduleItem.guid} {...scheduleItem} even={index%2}/>
+			/*
+			if (this.props.currentSchedule.date === scheduleItem.date) {
+				let setItemsStr = [...scheduleItem.missions.entries()].map((item, index) => {
+					let mission = this.props.missionPool.find((itemFromPool) => {
+						return itemFromPool.guid === item[0]
 					});
-					return <Item key={mission.guid} {...mission} />
+					return <Item key={mission.guid} {...mission} even={index%2}/>
 				})
 
 				let result = [setItemsStr];
 				return result;
-			});
-		}
+			}
+			return null;
+			*/
+		});
 
 		let contentStr;
-		if (this.props.user.auth) {
-			if (this.props.missionPool.length > 0) {
-				contentStr = <div>
-					<div><h2>Пул миссий</h2></div>
-					<ItemHeader />
-					{itemsStr}
+		if (this.props.user.auth) {		
+			contentStr = <div>
+				<div><h2>Пул миссий</h2></div>
+				<ItemHeader />
+				{itemsStr}
 
-					{this.props.user.rights.canAdd && this.props.currentScheduleDate ? <div id="schedule" className={style.dummyPlaceholder}></div> : null}
-						
-					{this.props.user.rights.canAdd && this.props.currentScheduleDate ?
-						<div>
-							<h2>
-								Расписание на {(new Date(this.props.currentScheduleDate)).toLocaleDateString()}
-								<Spinner spinnerState={this.props.syncScheduleState} width="25px" height="25px" />
-							</h2>
-							
-						</div> : null}
-					{this.props.user.rights.canAdd && this.props.currentScheduleDate > 0 ? itemsPoolStr : null}
+				{this.props.user.rights.canAdd && this.props.currentSchedule.date ? <div id="schedule" className={style.dummyPlaceholder}></div> : null}
 					
-					<div className={style.viewHeight}></div>
+				{this.props.user.rights.canAdd && this.props.currentSchedule.date ?
+					<div>
+						<h2>
+							Расписание на {(new Date(this.props.currentSchedule.date)).toLocaleDateString()}
+							<Spinner spinnerState={this.props.syncScheduleState} width="25px" height="25px" />
+						</h2>
+					</div> : null}
+				{this.props.user.rights.canAdd && this.props.currentSchedule.date > 0 ? itemsPoolStr : null}
+				
+				<div className={style.viewHeight}></div>
 
-					{this.props.showAddMissionComponent ?
-						<div className={style.fullscreenWrapper} onClick={this.props.showAddMissionComponentToggle}><AddMission /></div>
-						: null}
-				</div>
-			} else {
-				contentStr = <div className={style.spinnerPlaceholderWrapper}>
-					<Spinner spinnerState={PENDING} width="40px" height="40px" />
-				</div> 
-			}
-			
+				{this.props.showAddMissionComponent ?
+					<div className={style.fullscreenWrapper} onClick={this.props.showAddMissionComponentToggle}><AddMission /></div>
+					: null}
+			</div>	
 		} else {
 			contentStr = <div className={style.loginMessage}>
 				Залогинтесь через Google+, чтобы получить доступ к контенту
@@ -95,13 +70,11 @@ class MainPage extends React.Component {
 
 		return (
 			<main className={style.wrapper}>
-				
 				<header className={style.row}>
 					<Header/>
 				</header>
 				<Menu />	
 				{contentStr}
-			
 			</main>
 		);
 	}
@@ -117,7 +90,7 @@ const mapStateToProps = (state) => {
 		showMissionPool: state.showMissionPool,
 		showAddMissionComponent: state.showAddMissionComponent,
 		db: state.firebase.db,
-		currentScheduleDate: state.currentScheduleDate
+		currentSchedule: state.currentSchedule
 	}
 } 
 

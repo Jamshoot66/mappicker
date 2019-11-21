@@ -12,7 +12,11 @@ let defState = {
 	showMissionPool: true,
 	showUserMenu: false,
 	showAddMissionComponent: false,
-	currentScheduleDate: 0,
+	// currentScheduleDate: 0,
+	currentSchedule: {
+		date: 0,
+		missions: []
+	},
 	syncScheduleState: DONE,
 	// missionPool: [ {missionItem}, {missionItem}, ... ]
 	missionPool : [],
@@ -63,9 +67,9 @@ const Store = (state = defState, action) => {
 			return newState;
 		
 	/* SHOW_MISSION_POOL_TOGGLE */
-	case actionType.SHOW_ADD_MISSION_COMPONENT_TOGGLE:
-		newState.showAddMissionComponent = !newState.showAddMissionComponent;
-		return newState;
+		case actionType.SHOW_ADD_MISSION_COMPONENT_TOGGLE:
+			newState.showAddMissionComponent = !newState.showAddMissionComponent;
+			return newState;
 
 	/* UPDATE_PROPABILITIES */
 		case actionType.UPDATE_PROPABILITIES:	
@@ -106,15 +110,25 @@ const Store = (state = defState, action) => {
 		action.Type : SET_SCHEDULE,
 		payload     : [{data, [guids]}]
 	*/	
-	case actionType.SET_SCHEDULE:		
-	return setSchedule(state, action);
+		case actionType.SET_SCHEDULE:		
+			return setSchedule(state, action);
 		
+	/* GET_SCHEDULE usage:
+		action.Type : GET_SCHEDULE,
+		payload     : {date}
+	*/	
+		case actionType.GET_SCHEDULE:		
+			return getSchedule(state, action);
+				
 	/* SET_CURRENT_SCHEDULE_DATE usage:
 		action.Type : SET_CURRENT_SCHEDULE_DATE,
 		payload     : {date}
 	*/	
 		case actionType.SET_CURRENT_SCHEDULE_DATE:
-			newState.currentScheduleDate = action.payload.date;
+			console.warn("SET_CURRENT_SCHEDULE_DATE is depricated. Use GET_SCHEDULE.");
+			let newCurrentSchedule = Object.assign({}, newState.currentSchedule);
+			newCurrentSchedule.date = action.payload.date;
+			newState.currentSchedule = newCurrentSchedule;
 			return newState;
 
 	/* REMOVE_MISSION_FROM_SCHEDULE usage:
@@ -139,8 +153,8 @@ const Store = (state = defState, action) => {
 		action.Type : UPDATE_SYNC_RATE_STATE,
 		payload     : [ {guid: guid, syncRateState: "PENDING || ERROR || DONE"} ] 
 	*/
-	case actionType.UPDATE_SYNC_RATE_STATE:
-		return updateSyncRateState(state, action);
+		case actionType.UPDATE_SYNC_RATE_STATE:
+			return updateSyncRateState(state, action);
 		
 		default:			
 			return newState;
@@ -245,6 +259,37 @@ function setSchedule(state, action) {
 	
 	return newState;
 }
+
+function getSchedule(state, action) {
+	let newState = Object.assign({}, state);
+
+	let newCurrentSchedule = {
+		date: action.payload.date,
+		missions: []
+	};
+	//get schedule with payload.date
+	let scheduleItem = newState.schedule.find(item => {
+		return item.date === action.payload.date
+	});
+
+	if (scheduleItem != null) {
+	//for each guid in found schedule get mission with its guid
+		scheduleItem.missions.forEach(guidInSchedule => {
+			let mission = newState.missionPool.find(itemInMissionPool => {
+				return itemInMissionPool.guid === guidInSchedule
+			})
+			if (mission != null) {
+				newCurrentSchedule.missions.push(mission)
+			}
+		})
+	}
+	
+
+	
+	newState.currentSchedule = newCurrentSchedule;
+	return newState;
+}
+
 
 function addMissionToSchedule(state, action) {
 	let newState = Object.assign({}, state);

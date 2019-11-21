@@ -165,7 +165,7 @@ const mapDispatchToProps = (dispatch) => {
 
 		setCurrentScheduleDate: (date) => {
 			dispatch({
-				type: actionType.SET_CURRENT_SCHEDULE_DATE,
+				type: actionType.GET_SCHEDULE,
 				payload: {
 					date
 				}
