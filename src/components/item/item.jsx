@@ -35,8 +35,6 @@ class Item extends React.Component {
 			gameplay: 3
 		}
 
-		// this.inShedule = false;
-
 		this.hint = "Относительный рейтинг зависит от оценки миссии и времени последнего отыгрыша. При этом относительный рейтинг миссии с оценкой 1 (плохая), отыгранной год назад, соответсвует рейтингу миссии с оценкой 3 (средней), отыграной 3 месяца назад, и хорошей, отыгранной 2 месяца назад."
 	}
 
@@ -83,16 +81,9 @@ class Item extends React.Component {
 	}
 
 	isInSchedule = () => {
-		//find shedule with currentScheduleDate
-		//search in missions
-		// let result = false;
-		for (let i in this.props.schedule) {
-			if (this.props.schedule[i].date === this.props.currentScheduleDate) {
-				return this.props.schedule[i].missions.has(this.props.guid);
-			}
-		}
-		// this.props.schedule.filter( item => {})
-		return false;
+		return this.props.currentSchedule.missions.find(item => {
+			return item.guid === this.props.guid;
+		}) != null;
 	}
 
 	render() {
@@ -128,7 +119,7 @@ class Item extends React.Component {
 
 					{this.props.user.rights.canRate ?
 						<div className={style.rateAvg}>
-							{this.props.rateAvg}
+							{this.props.rateAvg.toFixed(1)}
 						</div> : null}	
 
 					{this.props.user.rights.canRate ?
@@ -230,7 +221,7 @@ class Item extends React.Component {
 
 							{ this.props.user.rights.canRate ?
 							<div className={style.line} onClick={this.onEmptyClick}> 
-								Рейтинг <strong>{this.props.rateAvg}</strong>
+								Рейтинг <strong>{this.props.rateAvg.toFixed(1)}</strong>
 							</div> : null }
 
 							{ this.props.user.rights.canRate ?
@@ -321,8 +312,7 @@ const mapDispatchToProps = (dispatch) => {
 const mapStateToProps = (store) => {
 	return {
 		user: store.user,
-		currentScheduleDate: store.currentScheduleDate,
-		schedule: store.schedule
+		currentSchedule: store.currentSchedule,
 	}
 }
 

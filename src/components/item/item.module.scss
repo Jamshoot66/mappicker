@@ -14,10 +14,16 @@
 	}
 
 	&_selectable{
-		@include selectable;
+		font-size: inherit;
 	}
 }
 
+@media (hover) {
+	.wrapper_selectable:hover{
+		background-color: $cRed-transp;
+		color: $cWhite;
+	}
+}
 
 .header{
 	background-color: $cBackground !important;

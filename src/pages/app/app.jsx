@@ -100,7 +100,6 @@ class App extends React.Component {
 	}
 
 	render() {
-		console.log(this.props.page);
 		return (
 			<div>
 				{this.props.page === actionType.pages.INIT ? loader(utils.initFileList, () => {this.props.setPage(actionType.pages.PRELOAD)}, 0) : null}
@@ -118,13 +117,6 @@ const mapStateToProps = (state) => {
 		user : state.user,
 		missionPool: state.missionPool,
 		page: state.page,
-		
-		syncScheduleState: state.syncScheduleState,
-		schedule : state.schedule,
-		showMissionPool: state.showMissionPool,
-		showAddMissionComponent: state.showAddMissionComponent,
-		db: state.firebase.db,
-		currentScheduleDate: state.currentScheduleDate
 	}
 } 
 

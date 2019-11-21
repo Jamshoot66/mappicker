@@ -30,7 +30,6 @@ export default function loader(files, onLoadedCallback = () => { }, delay = 0) {
 
     window[singleton] = true;
     files.map(item => {
-        console.log("starting fetch item ", item)
         promises.push(new Promise(resolve => {
             let img = new Image();
             img.onload = () => {
