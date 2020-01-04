@@ -76,6 +76,10 @@
 .logoutBtn {
     @include button;
     @include flat;
+
+    @include xs(width, 100%);
+    @include xs(height, auto);
+    
     height: auto;
     width: 100%;
     font-size: 1em;

@@ -48,7 +48,6 @@ class Menu extends React.Component{
 			}
 		}
 
-		// console.log(missions);
 		try {
 			this.props.setSyncScheduleState(PENDING);
 			await this.props.addScheduleToServer(date, missions);
@@ -94,8 +93,9 @@ class Menu extends React.Component{
 							onClick={this.props.addRandomMissions}>
 						</button> :
 						null */}
-					{/* TODO: implement filter feature
-					<button className={style.filterBtn} id="menuFilterBtn"></button>		*/}
+					
+					{/* TODO: implement filter feature */}
+					<button className={style.filterBtn} id="menuFilterBtn" onClick={this.props.showFilterMissionsComponentToggle}></button>
 					
 					{this.props.user.rights.canAdd ?
 						<button className={style.approveBtn}
@@ -116,6 +116,7 @@ class Menu extends React.Component{
 					<div className={style.placeholder}></div>
 					<label htmlFor="menuUserBtn" className={style.label}>{greeting}</label>
 					<button 
+						style={{marginRight: '7px'}}
 						className={style.userBtn}
 						id="menuUserBtn"
 						onClick={this.toggleLogin}>					
@@ -160,6 +161,12 @@ const mapDispatchToProps = (dispatch) => {
 		showAddMissionComponentToggle: () => {
 			dispatch({
 				type: actionType.SHOW_ADD_MISSION_COMPONENT_TOGGLE
+			});
+		},
+
+		showFilterMissionsComponentToggle: () => {
+			dispatch({
+				type: actionType.SHOW_FILTER_MISSION_POPUP_TOGGLE
 			});
 		},
 

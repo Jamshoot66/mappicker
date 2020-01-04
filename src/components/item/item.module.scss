@@ -108,8 +108,8 @@
 	@extend .add;
 	@include button;
 	@include flat;
-	width: 21px;
-	height: 21px;
+	width: 21px !important;
+	height: 21px !important;
 	background-color: $cWhite;
 	display: flex;
 	position: relative;

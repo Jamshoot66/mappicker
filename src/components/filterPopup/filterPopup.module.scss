@@ -3,6 +3,7 @@
 
 .screen {
     @include wrapper;
+    @include sm( width, 100%);
 }
 
 .wrapper {
@@ -21,6 +22,7 @@
 
     @include sm( border-radius, 0);
     @include sm( border, none);
+    
 }
 
 .itemHeader{
@@ -32,7 +34,13 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    height: 26px;
+    min-height: 26px;
+    flex-wrap: wrap;
+}
+
+.checkBoxGroupWrapper{
+    @extend .itemWrapper;
+    justify-content: flex-start;
 }
 
 .itemLabel{
@@ -71,6 +79,28 @@
         padding-left: 1px;
     }
 
+    &[type="checkbox"]{
+        padding-left: 1px;
+        font-size: 0.8em;
+        min-width: 0;
+        height: 15px;
+        width: 15px;
+        min-width: 15px;
+        flex-grow: 0;
+    }
+}
+
+.checkBoxWrapper{
+    width: 50%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    label{
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
 }
 
 .itemSelect{

@@ -4,7 +4,7 @@
 .wrapper {
 	@include wrapper;	
 	position: relative;
-	min-width: 300px;
+	min-width: 290px;
 
 	opacity: 0;
 	animation-name: fadein;

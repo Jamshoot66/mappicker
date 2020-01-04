@@ -110,3 +110,15 @@ export const missions = [
 		lastPlayed: 1570651200000
 	},
 ] 
+
+export const fakeGetData = () => {
+	return new Promise(resolve => {
+		resolve({
+			json: () => {
+				return new Promise(resolve => {
+					resolve(missions)
+				})
+			}
+		})
+	})
+}

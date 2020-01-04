@@ -9,6 +9,8 @@ import Menu from "~c/menu/menu.jsx";
 import Item from "~c/item/item.jsx";
 import ItemHeader from "~c/item/itemHeader.jsx";
 import AddMission from "~c/addMission/addMission.jsx";
+import FilterPopup from "~c/filterPopup";
+
 import Spinner from "~c/spinner/spinner.jsx";
 
 class MainPage extends React.Component {
@@ -22,20 +24,6 @@ class MainPage extends React.Component {
 
 		itemsPoolStr = this.props.currentSchedule.missions.map( (scheduleItem, index) => {
 			return <Item key={scheduleItem.guid} {...scheduleItem} even={index%2}/>
-			/*
-			if (this.props.currentSchedule.date === scheduleItem.date) {
-				let setItemsStr = [...scheduleItem.missions.entries()].map((item, index) => {
-					let mission = this.props.missionPool.find((itemFromPool) => {
-						return itemFromPool.guid === item[0]
-					});
-					return <Item key={mission.guid} {...mission} even={index%2}/>
-				})
-
-				let result = [setItemsStr];
-				return result;
-			}
-			return null;
-			*/
 		});
 
 		let contentStr;
@@ -61,6 +49,10 @@ class MainPage extends React.Component {
 				{this.props.showAddMissionComponent ?
 					<div className={style.fullscreenWrapper} onClick={this.props.showAddMissionComponentToggle}><AddMission /></div>
 					: null}
+				
+				{this.props.showFilterMissionsComponent ?
+					<div className={style.fullscreenWrapper} onClick={this.props.showFilterMissionsComponentToggle}><FilterPopup /></div>
+					: null}
 			</div>	
 		} else {
 			contentStr = <div className={style.loginMessage}>
@@ -84,11 +76,12 @@ class MainPage extends React.Component {
 const mapStateToProps = (state) => {
 	return {
 		user : state.user,
-		missionPool: state.missionPool,
+		missionPool: state.filteredMissionPool,
 		syncScheduleState: state.syncScheduleState,
 		schedule : state.schedule,
 		showMissionPool: state.showMissionPool,
 		showAddMissionComponent: state.showAddMissionComponent,
+		showFilterMissionsComponent: state.showFilterMissionsComponent,
 		db: state.firebase.db,
 		currentSchedule: state.currentSchedule
 	}
@@ -127,6 +120,12 @@ const mapDispatchToProps = (dispatch) => {
 		showAddMissionComponentToggle: () => {
 			dispatch({
 				type: actionType.SHOW_ADD_MISSION_COMPONENT_TOGGLE
+			})
+		},
+
+		showFilterMissionsComponentToggle: () => {
+			dispatch({
+				type: actionType.SHOW_FILTER_MISSION_POPUP_TOGGLE
 			})
 		}
 	}

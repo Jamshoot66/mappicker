@@ -46,6 +46,7 @@ section.userMenuWrapper{
 	@include button;
 	@include flat;
 	@include flex;
+	cursor: pointer;
 	margin-left: 3px;
 	margin-right: 3px;
 }
@@ -59,6 +60,7 @@ section.userMenuWrapper{
 .filterBtn{
 	@include menuBtn;
 	max-height: 30px;
+	@include xs(max-height, 25px);
 	background: url("./filter.svg") no-repeat center;
 	background-size: contain;
 }
@@ -66,6 +68,7 @@ section.userMenuWrapper{
 .randomizeBtn{
 	@include menuBtn;
 	max-height: 30px;
+	@include xs(max-height, 25px);
 	background: url("./dice.svg") no-repeat center;
 	background-size: contain;
 }
@@ -73,6 +76,7 @@ section.userMenuWrapper{
 .calendarBtn{
 	@include menuBtn;
 	max-height: 30px;
+	@include xs(max-height, 25px);
 	background: url("./calendar.svg") no-repeat center;
 	background-size: contain;
 }
@@ -80,6 +84,7 @@ section.userMenuWrapper{
 .addMissionBtn{
 	@include menuBtn;
 	max-height: 30px;
+	@include xs(max-height, 25px);
 	background: url("./add.svg") no-repeat center;
 	background-size: contain;
 }
@@ -87,6 +92,7 @@ section.userMenuWrapper{
 .approveBtn{
 	@include menuBtn;
 	max-height: 30px;
+	@include xs(max-height, 25px);
 	background: url("./approve.svg") no-repeat center;
 	background-size: contain;
 }
@@ -98,9 +104,10 @@ section.userMenuWrapper{
 
 .scheduleDate{
 	font-size: 1.2em;
+	@include xs(max-width, 127px);
 	padding: 2px 0 2px 10px;
 	color: $cWhite;
-
+	cursor: pointer;
 	border: none;
 	background-color: darken($cRed, 15%);
 

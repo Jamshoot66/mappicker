@@ -12,6 +12,7 @@ let defState = {
 	showMissionPool: true,
 	showUserMenu: false,
 	showAddMissionComponent: false,
+	showFilterMissionsComponent: false,
 	// currentScheduleDate: 0,
 	currentSchedule: {
 		date: 0,
@@ -20,6 +21,8 @@ let defState = {
 	syncScheduleState: DONE,
 	// missionPool: [ {missionItem}, {missionItem}, ... ]
 	missionPool : [],
+	// missionPool: [ {missionItem}, {missionItem}, ... ]
+	filteredMissionPool : [],
 	// schedule : [ {date: date, missions: new Set()}, ...]
 	schedule : []
 }
@@ -35,6 +38,13 @@ const Store = (state = defState, action) => {
 	*/
 		case actionType.ADD_MISSIONS: 
 			return addMissions(state, action);
+		
+	/* FILTER_MISSIONS usage:
+		action.Type : FILTER_MISSIONS,
+		payload     : {filterString, isEasy... }
+	*/
+		case actionType.FILTER_MISSIONS: 
+			return filterMissions(state, action);
 		
 	/* CLEAR_MISSIONS usage:
 		action.Type : CLEAR_MISSIONS
@@ -56,19 +66,24 @@ const Store = (state = defState, action) => {
 			newState.showMissionPool = !newState.showMissionPool;
 			return newState;
 		
-	/* SHOW_MISSION_POOL_TOGGLE */
+	/* SET_FIREBASE */
 		case actionType.SET_FIREBASE:
 			newState.firebase = action.payload.firebase;
 			return newState;
 		
-	/* SHOW_MISSION_POOL_TOGGLE */
+	/* SHOW_USER_MENU_TOGGLE */
 		case actionType.SHOW_USER_MENU_TOGGLE:
 			newState.showUserMenu = !newState.showUserMenu;
 			return newState;
 		
-	/* SHOW_MISSION_POOL_TOGGLE */
+	/* SHOW_ADD_MISSION_COMPONENT_TOGGLE */
 		case actionType.SHOW_ADD_MISSION_COMPONENT_TOGGLE:
 			newState.showAddMissionComponent = !newState.showAddMissionComponent;
+			return newState;
+		
+	/* SHOW_FILTER_MISSION_POPUP_TOGGLE */
+		case actionType.SHOW_FILTER_MISSION_POPUP_TOGGLE:
+			newState.showFilterMissionsComponent = !newState.showFilterMissionsComponent;
 			return newState;
 
 	/* UPDATE_PROPABILITIES */
@@ -163,8 +178,6 @@ const Store = (state = defState, action) => {
 
 export default Store;
 
-
-
 function addMissions(state, action) {
 	let newState = Object.assign({}, state);
 
@@ -176,6 +189,28 @@ function addMissions(state, action) {
 
 	newState.missionPool = newState.missionPool.concat(action.payload);
 	updateProbabilities(newState, action)
+	return newState;
+}
+
+/* FILTER_MISSIONS usage:
+		action.Type : FILTER_MISSIONS,
+		payload     : {filterString, isEasy... }
+	*/
+function filterMissions(state, action) {
+	let newState = Object.assign({}, state);
+	if (action.payload == null) {
+		newState.filteredMissionPool = newState.missionPool.slice();
+		return newState;
+	};
+
+	newState.filteredMissionPool = newState.missionPool.filter((mission) => {
+		return (
+			mission.name.toLowerCase().includes(action.payload.filterString.toLowerCase()) ||
+			mission.mods.toLowerCase().includes(action.payload.filterString.toLowerCase()) ||
+			mission.island.toLowerCase().includes(action.payload.filterString.toLowerCase()) ||
+			mission.author.toLowerCase().includes(action.payload.filterString.toLowerCase())
+		)
+	})
 	return newState;
 }
 

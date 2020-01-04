@@ -1,6 +1,6 @@
 import * as firebase from "firebase/app";
 import * as firebaseConst from "~u/firebase.js";
-// import * as mock from "./mockData.js";
+import * as mock from "./mockData.js";
 import * as utils from "~u/utils.js";
 import { DONE, PENDING, ERROR } from "~c/spinner/spinner.jsx";
 
@@ -8,6 +8,7 @@ import { DONE, PENDING, ERROR } from "~c/spinner/spinner.jsx";
 
 // export const TEST_ACTION = "TEST_ACTION";
 export const ADD_MISSIONS = "ADD_MISSIONS";
+export const FILTER_MISSIONS = "FILTER_MISSIONS";
 export const CLEAR_MISSIONS = "CLEAR_MISSIONS";
 export const GET_MISSIONS = "GET_MISSIONS";
 export const SET_PAGE = "SET_PAGE";
@@ -28,6 +29,7 @@ export const ADD_RANDOM_MISSIONS = "ADD_RANDOM_MISSIONS";
 export const UPDATE_USER_INFO = "UPDATE_USER_INFO";
 export const SHOW_USER_MENU_TOGGLE = "SHOW_USER_MENU_TOGGLE";
 export const SHOW_ADD_MISSION_COMPONENT_TOGGLE = "SHOW_ADD_MISSION_COMPONENT_TOGGLE";
+export const SHOW_FILTER_MISSION_POPUP_TOGGLE = "SHOW_FILTER_MISSION_POPUP_TOGGLE";
 export const LOGIN = "LOGIN";
 export const LOGOUT = "LOGOUT";
 
@@ -38,10 +40,14 @@ export const pages = {
 }
 
 
+
 export async function getAllMissions(dispatch) {
+	const trueFetch = fetch;
+	// fetch = mock.fakeGetData;
+	
 	if (firebase.auth().currentUser != null) {
 		await firebase.auth().currentUser.getIdToken().then(async token => {
-			await fetch(firebaseConst.FUNCTIONS_URL_BASE+firebaseConst.GET_MISSIONS, {
+			fetch(firebaseConst.FUNCTIONS_URL_BASE+firebaseConst.GET_MISSIONS, {
 				credentials: "include",
 				method: "GET",
 				headers: {
@@ -64,6 +70,11 @@ export async function getAllMissions(dispatch) {
 					type: ADD_MISSIONS,
 					payload: json
 				});
+
+				dispatch({
+					type: FILTER_MISSIONS,
+					payload: null
+				});
 			}).catch(err => {
 				console.log(err);
 				throw new Error(err.message);
@@ -71,7 +82,10 @@ export async function getAllMissions(dispatch) {
 		
 		});
 	}
+	fetch = trueFetch;
 }
+
+
 
 export async function getAllSchedule(dispatch) {
 	if (firebase.auth().currentUser != null) {
