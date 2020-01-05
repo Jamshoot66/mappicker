@@ -36,6 +36,7 @@ section.userMenuWrapper{
 .fakeMenu {
 	width: 100%;
 	height: $menuHeight;
+	@include xs(height, 30px);
 }
 
 .placeholder{
@@ -49,6 +50,7 @@ section.userMenuWrapper{
 	cursor: pointer;
 	margin-left: 3px;
 	margin-right: 3px;
+	@include xs(margin, 0);
 }
 
 .userBtn{

@@ -1,15 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import style from './filterPopup.module.scss';
+import style from './tagsPopup.module.scss';
+import Popup from '~c/popup';
 import * as actionType from '~s/actions.js';
 
-class FilterPopup extends React.Component {
+class TagsPopup extends React.Component {
   constructor(props) {
     super(props);
-    const [filter, ...tags] = this.props.filterString.split(',');
+
+    const tags = this.props.currentMission?.tags?.split(',');
 
     const defState = {
-      filterString: filter,
       actualCheckbox: false,
       aircraftsCheckbox: false,
       tanksCheckbox: false,
@@ -17,27 +18,29 @@ class FilterPopup extends React.Component {
       helicoptersCheckbox: false,
     };
 
-    tags.forEach(tag => {
-      switch (tag) {
-        case '#актуальная':
-          defState.actualCheckbox = true;
-          break;
-        case '#самолеты':
-          defState.aircraftsCheckbox = true;
-          break;
-        case '#тяжелаятехника':
-          defState.tanksCheckbox = true;
-          break;
-        case '#легкаятехника':
-          defState.apcsCheckbox = true;
-          break;
-        case '#вертолеты':
-          defState.helicoptersCheckbox = true;
-          break;
-        default:
-          break;
-      }
-    });
+    if (tags) {
+      tags.forEach(tag => {
+        switch (tag) {
+          case '#актуальная':
+            defState.actualCheckbox = true;
+            break;
+          case '#самолеты':
+            defState.aircraftsCheckbox = true;
+            break;
+          case '#тяжелаятехника':
+            defState.tanksCheckbox = true;
+            break;
+          case '#легкаятехника':
+            defState.apcsCheckbox = true;
+            break;
+          case '#вертолеты':
+            defState.helicoptersCheckbox = true;
+            break;
+          default:
+            break;
+        }
+      });
+    }
 
     this.state = Object.assign({}, defState);
   }
@@ -46,55 +49,44 @@ class FilterPopup extends React.Component {
     e.stopPropagation();
   };
 
-  applyFilter = () => {
-    let fullFilterString = this.state.filterString || '';
-    if (this.state.actualCheckbox)
-      fullFilterString = `${fullFilterString},#актуальная`;
-    if (this.state.aircraftsCheckbox)
-      fullFilterString = `${fullFilterString},#самолеты`;
-    if (this.state.tanksCheckbox)
-      fullFilterString = `${fullFilterString},#тяжелаятехника`;
-    if (this.state.apcsCheckbox)
-      fullFilterString = `${fullFilterString},#легкаятехника`;
-    if (this.state.helicoptersCheckbox)
-      fullFilterString = `${fullFilterString},#вертолеты`;
+  setTags = async e => {
+    e.preventDefault();
+    e.stopPropagation();
 
-    this.props.filterMissions({ filterString: fullFilterString });
-    this.props.hide();
-  };
+    const tags = [];
+    if (this.state.actualCheckbox) tags.push(`#актуальная`);
+    if (this.state.aircraftsCheckbox) tags.push(`#самолеты`);
+    if (this.state.tanksCheckbox) tags.push(`#тяжелаятехника`);
+    if (this.state.apcsCheckbox) tags.push(`#легкаятехника`);
+    if (this.state.helicoptersCheckbox) tags.push(`#вертолеты`);
 
-  defaultFilter = () => {
-    this.props.filterMissions({ filterString: '' });
+    const tagsStr = tags.join(',');
+
+    const newMission = Object.assign({}, this.props.currentMission);
+    newMission.tags = tagsStr;
+
+    await this.props.updateMission(newMission);
     this.props.hide();
   };
 
   render() {
-    const { filterString } = this.state;
+    const { currentMission } = this.props;
 
     return (
-      <div className={style.screen} onClick={this.onBackgroundClick}>
-        <form className={style.wrapper}>
-          <header className={style.itemHeader}>Применить фильтр</header>
-
+      <Popup onClick={this.props.hide}>
+        <form
+          style={{ position: 'relative' }}
+          onClick={e => {
+            e.stopPropagation();
+          }}
+        >
+          <header className={style.popupHeader}>Редактировать метки</header>
+          <header className={style.itemHeader}>
+            <p>
+              <strong>{currentMission?.name}</strong>
+            </p>
+          </header>
           <hr className={style.horisontalLine} />
-
-          <section className={style.itemWrapper}>
-            <input
-              id="filter"
-              size="10"
-              className={style.itemInput}
-              value={filterString}
-              onChange={e => {
-                this.setState({ filterString: e.target.value });
-              }}
-              onBlur={e => {
-                this.setState({ filterString: e.target.value.trim() });
-              }}
-              type="text"
-              placeholder="Фильтр"
-              style={{ borderRadius: '3px' }}
-            />
-          </section>
 
           <section className={style.checkBoxGroupWrapper}>
             <div className={style.checkBoxWrapper}>
@@ -102,7 +94,6 @@ class FilterPopup extends React.Component {
                 id="actualCheckbox"
                 size="10"
                 className={style.itemInput}
-                value={filterString}
                 type="checkbox"
                 placeholder="Фильтр"
                 checked={this.state.actualCheckbox}
@@ -121,7 +112,6 @@ class FilterPopup extends React.Component {
                 id="apcsCheckbox"
                 size="10"
                 className={style.itemInput}
-                value={filterString}
                 type="checkbox"
                 placeholder="Фильтр"
                 style={{ borderRadius: '3px' }}
@@ -138,7 +128,6 @@ class FilterPopup extends React.Component {
                 id="tanksCheckbox"
                 size="10"
                 className={style.itemInput}
-                value={filterString}
                 type="checkbox"
                 placeholder="Фильтр"
                 style={{ borderRadius: '3px' }}
@@ -155,7 +144,6 @@ class FilterPopup extends React.Component {
                 id="helicoptersCheckbox"
                 size="10"
                 className={style.itemInput}
-                value={filterString}
                 type="checkbox"
                 placeholder="Фильтр"
                 style={{ borderRadius: '3px' }}
@@ -172,7 +160,6 @@ class FilterPopup extends React.Component {
                 id="aircraftsCheckbox"
                 size="10"
                 className={style.itemInput}
-                value={filterString}
                 type="checkbox"
                 placeholder="Фильтр"
                 style={{ borderRadius: '3px' }}
@@ -191,46 +178,50 @@ class FilterPopup extends React.Component {
               <button
                 className={style.itemButton}
                 type="submit"
-                onClick={this.applyFilter}
+                onClick={this.setTags}
               >
                 Применить
               </button>
             </div>
-            <button className={style.itemButton} onClick={this.defaultFilter}>
-              Сбросить
+            {/* <button className={style.itemButton} onClick={this.props.hide}> */}
+            <button
+              className={style.itemButton}
+              type="reset"
+              onClick={this.props.hide}
+            >
+              Отменить
             </button>
           </section>
         </form>
-      </div>
+      </Popup>
     );
   }
 }
 
-FilterPopup.defaultProps = {
+TagsPopup.defaultProps = {
   closeCallBack: () => {},
 };
 
 const mapStateToProps = store => {
   return {
-    filterString: store.filterString,
+    currentMission: store.missionPool.find(
+      mission => mission.guid === store.currentMission
+    ),
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    filterMissions: filter => {
-      dispatch({
-        type: actionType.FILTER_MISSIONS,
-        payload: { filterString: filter.filterString },
-      });
+    updateMission: mission => {
+      actionType.updateMission(dispatch, mission);
     },
 
     hide: () => {
       dispatch({
-        type: actionType.SHOW_FILTER_MISSION_POPUP_TOGGLE,
+        type: actionType.SHOW_SET_TAGS_POPUP_TOGGLE,
       });
     },
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(FilterPopup);
+export default connect(mapStateToProps, mapDispatchToProps)(TagsPopup);

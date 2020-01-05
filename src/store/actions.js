@@ -8,12 +8,14 @@ import { DONE, PENDING, ERROR } from "~c/spinner/spinner.jsx";
 
 // export const TEST_ACTION = "TEST_ACTION";
 export const ADD_MISSIONS = "ADD_MISSIONS";
+export const UPDATE_MISSION = "UPDATE_MISSION";
 export const FILTER_MISSIONS = "FILTER_MISSIONS";
 export const CLEAR_MISSIONS = "CLEAR_MISSIONS";
 export const GET_MISSIONS = "GET_MISSIONS";
 export const SET_PAGE = "SET_PAGE";
 export const SET_FIREBASE = "SET_FIREBASE";
 export const ADD_MISSION_TO_SCHEDULE = "ADD_MISSION_TO_SCHEDULE";
+export const SET_CURRENT_MISSION = "SET_CURRENT_MISSION";
 export const SET_SCHEDULE = "SET_SCHEDULE";
 export const GET_SCHEDULE = "GET_SCHEDULE";
 export const REMOVE_MISSION_FROM_SCHEDULE = "REMOVE_MISSION_FROM_SCHEDULE";
@@ -30,6 +32,7 @@ export const UPDATE_USER_INFO = "UPDATE_USER_INFO";
 export const SHOW_USER_MENU_TOGGLE = "SHOW_USER_MENU_TOGGLE";
 export const SHOW_ADD_MISSION_COMPONENT_TOGGLE = "SHOW_ADD_MISSION_COMPONENT_TOGGLE";
 export const SHOW_FILTER_MISSION_POPUP_TOGGLE = "SHOW_FILTER_MISSION_POPUP_TOGGLE";
+export const SHOW_SET_TAGS_POPUP_TOGGLE = "SHOW_SET_TAGS_POPUP_TOGGLE";
 export const LOGIN = "LOGIN";
 export const LOGOUT = "LOGOUT";
 
@@ -39,21 +42,19 @@ export const pages = {
 	MAIN: "MAIN"
 }
 
-
-
 export async function getAllMissions(dispatch) {
 	const trueFetch = fetch;
 	// fetch = mock.fakeGetData;
-	
+
 	if (firebase.auth().currentUser != null) {
 		await firebase.auth().currentUser.getIdToken().then(async token => {
-			fetch(firebaseConst.FUNCTIONS_URL_BASE+firebaseConst.GET_MISSIONS, {
+			await fetch(firebaseConst.FUNCTIONS_URL_BASE + firebaseConst.GET_MISSIONS, {
 				credentials: "include",
 				method: "GET",
 				headers: {
 					"content-type": "application/json",
 					"authorization": token
-				}		
+				}
 			}).then((r) => {
 				return r.json()
 			}).then((json) => {
@@ -79,7 +80,7 @@ export async function getAllMissions(dispatch) {
 				console.log(err);
 				throw new Error(err.message);
 			})
-		
+
 		});
 	}
 	fetch = trueFetch;
@@ -90,13 +91,13 @@ export async function getAllMissions(dispatch) {
 export async function getAllSchedule(dispatch) {
 	if (firebase.auth().currentUser != null) {
 		await firebase.auth().currentUser.getIdToken().then(async token => {
-			await fetch(firebaseConst.FUNCTIONS_URL_BASE+firebaseConst.GET_SCHEDULE, {
+			await fetch(firebaseConst.FUNCTIONS_URL_BASE + firebaseConst.GET_SCHEDULE, {
 				credentials: "include",
 				method: "GET",
 				headers: {
 					"content-type": "application/json",
 					"authorization": token
-				}		
+				}
 			}).then((r) => {
 				if (r.status === 200) {
 					return r.json()
@@ -105,11 +106,11 @@ export async function getAllSchedule(dispatch) {
 				}
 			}).then((json) => {
 				if (json != null) {
-					dispatch( {
+					dispatch({
 						type: SET_SCHEDULE,
-						payload: json			
+						payload: json
 					})
-				}		
+				}
 			}).catch(err => {
 				console.log(err);
 				throw new Error(err.message);
@@ -141,9 +142,40 @@ export async function addMissionToServer(dispatch, payload) {
 			})
 		})
 	}).catch(e => {
-		console.log(e);	
+		console.log(e);
 		throw new Error(e.message);
-	})	
+	})
+}
+
+export async function updateMissionOnServer(payload) {
+	return firebase.auth().currentUser.getIdToken().then(token => {
+		return fetch(firebaseConst.FUNCTIONS_URL_BASE + firebaseConst.UPDATE_MISSION, {
+			credentials: "include",
+			method: "POST",
+			headers: {
+				"content-type": "application/json",
+				"authorization": token
+			},
+			body: JSON.stringify({
+				mission: payload
+			})
+		}).then((response) => {
+			return response.json();
+		}).then((json) => {
+			// console.log('update response ', json);
+		})
+	}).catch(e => {
+		console.log(e);
+		throw new Error(e.message);
+	})
+}
+
+export async function updateMission(dispatch, mission) {
+	await updateMissionOnServer(mission);
+	dispatch({
+		type: UPDATE_MISSION,
+		payload: mission
+	})
 }
 
 /**
@@ -170,39 +202,39 @@ export async function addScheduleToServer(dispatch, payload) {
 			return response.json();
 		})
 	}).catch(e => {
-		console.log(e);	
+		console.log(e);
 		throw new Error(e.message);
-	})	
+	})
 }
 
-export async function loginViaGmail(dispatch){
-	
+export async function loginViaGmail(dispatch) {
+
 	let provider = new firebase.auth.GoogleAuthProvider();
 	try {
 		await firebase.auth().signInWithPopup(provider);
 		let firebaseUser = firebase.auth().currentUser;
 
 		let user = {
-			auth : true,
-			unit : utils.defUser.unit,
-			shortName : firebaseUser.displayName,
-			name : firebaseUser.displayName
+			auth: true,
+			unit: utils.defUser.unit,
+			shortName: firebaseUser.displayName,
+			name: firebaseUser.displayName
 		}
 
-		dispatch( {
+		dispatch({
 			type: UPDATE_USER_INFO,
 			payload: {
 				user
-			}		
+			}
 		})
 	} catch (err) {
 		alert(err)
 	}
 }
 
-export async function logoutFromServer(dispatch){
+export async function logoutFromServer(dispatch) {
 	await firebase.auth().signOut();
-	dispatch( {
+	dispatch({
 		type: UPDATE_USER_INFO
 	})
 }
@@ -232,7 +264,7 @@ export function syncMissionRate(dispatch, props) {
 				})
 			}).then((r) => {
 				return r.json()
-			}).then((resp) => { 
+			}).then((resp) => {
 
 				dispatch({
 					type: UPDATE_MISSION_RATE,

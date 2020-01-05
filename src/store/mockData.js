@@ -3,6 +3,7 @@ export const missions = [
 		guid: 1,
 		name:"Операция «Патифон»",
 		mods: "rhs",
+		tags: "#вертолеты,#актуальная",
 		island: "Altis",
 		players: 200,
 		author: "Вася",
@@ -11,7 +12,8 @@ export const missions = [
 	},
 	{
 		guid: 2,
-		name:"Операция «Дрозды»",
+		name: "Операция «Дрозды»",
+		tags: "#вертолеты,#актуальная",
 		mods: "rhs",
 		island: "Chernarus",
 		players: 196,
@@ -21,7 +23,8 @@ export const missions = [
 	},
 	{
 		guid: 3,
-		name:"Операция «Ночная атака»",
+		name: "Операция «Ночная атака»",
+		tags: "#вертолеты,#самолеты,#тяжелаятехника,#легкаятехника,#актуальная",
 		mods: "rhs",
 		island: "Takistan",
 		players: 130,
@@ -31,7 +34,8 @@ export const missions = [
 	},
 	{
 		guid: 4,
-		name:"Операция «Какая то гора»",
+		name: "Операция «Какая то гора»",
+		tags: "#вертолеты,#самолеты,#тяжелаятехника,#легкаятехника,#актуальная",
 		mods: "rhs",
 		island: "Takistan",
 		players: 205,
@@ -41,7 +45,8 @@ export const missions = [
 	},
 	{
 		guid: 5,
-		name:"Операция «Многабукф»",
+		name: "Операция «Многабукф»",
+		tags: "#вертолеты,#легкаятехника,#актуальная",
 		mods: "rhs",
 		island: "Altis",
 		players: 198,
