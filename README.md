@@ -13,6 +13,4 @@ Available scripts:
 `npm run test`
 
 
-
-
 Based on create-react-app
