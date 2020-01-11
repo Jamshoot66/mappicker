@@ -18,11 +18,6 @@ $menuHeight: 40px;
 	position: relative;
 	transition-duration: 0.5s;
 
-	cursor: pointer;
-
-	@include xs(width, 30px);
-	@include xs(height, 30px);
-
 	&:focus {
 		outline: none;
 	}

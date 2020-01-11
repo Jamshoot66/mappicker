@@ -5,10 +5,10 @@ import 'firebase/firestore';
 // backend urls
 let _FUNCTIONS_URL_BASE = "";
 let _DB_URL_BASE = "";
-
+	
 // if (process.env.NODE_ENV === "production") {
-_FUNCTIONS_URL_BASE = "https://us-central1-mapick-rb.cloudfunctions.net";
-_DB_URL_BASE = "https://mapick-rb.firebaseio.com";
+	_FUNCTIONS_URL_BASE = "https://us-central1-mapick-rb.cloudfunctions.net";
+	_DB_URL_BASE = "https://mapick-rb.firebaseio.com";
 // }
 
 export const FUNCTIONS_URL_BASE = _FUNCTIONS_URL_BASE;
@@ -16,7 +16,6 @@ export const DB_URL_BASE = _DB_URL_BASE;
 
 //backend functions
 export const ADD_MISSION = "/addMission";
-export const UPDATE_MISSION = "/updateMission";
 export const ADD_SCHEDULE = "/addSchedule";
 export const GET_SCHEDULE = "/getSchedule";
 export const GET_MISSIONS = "/getMissions";

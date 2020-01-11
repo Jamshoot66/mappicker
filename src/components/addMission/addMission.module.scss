@@ -17,7 +17,6 @@
     border: 1px solid $cWhite;
 
     padding: 5px 15px;
-    @include xs(padding, 5px 5px);
 
     @include sm( border-radius, 0);
     @include sm( border, none);
@@ -32,7 +31,7 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    height: 26px;
+    
 }
 
 .itemLabel{
@@ -41,13 +40,8 @@
     border-bottom-left-radius: $buttonBorderRadius;
     padding: 3px;
     min-width: 140px; 
-    @include xs(min-width, 125px);
-
     border: 1px solid black;
     font-size: 1em;
-    height: 100%;
-    box-sizing: border-box;
-
 }
 
 .itemInput{
@@ -58,7 +52,7 @@
     border: 1px solid black;
     font-size: 1em;
     min-width: 50px;
-    height: 100%;
+    height: 26px;
     box-sizing: border-box;
 
     font-family: 'Ubuntu', sans-serif;
@@ -108,9 +102,6 @@
     background-color: $cWhite;
     width: 85px;
     height: 21px;
-    @include xs(width, 85px);
-    @include xs(height, 21px);
-    
     justify-content: center;
     align-items: center;
     border-radius: $buttonBorderRadius;
