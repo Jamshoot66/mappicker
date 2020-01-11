@@ -2,7 +2,7 @@ import * as actionType from "~s/actions.js";
 import * as utils from "~u/utils.js";
 import * as templates from "~u/objectTemplates.js";
 /* eslint-disable */
-import {PENDING, DONE, ERROR} from "~c/spinner/spinner.jsx";
+import { PENDING, DONE, ERROR } from "~c/spinner/spinner.jsx";
 /* eslint-enable */
 
 let defState = {
@@ -12,6 +12,9 @@ let defState = {
 	showMissionPool: true,
 	showUserMenu: false,
 	showAddMissionComponent: false,
+	showFilterMissionsComponent: false,
+	showSetTagsComponent: false,
+	currentMission: '',
 	// currentScheduleDate: 0,
 	currentSchedule: {
 		date: 0,
@@ -19,111 +22,147 @@ let defState = {
 	},
 	syncScheduleState: DONE,
 	// missionPool: [ {missionItem}, {missionItem}, ... ]
-	missionPool : [],
+	missionPool: [],
+	// missionPool: [ {missionItem}, {missionItem}, ... ]
+	filteredMissionPool: [],
+	filterString: ',#актуальная',
 	// schedule : [ {date: date, missions: new Set()}, ...]
-	schedule : []
+	schedule: []
 }
 
 const Store = (state = defState, action) => {
 	let newState = Object.assign({}, state);
 
 	switch (action.type) {
-		
-	/* ADD_MISSIONS usage:
-		action.Type : ADD_MISSIONS,
-		payload     : [ {missionItem}, ... ]
-	*/
-		case actionType.ADD_MISSIONS: 
+
+		/* ADD_MISSIONS usage:
+			action.Type : ADD_MISSIONS,
+			payload     : [ {missionItem}, ... ]
+		*/
+		case actionType.ADD_MISSIONS:
 			return addMissions(state, action);
-		
-	/* CLEAR_MISSIONS usage:
-		action.Type : CLEAR_MISSIONS
-	*/
-		case actionType.CLEAR_MISSIONS: 
+
+		/* UPDATE_MISSION usage:
+			action.Type : UPDATE_MISSION,
+			payload     : {missionItem}
+		*/
+		case actionType.UPDATE_MISSION:
+			return updateMission(state, action);
+
+		/* FILTER_MISSIONS usage:
+			action.Type : FILTER_MISSIONS,
+			payload     : {filterString, isEasy... }
+		*/
+		case actionType.FILTER_MISSIONS:
+			return filterMissions(state, action);
+
+		/* CLEAR_MISSIONS usage:
+			action.Type : CLEAR_MISSIONS
+		*/
+		case actionType.CLEAR_MISSIONS:
 			newState.missionPool = [];
 			return newState;
-		
-	/* SET_PAGE usage:
-		action.Type : SET_PAGE,
-		payload     : {page: "page_state"}
-	*/
-		case actionType.SET_PAGE: 
+
+		/* SET_CURRENT_MISSION usage:
+			action.Type : SET_CURRENT_MISSION
+			payload     : {guid: guid}
+		*/
+		case actionType.SET_CURRENT_MISSION:
+			newState.currentMission = action.payload.guid;
+			return newState;
+
+		/* SET_PAGE usage:
+			action.Type : SET_PAGE,
+			payload     : {page: "page_state"}
+		*/
+		case actionType.SET_PAGE:
 			newState.page = action.payload.page;
 			return newState;
-			
-	/* SHOW_MISSION_POOL_TOGGLE */
+
+		/* SHOW_MISSION_POOL_TOGGLE */
 		case actionType.SHOW_MISSION_POOL_TOGGLE:
 			newState.showMissionPool = !newState.showMissionPool;
 			return newState;
-		
-	/* SHOW_MISSION_POOL_TOGGLE */
+
+		/* SET_FIREBASE */
 		case actionType.SET_FIREBASE:
 			newState.firebase = action.payload.firebase;
 			return newState;
-		
-	/* SHOW_MISSION_POOL_TOGGLE */
+
+		/* SHOW_USER_MENU_TOGGLE */
 		case actionType.SHOW_USER_MENU_TOGGLE:
 			newState.showUserMenu = !newState.showUserMenu;
 			return newState;
-		
-	/* SHOW_MISSION_POOL_TOGGLE */
+
+		/* SHOW_ADD_MISSION_COMPONENT_TOGGLE */
 		case actionType.SHOW_ADD_MISSION_COMPONENT_TOGGLE:
 			newState.showAddMissionComponent = !newState.showAddMissionComponent;
 			return newState;
 
-	/* UPDATE_PROPABILITIES */
-		case actionType.UPDATE_PROPABILITIES:	
+		/* SHOW_FILTER_MISSION_POPUP_TOGGLE */
+		case actionType.SHOW_FILTER_MISSION_POPUP_TOGGLE:
+			newState.showFilterMissionsComponent = !newState.showFilterMissionsComponent;
+			return newState;
+
+		/* SHOW_SET_TAGS_POPUP_TOGGLE */
+		case actionType.SHOW_SET_TAGS_POPUP_TOGGLE:
+			newState.showSetTagsComponent = !newState.showSetTagsComponent;
+			return newState;
+
+		/* UPDATE_PROPABILITIES */
+		case actionType.UPDATE_PROPABILITIES:
 			return updateProbabilities(state, action);
 
-	/* UPDATE_MISSIONS_ORDER*/
+		/* UPDATE_MISSIONS_ORDER*/
 		case actionType.UPDATE_MISSIONS_ORDER:
 			newState.missionPool = action.payload.missionPool;
+			newState = filterMissions(newState, action);
 			return newState;
-		
-	/* ADD_RANDOM_MISSIONS */
+
+		/* ADD_RANDOM_MISSIONS */
 		case actionType.ADD_RANDOM_MISSIONS:
 			return addRandomMissions(state, action);
 
-	/* ADD_MISSION_TO_SCHEDULE usage:
-		action.Type : ADD_MISSION_TO_SCHEDULE,
-		payload     : {data, guid: item.guid}
-	*/	
-		case actionType.ADD_MISSION_TO_SCHEDULE:		
+		/* ADD_MISSION_TO_SCHEDULE usage:
+			action.Type : ADD_MISSION_TO_SCHEDULE,
+			payload     : {data, guid: item.guid}
+		*/
+		case actionType.ADD_MISSION_TO_SCHEDULE:
 			return addMissionToSchedule(state, action);
-		
-	/* SET_SYNC_SCHEDULE_STATE usage:
-		action.Type : SET_SYNC_SCHEDULE_STATE,
-		payload     : {state}
-	*/	
-		case actionType.SET_SYNC_SCHEDULE_STATE:		
+
+		/* SET_SYNC_SCHEDULE_STATE usage:
+			action.Type : SET_SYNC_SCHEDULE_STATE,
+			payload     : {state}
+		*/
+		case actionType.SET_SYNC_SCHEDULE_STATE:
 			newState.syncScheduleState = action.payload.state;
 			return newState;
-		
-	/* UPDATE_MISSION_LASTPLAYED usage:
-		action.Type : UPDATE_MISSION_LASTPLAYED,
-		payload     : {date, missions:[guid, guid...]}
-	*/	
-		case actionType.UPDATE_MISSION_LASTPLAYED:	
+
+		/* UPDATE_MISSION_LASTPLAYED usage:
+			action.Type : UPDATE_MISSION_LASTPLAYED,
+			payload     : {date, missions:[guid, guid...]}
+		*/
+		case actionType.UPDATE_MISSION_LASTPLAYED:
 			return updateMissionLastPlayed(state, action);
-		
-	/* SET_SCHEDULE usage:
-		action.Type : SET_SCHEDULE,
-		payload     : [{data, [guids]}]
-	*/	
-		case actionType.SET_SCHEDULE:		
+
+		/* SET_SCHEDULE usage:
+			action.Type : SET_SCHEDULE,
+			payload     : [{data, [guids]}]
+		*/
+		case actionType.SET_SCHEDULE:
 			return setSchedule(state, action);
-		
-	/* GET_SCHEDULE usage:
-		action.Type : GET_SCHEDULE,
-		payload     : {date}
-	*/	
-		case actionType.GET_SCHEDULE:		
+
+		/* GET_SCHEDULE usage:
+			action.Type : GET_SCHEDULE,
+			payload     : {date}
+		*/
+		case actionType.GET_SCHEDULE:
 			return getSchedule(state, action);
-				
-	/* SET_CURRENT_SCHEDULE_DATE usage:
-		action.Type : SET_CURRENT_SCHEDULE_DATE,
-		payload     : {date}
-	*/	
+
+		/* SET_CURRENT_SCHEDULE_DATE usage:
+			action.Type : SET_CURRENT_SCHEDULE_DATE,
+			payload     : {date}
+		*/
 		case actionType.SET_CURRENT_SCHEDULE_DATE:
 			console.warn("SET_CURRENT_SCHEDULE_DATE is depricated. Use GET_SCHEDULE.");
 			let newCurrentSchedule = Object.assign({}, newState.currentSchedule);
@@ -131,44 +170,42 @@ const Store = (state = defState, action) => {
 			newState.currentSchedule = newCurrentSchedule;
 			return newState;
 
-	/* REMOVE_MISSION_FROM_SCHEDULE usage:
-		action.Type : REMOVE_MISSION_FROM_SCHEDULE,
-		payload     : [ {data, guid: item.guid}, ... ]
-	*/
+		/* REMOVE_MISSION_FROM_SCHEDULE usage:
+			action.Type : REMOVE_MISSION_FROM_SCHEDULE,
+			payload     : [ {data, guid: item.guid}, ... ]
+		*/
 		case actionType.REMOVE_MISSION_FROM_SCHEDULE:
 			return removeMissionFromSchedule(state, action);
 
-	/*UPDATE_USER_INFO*/		
+		/*UPDATE_USER_INFO*/
 		case actionType.UPDATE_USER_INFO:
 			return updateUserInfo(state, action);
 
-	/*UPDATE_MISSION_RATE usage:
-		action.Type : UPDATE_MISSION_RATE,
-		payload     : [ {guid: guid, rate: rate} ]
-	*/
+		/*UPDATE_MISSION_RATE usage:
+			action.Type : UPDATE_MISSION_RATE,
+			payload     : [ {guid: guid, rate: rate} ]
+		*/
 		case actionType.UPDATE_MISSION_RATE:
 			return updateMissionRate(state, action);
 
-	/*UPDATE_SYNC_RATE_STATE usage:
-		action.Type : UPDATE_SYNC_RATE_STATE,
-		payload     : [ {guid: guid, syncRateState: "PENDING || ERROR || DONE"} ] 
-	*/
+		/*UPDATE_SYNC_RATE_STATE usage:
+			action.Type : UPDATE_SYNC_RATE_STATE,
+			payload     : [ {guid: guid, syncRateState: "PENDING || ERROR || DONE"} ] 
+		*/
 		case actionType.UPDATE_SYNC_RATE_STATE:
 			return updateSyncRateState(state, action);
-		
-		default:			
+
+		default:
 			return newState;
 	}
 }
 
 export default Store;
 
-
-
 function addMissions(state, action) {
 	let newState = Object.assign({}, state);
 
-	if (action.payload.some(item => { 
+	if (action.payload.some(item => {
 		return !utils.validMission(templates.missionItem, item)
 	})) {
 		throw new Error("Payload should be an array of objects with 'missionItem' fields")
@@ -179,7 +216,57 @@ function addMissions(state, action) {
 	return newState;
 }
 
+function updateMission(state, action) {
 
+	let newState = Object.assign({}, state);
+	const newMissionPool = newState.missionPool.slice(0);
+	const missionIndex = newMissionPool.findIndex(mission => mission.guid === action.payload.guid);
+	newMissionPool[missionIndex] = action.payload;
+
+	newState.missionPool = newMissionPool;
+	newState = updateProbabilities(newState, action);
+	newState = filterMissions(newState, action);
+	return newState;
+}
+
+/* FILTER_MISSIONS usage:
+	action.Type : FILTER_MISSIONS,
+	payload     : {filterString, isEasy... }
+*/
+function filterMissions(state, action) {
+	let newState = Object.assign({}, state);
+	// if (action.payload == null) {
+	// 	newState.filterString = '';
+	// 	newState.filteredMissionPool = newState.missionPool;
+	// 	return newState;
+	// };
+
+	if (action.payload?.filterString != null) newState.filterString = action.payload?.filterString?.toLowerCase?.();
+
+	const parsedStr = newState.filterString.split(',');
+	const [searchStr, ...tags] = parsedStr;
+
+	newState.filteredMissionPool = newState.missionPool.filter((mission) => {
+		// filter by string
+		return (
+			mission.name.toLowerCase().includes(searchStr) ||
+			mission.mods.toLowerCase().includes(searchStr) ||
+			mission.island.toLowerCase().includes(searchStr) ||
+			mission.author.toLowerCase().includes(searchStr)
+		)
+
+	}).filter(mission => {
+		// filter by tags
+		if (!tags.length) return true;
+
+		return (
+			tags.every(tag => {
+				return mission.tags?.toLowerCase()?.includes(tag);
+			})
+		)
+	})
+	return newState;
+}
 
 function addRandomMissions(state, action) {
 	let newState = Object.assign({}, state);
@@ -187,7 +274,7 @@ function addRandomMissions(state, action) {
 	newState.schedule = [{ date: action.payload.date, missions: new Set() }];
 	let propLine = [];
 	let acc = 0
-	newState.missionPool.forEach( (item) => {
+	newState.missionPool.forEach((item) => {
 		acc += item.probability;
 		propLine.push({
 			guid: item.guid,
@@ -197,20 +284,21 @@ function addRandomMissions(state, action) {
 	let guids = new Set();
 	while (guids.size < 4) {
 		let rnd = Math.random();
-		let guid = propLine.find( (item) => {
+		let guid = propLine.find((item) => {
 			return item.maxProp > rnd
 		}).guid;
 
-		guids.add( guid )
+		guids.add(guid)
 	}
 
-	guids.forEach( (item) => {
-		Store(newState, 
+	guids.forEach((item) => {
+		Store(newState,
 			{
 				type: actionType.ADD_MISSION_TO_SCHEDULE,
 				payload: {
-					date:action.payload.date, 
-					guid:item} 
+					date: action.payload.date,
+					guid: item
+				}
 			});
 	});
 	return newState;
@@ -223,11 +311,12 @@ function removeMissionFromSchedule(state, action) {
 	let schedule = newState.schedule.slice(0);
 	let elem = Object.assign({}, newState.schedule[index]);
 	let missions = new Set(elem.missions);
-	let done = missions.delete( action.payload.guid);
+	let done = missions.delete(action.payload.guid);
 	if (done) {
 		elem.missions = missions;
 		schedule[index] = elem;
 		newState.schedule = schedule;
+		newState = getSchedule(newState, action);
 		return newState;
 	};
 }
@@ -236,7 +325,7 @@ function updateUserInfo(state, action) {
 	let newState = Object.assign({}, state);
 	/* eslint-disable */
 	if (action.payload != undefined && action.payload.user != undefined) {
-		newState.user = Object.assign({}, utils.defUser, action.payload.user) ;
+		newState.user = Object.assign({}, utils.defUser, action.payload.user);
 	} else {
 		newState.user = utils.defUser;
 	}
@@ -253,10 +342,10 @@ function setSchedule(state, action) {
 			date: +item.date,
 			missions: new Set(item.missions)
 		}
-		
+
 		newState.schedule.push(scheduleItem)
 	}
-	
+
 	return newState;
 }
 
@@ -273,7 +362,7 @@ function getSchedule(state, action) {
 	});
 
 	if (scheduleItem != null) {
-	//for each guid in found schedule get mission with its guid
+		//for each guid in found schedule get mission with its guid
 		scheduleItem.missions.forEach(guidInSchedule => {
 			let mission = newState.missionPool.find(itemInMissionPool => {
 				return itemInMissionPool.guid === guidInSchedule
@@ -283,9 +372,7 @@ function getSchedule(state, action) {
 			}
 		})
 	}
-	
 
-	
 	newState.currentSchedule = newCurrentSchedule;
 	return newState;
 }
@@ -298,25 +385,25 @@ function addMissionToSchedule(state, action) {
 		throw new Error("Payload should be an objects with fields 'data' and 'guid'")
 	}
 
-	if (action.payload.date <= 0) {return state}
-	
+	if (action.payload.date <= 0) { return state }
+
 	let dateInSchedule = false;
 	let newSchedule = newState.schedule.slice(0);
 	let newMissions;
 
 	for (let i in newSchedule) {
-		if (newSchedule[i].date === action.payload.date) {		
-			newMissions = new Set(state.schedule[i].missions);	
+		if (newSchedule[i].date === action.payload.date) {
+			newMissions = new Set(state.schedule[i].missions);
 			newMissions.add(action.payload.guid);
 			newSchedule[i].missions = newMissions;
 			newState.schedule = newSchedule;
 			dateInSchedule = true;
 			break;
-		} 
+		}
 	}
 
 	if (!dateInSchedule) {
-		newSchedule.push( {
+		newSchedule.push({
 			date: action.payload.date,
 			missions: new Set()
 		});
@@ -324,6 +411,7 @@ function addMissionToSchedule(state, action) {
 		newState.schedule = newSchedule;
 	}
 
+	newState = getSchedule(newState, action);
 	return newState;
 }
 
@@ -336,12 +424,12 @@ function updateMissionRate(state, action) {
 		return item.guid === action.payload.guid
 	})
 	let missionPool = newState.missionPool.slice(0);
-	let mission = Object.assign( {}, newState.missionPool[missionIndex]);
+	let mission = Object.assign({}, newState.missionPool[missionIndex]);
 	mission.rateAvg = action.payload.rate;
 	missionPool[missionIndex] = mission;
 	newState.missionPool = missionPool;
 	newState = updateProbabilities(newState, action);
-
+	newState = filterMissions(newState, action);
 	return newState;
 }
 
@@ -352,24 +440,25 @@ function updateSyncRateState(state, action) {
 		return item.guid === action.payload.guid
 	})
 	let missionPool = newState.missionPool.slice(0);
-	let mission = Object.assign( {}, newState.missionPool[missionIndex]);
+	let mission = Object.assign({}, newState.missionPool[missionIndex]);
 	mission.syncRateState = action.payload.syncRateState;
 	missionPool[missionIndex] = mission;
 	newState.missionPool = missionPool;
 	newState = updateProbabilities(newState, action);
+	newState = filterMissions(newState, action);
 
 	return newState;
 }
 
-function updateProbabilities(state, action) {
+function updateProbabilities(state) {
 	let newState = Object.assign({}, state);
 
 	let sum = newState.missionPool.reduce((acc, item) => acc +
 		probabilityFunc(item.rateAvg, item.lastPlayed), 0);
 	if (sum > 0) {
 		let koef = 1 / sum;
-		newState.missionPool.forEach( (item) => {
-			item.probability = probabilityFunc(item.rateAvg, item.lastPlayed)*koef;
+		newState.missionPool.forEach((item) => {
+			item.probability = probabilityFunc(item.rateAvg, item.lastPlayed) * koef;
 		});
 	};
 	return newState;
@@ -379,7 +468,7 @@ function probabilityFunc(rate, lastPlayed) {
 	const halfYearMs = 0.5 * 30 * 24 * 60 * 60 * 1000;
 	let today = Date.now();
 	let func = (rate * 10 - 3) * (today - lastPlayed) / halfYearMs;
-	if (func < 1.1) { func = 1.1 } 
+	if (func < 1.1) { func = 1.1 }
 	let coef = Math.log10(func);
 	return coef;
 }
