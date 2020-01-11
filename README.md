@@ -1,4 +1,6 @@
 Map picker
+---
+preview builded app -> https://mapick-preview.sergeygorshkov.com/
 
 Available scripts:
 1. Run dev server
@@ -11,6 +13,4 @@ Available scripts:
 `npm run test`
 
 
-
-
-Copying with bad intents prohibited by real patsans law (c)
+Based on create-react-app
