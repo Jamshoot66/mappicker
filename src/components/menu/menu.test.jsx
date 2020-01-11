@@ -8,8 +8,17 @@ describe("Testing Menu component", () => {
 	let mockProps = {
 		user: {
 			auth: true,
+			authedUnit: true,
 			name: "MockName",
-			shortName: "ShortMockName"
+			shortName: "ShortMockName",
+			unit: "MockUnit",
+			rights: {
+				canAdd: true,
+				canRead: true,
+				canRate: true,
+				canAdmin: true,
+				canSuperuser: true
+			}
 		}
 	};
 

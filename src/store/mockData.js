@@ -3,61 +3,56 @@ export const missions = [
 		guid: 1,
 		name:"Операция «Патифон»",
 		mods: "rhs",
+		tags: "#вертолеты,#актуальная",
 		island: "Altis",
 		players: 200,
-		autor: "Вася",
+		author: "Вася",
 		rateAvg: 1,
-		rates:[1,2,3,4],
-		lastPlayed: 1547236800000,
-		probability: 0.2
+		lastPlayed: 1547236800000
 	},
 	{
 		guid: 2,
-		name:"Операция «Дрозды»",
+		name: "Операция «Дрозды»",
+		tags: "#вертолеты,#актуальная",
 		mods: "rhs",
 		island: "Chernarus",
 		players: 196,
-		autor: "Вася",
+		author: "Вася",
 		rateAvg: 1,
-		rates:[1,2,3,4],
-		lastPlayed: 1552507200000,
-		probability: 0.2
+		lastPlayed: 1552507200000
 	},
 	{
 		guid: 3,
-		name:"Операция «Ночная атака»",
+		name: "Операция «Ночная атака»",
+		tags: "#вертолеты,#самолеты,#тяжелаятехника,#легкаятехника,#актуальная",
 		mods: "rhs",
 		island: "Takistan",
 		players: 130,
-		autor: "Коля",
+		author: "Коля",
 		rateAvg: 3,
-		rates:[1,2,3,4],
-		lastPlayed: 1552507200000,
-		probability: 0.2
+		lastPlayed: 1552507200000
 	},
 	{
 		guid: 4,
-		name:"Операция «Какая то гора»",
+		name: "Операция «Какая то гора»",
+		tags: "#вертолеты,#самолеты,#тяжелаятехника,#легкаятехника,#актуальная",
 		mods: "rhs",
 		island: "Takistan",
 		players: 205,
-		autor: "Григорий",
+		author: "Григорий",
 		rateAvg: 3,
-		rates:[1,2,3,4],
-		lastPlayed: 1559764800000,
-		probability: 0.2
+		lastPlayed: 1559764800000
 	},
 	{
 		guid: 5,
-		name:"Операция «Многабукф»",
+		name: "Операция «Многабукф»",
+		tags: "#вертолеты,#легкаятехника,#актуальная",
 		mods: "rhs",
 		island: "Altis",
 		players: 198,
-		autor: "Коля",
+		author: "Коля",
 		rateAvg: 4,
-		rates:[1,2,3,4],
-		lastPlayed: 1559764800000,
-		probability: 0.2
+		lastPlayed: 1559764800000
 	},
 	{
 		guid: 6,
@@ -65,11 +60,9 @@ export const missions = [
 		mods: "vanila",
 		island: "Altis",
 		players: 197,
-		autor: "Кукуцаполь",
+		author: "Кукуцаполь",
 		rateAvg: 1,
-		rates:[1,2,3,4],
-		lastPlayed: 1571428800000,
-		probability: 0.2
+		lastPlayed: 1571428800000
 	},
 	{
 		guid: 7,
@@ -77,11 +70,9 @@ export const missions = [
 		mods: "rhs",
 		island: "Altis",
 		players: 190,
-		autor: "Коля",
+		author: "Коля",
 		rateAvg: 5,
-		rates:[1,2,3,4],
-		lastPlayed: 1571428800000,
-		probability: 0.2
+		lastPlayed: 1571428800000
 	},
 	{
 		guid: 8,
@@ -89,11 +80,9 @@ export const missions = [
 		mods: "vanila",
 		island: "Altis",
 		players: 100,
-		autor: "Епифонтий",
+		author: "Епифонтий",
 		rateAvg: 3,
-		rates:[1,2,3,4],
-		lastPlayed: 1568404800000,
-		probability: 0.2
+		lastPlayed: 1568404800000
 	},
 	{
 		guid: 9,
@@ -101,11 +90,9 @@ export const missions = [
 		mods: "rhs",
 		island: "Stratis",
 		players: 198,
-		autor: "Вася",
+		author: "Вася",
 		rateAvg: 3,
-		rates:[1,2,3,4],
-		lastPlayed: 1570824000000,
-		probability: 0.2
+		lastPlayed: 1570824000000
 	},
 	{
 		guid: 10,
@@ -113,11 +100,9 @@ export const missions = [
 		mods: "vanila",
 		island: "Altis",
 		players: 161,
-		autor: "Вася",
+		author: "Вася",
 		rateAvg: 5,
-		rates:[1,2,3,4],
-		lastPlayed: 1570651200000,
-		probability: 0.2
+		lastPlayed: 1570651200000
 	},
 	{
 		guid: 11,
@@ -125,10 +110,20 @@ export const missions = [
 		mods: "rhs",
 		island: "Stratis",
 		players: 188,
-		autor: "Андрей",
+		author: "Андрей",
 		rateAvg: 2,
-		rates:[1,2,3,4],
-		lastPlayed: 1570651200000,
-		probability: 0.2
+		lastPlayed: 1570651200000
 	},
 ] 
+
+export const fakeGetData = () => {
+	return new Promise(resolve => {
+		resolve({
+			json: () => {
+				return new Promise(resolve => {
+					resolve(missions)
+				})
+			}
+		})
+	})
+}

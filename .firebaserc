@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "mapick-rb"
+    "default": "mapick-rb",
+    "mapick-preview": "mapick-preview"
   }
 }

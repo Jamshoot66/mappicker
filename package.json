@@ -117,6 +117,7 @@
       "^~c(.*)$": "<rootDir>/src/components$1",
       "^~s(.*)$": "<rootDir>/src/store$1",
       "^~u(.*)$": "<rootDir>/src/utils$1",
+      "^~p(.*)$": "<rootDir>/src/pages$1",
       "^react-native$": "react-native-web",
       "^.+\\.module\\.(css|sass|scss)$": "identity-obj-proxy"
     },
@@ -140,9 +141,13 @@
   "babel": {
     "presets": [
       "react-app"
+    ],
+    "plugins": [
+      "@babel/plugin-proposal-optional-chaining"
     ]
   },
   "devDependencies": {
+    "@babel/plugin-proposal-optional-chaining": "^7.7.5",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
     "node-sass": "^4.12.0",

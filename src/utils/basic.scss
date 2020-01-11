@@ -17,7 +17,11 @@ $menuHeight: 40px;
 	overflow: hidden;
 	position: relative;
 	transition-duration: 0.5s;
-	// z-index: -1;
+
+	cursor: pointer;
+
+	@include xs(width, 30px);
+	@include xs(height, 30px);
 
 	&:focus {
 		outline: none;
@@ -45,7 +49,6 @@ $menuHeight: 40px;
 @mixin selectable {
 	&:hover{
 		background-color: $cRed-transp;
-		border-radius: 5px;
 		color: $cWhite;
 	}
 }
@@ -53,6 +56,7 @@ $menuHeight: 40px;
 .selectable {
 	@include selectable;
 }
+
 
 @mixin flat {
 	border : none;
