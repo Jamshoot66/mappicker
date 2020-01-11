@@ -92,7 +92,7 @@ class FilterPopup extends React.Component {
               }}
               type="text"
               placeholder="Фильтр"
-              style={{ borderRadius: '3px' }}
+              style={{ borderRadius: '3px', height: '26px' }}
             />
           </section>
 

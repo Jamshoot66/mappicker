@@ -133,7 +133,7 @@ class App extends React.Component {
               () => {
                 this.props.setPage(actionType.pages.MAIN);
               },
-              0
+              3000
             )
           : null}
         {this.props.page === actionType.pages.MAIN ? <MainPage /> : null}

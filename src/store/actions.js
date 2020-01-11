@@ -148,7 +148,7 @@ export async function addMissionToServer(dispatch, payload) {
 }
 
 export async function updateMissionOnServer(payload) {
-	return firebase.auth().currentUser.getIdToken().then(token => {
+	return await firebase.auth().currentUser.getIdToken().then(token => {
 		return fetch(firebaseConst.FUNCTIONS_URL_BASE + firebaseConst.UPDATE_MISSION, {
 			credentials: "include",
 			method: "POST",

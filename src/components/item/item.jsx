@@ -100,6 +100,7 @@ class Item extends React.Component {
     let addBtnClass = this.isInSchedule()
       ? `${style.addBtn} ${style.addBtn_inSchedule}`
       : `${style.addBtn}`;
+    if (!this.props.currentSchedule.date) addBtnClass += ` ${style.invisible}`;
     let tagsStr = this.props.tags?.split(',').map(tag => {
       return (
         <div className={style.tag} key={tag}>
@@ -207,9 +208,15 @@ class Item extends React.Component {
               <div className={style.maximazedName}>{this.props.name}</div>
 
               <div className={style.tagsWrapper}>
-                <button className={addButtonLineStyle} onClick={this.setTags}>
-                  #
-                </button>
+                {this.props.user.rights.canAdd ? (
+                  <button
+                    className={`${style.addBtn} ${style.addBtnLine}`}
+                    onClick={this.setTags}
+                    title="Редактировать метки"
+                  >
+                    #
+                  </button>
+                ) : null}
                 <div className={style.tags}>{tagsStr}</div>
               </div>
 
@@ -285,7 +292,12 @@ class Item extends React.Component {
 
           {this.props.user.rights.canAdd ? (
             <div className={style.buttonWrapper}>
-              {this.props.user.auth ? (
+              {!this.props.currentSchedule.date ? (
+                <div className={style.hint}>
+                  Выберете дату в меню, чтобы добавлять миссии в расписание
+                </div>
+              ) : null}
+              {this.props.user.auth && this.props.currentSchedule.date ? (
                 this.props.showInMissonPool ? (
                   <button
                     className={addButtonLineStyle}

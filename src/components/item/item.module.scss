@@ -148,7 +148,6 @@
 	}
 }
 
-
 .maximazedItemWrapper {
 	display: flex;
 	flex-direction: row;
@@ -235,4 +234,16 @@ li label {
 	justify-content: center;
 	align-items: center;
 	width: 100%;
+}
+
+.hint {
+	padding: 5px;
+	font-size: 0.8em;
+	font-style: italic;
+	margin-bottom: 10px;
+	text-align: center;
+}
+
+.invisible {
+	visibility: hidden;
 }
