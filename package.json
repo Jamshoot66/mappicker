@@ -112,6 +112,7 @@
       "^.+\\.module\\.(css|sass|scss)$"
     ],
     "modulePaths": [],
+    
     "moduleNameMapper": {
       "^~(?![a-z])$": "<rootDir>/src/$1",
       "^~c(.*)$": "<rootDir>/src/components$1",
@@ -141,13 +142,9 @@
   "babel": {
     "presets": [
       "react-app"
-    ],
-    "plugins": [
-      "@babel/plugin-proposal-optional-chaining"
     ]
   },
   "devDependencies": {
-    "@babel/plugin-proposal-optional-chaining": "^7.7.5",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
     "node-sass": "^4.12.0",

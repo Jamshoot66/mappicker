@@ -3,7 +3,6 @@ export const missions = [
 		guid: 1,
 		name:"Операция «Патифон»",
 		mods: "rhs",
-		tags: "#вертолеты,#актуальная",
 		island: "Altis",
 		players: 200,
 		author: "Вася",
@@ -12,8 +11,7 @@ export const missions = [
 	},
 	{
 		guid: 2,
-		name: "Операция «Дрозды»",
-		tags: "#вертолеты,#актуальная",
+		name:"Операция «Дрозды»",
 		mods: "rhs",
 		island: "Chernarus",
 		players: 196,
@@ -23,8 +21,7 @@ export const missions = [
 	},
 	{
 		guid: 3,
-		name: "Операция «Ночная атака»",
-		tags: "#вертолеты,#самолеты,#тяжелаятехника,#легкаятехника,#актуальная",
+		name:"Операция «Ночная атака»",
 		mods: "rhs",
 		island: "Takistan",
 		players: 130,
@@ -34,8 +31,7 @@ export const missions = [
 	},
 	{
 		guid: 4,
-		name: "Операция «Какая то гора»",
-		tags: "#вертолеты,#самолеты,#тяжелаятехника,#легкаятехника,#актуальная",
+		name:"Операция «Какая то гора»",
 		mods: "rhs",
 		island: "Takistan",
 		players: 205,
@@ -45,8 +41,7 @@ export const missions = [
 	},
 	{
 		guid: 5,
-		name: "Операция «Многабукф»",
-		tags: "#вертолеты,#легкаятехника,#актуальная",
+		name:"Операция «Многабукф»",
 		mods: "rhs",
 		island: "Altis",
 		players: 198,
@@ -115,15 +110,3 @@ export const missions = [
 		lastPlayed: 1570651200000
 	},
 ] 
-
-export const fakeGetData = () => {
-	return new Promise(resolve => {
-		resolve({
-			json: () => {
-				return new Promise(resolve => {
-					resolve(missions)
-				})
-			}
-		})
-	})
-}
