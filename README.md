@@ -11,6 +11,4 @@ Available scripts:
 `npm run test`
 
 
-
-
 Copying with bad intents prohibited by real patsans law (c)
