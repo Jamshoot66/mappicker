@@ -1,12 +1,11 @@
 name: FrontEnd CI
 
 on: [push, pull_request]
-
+  branches:    
+    - master         # Push events on master branch
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     strategy:
       matrix:
         node-version: [12.x]
