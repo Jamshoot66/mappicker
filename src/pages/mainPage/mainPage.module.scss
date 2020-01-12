@@ -74,7 +74,6 @@ h2 {
 	z-index: -1000;
 	position: absolute;
 	transform: translateY(-40px);
-	@include xs(transform, translateY(-30px))
 }
 
 .loginMessage {
@@ -89,7 +88,7 @@ h2 {
 .spinnerPlaceholderWrapper {
 	@include row-flex;
 	color: $cWhite;
-	// background-color: $cBackground;
+	background-color: $cBackground;
 	padding: 15px 5px;
 	display: flex;
 	justify-content: center;

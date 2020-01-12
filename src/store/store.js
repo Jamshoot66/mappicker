@@ -212,8 +212,7 @@ function addMissions(state, action) {
 	};
 
 	newState.missionPool = newState.missionPool.concat(action.payload);
-	newState = updateProbabilities(newState, action);
-	newState = filterMissions(newState, action);
+	updateProbabilities(newState, action)
 	return newState;
 }
 

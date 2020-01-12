@@ -3,13 +3,12 @@ import { connect } from 'react-redux';
 import style from './tagsPopup.module.scss';
 import Popup from '~c/popup';
 import * as actionType from '~s/actions.js';
-import { tags } from '~u/objectTemplates';
 
 class TagsPopup extends React.Component {
   constructor(props) {
     super(props);
 
-    const currentTags = this.props.currentMission?.tags?.split(',');
+    const tags = this.props.currentMission?.tags?.split(',');
 
     const defState = {
       actualCheckbox: false,
@@ -19,22 +18,22 @@ class TagsPopup extends React.Component {
       helicoptersCheckbox: false,
     };
 
-    if (currentTags) {
-      currentTags.forEach(tag => {
+    if (tags) {
+      tags.forEach(tag => {
         switch (tag) {
-          case tags.actual:
+          case '#актуальная':
             defState.actualCheckbox = true;
             break;
-          case tags.aircrafts:
+          case '#самолеты':
             defState.aircraftsCheckbox = true;
             break;
-          case tags.tanks:
+          case '#тяжелаятехника':
             defState.tanksCheckbox = true;
             break;
-          case tags.apcs:
+          case '#легкаятехника':
             defState.apcsCheckbox = true;
             break;
-          case tags.helicopters:
+          case '#вертолеты':
             defState.helicoptersCheckbox = true;
             break;
           default:
@@ -54,14 +53,14 @@ class TagsPopup extends React.Component {
     e.preventDefault();
     e.stopPropagation();
 
-    const currentTags = [];
-    if (this.state.actualCheckbox) currentTags.push(tags.actual);
-    if (this.state.apcsCheckbox) currentTags.push(tags.apcs);
-    if (this.state.tanksCheckbox) currentTags.push(tags.tanks);
-    if (this.state.helicoptersCheckbox) currentTags.push(tags.helicopters);
-    if (this.state.aircraftsCheckbox) currentTags.push(tags.aircrafts);
+    const tags = [];
+    if (this.state.actualCheckbox) tags.push(`#актуальная`);
+    if (this.state.aircraftsCheckbox) tags.push(`#самолеты`);
+    if (this.state.tanksCheckbox) tags.push(`#тяжелаятехника`);
+    if (this.state.apcsCheckbox) tags.push(`#легкаятехника`);
+    if (this.state.helicoptersCheckbox) tags.push(`#вертолеты`);
 
-    const tagsStr = currentTags.join(',');
+    const tagsStr = tags.join(',');
 
     const newMission = Object.assign({}, this.props.currentMission);
     newMission.tags = tagsStr;
@@ -213,8 +212,8 @@ const mapStateToProps = store => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    updateMission: async mission => {
-      await actionType.updateMission(dispatch, mission);
+    updateMission: mission => {
+      actionType.updateMission(dispatch, mission);
     },
 
     hide: () => {

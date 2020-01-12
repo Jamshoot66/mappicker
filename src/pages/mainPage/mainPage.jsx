@@ -12,7 +12,7 @@ import AddMission from '~c/addMission/addMission.jsx';
 import FilterPopup from '~c/filterPopup';
 import TagsPopup from '~c/tagsPopup';
 
-import Spinner, { PENDING } from '~c/spinner/spinner.jsx';
+import Spinner from '~c/spinner/spinner.jsx';
 
 class MainPage extends React.Component {
   render() {
@@ -23,13 +23,6 @@ class MainPage extends React.Component {
         <Item key={item.guid} showInMissonPool {...item} even={index % 2} />
       );
     });
-
-    if (!this.props.missionPool.length)
-      itemsStr = (
-        <div className={style.spinnerPlaceholderWrapper}>
-          <Spinner spinnerState={PENDING} width="40px" height="40px" />
-        </div>
-      );
 
     itemsPoolStr = this.props.currentSchedule.missions.map(
       (scheduleItem, index) => {

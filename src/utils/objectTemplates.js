@@ -1,15 +1,14 @@
-export const missionItem = {
-  guid: 1,
-  name: "string",
-  mods: "string", // "vanila" or "rhs"
-  island: "string",
-  players: 200,
-  author: "string",
-  rateAvg: 3,
-  // syncRateState : "string" // - computed by app PENDING, ERROR, DONE // optional
-  lastPlayed: "string",
-  // probability: 0.25 - computed by app // optional
-  // tags: '#tag,#tag2'
+export let missionItem = {
+    guid: 1,
+    name:"string",
+    mods: "string", // "vanila" or "rhs"
+    island: "string",
+    players: 200,
+    author: "string",
+    rateAvg: 3,
+    // syncRateState : "string" // - computed by app PENDING, ERROR, DONE // optional
+    lastPlayed: "string",
+    // probability: 0.25 - computed by app // optional
 }
 
 /*
@@ -37,15 +36,7 @@ players: 130
 rateAvg: 2.75
 */
 
-export const scheduleMission = {
-  date: "string",
-  guid: 1
-}
-
-export const tags = {
-  actual: '#актуальная',
-  aircrafts: '#самолеты',
-  tanks: '#тяжелаятехника',
-  apcs: '#легкаятехника',
-  helicopters: '#вертолеты',
+export let scheduleMission = {
+    date: "sting",
+    guid: 1
 }

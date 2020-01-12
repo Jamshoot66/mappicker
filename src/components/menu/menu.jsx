@@ -92,7 +92,6 @@ class Menu extends React.Component {
               className={style.filterBtn}
               id="menuFilterBtn"
               onClick={this.props.showFilterMissionsComponentToggle}
-              title="Выбрать фильтры"
             ></button>
           ) : null}
 
@@ -100,7 +99,6 @@ class Menu extends React.Component {
             <button
               className={style.addMissionBtn}
               onClick={this.props.showAddMissionComponentToggle}
-              title="Добавить новую миссию в ротацию"
             ></button>
           ) : null}
           {/* TODO: implement add random missions
@@ -112,21 +110,19 @@ class Menu extends React.Component {
 						</button> :
 						null */}
 
-          {this.props.user.rights.canAdd && this.props.currentScheduleDate ? (
+          {this.props.user.rights.canAdd ? (
             <button
               className={style.approveBtn}
               onClick={this.onScheduleApproveClick}
               id="menuApproveBtn"
-              title="Утвердить расписание"
             ></button>
           ) : null}
 
-          {this.props.user.rights.canAdd && this.props.currentScheduleDate ? (
+          {this.props.user.rights.canAdd ? (
             <a href="#schedule">
               <button
                 className={style.calendarBtn}
                 id="menuCalendarBtn"
-                title="К расписанию"
               ></button>
             </a>
           ) : null}
@@ -137,7 +133,6 @@ class Menu extends React.Component {
               size="10"
               className={style.scheduleDate}
               onChange={this.onScheduleDateChange}
-              title="Дата расписания"
             />
           ) : null}
 
@@ -150,7 +145,6 @@ class Menu extends React.Component {
             className={style.userBtn}
             id="menuUserBtn"
             onClick={this.toggleLogin}
-            title="Меню пользователя"
           ></button>
           <UserMenu customWrapperStyle={style.userMenuWrapper} />
         </nav>
@@ -162,7 +156,7 @@ class Menu extends React.Component {
 const mapStateToProps = state => {
   return {
     user: state.user,
-    currentScheduleDate: state.currentSchedule.date,
+    currentScheduleDate: state.currentScheduleDate,
     syncScheduleState: state.syncScheduleState,
     schedule: state.schedule,
   };
