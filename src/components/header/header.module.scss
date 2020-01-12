@@ -11,14 +11,16 @@
 
 	font-family: 'Russo One', sans-serif;
 	font-size: 24px;
-	@include xs(font-size, 16px);
+	@include md(font-size, 16px);
+	@include xs(font-size, 14px);
  
 }
 
 .rbcLogo{
 	height: 100px;
-	min-height: 100px;
+	min-height: 70px;
 	filter: sepia(10%);
+	@include xs(height, 70px);
 }
 
 .text {
@@ -33,5 +35,6 @@ span {
 	color: $cRed;
 	font-size: 30px;
 	letter-spacing: 3px;
-	@include xs(font-size, 20px);
+	@include md(font-size, 20px);
+	@include xs(font-size, 15px);
 }
