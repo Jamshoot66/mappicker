@@ -33,6 +33,7 @@ class Item extends React.Component {
       gameplay: 3,
     };
 
+    this.rateHint = 'Среднестатистический по результатам голосования рейтинг миссии';
     this.hint =
       'Относительный рейтинг зависит от оценки миссии и времени последнего отыгрыша. При этом относительный рейтинг миссии с оценкой 1 (плохая), отыгранной год назад, соответсвует рейтингу миссии с оценкой 3 (средней), отыграной 3 месяца назад, и хорошей, отыгранной 2 месяца назад.';
   }
@@ -95,6 +96,12 @@ class Item extends React.Component {
     this.props.setTags(this.props.guid);
   };
 
+  editMission = e => {
+    e.stopPropagation();
+    console.log('clac');
+  };
+
+
   render() {
     let evenClass = this.props.even ? style.wrapper_even : '';
     let addBtnClass = this.isInSchedule()
@@ -125,7 +132,7 @@ class Item extends React.Component {
           <div className={style.island}>{this.props.island}</div>
           <div className={style.author}>{this.props.author}</div>
           {this.props.user.rights.canRate ? (
-            <div className={style.rateAvg}>{this.props.rateAvg.toFixed(1)}</div>
+            <div className={style.rateAvg} title={this.rateHint}>{this.props.rateAvg.toFixed(1)}</div>
           ) : null}
 
           {this.props.user.rights.canRate ? (
@@ -207,9 +214,16 @@ class Item extends React.Component {
               <div className={style.maximazedName}>{this.props.name}</div>
 
               <div className={style.tagsWrapper}>
-                <button className={addButtonLineStyle} onClick={this.setTags}>
-                  #
-                </button>
+                {this.props.user.rights.canAdd &&
+                  <React.Fragment>
+                    <button className={addButtonLineStyle} onClick={this.editMission}>
+                      E
+                    </button>
+                    <button className={addButtonLineStyle} onClick={this.setTags}>
+                      #
+                    </button>
+                  </React.Fragment>
+                }
                 <div className={style.tags}>{tagsStr}</div>
               </div>
 
@@ -256,7 +270,7 @@ class Item extends React.Component {
               </div>
 
               {this.props.user.rights.canRate ? (
-                <div className={style.line} onClick={this.onEmptyClick}>
+                <div className={style.line} onClick={this.onEmptyClick} title={this.rateHint}>
                   Рейтинг <strong>{this.props.rateAvg.toFixed(1)}</strong>
                 </div>
               ) : null}
