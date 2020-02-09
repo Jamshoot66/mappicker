@@ -4,6 +4,7 @@
 .screen {
     @include wrapper;
     @include sm(width, 100%);
+    flex-grow: 1;
 }
 
 .wrapper {
@@ -43,18 +44,20 @@
     justify-content: space-around;
     align-items: center;
     min-height: 26px;
+    height: 26px;
     flex-wrap: wrap;
+    margin-bottom: -0.5px;
+    margin-top: -0.5px;
 }
 
 .checkBoxGroupWrapper {
     @extend .itemWrapper;
+    height: auto;
     justify-content: flex-start;
 }
 
 .itemLabel {
     background-color: $cWhite;
-    border-top-left-radius: $buttonBorderRadius;
-    border-bottom-left-radius: $buttonBorderRadius;
     padding: 3px;
     min-width: 140px;
     @include xs(min-width, 125px);
@@ -67,8 +70,6 @@
 }
 
 .itemInput {
-    border-top-right-radius: $buttonBorderRadius;
-    border-bottom-right-radius: $buttonBorderRadius;
     padding: 0 3px;
     flex-grow: 1;
     border: 1px solid black;
@@ -159,6 +160,11 @@
     align-items: center;
 }
 
+.tagsWrapper {
+    width: 100%;
+    position: relative;
+}
+
 @supports (-moz-appearance:none) {
     select {
         -moz-appearance: none !important;
@@ -166,3 +172,4 @@
         background-position: calc(100% - 5px) center !important;
     }
 }
+

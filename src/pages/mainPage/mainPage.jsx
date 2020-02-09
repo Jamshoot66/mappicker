@@ -4,11 +4,13 @@ import style from './mainPage.module.scss';
 import { connect } from 'react-redux';
 import * as actionType from '~s/actions.js';
 
+import Popup from '~c/popup';
 import Header from '~c/header/header.jsx';
 import Menu from '~c/menu/menu.jsx';
 import Item from '~c/item/item.jsx';
 import ItemHeader from '~c/item/itemHeader.jsx';
 import AddMission from '~c/addMission/addMission.jsx';
+import EditMission from '~c/editMission';
 import FilterPopup from '~c/filterPopup';
 import TagsPopup from '~c/tagsPopup';
 
@@ -73,6 +75,17 @@ class MainPage extends React.Component {
               <AddMission />
             </div>
           ) : null}
+          
+          {this.props.showEditMissionComponent ? (
+            // <div
+            //   className={style.fullscreenWrapper}
+            //   onClick={this.props.showEditMissionComponentToggle}
+            // >
+            // <Popup onClick={this.props.showEditMissionComponentToggle}>
+              <EditMission />
+            // </Popup>
+            // </div>
+          ) : null}
 
           {this.props.showFilterMissionsComponent ? (
             <div
@@ -114,6 +127,7 @@ const mapStateToProps = state => {
     schedule: state.schedule,
     showMissionPool: state.showMissionPool,
     showAddMissionComponent: state.showAddMissionComponent,
+    showEditMissionComponent: state.showEditMissionComponent,
     showFilterMissionsComponent: state.showFilterMissionsComponent,
     showSetTagsComponent: state.showSetTagsComponent,
     db: state.firebase.db,
@@ -154,6 +168,12 @@ const mapDispatchToProps = dispatch => {
     showAddMissionComponentToggle: () => {
       dispatch({
         type: actionType.SHOW_ADD_MISSION_COMPONENT_TOGGLE,
+      });
+    },
+  
+    showEditMissionComponentToggle: () => {
+      dispatch({
+        type: actionType.SHOW_EDIT_MISSION_COMPONENT_TOGGLE,
       });
     },
 

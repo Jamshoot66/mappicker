@@ -99,14 +99,22 @@ class Item extends React.Component {
   editMission = e => {
     e.stopPropagation();
     console.log('clac');
+    
+    this.props.editMission(this.props.guid);
   };
 
 
   render() {
     let evenClass = this.props.even ? style.wrapper_even : '';
+    
     let addBtnClass = this.isInSchedule()
       ? `${style.addBtn} ${style.addBtn_inSchedule}`
       : `${style.addBtn}`;
+    
+    addBtnClass += !this.props.currentSchedule.date ?  ` ${style.invisible}` : '';
+    
+    const tagsBtnClass = `${style.addBtn} ${style.addBtnLine}`;
+    
     let tagsStr = this.props.tags?.split(',').map(tag => {
       return (
         <div className={style.tag} key={tag}>
@@ -140,7 +148,7 @@ class Item extends React.Component {
               {(this.props.probability * 100).toFixed(1)}%
             </div>
           ) : null}
-          {this.props.user.rights.canAdd ? (
+          {this.props.user.rights.canAdd  ? (
             this.props.showInMissonPool ? (
               <button className={addBtnClass} onClick={this.addBtnClick}>
                 +
@@ -216,10 +224,10 @@ class Item extends React.Component {
               <div className={style.tagsWrapper}>
                 {this.props.user.rights.canAdd &&
                   <React.Fragment>
-                    <button className={addButtonLineStyle} onClick={this.editMission}>
-                      E
+                    <button className={tagsBtnClass} onClick={this.editMission}>
+                      ✎
                     </button>
-                    <button className={addButtonLineStyle} onClick={this.setTags}>
+                    <button className={tagsBtnClass} onClick={this.setTags}>
                       #
                     </button>
                   </React.Fragment>
@@ -335,6 +343,17 @@ const mapDispatchToProps = dispatch => {
           date,
           guid,
         },
+      });
+    },
+    
+    editMission: (guid) => {
+      dispatch({
+        type: actionType.SET_CURRENT_MISSION,
+        payload: { guid },
+      });
+  
+      dispatch({
+        type: actionType.SHOW_EDIT_MISSION_COMPONENT_TOGGLE,
       });
     },
 

@@ -110,19 +110,21 @@ class Menu extends React.Component {
 						</button> :
 						null */}
 
-          {this.props.user.rights.canAdd ? (
+          {this.props.user.rights.canAdd && this.props.currentScheduleDate ? (
             <button
               className={style.approveBtn}
               onClick={this.onScheduleApproveClick}
               id="menuApproveBtn"
+              title="Утвердить расписание"
             ></button>
           ) : null}
 
-          {this.props.user.rights.canAdd ? (
+          {this.props.user.rights.canAdd && this.props.currentScheduleDate ? (
             <a href="#schedule">
               <button
                 className={style.calendarBtn}
                 id="menuCalendarBtn"
+                title="К расписанию"
               ></button>
             </a>
           ) : null}
@@ -156,7 +158,7 @@ class Menu extends React.Component {
 const mapStateToProps = state => {
   return {
     user: state.user,
-    currentScheduleDate: state.currentScheduleDate,
+    currentScheduleDate: state.currentSchedule.date,
     syncScheduleState: state.syncScheduleState,
     schedule: state.schedule,
   };

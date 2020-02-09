@@ -12,6 +12,7 @@ let defState = {
 	showMissionPool: true,
 	showUserMenu: false,
 	showAddMissionComponent: false,
+	showEditMissionComponent: false,
 	showUpdateMissionComponent: false,
 	showFilterMissionsComponent: false,
 	showSetTagsComponent: false,
@@ -42,6 +43,14 @@ const Store = (state = defState, action) => {
 		*/
 		case actionType.ADD_MISSIONS:
 			return addMissions(state, action);
+			
+		/* EDIT_MISSIONS usage:
+			action.Type : EDIT_MISSIONS,
+			payload     : {missionId: {string}}
+		*/
+		case actionType.EDIT_MISSION:
+			newState.currentMission = action.payload.guid;
+			return newState;
 
 		/* UPDATE_MISSION usage:
 			action.Type : UPDATE_MISSION,
@@ -98,6 +107,11 @@ const Store = (state = defState, action) => {
 		/* SHOW_ADD_MISSION_COMPONENT_TOGGLE */
 		case actionType.SHOW_ADD_MISSION_COMPONENT_TOGGLE:
 			newState.showAddMissionComponent = !newState.showAddMissionComponent;
+			return newState;
+			
+		/* SHOW_EDIT_MISSION_COMPONENT_TOGGLE */
+		case actionType.SHOW_EDIT_MISSION_COMPONENT_TOGGLE:
+			newState.showEditMissionComponent = !newState.showEditMissionComponent;
 			return newState;
 
 		/* SHOW_FILTER_MISSION_POPUP_TOGGLE */

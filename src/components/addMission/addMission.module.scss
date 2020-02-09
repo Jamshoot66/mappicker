@@ -33,12 +33,12 @@
     justify-content: space-around;
     align-items: center;
     height: 26px;
+    margin-bottom: -0.5px;
+    margin-top: -0.5px;
 }
 
 .itemLabel{
     background-color: $cWhite;
-    border-top-left-radius: $buttonBorderRadius;
-    border-bottom-left-radius: $buttonBorderRadius;
     padding: 3px;
     min-width: 140px; 
     @include xs(min-width, 125px);
@@ -51,8 +51,6 @@
 }
 
 .itemInput{
-    border-top-right-radius: $buttonBorderRadius;
-    border-bottom-right-radius: $buttonBorderRadius;
     padding: 0 3px;
     flex-grow: 1;
     border: 1px solid black;
