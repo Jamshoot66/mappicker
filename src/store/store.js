@@ -265,6 +265,7 @@ function filterMissions(state, action) {
 		// filter by string
 		return (
 			mission.name.toLowerCase().includes(searchStr) ||
+			mission.fileName.toLowerCase().includes(searchStr) ||
 			mission.mods.toLowerCase().includes(searchStr) ||
 			mission.island.toLowerCase().includes(searchStr) ||
 			mission.author.toLowerCase().includes(searchStr)
