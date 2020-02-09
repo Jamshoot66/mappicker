@@ -63,7 +63,7 @@ class ItemHeader extends React.Component {
 		} else if (first.probability < second.probability) {
 			return 1;
 		} else {
-			return (first.name >= second.name) ? 1 : -1;;
+			return (first.name >= second.name) ? 1 : -1;
 		}
 	}
 

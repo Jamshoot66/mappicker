@@ -12,6 +12,7 @@ let defState = {
 	showMissionPool: true,
 	showUserMenu: false,
 	showAddMissionComponent: false,
+	showUpdateMissionComponent: false,
 	showFilterMissionsComponent: false,
 	showSetTagsComponent: false,
 	currentMission: '',

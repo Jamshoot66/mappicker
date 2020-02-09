@@ -27,6 +27,9 @@
 
 .header {
 	background-color: $cBackground !important;
+	& div {
+		cursor: pointer;
+	}
 }
 
 @mixin debug {
