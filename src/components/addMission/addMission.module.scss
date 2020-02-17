@@ -25,6 +25,8 @@
 
 .itemHeader{
     color: $cWhite;
+    text-align: center;
+    margin: 5px 0;
 }
 
 .itemWrapper {
@@ -117,6 +119,35 @@
 .buttonBlock{
     display: flex;
     align-items: center;
+}
+
+.checkBoxGroupWrapper {
+    @extend .itemWrapper;
+    height: auto;
+    justify-content: flex-start;
+
+    input[type=checkbox] {
+        height:auto;
+        flex-grow: 0;
+    }
+}
+
+.checkBoxWrapper {
+    width: 50%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    label {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
+
+.tagsWrapper {
+    width: 100%;
+    position: relative;
 }
 
 @supports (-moz-appearance:none) {

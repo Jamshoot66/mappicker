@@ -121,10 +121,12 @@ class EditMission extends React.Component {
 
     const newMission = Object.assign({}, this.state.currentMission);
     newMission.tags = tagsStr;
+    newMission.lastPlayed = this.state.currentMission.lastPlayedMs;
+    delete newMission.lastPlayedMs;
 
-    this.setState( {spinnerState : PENDING});
+    this.setState({ spinnerState: PENDING });
     await this.props.updateMission(newMission);
-    this.setState( {spinnerState : DONE});
+    this.setState({ spinnerState: DONE });
     this.props.hide();
   };
 
@@ -160,7 +162,8 @@ class EditMission extends React.Component {
 
   onLastPlayedChange = e => {
     const currentMission = Object.assign({}, this.state.currentMission);
-    currentMission.lastPlayed = e.target.value;
+    console.log(e.target.value);
+    currentMission.lastPlayed = new Date(e.target.value).getTime();
     this.setState({ currentMission });
   };
 
@@ -288,7 +291,7 @@ class EditMission extends React.Component {
                 обязательное поле
               </option>
               <option value="rhs">rhs</option>
-              <option value="vanila">vanila</option>
+              <option value="vanilla">vanilla</option>
             </select>
           </section>
 
