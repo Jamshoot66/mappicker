@@ -18,15 +18,13 @@ import Spinner from '~c/spinner/spinner.jsx';
 
 class MainPage extends React.Component {
   render() {
-    let itemsStr = false;
-    let itemsPoolStr = false;
-    itemsStr = this.props.missionPool.map((item, index) => {
+    const itemsStr = this.props.missionPool.map((item, index) => {
       return (
         <Item key={item.guid} showInMissonPool {...item} even={index % 2} />
       );
     });
 
-    itemsPoolStr = this.props.currentSchedule.missions.map(
+    const itemsPoolStr = this.props.currentSchedule.missions.map(
       (scheduleItem, index) => {
         return (
           <Item key={scheduleItem.guid} {...scheduleItem} even={index % 2} />
@@ -42,6 +40,7 @@ class MainPage extends React.Component {
             <h2>Пул миссий</h2>
           </div>
           <ItemHeader />
+
           {itemsStr}
 
           {this.props.user.rights.canAdd && this.props.currentSchedule.date ? (
@@ -75,17 +74,8 @@ class MainPage extends React.Component {
               <AddMission />
             </div>
           ) : null}
-          
-          {this.props.showEditMissionComponent ? (
-            // <div
-            //   className={style.fullscreenWrapper}
-            //   onClick={this.props.showEditMissionComponentToggle}
-            // >
-            // <Popup onClick={this.props.showEditMissionComponentToggle}>
-              <EditMission />
-            // </Popup>
-            // </div>
-          ) : null}
+
+          {this.props.showEditMissionComponent ? <EditMission /> : null}
 
           {this.props.showFilterMissionsComponent ? (
             <div
@@ -170,7 +160,7 @@ const mapDispatchToProps = dispatch => {
         type: actionType.SHOW_ADD_MISSION_COMPONENT_TOGGLE,
       });
     },
-  
+
     showEditMissionComponentToggle: () => {
       dispatch({
         type: actionType.SHOW_EDIT_MISSION_COMPONENT_TOGGLE,
