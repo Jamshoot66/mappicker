@@ -90,6 +90,12 @@
 	@include xs(display, none);
 }
 
+.islandSubcontainer{
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: block;
+}
+
 .rateAvg {
 	@include itemBase;
 	@include size(1);

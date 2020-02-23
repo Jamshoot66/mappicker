@@ -137,7 +137,11 @@ class Item extends React.Component {
               : new Date(+this.props.lastPlayed).toLocaleDateString()}
           </div>
           <div className={style.players}>{this.props.players}</div>
-          <div className={style.island}>{this.props.island}</div>
+          <div className={style.island}>
+            <div className={style.islandSubcontainer}>
+              {this.props.island}
+            </div>
+          </div>
           <div className={style.author}>{this.props.author}</div>
           {this.props.user.rights.canRate ? (
             <div className={style.rateAvg} title={this.rateHint}>{this.props.rateAvg.toFixed(1)}</div>
