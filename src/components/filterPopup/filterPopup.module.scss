@@ -41,6 +41,7 @@
 .checkBoxGroupWrapper{
     @extend .itemWrapper;
     justify-content: flex-start;
+    color: $cWhite;
 }
 
 .itemLabel{
