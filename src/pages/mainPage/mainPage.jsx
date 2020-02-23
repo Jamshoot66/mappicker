@@ -14,7 +14,7 @@ import EditMission from '~c/editMission';
 import FilterPopup from '~c/filterPopup';
 import TagsPopup from '~c/tagsPopup';
 
-import Spinner from '~c/spinner/spinner.jsx';
+import Spinner, { PENDING } from '~c/spinner/spinner.jsx';
 
 class MainPage extends React.Component {
   render() {
@@ -36,12 +36,19 @@ class MainPage extends React.Component {
     if (this.props.user.auth) {
       contentStr = (
         <div>
-          <div>
-            <h2>Пул миссий</h2>
-          </div>
-          <ItemHeader />
-
-          {itemsStr}
+          {itemsStr.length ? (
+            <React.Fragment>
+              <div>
+                <h2>Пул миссий</h2>
+              </div>
+              <ItemHeader />
+              {itemsStr}
+            </React.Fragment>
+          ) : (
+            <div className={style.center}>
+              <Spinner spinnerState={PENDING} width="40px" height="40px" />
+            </div>
+          )}
 
           {this.props.user.rights.canAdd && this.props.currentSchedule.date ? (
             <div id="schedule" className={style.dummyPlaceholder}></div>
