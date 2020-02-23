@@ -55,6 +55,8 @@
     @extend .itemWrapper;
     height: auto;
     justify-content: flex-start;
+    color: $cWhite;
+    flex-wrap: wrap;
 }
 
 .itemLabel {

@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import style from './addMission.module.scss';
 import * as actionType from '~s/actions.js';
-
+import { islandList } from '~u/objectTemplates';
 import Spinner from '~c/spinner/spinner.jsx';
 import { DONE, PENDING, ERROR } from '~c/spinner/spinner.jsx';
 
@@ -34,48 +34,7 @@ class AddMission extends React.Component {
 
     this.state = Object.assign({}, this.defState, defTags);
 
-    this.islandList = [
-      'altis',
-      'beketov',
-      'borzcaada',
-      'bukovina',
-      'bystrica',
-      'chernarus',
-      'chernarus_summer',
-      'chernarus_winter',
-      'deniland',
-      'desert',
-      'dingor',
-      'emita',
-      'enoch',
-      'fallujah',
-      'fata',
-      'hellanmaa',
-      'Isla_abramia',
-      'lingor',
-      'lythium',
-      'malden',
-      'porto',
-      'prei_khmaoch_luong',
-      'proving_grounds',
-      'rahmadi',
-      'reshmaan_province',
-      'ruha',
-      'sahrani',
-      'shapur',
-      'southrn_sahrani',
-      'stratis',
-      'takistan',
-      'takistan_mountains',
-      'tanoa',
-      'tem_anizay',
-      'united_sahrani',
-      'utes',
-      'virtual_reality',
-      'wl_rosche',
-      'yellowstone',
-      'zargabad',
-    ];
+    this.islandList = islandList;
 
     this.islandOptionsStr = this.islandList.map(item => {
       return (
